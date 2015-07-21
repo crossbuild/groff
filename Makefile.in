@@ -1,19 +1,18 @@
-# Copyright (C) 1989-2006, 2009-2013
-#   Free Software Foundation, Inc.
-#      Written by James Clark (jjc@jclark.com)
-# 
+# Copyright (C) 1989-2014 Free Software Foundation, Inc.
+#   Written by James Clark (jjc@jclark.com)
+#
 # This file is part of groff.
-# 
+#
 # groff is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
 # Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # groff is distributed in the hope that it will be useful, but WITHOUT ANY
 # WARRANTY; without even the implied warranty of MERCHANTABILITY or
 # FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
 # for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
@@ -188,7 +187,12 @@ localtmacdir=$(dataprogramdir)/site-tmac
 # gxditview.
 appresdir=@appresdir@
 
+glilypond_dir=@glilypond_dir@
+gpinyin_dir=@gpinyin_dir@
 groffer_dir=@groffer_dir@
+grog_dir=@grog_dir@
+libprogramdir=@libprogramdir@
+referdir=@referdir@
 
 # `tmacpath' says where to look for macro files.
 # The current directory will be prepended in unsafe mode only; the home
@@ -259,15 +263,55 @@ man5dir=$(manroot)/man$(man5ext)
 man7ext=7
 man7dir=$(manroot)/man$(man7ext)
 
+# `dist' target is disallowed in some `configure' combinations.
+doc_dist_target_ok=@doc_dist_target_ok@
+
+# The configure script checks whether the user wants the info documentation.
+# For the repo version this mechanism also suppresses building via `makeinfo'.
+make_infodoc=@make_infodoc@
+make_install_infodoc=@make_install_infodoc@
+make_uninstall_infodoc=@make_uninstall_infodoc@
+
 # The configure script checks whether all necessary utility programs for
 # grohtml are available -- only then we can build the HTML documentation.
-make_html=@make_html@
-make_install_html=@make_install_html@
+make_htmldoc=@make_htmldoc@
+make_install_htmldoc=@make_install_htmldoc@
+make_uninstall_htmldoc=@make_uninstall_htmldoc@
+
+make_htmlexamples=@make_htmlexamples@
+make_install_htmlexamples=@make_install_htmlexamples@
+make_uninstall_htmlexamples=@make_uninstall_htmlexamples@
+
+# However, there may always be some prebuild HTML documentation
+make_install_shipped_htmldoc=@make_install_shipped_htmldoc@
+make_uninstall_shipped_htmldoc=@make_uninstall_shipped_htmldoc@
 
 # The configure script also checks whether all necessary utility programs
 # for pdfroff are available -- only then we can build PDF documentation.
 make_pdfdoc=@make_pdfdoc@
 make_install_pdfdoc=@make_install_pdfdoc@
+make_uninstall_pdfdoc=@make_uninstall_pdfdoc@
+
+make_pdfexamples=@make_pdfexamples@
+make_install_pdfexamples=@make_install_pdfexamples@
+make_uninstall_pdfexamples=@make_uninstall_pdfexamples@
+
+# `other' documentation, e.g., `meref.me' and `pic.ms', as well as their
+# generated counterparts..
+make_otherdoc=@make_otherdoc@
+make_install_otherdoc=@make_install_otherdoc@
+make_uninstall_otherdoc=@make_uninstall_otherdoc@
+
+# `examples' -- a generic switch, but the generated examples are furtherly
+# subdivided to catch HTML and PDF production availability.
+make_examples=@make_examples@
+make_install_examples=@make_install_examples@
+make_uninstall_examples=@make_uninstall_examples@
+
+# Windows `.cmd' files
+make_winscripts=@make_winscripts@
+make_install_winscripts=@make_install_winscripts@
+make_uninstall_winscripts=@make_uninstall_winscripts@
 
 # All the previous installation directories, when used, are prefixed with
 # $(DESTDIR) during install and uninstall, to support staged installations.
@@ -348,7 +392,7 @@ make_install_pdfdoc=@make_install_pdfdoc@
 #				<stdio.h>
 # -DICONV_CONST=const		if declaration of iconv() needs const
 # -DLONG_FOR_TIME_T		if localtime() takes a long * not a time_t *
-# -DRETSIGTYPE=int		if signal handlers return int not void	
+# -DRETSIGTYPE=int		if signal handlers return int not void
 # -DRET_TYPE_SRAND_IS_VOID	if srand() returns void not int
 #
 # -DWCOREFLAG=0200		if the 0200 bit of the status returned by
@@ -402,6 +446,7 @@ X_PRE_LIBS=@X_PRE_LIBS@
 YACC=@YACC@
 YACCFLAGS=-v
 
+GREP=@GREP@
 EGREP=@EGREP@
 
 MAKEINFO=@MAKEINFO@
@@ -425,7 +470,8 @@ ETAGSFLAGS=
 # Flag that tells etags to assume C++.
 ETAGSCCFLAG=-C
 # Full path to perl.
-PERLPATH=@PERLPATH@
+PERL=@PERL@
+PERLVERSION=@PERLVERSION@
 # Sed command with which to edit sh scripts.
 SH_SCRIPT_SED_CMD=@SH_SCRIPT_SED_CMD@
 # Sed script to deal with OS dependencies in sh scripts.
@@ -462,6 +508,7 @@ MDEFINES=\
   "ETAGSFLAGS=$(ETAGSFLAGS)" \
   "EXEEXT=$(EXEEXT)" \
   "GLIBC21=$(GLIBC21)" \
+  "GREP=$(GREP)" \
   "HOST=$(HOST)" \
   "INSTALL_DATA=$(INSTALL_DATA)" \
   "INSTALL_INFO=$(INSTALL_INFO)" \
@@ -478,8 +525,9 @@ MDEFINES=\
   "OBJEXT=$(OBJEXT)" \
   "OTHERDEVDIRS=$(OTHERDEVDIRS)" \
   "PAGE=$(PAGE)" \
+  "PERL=$(PERL)" \
+  "PERLVERSION=$(PERLVERSION)" \
   "GHOSTSCRIPT=$(GHOSTSCRIPT)" \
-  "PERLPATH=$(PERLPATH)" \
   "PSPRINT=$(PSPRINT)" \
   "PURIFY=$(PURIFY)" \
   "PURIFYCCFLAGS=$(PURIFYCCFLAGS)" \
@@ -501,6 +549,10 @@ MDEFINES=\
   "YACCFLAGS=$(YACCFLAGS)" \
   "appresdir=$(appresdir)" \
   "groffer_dir=$(groffer_dir)" \
+  "gpinyin_dir=$(gpinyin_dir)" \
+  "glilypond_dir=$(glilypond_dir)" \
+  "grog_dir=$(grog_dir)" \
+  "referdir=$(referdir)" \
   "bindir=$(bindir)" \
   "common_words_file=$(common_words_file)" \
   "datadir=$(datadir)" \
@@ -523,10 +575,32 @@ MDEFINES=\
   "libprogramdir=$(libprogramdir)" \
   "localfontdir=$(localfontdir)" \
   "localtmacdir=$(localtmacdir)" \
-  "make_html=$(make_html)" \
-  "make_install_html=$(make_install_html)" \
+  "make_infodoc=$(make_infodoc)" \
+  "make_install_infodoc=$(make_install_infodoc)" \
+  "make_uninstall_infodoc=$(make_uninstall_infodoc)" \
+  "make_htmldoc=$(make_htmldoc)" \
+  "make_install_htmldoc=$(make_install_htmldoc)" \
+  "make_uninstall_htmldoc=$(make_uninstall_htmldoc)" \
+  "make_htmlexamples=$(make_htmlexamples)" \
+  "make_install_htmlexamples=$(make_install_htmlexamples)" \
+  "make_uninstall_htmlexamples=$(make_uninstall_htmlexamples)" \
+  "make_install_shipped_htmldoc=$(make_install_shipped_htmldoc)" \
+  "make_uninstall_shipped_htmldoc=$(make_uninstall_shipped_htmldoc)" \
   "make_pdfdoc=$(make_pdfdoc)" \
   "make_install_pdfdoc=$(make_install_pdfdoc)" \
+  "make_uninstall_pdfdoc=$(make_uninstall_pdfdoc)" \
+  "make_pdfexamples=$(make_pdfexamples)" \
+  "make_install_pdfexamples=$(make_install_pdfexamples)" \
+  "make_uninstall_pdfexamples=$(make_uninstall_pdfexamples)" \
+  "make_otherdoc=$(make_otherdoc)" \
+  "make_install_otherdoc=$(make_install_otherdoc)" \
+  "make_uninstall_otherdoc=$(make_uninstall_otherdoc)" \
+  "make_examples=$(make_examples)" \
+  "make_install_examples=$(make_install_examples)" \
+  "make_uninstall_examples=$(make_uninstall_examples)" \
+  "make_winscripts=$(make_winscripts)" \
+  "make_install_winscripts=$(make_install_winscripts)" \
+  "make_uninstall_winscripts=$(make_uninstall_winscripts)" \
   "man1dir=$(man1dir)" \
   "man1ext=$(man1ext)" \
   "man5dir=$(man5dir)" \
@@ -558,7 +632,6 @@ MAKE_K_FLAG=`for f in x $(MAKEFLAGS); do \
                esac; \
              done`
 
-
 INCDIRS=\
   src/include
 LIBDIRS=\
@@ -566,6 +639,11 @@ LIBDIRS=\
   src/libs/libdriver \
   src/libs/libbib \
   $(XLIBDIRS)
+ALLLIBDIRS=\
+  src/libs/libgroff \
+  src/libs/libdriver \
+  src/libs/libbib \
+  src/libs/libxutil
 CCPROGDIRS=\
   src/roff/groff \
   src/roff/troff \
@@ -591,13 +669,23 @@ CCPROGDIRS=\
   src/utils/addftinfo
 CPROGDIRS=\
   src/utils/pfbtops
+SHPROGDIRS=\
+  src/devices/gropdf
 PROGDEPDIRS=\
   arch/misc
 PROGDIRS=\
   $(PROGDEPDIRS) \
   $(CCPROGDIRS) \
   $(CPROGDIRS) \
+  $(SHPROGDIRS) \
   $(XPROGDIRS)
+ALLPROGDIRS=\
+  $(PROGDEPDIRS) \
+  $(CCPROGDIRS) \
+  $(CPROGDIRS) \
+  $(SHPROGDIRS) \
+  src/devices/xditview \
+  src/utils/xtotroff
 DEVDIRS=\
   font/devps \
   font/devdvi \
@@ -608,27 +696,32 @@ ALLTTYDEVDIRS=\
   font/devutf8 \
   font/devcp1047
 # `doc' must be processed before `contrib/pdfmark',
-# pdf stuff must be processed before `contrib/mom
+# pdf stuff must be processed before `contrib/mom',
+# devpdf fonts depends on `afmtodit'
 OTHERDIRS=\
-  man \
-  tmac \
   src/utils/afmtodit \
-  src/roff/grog \
-  src/roff/nroff \
-  doc \
-  contrib/mm \
+  font/devpdf \
+  arch/mingw \
   contrib/chem \
-  contrib/pic2graph \
   contrib/eqn2graph \
+  contrib/gdiffmk \
+  contrib/glilypond \
+  contrib/gperl \
+  contrib/gpinyin \
   contrib/grap2graph \
+  contrib/groff_filenames \
   contrib/groffer \
   contrib/hdtbl \
+  contrib/mm \
   contrib/pdfmark \
-  src/devices/gropdf \
-  font/devpdf \
+  contrib/pic2graph \
   contrib/mom \
-  contrib/gdiffmk
-  
+  doc \
+  man \
+  src/roff/grog \
+  src/roff/nroff \
+  tmac
+
 # OTHERDIRS is handled specially in the `$(TARGETS)' rule to avoid
 # dependency problems with parallel builds.
 ALLDIRS=\
@@ -650,8 +743,6 @@ NOMAKEDIRS=\
   arch/djgpp \
   contrib/chem/examples \
   contrib/chem/examples/122 \
-  contrib/groffer/perl \
-  contrib/groffer/shell \
   contrib/hdtbl/examples \
   contrib/mm/examples \
   contrib/mm/mm \
@@ -672,8 +763,8 @@ GNULIBDIRS=\
   src/libs/gnulib
 DISTDIRS=\
   $(INCDIRS) \
-  $(LIBDIRS) \
-  $(PROGDIRS) \
+  $(ALLLIBDIRS) \
+  $(ALLPROGDIRS) \
   $(DEVDIRS) \
   $(XDEVDIRS) \
   $(OTHERDEVDIRS) \
@@ -706,10 +797,18 @@ dodirs=$(ALLDIRS) $(OTHERDIRS) dot
 # Default target for subdir_Makefile
 subdir=src/roff/troff
 
-
 $(TARGETS):
 	@$(ENVSETUP); $(MAKE) $(MAKE_K_FLAG) do=$@ $(ALLDIRS)
 	@$(ENVSETUP); $(MAKE) $(MAKE_K_FLAG) do=$@ $(OTHERDIRS) dot
+
+clean: clean-gnulib
+clean-gnulib:
+	@$(ENVSETUP); cd src/libs/gnulib; $(MAKE) $(MAKE_K_FLAG) clean
+
+distclean: distclean-gnulib
+distclean-gnulib:
+	@$(ENVSETUP); cd src/libs/gnulib; $(MAKE) $(MAKE_K_FLAG) distclean
+	rm -rf src/libs/gnulib/autom4te.cache
 
 dot: FORCE
 	@$(ENVSETUP); \
@@ -765,7 +864,8 @@ $(CCPROGDIRS): FORCE $(LIBDIRS)
 	  -f $(top_srcdir)/Makefile.ccpg \
 	  -f Makefile.dep $(do)
 
-$(DEVDIRS) $(XDEVDIRS) $(OTHERDEVDIRS) $(TTYDEVDIRS): FORCE $(PROGDEPDIRS) $(CCPROGDIRS) $(CPROGDIRS)
+$(DEVDIRS) $(XDEVDIRS) $(OTHERDEVDIRS) $(TTYDEVDIRS): FORCE \
+		$(PROGDEPDIRS) $(CCPROGDIRS) $(CPROGDIRS)
 	@$(ENVSETUP); \
 	if test $(srcdir) = .; then \
 	  srcdir=.; \
@@ -792,13 +892,13 @@ $(GNULIBDIRS): FORCE
 	  cd $@; \
 	  args=`$(top_builddir)/config.status --config`; \
 	  test -f Makefile \
-	  || eval $$srcdir/configure "$$args" --srcdir=$$srcdir; \
+	    || eval $$srcdir/configure "$$args" --srcdir=$$srcdir; \
 	  $(MAKE) ACLOCAL=: AUTOCONF=: AUTOHEADER=: AUTOMAKE=: $(do) ;; \
 	esac
 
-$(OTHERDIRS): $(PROGDEPDIRS) $(CCPROGDIRS) $(CPROGDIRS)
+$(OTHERDIRS): $(PROGDEPDIRS) $(CCPROGDIRS) $(CPROGDIRS) $(SHPROGDIRS)
 
-$(INCDIRS) $(PROGDEPDIRS) $(OTHERDIRS): FORCE
+$(INCDIRS) $(PROGDEPDIRS) $(SHPROGDIRS) $(OTHERDIRS): FORCE
 	@$(ENVSETUP); \
 	if test $(srcdir) = .; then \
 	  srcdir=.; \
@@ -814,36 +914,49 @@ $(INCDIRS) $(PROGDEPDIRS) $(OTHERDIRS): FORCE
 
 .PHONY: dist
 dist:
+	if test "${doc_dist_target_ok}" != yes; then \
+	  echo "The \`dist' target is not applicable to this configuration"; \
+	  exit 1; \
+	fi
 	-rm -fr tmp
 	rm -f groff-$(version)$(revision).tar.gz
 	mkdir tmp
 	for d in $(DISTDIRS); do \
 	  $(mkinstalldirs) tmp/$$d; \
 	done
-	cd tmp; \
-	cp ../Makefile .; \
-	cp $(top_srcdir)/* . 2>/dev/null || true; \
-	rm -rf CVS; \
-	for d in $(DISTDIRS); do \
-	  (cd $$d; \
-	   cp $(top_srcdir)/$$d/* . 2>/dev/null; \
-	   rm -rf CVS || true); \
-	done; \
-	$(MAKE) srcdir=. VPATH=. distfiles; \
-	$(MAKE) srcdir=. VPATH=. extraclean; \
+	cp Makefile tmp
+	-cp * tmp 2>/dev/null
+	-for d in $(DISTDIRS); do \
+	  (cd tmp/$$d; \
+	   cp $(top_srcdir)/$$d/* . 2>/dev/null;); \
+	done
+	cd tmp; $(MAKE) srcdir=. VPATH=. distfiles
+	cd tmp; $(MAKE) srcdir=. VPATH=. extraclean
 	for d in $(EXTRADIRS); do \
-	  (cd $$d; \
+	  (cd tmp/$$d; \
 	   if test -f Makefile; then \
 	     $(MAKE) extraclean; \
 	   else \
 	     $(MAKE) -f $(top_builddir)/$$d/Makefile extraclean; \
 	   fi); \
-	done; \
-	rm -f Makefile; \
-	cp $(top_srcdir)/Makefile.init Makefile
+	done
+	for d in $(GNULIBDIRS); do \
+	  (cd tmp/$$d; \
+	   if test -f config.status; then \
+	     ./config.status; \
+	   fi; \
+	   if test -f Makefile; then \
+	     $(MAKE) distclean; \
+	   else \
+	     $(MAKE) -f $(top_builddir)/$$d/Makefile distclean; \
+	   fi; \
+	   rm -rf autom4te.cache); \
+	done
+	rm -f tmp/Makefile
+	cp Makefile.init tmp/Makefile
 	mv tmp groff-$(version)$(revision)
-	tar cfh - groff-$(version)$(revision) | \
-	  gzip -c >groff-$(version)$(revision).tar.gz
+	tar cfh - groff-$(version)$(revision) \
+	  | gzip -c >groff-$(version)$(revision).tar.gz
 	rm -fr groff-$(version)$(revision)
 
 # $(PROGDIRS): libgroff
@@ -874,8 +987,8 @@ install:
 	@$(ENVSETUP); $(MAKE) $(MAKE_K_FLAG) $(MDEFINES) \
 	  do=do_install $(dodirs)
 	cd $(DESTDIR)$(dataprogramdir); \
-	rm -f current; \
-	$(LN_S) $(version)$(revision) current
+	  rm -f current; \
+	  $(LN_S) $(version)$(revision) current
 
 .PHONY: uninstall
 uninstall: uninstall_sub uninstall_dirs
@@ -883,14 +996,31 @@ uninstall: uninstall_sub uninstall_dirs
 .PHONY: uninstall_dirs
 # Use `rmdir' here so that the directories are only removed if they are empty.
 uninstall_dirs:
-	-rm -f $(dataprogramdir)/current
-	-rmdir $(man1dir) $(man5dir) $(man7dir) $(manroot) \
-	  $(tmacdir) $(systemtmacdir) $(localtmacdir) \
-	  $(fontdir) $(localfontdir) $(oldfontdir) $(bindir) \
-	  $(datasubdir) $(dataprogramdir) $(infodir) \
-	  $(exampledir) $(htmldocdir) $(pdfdocdir) $(docdir) \
-	  $(libprogramdir) $(libdir) \
-	  $(datadir)/doc/groff $(datadir)/doc $(datadir) 2>/dev/null || :
+	rm -f $(DESTDIR)$(dataprogramdir)/current
+	-rmdir \
+	  $(DESTDIR)$(man1dir) \
+	  $(DESTDIR)$(man5dir) \
+	  $(DESTDIR)$(man7dir) \
+	  $(DESTDIR)$(manroot) \
+	  $(DESTDIR)$(tmacdir) \
+	  $(DESTDIR)$(systemtmacdir) \
+	  $(DESTDIR)$(localtmacdir) \
+	  $(DESTDIR)$(fontdir) \
+	  $(DESTDIR)$(localfontdir) \
+	  $(DESTDIR)$(oldfontdir) \
+	  $(DESTDIR)$(bindir) \
+	  $(DESTDIR)$(datasubdir) \
+	  $(DESTDIR)$(dataprogramdir) \
+	  $(DESTDIR)$(libprogramdir) \
+	  $(DESTDIR)$(libdir) \
+	  $(DESTDIR)$(infodir) \
+	  $(DESTDIR)$(exampledir) \
+	  $(DESTDIR)$(htmldocdir) \
+	  $(DESTDIR)$(pdfdocdir) \
+	  $(DESTDIR)$(docdir) \
+	  $(DESTDIR)$(datadir)/doc/groff \
+	  $(DESTDIR)$(datadir)/doc \
+	  $(DESTDIR)$(datadir) 2>/dev/null || :
 
 .PHONY: check
 check:
@@ -919,10 +1049,18 @@ check:
 #	@echo "## All variables above are generated by configure.  Do not edit! ##" >> site.tmp
 #	@test ! -f site.exp \
 #	  || sed '1,/^## All variables above are.*##/ d' site.exp >> site.tmp
-#	@-rm -f site.bak
+#	@rm -f site.bak
 #	@test ! -f site.exp || mv site.exp site.bak
 #	@mv site.tmp site.exp
 
 FORCE:
 
 .NOEXPORT:
+
+########################################################################
+# Emacs settings
+########################################################################
+#
+# Local Variables:
+# mode: makefile
+# End:

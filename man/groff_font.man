@@ -1,22 +1,33 @@
-.ig
-Copyright (C) 1989-1995, 2001-2004, 2006-2009, 2012
-  Free Software Foundation, Inc.
+.\" Emacs mode: -*- nroff -*-
+.TH GROFF_FONT @MAN5EXT@ "@MDATE@" "Groff Version @VERSION@"
+.SH NAME
+groff_font \- format of groff device and font description files
+.
+.
+.\" --------------------------------------------------------------------
+.\" License
+.\" --------------------------------------------------------------------
+.
+.de co
+Copyright \(co 1989\-2014 Free Software Foundation, Inc.
 
-Permission is granted to make and distribute verbatim copies of
-this manual provided the copyright notice and this permission notice
-are preserved on all copies.
+This file is part of groff (GNU roff), which is a free software project.
 
-Permission is granted to copy and distribute modified versions of this
-manual under the conditions for verbatim copying, provided that the
-entire resulting derived work is distributed under the terms of a
-permission notice identical to this one.
+You can redistribute it and/or modify it under the terms of the GNU
+General Public License as published by the Free Software Foundation,
+either version 2 of the License, or (at your option) any later
+version.
 
-Permission is granted to copy and distribute translations of this
-manual into another language, under the above conditions for modified
-versions, except that this permission notice may be included in
-translations approved by the Free Software Foundation instead of in
-the original English.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see
+.UR http://www.gnu.org/licenses/gpl-2.0.html
+GPL2
+.UE .
 ..
+.
+.\" --------------------------------------------------------------------
+.\" Macro definitions
+.\" --------------------------------------------------------------------
 .
 .do nr groff_font_C \n[.C]
 .cp 0
@@ -29,15 +40,10 @@ the original English.
 .  el .TP "\\$1"
 ..
 .
-.
-.TH GROFF_FONT @MAN5EXT@ "@MDATE@" "Groff Version @VERSION@"
-.
-.
-.SH NAME
-groff_font \- format of groff device and font description files
-.
-.
+.\" --------------------------------------------------------------------
 .SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
 The groff font format is roughly a superset of the ditroff
 font format.
 .
@@ -47,8 +53,7 @@ are stored in a directory
 .BI dev name\c
 \&.
 .
-There are two types of file: a
-device description file called
+There are two types of file: a device description file called
 .B DESC
 and for each font\~\c
 .I F
@@ -60,7 +65,9 @@ unlike the ditroff font format,
 there is no associated binary format.
 .
 .
+.\" --------------------------------------------------------------------
 .SS DESC file format
+.\" --------------------------------------------------------------------
 .
 The DESC file can contain the following types of line as shown below.
 .
@@ -119,7 +126,7 @@ but under other systems (notably cygwin) it might be set to another name.
 .BI "paperlength " n
 The physical vertical dimension of the output medium in machine units.
 .
-This isn't used by
+This isn\[aq]t used by
 .B troff
 itself but by output devices.
 .
@@ -146,7 +153,8 @@ if it holds predefined paper types.
 .
 Alternatively,
 .I string
-can be a file name (e.g.\& `/etc/papersize'); if the file can be opened,
+can be a file name (e.g.\& \[oq]/etc/papersize\[cq]); if the file can
+be opened,
 .B groff
 reads the first line and tests for the above paper sizes.
 .
@@ -160,8 +168,9 @@ Both
 .I length
 and
 .I width
-must have a unit appended; valid values are `i' for inches, `c' for
-centimeters, `p' for points, and `P' for picas.
+must have a unit appended; valid values are \[oq]i\[cq] for inches,
+\[oq]c\[cq] for centimeters, \[oq]p\[cq] for points, and \[oq]P\[cq]
+for picas.
 .
 Example:
 .BR 12c,235p .
@@ -187,7 +196,7 @@ Use
 .B papersize
 instead.
 .
-This isn't used by
+This isn\[aq]t used by
 .BR troff
 itself but by output devices.
 .
@@ -244,7 +253,7 @@ The list of sizes must be terminated by a
 Each
 .I si
 can also be a range of sizes
-.IR m \- n .
+.IR m \(en n .
 .
 The list can extend over more than one line.
 .
@@ -363,16 +372,16 @@ but completely ignored:
 .BR biggestfont .
 .
 .
+.\" --------------------------------------------------------------------
 .SS Font file format
+.\" --------------------------------------------------------------------
 .
-A font file has two sections;
-empty lines are ignored in both of them.
+A font file has two sections; empty lines are ignored in both of them.
 .
 .LP
-The first section is a sequence
-of lines each containing a sequence of blank delimited
-words; the first word in the line is a key, and subsequent
-words give a value for that key.
+The first section is a sequence of lines each containing a sequence of
+blank delimited words; the first word in the line is a key, and
+subsequent words give a value for that key.
 .
 .TP
 .BI "ligatures " "lig1 lig2 \|.\|.\|.\| lign \fR[" 0 \fR]
@@ -488,9 +497,10 @@ If it is exactly two characters
 it can be entered as
 .BI \[rs]( xx\fR.
 .
-Note that single-letter special characters can't be accessed as
+Note that single-letter special characters can\[aq]t be accessed as
 .BI \[rs] c\fR;
-the only exception is `\[rs]\-' which is identical to `\[rs][\-]'.
+the only exception is \[oq]\[rs]\-\[cq] which is identical to
+\[oq]\[rs][\-]\[cq].
 .
 The name
 .B \-\-\-
@@ -507,16 +517,16 @@ field gives the glyph type:
 .
 .TP
 1
-means the glyph has a descender, for example, `p';
+means the glyph has a descender, for example, \[oq]p\[cq];
 .
 .TP
 2
-means the glyph has an ascender, for example, `b';
+means the glyph has an ascender, for example, \[oq]b\[cq];
 .
 .TP
 3
 means the glyph has both an ascender and a descender, for example,
-`('.
+\[oq](\[cq].
 .
 .LP
 The
@@ -545,21 +555,23 @@ escape sequence only accepts a decimal integer.
 .LP
 The
 .I entity_name
-field gives an ASCII string identifying the glyph which the postprocessor
-uses to print that glyph.
+field gives an ASCII string identifying the glyph which the
+postprocessor uses to print that glyph.
 .
 This field is optional and is currently used by
 .B grops
-to build sub-encoding arrays for PS fonts containing more than 256 glyphs.
+to build sub-encoding arrays for PS fonts containing more than 256
+glyphs.
 .
 (It has also been used for
-.BR \%grohtml 's
-entity names but for efficiency reasons this data is now compiled directly
-into
+.BR \%grohtml \[aq]s
+entity names but for efficiency reasons this data is now compiled
+directly into
 .BR \%grohtml .)
 .
 .LP
-Anything on the line after the encoding field or `\-\-' are ignored.
+Anything on the line after the encoding field or \[oq]\-\-\[cq] are
+ignored.
 .
 .LP
 The
@@ -629,8 +641,7 @@ This should be less than the italic correction.
 A line in the charset section can also have the format
 .
 .IP
-.I
-name \fB"
+.I name \fB\[dq]
 .
 .LP
 This indicates that
@@ -660,7 +671,9 @@ Most entries in kernpairs section have a negative value for\~\c
 .IR n .
 .
 .
+.\" --------------------------------------------------------------------
 .SH FILES
+.\" --------------------------------------------------------------------
 .
 .Tp \w'@FONTDIR@/devname/DESC'u+3n
 .BI @FONTDIR@/dev name /DESC
@@ -675,13 +688,39 @@ of device
 .IR name .
 .
 .
+.\" --------------------------------------------------------------------
 .SH "SEE ALSO"
+.\" --------------------------------------------------------------------
 .
 .BR groff_out (@MAN5EXT@),
-.BR @g@troff (@MAN1EXT@).
+.BR @g@troff (@MAN1EXT@),
+.BR addftinfo (@MAN1EXT@),
+.BR afmtodit (@MAN1EXT@)
+.
+.
+.P
+A man\-page
+.IR name ( n )
+of section
+.I n
+can be viewed either with
+.RS
+\[Do]
+.BI man " n name"
+.RE
+for text mode or
+.RS
+\[Do]
+.BI "groffer " n  name"
+.RE
+for graphical mode (default is PDF mode).
+.RE
+.
+.
+.\" --------------------------------------------------------------------
+.SH COPYING
+.\" --------------------------------------------------------------------
+.co
+.
 .
 .cp \n[groff_font_C]
-.
-.\" Local Variables:
-.\" mode: nroff
-.\" End:

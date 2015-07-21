@@ -1,3 +1,27 @@
+# Makefile.sub for `font devps'
+
+# File position: <groff-source>/font/devps/Makefile.sub
+
+# Copyright (C) 2014 Free Software Foundation, Inc.
+
+# This file is part of `groffer' which is part of `groff'.
+
+# `groff' is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+
+# `groff' is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see
+# <http://www.gnu.org/licenses/gpl-2.0.html>.
+
+########################################################################
+
 DEV=ps
 DISTFILES=\
   S SS \
@@ -35,8 +59,9 @@ DEVSCRIPTS=$(DEVGENSCRIPTS)
 
 MOSTLYCLEANADD=DESC $(PSFILES)
 
+RM=rm -f
+
 DESC: DESC.in
-	-rm -f DESC
 	cat $(srcdir)/DESC.in >DESC
 	echo broken $(BROKEN_SPOOLER_FLAGS) >>DESC
 	if test "$(PAGE)" = A4; then \
@@ -55,5 +80,13 @@ zapfdr.pfa: zapfdr.ps
 symbolsl.pfa: symbolsl.ps
 
 $(PSFILES):
-	-rm -f $@
+	$(RM) $@
 	sed -f $(srcdir)/psstrip.sed $? >$@
+
+########################################################################
+# Emacs settings
+########################################################################
+#
+# Local Variables:
+# mode: makefile
+# End:

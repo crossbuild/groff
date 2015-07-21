@@ -1,6 +1,5 @@
 # Autoconf configuration file for groff.
-# Copyright (C) 1989-1995, 2001-2007, 2009, 2011-2012
-# Free Software Foundation, Inc.
+# Copyright (C) 1989-2014 Free Software Foundation, Inc.
 #
 # This file is part of groff.
 #
@@ -55,15 +54,23 @@ AC_PROG_CXX
 GROFF_CXX_CHECK
 GROFF_EBCDIC
 GROFF_OS390
+GROFF_CMD_FILES
 GROFF_X11
 GROFF_APPRESDIR_OPTION
 GROFF_APPRESDIR_DEFAULT
+GROFF_LIBPROGRAMDIR_DEFAULT
 GROFF_GROFFERDIR_OPTION
 GROFF_GROFFERDIR_DEFAULT
+GROFF_GLILYPONDDIR_DEFAULT
+GROFF_GPINYINDIR_DEFAULT
+GROFF_GROGDIR_DEFAULT
+GROFF_PERL
 GROFF_PRINT
+# GROFF_REFER
+GROFF_REFERDIR_DEFAULT
 AC_PROG_EGREP
-AC_PATH_PROG([PERLPATH], [perl], [/usr/bin/perl])
 GROFF_PROG_YACC
+GROFF_DOC_CHECK
 GROFF_MAKEINFO
 AC_PROG_RANLIB
 GROFF_INSTALL_SH
@@ -162,5 +169,28 @@ AC_CONFIG_FILES([contrib/gdiffmk/tests/runtests],
                 [chmod +x contrib/gdiffmk/tests/runtests])
 AC_CONFIG_FILES([test-groff], [chmod +x test-groff])
 AC_OUTPUT
+
+echo "
+${PACKAGE_NAME} version ${PACKAGE_VERSION}
+----------------------------------------------------------------------
+ Prefix            : ${prefix}
+ Compiler          : ${CC} ${CFLAGS} ${CPPFLAGS}"
+if test "x$groff_no_x" = "xyes"; then
+echo "\
+ X11 support       : no"
+else
+echo "\
+ X11 support       : yes
+ X11 resources dir : $appresdir"
+fi
+if test "x$doc" = x; then
+echo "\
+ Doc build         : no"
+else
+echo "\
+ Doc build         : ${doc} "
+fi
+echo "\
+----------------------------------------------------------------------"
 
 GROFF_APPRESDIR_CHECK

@@ -1,6 +1,5 @@
 // -*- C++ -*-
-/* Copyright (C) 1989, 1990, 1991, 1992, 2002, 2003, 2009
-   Free Software Foundation, Inc.
+/* Copyright (C) 1989-2014  Free Software Foundation, Inc.
      Written by James Clark (jjc@jclark.com)
 
 This file is part of groff.
@@ -53,14 +52,16 @@ inline FILE *ps_output::get_file()
   return fp;
 }
 
+// this must stay in sync with `resource_table' in `psrm.cpp'
 enum resource_type {
   RESOURCE_FONT,
+  RESOURCE_FONTSET,
   RESOURCE_PROCSET,
   RESOURCE_FILE,
   RESOURCE_ENCODING,
   RESOURCE_FORM,
   RESOURCE_PATTERN
-  };
+};
 
 struct resource;
 

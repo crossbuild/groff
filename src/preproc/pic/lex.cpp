@@ -1,7 +1,5 @@
 // -*- C++ -*-
-/* Copyright (C) 1989, 1990, 1991, 1992, 2000, 2002, 2003, 2004, 2006,
-                 2007, 2009
-     Free Software Foundation, Inc.
+/* Copyright (C) 1989-2014  Free Software Foundation, Inc.
      Written by James Clark (jjc@jclark.com)
 
 This file is part of groff.
@@ -92,6 +90,11 @@ int file_input::read_line()
     lineno++;
     for (;;) {
       int c = getc(fp);
+      if (c == '\r') {
+	c = getc(fp);
+	if (c != '\n')
+	  lex_error("invalid input character code %1", '\r');
+      }
       if (c == EOF)
 	break;
       else if (invalid_input_char(c))

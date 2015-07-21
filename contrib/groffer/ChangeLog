@@ -1,3 +1,218 @@
+2014-11-04  Werner LEMBERG  <wl@gnu.org>
+
+	* version.sh (_GROFF_VERSION_PRESET): Set to 1.22.3.
+
+2014-09-03  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* version.sh: Version 2.2.5
+
+	* all groffer files: Copying and Emacs setup.
+
+2014-08-02  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* version.sh: Version 2.2.4
+
+	* groffer.pl: Change default `tty' to `utf8'.
+
+2014-08-02  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	Version 2.2.3
+
+2014-07-06  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* subs.pl: Correct call for `grog'.
+
+2014-07-06  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* groffer.man, roff2.man: Make compatible with `doclifter'.
+
+2014-07-05  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* main_subs.pl: Add newer `groff' options `j' and `J'.
+
+2014-07-04  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* groffer.man, roff2.man: Transform to classical man-page style.
+
+2014-07-04  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* version.sh: New version 2.2.2
+
+	* groffer.man: Rename `.Env_var' to `.Small_CB'.
+
+2014-07-03  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* roff2.man: Move `.TH', etc. to the beginning of the file.
+
+	* groffer.man: Improve definition of char `Ellipsis'.
+
+2014-07-03  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* groffer.tmac: Remove this file.
+
+	* Makefile.sub: Remove parts related to `groffer.tmac'.
+
+	* groffer.man: Instead of `.mso' for `groffer.tmac' copy former
+	`groffer.tmac' at the head of the man-page.
+
+2014-06-18  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* Makefile.sub: Let `groffer.tmac' be removed in uninstalling
+	`tmacdir'.
+
+	* groffer.man: Use `.mso' for `groffer.tmac'.  Remove definitions
+	for macros, etc.
+
+2014-06-18  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* version.sh: New version 2.2.1.
+
+	* groffer.tmac: Collection of strings and macros for `groffer.man'
+	and other man-pages.
+
+	* Makefile.sub: Add `groffer.tmac'.
+
+2014-06-18  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* version.sh: Upgrade to version 2.1.3.
+
+	* perl_test.pl: Remove this file.
+
+	* Makefile.sub: Remove HAS_PERL.
+
+	* groffer.pl: Add `require' for Perl version.
+
+2014-06-11  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* func.pl, subs.pl: Rename `func.pl' to `subs.pl'.
+
+	* groffer.pl, main_subs.pl: Move all subs in `groffer.pl' to
+	`main_subs.pl'.
+
+	* version.sh: Upgrade to version 2.1.2.
+
+2014-06-01  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* groffer.pl: Fix ligature error `fi', etc. in pdf-mode by
+	appending `-P-y -PU' to `grog' call.  pfd2-mode works, but still
+	has the ligature error.
+
+	* func.pl: Reorder.
+
+	* version.sh: Upgrade to version 2.1.1.
+
+2014-06-01  Deri James  <deri@chuzzlewit.myzen.co.uk>
+
+	* Proposal to use `-P-y -PU' arguments for `groff' in `-Tpdf'.
+
+2014-05-31  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* groffer.pl, func.pl, groffer.man: Change all existing viewer
+	options into a single one `--viewer'.
+
+	* version.sh: Upgrade to version 2.1.0.
+
+2014-03-30  Steffen Nurpmeso  <sdaoden@yandex.com>
+
+	* Makefile.sub: Put straight error-prevention prefixes for `rm'.
+
+2014-03-30  Steffen Nurpmeso  <sdaoden@yandex.com>
+
+	* Makefile.sub (uninstall_sub): Typo.
+
+2014-03-27  Werner LEMBERG  <wl@gnu.org>
+
+	Fix `make install'.
+
+	* Makefile.sub (GROFFER_PERL, GROFFER_REST): Don't use $(srcdir).
+
+2014-03-11  Ingo Schwarze  <schwarze@openbsd.org>  (tiny change)
+
+	* Makefile.sub (clean): Don't remove checked-in file `groffer.man'.
+
+	This got broken in fabbbb0e335801bc20f5c25fb0c448e23673721d when
+	`groffer.man' was moved from the former `perl' subdir and the cp(1)
+	call was removed that used to copy it around.
+
+2014-02-26  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* Makefile.sub: fix
+
+2014-02-26  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* groffer.pl: Fix modes pdf and pdf2.
+
+2014-02-25  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* groffer.pl: fix source location, when run before `make'
+
+2014-02-25  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* groffer.man: replace .copyleft by .co
+
+2014-02-25  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* all former Perl files: Correct source file position.
+
+2014-02-25  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* all: Add links for license text.
+
+2014-02-25  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* version.sh: new version groffer 2.0.2
+	* perl/: Move all files to top directory and remove this
+	directory.
+	* Makefile.sub: Handle the deletion of perl/.
+	* groffer.pl: Rename traditional pdf mode with ps2pdf into pdf2.
+	Create a new mode pdf using groff -Tpdf.  New options: --pdf2,
+	--mode=pdf2.
+	* groffer.man: Document the renamed and new options.
+	* README, README_PERL: rewrite
+
+2013-12-23  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	New version groffer-2.0.1
+	- with Perl
+	- without Shell version
+
+	Remove
+	* shell/ChangeLog.0
+	* shell/README_SH
+	* shell/groffer.man
+	* shell/groffer.sh
+	* shell/groffer2.sh
+	* shell/roff2.sh
+	* shell/
+
+	* README: remove hints to the shell version
+	* Makefile.sub: remove hints to the shell version
+	* version.sh: change version number to `2.0.1'
+	* .cvsignore, .gitignore: rename `.cvsignore' to `.gitignore'
+
+2013-12-22  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* git@github.com:RUNOFF/groffer.git: remove this archive
+
+2013-04-11  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* contrib/groffer: There is now a free `git' package containing
+	all old `groffer' versions `v0.*' and `v1.*'.  The new versions
+	`groffer 2.*' will actually not be included.  This package can be
+	got at:
+
+	$ git clone git@github.com:RUNOFF/groffer.git
+
+2013-03-29  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* perl/groffer.pl: Change viewers for `PS'.
+
+2013-03-29  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* perl/groffer.pl: Change viewers for `PS' and `PDF'.
+
+	* version.sh: New version is `1.1.3'.
+
 2012-08-09  Werner LEMBERG  <wl@gnu.org>
 
 	Synchronize man pages.
@@ -6,8 +221,8 @@
 
 2012-08-07  Eric S. Raymond  <esr@thyrsus.com>
 
-	Yet more elimination of low-level troff hackery in the documentation
-	so it can be lifted to structural markup.
+	Yet more elimination of low-level troff hackery in the
+	documentation so it can be lifted to structural markup.
 
 	* perl/groffer.man: Use .IP rather than .TP in
 	.Topic; this make structural parsing work.  Also remove a
@@ -25,13 +240,13 @@
 	it's just copying files around locally, within in the build
 	directories.
 
-2011-03-21  Jan Vcelak <jvcelak@redhat.com>
+2011-03-21  Jan Vcelak  <jvcelak@redhat.com>
 	    Bernd Warken <groff-bernd.warken-72@web.de>
 
 	Remove hardcoded path to 'libdir/groff/groffer' directory.
-	
+
 	* Makefile.sub: use @groffer_dir@
-	
+
 	* groffer.pl: use @groffer_dir@
 
 2011-01-27  James Budiono  <james.budiono@gmail.com>
@@ -46,7 +261,7 @@
 	(Viewer_X): Add `okular' viewer.
 	* perl/man.pl (manpath_set_from_path): Handle `@main::Path)'
 	correctly.
-	
+
 	* version.sh: Updated.
 
 2009-01-03  Werner LEMBERG  <wl@gnu.org>
@@ -90,18 +305,18 @@
 	Don't call `chmod' for $(ROFF2PROGS).
 	(roff2.man): Typographical fixes.
 
-2006-11-11  Bernd Warken <groff-bernd.warken-72@web.de>
-       ________________________________________________________________
-        * release of groffer 1.1.1
+2006-11-11  Bernd Warken  <groff-bernd.warken-72@web.de>
+	________________________________________________________________
+	* release of groffer 1.1.1
 
 	* perl/roff2.pl, shell/roff2.sh: Create a new working mode without
 	`groffer' for `roff2*'.
 
 	* perl/groffer.pl: Fix test of temporary directory.
 
-2006-11-09  Bernd Warken <groff-bernd.warken-72@web.de>
-       ________________________________________________________________
-        * release of groffer 1.1.0
+2006-11-09  Bernd Warken  <groff-bernd.warken-72@web.de>
+	________________________________________________________________
+	* release of groffer 1.1.0
 
 	* perl/groffer.pl, perl/func.pl, perl/groffer.man, \
 	shell/groffer2.sh, shell/groffer.man: Add `--debug-grog' to
@@ -115,9 +330,9 @@
 
 	* Makefile.sub: Add roff2* and some minor fixes.
 
-2006-11-04  Bernd Warken <groff-bernd.warken-72@web.de>
-       ________________________________________________________________
-        * release of groffer 1.0.3
+2006-11-04  Bernd Warken  <groff-bernd.warken-72@web.de>
+	________________________________________________________________
+	* release of groffer 1.0.3
 
 	* Makefile.sub:
 	- Delete removing of $(CLEANADD) in `groffer'.
@@ -127,9 +342,9 @@
 	- Add `groff' option with argument `-K'.
 	- Redesign the changed `grog'.
 
-2006-10-23  Bernd Warken <groff-bernd.warken-72@web.de>
-       ________________________________________________________________
-        * release of groffer 1.0.2
+2006-10-23  Bernd Warken  <groff-bernd.warken-72@web.de>
+	________________________________________________________________
+	* release of groffer 1.0.2
 
 	* perl/groffer.pl:
 	- Move all variable declarations out of BEGIN.
@@ -162,29 +377,29 @@
 
 2006-10-23  Werner Lemberg
 
-        * perl_test.pl: Moved to...
-        * perl/perl_test.pl: Here.
+	* perl_test.pl: Moved to...
+	* perl/perl_test.pl: Here.
 
-        * Makefile.sub: Rewritten.  Change PERL to HAVE_PERL and SHELL to
+	* Makefile.sub: Rewritten.  Change PERL to HAVE_PERL and SHELL to
 	HAVE_SHELL.
 
-2006-10-14  Bernd Warken <groff-bernd.warken-72@web.de>
-       ________________________________________________________________
-        * release of groffer 1.0.1
+2006-10-14  Bernd Warken  <groff-bernd.warken-72@web.de>
+	________________________________________________________________
+	* release of groffer 1.0.1
 
 	* perl/groffer.pl: Change $perl_test_pl to $file_perl_test_pl.
 
 	* perl/groffer.pl, perl/func.pl: Remove `\n' in `die' calls.
 
-2006-10-12  Bernd Warken <groff-bernd.warken-72@web.de>
-       ________________________________________________________________
-        * release of groffer 1.0.0
+2006-10-12  Bernd Warken  <groff-bernd.warken-72@web.de>
+	________________________________________________________________
+	* release of groffer 1.0.0
 
 	Changements of the shell version since 0.9.31
 
 	* shell/groffer.sh: Use version.sh in the upper directory.
 
-2006-10-02  Bernd Warken <groff-bernd.warken-72@web.de>
+2006-10-02  Bernd Warken  <groff-bernd.warken-72@web.de>
 
 	The groffer versions 1.* have two kinds of program, a shell
 	version and a Perl version.
@@ -204,8 +419,8 @@
 
 	* ChangeLog: This file.  It contains information for `groffer'
 	versions >= 1.0.0 with shell and Perl kinds.  For older `groffer'
-	versions, see `shell/ChangeLog.0' which contains information for the
-	shell only versions of groffer 0.*.
+	versions, see `shell/ChangeLog.0' which contains information for
+	the shell only versions of groffer 0.*.
 
 	* Makefile.sub: The old `Makefile.sub' was extended to support the
 	shell and the Perl version of `groffer' at the same time.  If the
@@ -273,23 +488,23 @@
 
 	The former part of the ChangeLog file is in `shell/ChangeLog.0'.
 
-2006-10-01  Bernd Warken <groff-bernd.warken-72@web.de>
-	________________________________________________________________
-	License
+2006-10-01  Bernd Warken  <groff-bernd.warken-72@web.de>
+________________________________________________________________
+License
 
-	Copyright (C) 2006-2009, 2011
+Copyright (C) 2006-2009, 2011-2014
 	Free Software Foundation, Inc.
-	Written by Bernd Warken <groff-bernd.warken-72@web.de>.
+Written by Bernd Warken <groff-bernd.warken-72@web.de>.
 
-	Copying and distribution of this file, with or without
-	modification, are permitted provided the copyright notice and this
-	notice are preserved.
+Copying and distribution of this file, with or without
+modification, are permitted provided the copyright notice and this
+notice are preserved.
 
-	This file is part of `groffer', which is part of the `groff'
-	project.
+This file is part of `groffer', which is part of the `groff'
+project.
 
-        ####### Emacs settings
+####### Emacs settings
 
-        Local Variables:
-        mode: change-log
-        End:
+Local Variables:
+mode: change-log
+End:

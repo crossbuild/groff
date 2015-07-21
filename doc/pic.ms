@@ -1,5 +1,4 @@
-.\" Copyright (C) 2006-2011
-.\"   Free Software Foundation, Inc.
+.\" Copyright (C) 2006-2014  Free Software Foundation, Inc.
 .\"      Written by Eric S. Raymond <esr@thyrsus.com>
 .\"
 .\" This file is part of groff.
@@ -30,7 +29,6 @@
 .\" Eric S. Raymond <esr@thyrsus.com> in August 1995.  It has been put
 .\" under the GPL in March 2006.
 .\"
-.\"	$Id: pic.ms,v 1.49 2011/07/26 17:11:10 wl Exp $	
 .
 .
 .\" Set a proper TeX and LaTeX

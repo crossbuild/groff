@@ -1,22 +1,41 @@
 '\" t
-.ig
-groff.man
-
+.TH GROFF @MAN7EXT@ "@MDATE@" "Groff Version @VERSION@"
+.SH NAME
+groff \- a short reference for the GNU roff language
+.
+.\" Before installation: <top-groff-source>/man/groff.man
+.\" After installation:  </usr or /usr/local>/share/man/man7/groff.7
+.
+.\" --------------------------------------------------------------------
+.\" Legalese
+.\" --------------------------------------------------------------------
+.
+.de co
 This file is part of groff, the GNU roff type-setting system.
 
-Copyright (C) 2000-2010, 2012
-  Free Software Foundation, Inc.
-written by Bernd Warken <groff-bernd.warken-72@web.de>
-maintained by Werner Lemberg <wl@gnu.org>
+Copyright \[co] 2000-2014 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3 or
-any later version published by the Free Software Foundation; with the
-Invariant Sections being this .ig-section and AUTHORS, with no
+any later version published by the Free Software Foundation; with no
 Front-Cover Texts, and with no Back-Cover Texts.
 
 A copy of the Free Documentation License is included as a file called
-FDL in the main directory of the groff source package.
+FDL in the main directory of the groff source package.  It is also
+available in the internet at
+.UR http://\:www.gnu.org/\:copyleft/\:fdl.html
+.UE .
+..
+.
+.de au
+This documentation was written by
+.MT groff-bernd.warken-72@web.de
+Bernd Warken
+.ME
+and is appended and maintained by
+.MT wl@gnu.org
+Werner Lemberg
+.ME .
 ..
 .
 .\" --------------------------------------------------------------------
@@ -105,7 +124,7 @@ FDL in the main directory of the groff source package.
 .\" Result : prints \namearg, where `name' is in CB, `arg' in I
 .\"
 .de ESC
-.  Text "\f[CB]\[rs]\\$1\,\f[I]\\$2\/\fR"
+.  Text "\f[CB]\e\\$1\,\f[I]\\$2\/\fR"
 ..
 .\" ---------------------------------------------------------------------
 .\" .ESC[] name arg
@@ -117,7 +136,7 @@ FDL in the main directory of the groff source package.
 .\" Result : prints \name[arg], where `name' is in CB, `arg' in I
 .\"
 .de ESC[]
-.  Text "\f[CB]\[rs]\\$1\[lB]\f[]\,\f[I]\\$2\/\f[]\f[CB]\[rB]\f[]"
+.  Text "\f[CB]\e\\$1\[lB]\f[]\,\f[I]\\$2\/\f[]\f[CB]\[rB]\f[]"
 ..
 .\" ---------------------------------------------------------------------
 .\" .ESCq name arg
@@ -129,7 +148,7 @@ FDL in the main directory of the groff source package.
 .\" Result : prints \name'arg', where `name' is in CB, `arg' in I
 .\"
 .de ESCq
-.  Text "\f[CB]\[rs]\\$1\[cq]\f[]\,\f[I]\\$2\/\f[]\f[CB]\[cq]\f[]"
+.  Text "\f[CB]\e\\$1\[cq]\f[]\,\f[I]\\$2\/\f[]\f[CB]\[cq]\f[]"
 ..
 .\" ---------------------------------------------------------------------
 .\" .ESC? arg
@@ -140,7 +159,7 @@ FDL in the main directory of the groff source package.
 .\" Result : prints `\?arg?', where the `?' are in CB, `arg' in I
 .\"
 .de ESC?
-.  Text "\f[CB]\[rs]?\,\f[I]\\$1\/\f[CB]?\f[R]"
+.  Text "\f[CB]\e?\,\f[I]\\$1\/\f[CB]?\f[R]"
 ..
 .\" ---------------------------------------------------------------------
 .\" .esc name [punct]
@@ -152,7 +171,7 @@ FDL in the main directory of the groff source package.
 .\" Result  : prints \name, where `name' is in B, `punct' in R
 .\"
 .de esc
-.  BR "\[rs]\\$1" \\$2
+.  BR "\e\\$1" \\$2
 ..
 .\" ---------------------------------------------------------------------
 .\" .escarg name arg [punct]
@@ -165,7 +184,7 @@ FDL in the main directory of the groff source package.
 .\"           `name' is in B, `arg' in I
 .\"
 .de escarg
-.  Text \f[B]\[rs]\\$1\f[]\,\f[I]\\$2\/\f[]\\$3
+.  Text \f[B]\e\\$1\f[]\,\f[I]\\$2\/\f[]\\$3
 ..
 .\" ---------------------------------------------------------------------
 .\" .esc[] name arg [punct]
@@ -177,7 +196,7 @@ FDL in the main directory of the groff source package.
 .\" Result : prints \name[arg], where `name' is in CB, `arg' in CI
 .\"
 .de esc[]
-.  Text \f[CB]\[rs]\\$1\[lB]\f[]\,\f[CI]\\$2\/\f[]\f[CB]\[rB]\f[]\\$3
+.  Text \f[CB]\e\\$1\[lB]\f[]\,\f[CI]\\$2\/\f[]\f[CB]\[rB]\f[]\\$3
 ..
 .
 .\" ---------------------------------------------------------------------
@@ -190,7 +209,7 @@ FDL in the main directory of the groff source package.
 .\" Result : prints \name'arg', where `name' is in CB, `arg' in CI
 .\"
 .de escq
-.  Text \f[CB]\[rs]\\$1\[cq]\f[]\,\f[CI]\\$2\/\f[]\f[CB]\[cq]\f[]\\$3
+.  Text \f[CB]\e\\$1\[cq]\f[]\,\f[CI]\\$2\/\f[]\f[CB]\[cq]\f[]\\$3
 ..
 .
 .\" --------- strings ---------
@@ -222,15 +241,6 @@ FDL in the main directory of the groff source package.
 .
 .
 .\" --------------------------------------------------------------------
-.\" Title
-.\" --------------------------------------------------------------------
-.
-.TH GROFF @MAN7EXT@ "@MDATE@" "Groff Version @VERSION@"
-.SH NAME
-groff \- a short reference for the GNU roff language
-.
-.
-.\" --------------------------------------------------------------------
 .SH DESCRIPTION
 .\" --------------------------------------------------------------------
 .
@@ -244,11 +254,13 @@ See
 .BR roff (@MAN7EXT@)
 for a survey and the background of the groff system.
 .
+.
 .P
 This document gives only short descriptions of the predefined roff
 language elements as used in groff.
 .
 Both the classical features and the groff extensions are provided.
+.
 .
 .P
 Historically, the
@@ -274,6 +286,7 @@ emphasizes the GNU extensions, and
 .I roff
 is the general term for the language.
 .
+.
 .P
 This file is only a short version of the complete documentation that
 is found in the
@@ -284,6 +297,7 @@ file, which contains more detailed, actual, and concise information.
 .P
 The general syntax for writing groff documents is relatively easy, but
 writing extensions to the roff language can be a bit harder.
+.
 .
 .P
 The roff language is line-oriented.
@@ -296,6 +310,7 @@ or a single quote
 .dquoted_char \[aq] ;
 all other lines are text lines.
 .
+.
 .P
 .B Control lines
 represent commands, optionally with arguments.
@@ -306,15 +321,16 @@ The leading control character can be followed by a command name;
 arguments, if any, are separated by spaces (but not tab characters)
 from the command name and among themselves, for example,
 .RS
-.
 .P
 .Text .command_name arg1 arg2
 .RE
+.
 .
 .P
 For indentation, any number of space or tab characters can be inserted
 between the leading control character and the command name, but the
 control character must be on the first position of the line.
+.
 .
 .P
 .B Text lines
@@ -334,6 +350,7 @@ or enclosed in brackets
 and
 .squoted_char ] .
 .
+.
 .P
 The roff language provides flexible instruments for writing language
 extension, such as macros.
@@ -341,6 +358,7 @@ extension, such as macros.
 When interpreting macro definitions, the roff system enters a special
 operating mode, called the
 .BR "copy mode" .
+.
 .
 .P
 The copy mode behaviour can be quite tricky, but there are some rules
@@ -363,12 +381,14 @@ Double all backslashes.
 Begin all text lines with the special non-spacing character
 .esc & .
 .
+.
 .P
 This does not produce the most efficient code, but it should work as a
 first measure.
 .
 For better strategies, see the groff info file and
 .BR groff_tmac (@MAN5EXT@).
+.
 .
 .P
 Reading roff source files is easier, just reduce all double backslashes
@@ -384,6 +404,7 @@ The roff language elements add formatting information to a text file.
 The fundamental elements are predefined commands and variables that
 make roff a full-blown programming language.
 .
+.
 .P
 There are two kinds of roff commands, possibly with arguments.
 .B Requests
@@ -397,6 +418,7 @@ are in-line functions and in-word formatting elements starting with a
 backslash
 .squoted_char \[rs] .
 .
+.
 .P
 The user can define her own formatting commands using the
 .request de
@@ -409,8 +431,9 @@ but they are used exactly like requests.
 Macro packages are pre-defined sets of macros written in the groff
 language.
 .
-A user's possibilities to create escape sequences herself is very
+A user\[aq]s possibilities to create escape sequences herself is very
 limited, only special characters can be mapped.
+.
 .
 .P
 The groff language provides several kinds of variables with
@@ -418,6 +441,7 @@ different interfaces.
 .
 There are pre-defined variables, but the user can define her own
 variables as well.
+.
 .
 .P
 .B String
@@ -431,6 +455,7 @@ escape sequences.
 .
 Strings can have variables.
 .
+.
 .P
 .B Register
 variables can store numerical values, numbers with a scale unit, and
@@ -442,6 +467,7 @@ request and retrieved by the
 .esc n
 escape sequences.
 .
+.
 .P
 .B Environments
 allow the user to temporarily store global formatting parameters like
@@ -450,6 +476,7 @@ line length, font size, etc.\& for later reuse.
 This is done by the
 .request ev
 request.
+.
 .
 .P
 .B Fonts
@@ -485,6 +512,7 @@ and
 .BR CB .
 On text devices, all glyphs have a constant width anyway.
 .
+.
 .P
 .B Glyphs
 are visual representation forms of
@@ -493,14 +521,15 @@ In groff, the distinction between those two elements is not always
 obvious (and a full discussion is beyond the scope of this man page).
 .
 A first approximation is that glyphs have a specific size and
-colour and are taken from a specific font; they can't be modified any
+colour and are taken from a specific font; they can\[aq]t be modified any
 more \[en] characters are the input, and glyphs are the output.
 .
 As soon as an output line has been generated, it no longer contains
 characters but glyphs.
 .
-In this man page, we use either `glyph' or `character', whatever is
-more appropriate.
+In this man page, we use either \[oq]glyph\[cq] or
+\[oq]character\[cq], whatever is more appropriate.
+.
 .
 .P
 Moreover, there are some advanced roff elements.
@@ -516,6 +545,7 @@ or in a diversion or in the input.
 .
 Some action can be prescribed to be run automatically when the
 condition is met.
+.
 .
 .P
 More detailed information and examples can be found in the groff info
@@ -546,6 +576,7 @@ request, the control character can be set to a different character,
 making the dot
 .squoted_char .
 a non-special character.
+.
 .IP ""
 In all other positions, it just means a dot character.
 .
@@ -560,7 +591,7 @@ At the beginning of a line and in the conditional requests it is the
 non-breaking control character.
 .
 That means that it introduces a request like the dot, but with the
-additional property that this request doesn't cause a linebreak.
+additional property that this request doesn\[aq]t cause a linebreak.
 .
 By using the
 .request c2
@@ -603,7 +634,7 @@ Groff provides a printable representation with the
 escape sequence.
 .
 .TP
-\&\f[CB]\[rs]\f[]
+\&\f[CB]\e\f[]
 The backslash usually introduces an escape sequence (this can be
 changed with the
 .request ec
@@ -613,6 +644,7 @@ A printed version of the escape character is the
 .esc e
 escape; a backslash glyph can be obtained by
 .esc (rs .
+.
 .TP
 \&\f[CB](\f[]
 The open parenthesis is only special in escape sequences when
@@ -620,18 +652,21 @@ introducing an escape name or argument consisting of exactly two
 characters.
 .
 In groff, this behaviour can be replaced by the \f[CB][]\f[] construct.
+.
 .TP
 \&\f[CB][\f[]
 The opening bracket is only special in groff escape sequences; there
 it is used to introduce a long escape name or long escape argument.
 .
 Otherwise, it is non-special, e.g.\& in macro calls.
+.
 .TP
 \&\f[CB]]\f[]
 The closing bracket is only special in groff escape sequences; there
 it terminates a long escape name or long escape argument.
 .
 Otherwise, it is non-special.
+.
 .TP
 \f[CI]space\f[]
 Space characters are only functional characters.
@@ -639,7 +674,7 @@ Space characters are only functional characters.
 They separate the arguments in requests, macros, and strings, and the words
 in text lines.
 .
-They are subject to groff's horizontal spacing calculations.
+They are subject to groff\[aq]s horizontal spacing calculations.
 .
 To get a defined space width, escape sequences like
 .squoted_char "\[rs]\ "
@@ -657,6 +692,7 @@ Continuation lines can be specified by an escaped newline, i.e., by
 specifying a backslash
 .squoted_char \[rs]
 as the last character of a line.
+.
 .IP \f[CI]tab\f[]
 If a tab character occurs during text the interpreter makes a
 horizontal jump to the next pre-defined tab position.
@@ -681,6 +717,7 @@ A number followed by a scaling indicator signifies a size value.
 .
 By default, numerical values do not have a scaling indicator, i.e., they
 are normal numbers.
+.
 .
 .P
 The
@@ -711,7 +748,7 @@ Point\ \[eq]\ 1/72\ inch
 .TPx
 .B m
 Em\ \[eq]\ \f[R]the font size in points (approx.\& width of letter
-`\f[CR]m\f[R]')
+\[oq]\f[CR]m\f[R]\[cq])
 .
 .TPx
 .B M
@@ -737,10 +774,12 @@ Scale by 65536.
 .RE
 .PD
 .
+.
 .P
 .B Numerical expressions
 are combinations of the numerical values defined above with the
 following arithmetical operators already defined in classical troff.
+.
 .
 .P
 .PD 0
@@ -813,10 +852,12 @@ Close current grouping
 .RE
 .PD
 .
+.
 .P
 Moreover,
 .I groff
 added the following operators for numerical expressions:
+.
 .
 .P
 .PD 0
@@ -847,6 +888,7 @@ as the default scaling indicator.
 .RE
 .PD
 .
+.
 .P
 For details see the groff info file.
 .
@@ -866,6 +908,7 @@ requests.
 The following table characterizes the different types of conditions.
 .
 .P
+.
 .PD 0
 .RS
 .
@@ -948,6 +991,8 @@ has been registered.
 .
 .RE
 .PD
+.
+.
 .P
 Note that the
 .B !
@@ -967,11 +1012,13 @@ In groff, request, macro, and string names can be arbitrarily long.
 .
 No bracketing or marking of long names is needed.
 .
+.
 .P
 Most requests take one or more arguments.
 .
 The arguments are separated by space characters (no tabs!); there is
 no inherent limit for their length or number.
+.
 .
 .P
 Some requests have optional arguments with a different behaviour.
@@ -982,11 +1029,13 @@ Refer to the groff info file and
 .BR groff_diff (@MAN7EXT@)
 for all details.
 .
+.
 .P
 In the following request specifications, most argument names were
 chosen to be descriptive.
 .
 Only the following denotations need clarification.
+.
 .
 .P
 .PD 0
@@ -1022,6 +1071,7 @@ has three meanings depending on its sign, described below.
 .RE
 .PD
 .
+.
 .P
 If an expression defined as
 .I \[+-]N
@@ -1034,6 +1084,7 @@ register.
 If the expression starts with a
 .squoted_char -
 the value of the expression is subtracted from the request value.
+.
 .
 .P
 Without a sign,
@@ -1057,11 +1108,11 @@ Empty line, ignored.
 Useful for structuring documents.
 .
 .TPx
-.REQ .\[rs]\[dq] "anything"
+.REQ .\e\[dq] "anything"
 Complete line is a comment.
 .
 .TPx
-.REQ .ab "string
+.REQ .ab "string"
 Print
 .I string
 on standard error, exit program.
@@ -1426,7 +1477,7 @@ or as a string of four-digit hexadecimal components with two leading
 .BR # .
 The color
 .B default
-can't be redefined.
+can\[aq]t be redefined.
 .
 .TPx
 .REQ .dei "macro"
@@ -1676,7 +1727,7 @@ to
 .
 .TPx
 .REQ .fzoom "font"
-Don't magnify
+Don\[aq]t magnify
 .IR font .
 .
 .TPx
@@ -2540,6 +2591,7 @@ to the stream named
 .
 .PD
 .
+.
 .P
 Besides these standard groff requests, there might be further macro
 calls.
@@ -2547,10 +2599,12 @@ They can originate from a macro package (see
 .BR roff (@MAN7EXT@)
 for an overview) or from a preprocessor.
 .
+.
 .P
 Preprocessor macros are easy to be recognized.
 .
 They enclose their code into a pair of characteristic macros.
+.
 .
 .P
 .TS
@@ -2559,15 +2613,25 @@ c | c | c
 CfCB | CfCB | CfCB.
 preprocessor@start macro@ end macro
 =
+chem@.cstart@.cend
 eqn@.EQ@.EN
+gideal@.IS@.IE
 grap@.G1@.G2
 grn@.GS@.GE
+@@.IF
 pic@.PS@.PE
 refer@.R1@.R2
 soelim@\f[I]none@\f[I]none
 tbl@.TS@.TE
+_
+glilypond@.lilypond start@.lilypond stop
+gperl@.Perl start@.Perl stop
+gpinyin@.pinyin start@.pinyin stop
 .TE
+.
+.
 .P
+Note that the \[oq]ideal\[cq] preprocessor is not available in groff yet.
 .
 .
 .\" --------------------------------------------------------------------
@@ -2585,6 +2649,7 @@ the argument (without an intervening separation character).
 So there must be a way to determine the end of the escape name and the
 end of the argument.
 .
+.
 .P
 This is done by enclosing names (escape name and arguments consisting
 of a variable name) by a pair of brackets
@@ -2592,6 +2657,7 @@ of a variable name) by a pair of brackets
 and constant arguments (number expressions and characters) by
 apostrophes (ASCII 0x27) like
 .BI \[cq] constant \[cq] \f[R].
+.
 .
 .P
 There are abbreviations for short names.
@@ -2612,16 +2678,18 @@ can even be specified without a marker, for example
 or
 .esc $ c.
 .
+.
 .P
 Constant arguments of length\~1 can omit the marker apostrophes, too,
 but there is no two-character analogue.
+.
 .
 .P
 While one-character escape sequences are mainly used for in-line
 functions and system related tasks, the two-letter names following the
 .esc (
 construct are glyphs predefined by the roff system; these are called
-`Special Characters' in the classical documentation.
+\[oq]Special Characters\[cq] in the classical documentation.
 .
 Escapes sequences of the form
 .esc[] "" name
@@ -2730,7 +2798,7 @@ request.
 .\" --------- escaped characters ---------
 .
 .TP
-.ESC \[rs]
+.ESC \e
 reduces to a single backslash; useful to delay its interpretation as
 escape character in copy mode.
 .
@@ -2741,13 +2809,13 @@ or even better
 to be independent from the current escape character.
 .
 .TP
-.ESC \[cq]
+.ESC \[aa]
 The acute accent \[aa]; same as
 .esc (aa .
 Unescaped: apostrophe, right quotation mark, single quote (ASCII 0x27).
 .
 .TP
-.ESC `
+.ESC \[ga]
 The grave accent \[ga]; same as
 .esc (ga .
 Unescaped: left quote, backquote (ASCII 0x60).
@@ -2764,9 +2832,8 @@ the underline character.
 .
 .TP
 .ESC .
-The same as a dot (`.').
-Necessary in nested macro definitions so that `\[rs]\[rs]..' expands to
-`..'.
+The same as a dot (\[oq].\[cq]).  Necessary in nested macro
+definitions so that \[oq]\[rs]\[rs]..\[cq] expands to \[oq]..\[cq].
 .
 .TP
 .ESC %
@@ -3267,6 +3334,7 @@ and then restore the horizontal and vertical position;
 .I anything
 may not contain tabs or leaders.
 .
+.
 .PD
 .P
 The escape sequences
@@ -3283,6 +3351,7 @@ and
 .escarg \& newline
 are interpreted in copy mode.
 .
+.
 .P
 Escape sequences starting with
 .esc (
@@ -3290,6 +3359,7 @@ or
 .esc [
 do not represent single character escape sequences, but introduce escape
 names with two or more characters.
+.
 .
 .P
 If a backslash is followed by a character that does not constitute a
@@ -3301,90 +3371,261 @@ character maps to itself.
 .SS "Special Characters"
 .\" --------------------------------------------------------------------
 .
-[Note: `Special Characters' is a misnomer; those entities are (output)
-glyphs, not (input) characters.]
+[Note: \[oq]Special Characters\[cq] is a misnomer; those entities are
+(output) glyphs, not (input) characters.]
+.
 .
 .P
 Common special characters are predefined by escape sequences of the
 form
-.BI \[rs]( xy
+.BI \e( xy
 with characters
 .I x
 and
 .IR y .
 .
-Some of these exist in the usual font while most of them are only
-available in the special font.
+In
+.IR groff ,
+it is also possible to use the writing
+.BI \e[ xy ]
+as well.
 .
-Below you can find a selection of the most important glyphs; a complete
-list can be found in
+.
+.P
+Some of these special characters exist in the usual font while most of
+them are only available in the special font.
+.
+Below you can see a small selection of the most important glyphs; a
+complete list can be found in
 .BR groff_char (@MAN7EXT@).
 .RS
 .P
 .PD 0
 .
 .TP
+.ESC (Do
+Dollar
+.B \(Do
+.
+.TP
+.ESC (Eu
+Euro
+.B \(Eu
+.
+.TP
+.ESC (Po
+British pound sterling
+.B \(Po
+.
+.TP
+.ESC (aq
+Apostrophe quote
+.B \(aq
+.
+.TP
 .ESC (bu
 Bullet sign
+.B \(bu
+.
 .TP
 .ESC (co
 Copyright
+.B \(co
+.
+.TP
+.ESC (cq
+Single closing quote (right)
+.B \(cq
 .TP
 .ESC (ct
 Cent
+.B \(ct
+.
 .TP
 .ESC (dd
 Double dagger
+.B  \(dd
+.
 .TP
 .ESC (de
 Degree
+.B \(de
+.
 .TP
 .ESC (dg
 Dagger
+.B \(dg
+.
 .TP
-.ESC (rq
-Printable double quote
+.ESC (dq
+Double quote (ASCII 34)
+.B \(dq
+.
 .TP
 .ESC (em
 Em-dash
+.B \(em
+.
+.TP
+.ESC (en
+En-dash
+.B \(en
+.
 .TP
 .ESC (hy
 Hyphen
+.B \(hy
+.
+.TP
+.ESC (lq
+Double quote left
+.B \(lq
+.
+.TP
+.ESC (oq
+Single opening quote (left)
+.B \(oq
+.
 .TP
 .ESC (rg
 Registered sign
+.B \(rg
+.
+.TP
+.ESC (rq
+Double quote right
+.B \(rq
+.
 .TP
 .ESC (rs
 Printable backslash character
+.B \(rs
+.
 .TP
 .ESC (sc
 Section sign
+.B \(sc
+.
+.TP
+.ESC (tm
+Trademark symbol
+.B  \(tm
+.
 .TP
 .ESC (ul
 Underline character
+.B  \(ul
+.
 .TP
 .ESC (==
 Identical
+.B \(==
+.
 .TP
 .ESC (>=
 Larger or equal
+.B \(>=
+.
 .TP
 .ESC (<=
 Less or equal
+.B \(<=
+.
 .TP
 .ESC (!=
 Not equal
+.B \(!=
+.
 .TP
 .ESC (->
 Right arrow
+.B \(->
+.
 .TP
 .ESC (<-
 Left arrow
+.B \(<-
+.
 .TP
 .ESC (+-
 Plus-minus sign
+.B \(+-
+.
 .PD
 .RE
+.
+.
+.\" --------------------------------------------------------------------
+.SS "Unicode Characters"
+.\" --------------------------------------------------------------------
+.
+There is the extended escape
+.B u
+that allows to include all available Unicode characters into some
+.I roff
+file.
+.
+.
+.TP
+.BI \e[u xxxx ]
+.B u
+is the escape name.
+.
+.I xxxx
+is a hexadecimal number of 4 hex digits, such as
+.B 0041
+for the letter
+.BR A ,
+see
+.BR \e[u0041] .
+. 
+.
+.TP
+.BI \e[u yyyyy ]
+.B u
+is the escape name.
+.
+.I yyyyy
+is a hexadecimal number of 5 hex digits, such as
+.B 2FA1A
+for a Chinese looking character for
+.IR "CJK Compatibility Ideographs Supplement" ,
+see
+.BR \e[u2FA1A] .
+.
+.
+.P
+Both hexadecimal collections mean the corresponding Unicode code for a
+character.
+.
+.
+.TP
+.BI \e[u hex1 _ hex2 ]
+.TQ
+.BI \e[u hex1 _ hex2 _ hex3 ]
+.IR hex1 ,
+.IR hex2 ,
+and
+.I hex3
+are all Unicode hexadecimal codes (4 or 5 hex digits) that are used
+for overstriking, e.g.
+.B \e[u0041_0301]
+is
+.I "A acute"
+.BR \['A] .
+.
+.
+.P
+The availability of the Unicode characters depends on the used font.
+.
+For text mode, the device
+.B -Tutf8
+is quite complete, for
+.I troff
+modes it might happen that some or many characters will not be
+displayed.
+.
+Please check your fonts.
 .
 .
 .\" --------------------------------------------------------------------
@@ -3396,6 +3637,7 @@ Strings are defined by the
 request and can be retrieved by the
 .esc *
 escape sequence.
+.
 .
 .P
 Strings share their name space with macros.
@@ -3422,16 +3664,19 @@ In groff, most registers store numerical values (see section
 .B NUMERICAL EXPRESSIONS
 above), but some can also hold a string value.
 .
+.
 .P
 Each register is given a name.
 Arbitrary registers can be defined and set with the
 .request nr
 request.
 .
+.
 .P
 The value stored in a register can be retrieved by the escape sequences
 introduced by
 .esc n .
+.
 .
 .P
 Most useful are predefined registers.
@@ -3457,6 +3702,7 @@ read-only).
 .
 Mostly, they provide information on the current settings or store
 results from request calls.
+.
 .
 .P
 .PD 0
@@ -3492,8 +3738,8 @@ is active.
 .
 .TPx
 .REG .br
-Within a macro, set to\~1 if macro called with the `normal' control
-character, and to\~0 otherwise.
+Within a macro, set to\~1 if macro called with the \[oq]normal\[cq]
+control character, and to\~0 otherwise.
 .
 .TPx
 .REG .c
@@ -3756,7 +4002,7 @@ Current point size as a decimal fraction.
 .TPx
 .REG .slant
 The slant of the current font as set with
-.request \[rs]S .
+.request \eS .
 .
 .TPx
 .REG .sr
@@ -3866,6 +4112,7 @@ magnification).
 The following registers can be read and written by the user.
 They have predefined default values, but these can be modified for
 customizing a document.
+.
 .
 .P
 .PD 0
@@ -4046,6 +4293,221 @@ instead.
 .
 .
 .\" --------------------------------------------------------------------
+.SH UNDERLINING
+.\" --------------------------------------------------------------------
+.
+In the
+.I RUNOFF
+language, the underlining was quite easy.
+.
+But in
+.I roff
+this is much more difficult.
+.
+.
+.\" --------------------------------------------------------------------
+.SS Underlining with .ul
+.\" --------------------------------------------------------------------
+.
+There exists a
+.I groff
+request
+.B .ul
+(see above) that can underline the next or further source lines in
+.BR nroff ,
+but in
+.B troff
+it produces only a font change into
+.IR italic .
+.
+So this request is not really useful.
+.
+.
+.\" --------------------------------------------------------------------
+.SS Underlining with .UL from ms
+.\" --------------------------------------------------------------------
+.
+In the \[oq]ms\[cq] macro package in tmac/s.tmac
+.BR groff_ms (@MAN7EXT@),
+there is the macro
+.BR .UL .
+.
+But this works only in
+.BR troff ,
+not in
+.BR nroff .
+.
+.
+.\" --------------------------------------------------------------------
+.SS Underlining macro definitions
+.\" --------------------------------------------------------------------
+.
+So one can use the
+.I italic
+.B nroff
+idea from
+.B .ul
+and the
+.B troff
+definition
+in
+.I ms
+for writing a useful new macro, something like
+.
+.RS
+.EX
+\&.de UNDERLINE
+\&. ie n \[rs]\[rs]$1\[rs]f[I]\[rs]\[rs]$2\[rs]f[P]\[rs]\[rs]$3
+\&. el \[rs]\[rs]$1\[rs]Z\[aq]\[rs]\[rs]$2\[aq]\[rs]v\[aq].25m\[aq]\
+\[rs]D\[aq]l \[rs]w\[aq]\[rs]\[rs]$2\[aq]u 0\[aq]\[rs]v\[aq]-.25m\
+\[aq]\\[rs]\[rs]$3
+\&..
+.EE
+.RE
+.
+If
+.B doclifter (1)
+makes trouble, change the macro name
+.B UNDERLINE
+into some 2-letter word, like
+.BR Ul .
+.
+Moreover change the font writing from
+.B \[rs]f[P]
+to
+.BR \[rs]fP .
+.
+.
+.\" --------------------------------------------------------------------
+.SS Underlining without macro definitions
+.\" --------------------------------------------------------------------
+.
+If one does not want to use macro definitions, e.g. when
+.B doclifter
+gets lost, use the following:
+.
+.RS
+.EX
+\&.ds u1 before
+\&.ds u2 in
+\&.ds u3 after
+\&.ie n \[rs]*[u1]\[rs]f[I]\[rs]*[u2]\[rs]f[P]\[rs]*[u3]
+\&.el \[rs]*[u1]\[rs]Z\[aq]\[rs]*[u2]\[aq]\[rs]v\[aq].25m\[aq]\[rs]D\
+\[aq]l \[rs]w\[aq]\[rs]*[u2]\[aq]u 0\[aq]\[rs]v\[aq]-.25m\[aq]\[rs]*[u3]
+.EE
+.RE
+.
+Due to
+.BR doclifter ,
+it might be necessary to change the variable writing
+.B \e[xy]
+and
+.B \e*[xy]
+into the strange ancient writing
+.B \e*(xy
+and
+.BR \e(xy ,
+and so on.
+.
+.
+.P
+Then these lines could look like
+.RS
+.EX
+\&.ds u1 before
+\&.ds u2 in
+\&.ds u3 after
+\&.ie n \[rs]*[u1]\[rs]fI\[rs]*(u2\[rs]fP\[rs]*(u3
+\&.el \[rs]*(u1\[rs]Z\[aq]\[rs]*(u2\[aq]\[rs]v\[aq].25m'\[rs]D\[aq]l \
+\[rs]w\[aq]\[rs]*(u2\[aq]u 0\[aq]\[rs]v\[aq]-.25m\[aq]\[rs]*(u3
+.EE
+.RE
+.
+.
+.P
+The result looks like
+.RS
+.ft CR
+before
+\z\[ul]i\
+\z\[ul]n
+after
+.ft R
+.RE
+.
+.
+.\" --------------------------------------------------------------------
+.SS Underlining with Overstriking \ez and \e(ul
+.\" --------------------------------------------------------------------
+.
+There is another possibility for underlining by using overstriking
+with
+.BI \ez c
+(print
+.I c
+with zero width without spacing) and
+.B \e(ul
+(underline character).
+.
+This produces the underlining of 1 character, both in
+.B nroff
+and in
+.BR troff .
+.
+.
+.P
+For example the underlining of a character say
+.B t
+looks like
+.B \ez\e[ul]t
+or
+.B \ez\e(ult
+.
+.
+.P
+Longer words look then a bit strange, but a useful mode is to write
+each character into a whole own line.
+.
+To underlines the 3 character part "tar" of the word "start":
+.
+.RS
+.EX
+.br
+before s\[rs]
+\[rs]z\[rs][ul]t\[rs]
+\[rs]z\[rs][ul]a\[rs]
+\[rs]z\[rs][ul]r\[rs]
+t after
+.EE
+.RE
+.
+or
+.
+.RS
+.EX
+.br
+before s\[rs]
+\[rs]z\[rs](ult\[rs]
+\[rs]z\[rs](ula\[rs]
+\[rs]z\[rs](ulr\[rs]
+t after
+.EE
+.RE
+.
+.
+.P
+The result looks like
+.RS
+.ft CR
+before s\
+\z\[ul]t\
+\z\[ul]a\
+\z\[ul]r\
+t after
+.ft R
+.RE
+.
+.\" --------------------------------------------------------------------
 .SH COMPATIBILITY
 .\" --------------------------------------------------------------------
 .
@@ -4054,6 +4516,7 @@ as defined by
 .I [CSTR\~#54]
 are documented in
 .BR groff_diff (@MAN7EXT@).
+.
 .
 .P
 The groff system provides a compatibility mode, see
@@ -4074,42 +4537,9 @@ be reproduced, and say which version of groff you are using.
 .
 .
 .\" --------------------------------------------------------------------
-.SH AUTHORS
-.\" --------------------------------------------------------------------
-.
-Copyright (C) 2000\(en2010, 2012
-Free Software Foundation, Inc.
-.
-.P
-This document is distributed under the terms of the FDL (GNU Free
-Documentation License) version 1.3 or later.
-.
-You should have received a copy of the FDL on your system, it is also
-available on-line at the
-.UR http://\:www.gnu.org/\:copyleft/\:fdl.html
-GNU copyleft site
-.UE .
-.
-.P
-This document is part of
-.IR groff ,
-the GNU roff distribution.
-.
-It was written by
-.MT groff-bernd.warken-72@web.de
-Bernd Warken
-.ME ;
-it is maintained by
-.MT wl@gnu.org
-Werner Lemberg
-.ME .
-.
-.
-.\" --------------------------------------------------------------------
 .SH "SEE ALSO"
 .\" --------------------------------------------------------------------
 .
-.P
 The main source of information for the groff language is the
 .B groff
 .BR info (1)
@@ -4145,11 +4575,22 @@ pointers to further documentation.
 .TP
 .I [CSTR\~#54]
 .UR http://\:cm.bell-labs.com/\:cm/\:cs/\:cstr/\:54.ps.gz
-Nroff/\:Troff User's Manual by Ossanna & Kernighan
+Nroff/\:Troff User\[aq]s Manual by Ossanna & Kernighan
 .UE
 \[em] the bible for classical troff.
 .
+.
+.\" --------------------------------------------------------------------
+.SH COPYING
+.\" --------------------------------------------------------------------
+.co
+.\" --------------------------------------------------------------------
+.SH AUTHORS
+.\" --------------------------------------------------------------------
+.au
+.
 .cp \n[groff_C]
+.
 .
 .\" --------------------------------------------------------------------
 .\" Emacs Setup

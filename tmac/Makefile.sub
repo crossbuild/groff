@@ -1,21 +1,26 @@
-# Copyright (C) 1989-2007, 2009-2012
-#   Free Software Foundation, Inc.
+# Makefile.sub for `tmac'
+#
+# File position: <groff-source>/tmac/Makefile.sub
+#
+# Copyright (C) 1989-2014  Free Software Foundation, Inc.
 #      Written by James Clark (jjc@jclark.com)
-# 
+#
 # This file is part of groff.
-# 
+#
 # groff is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
 # Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # groff is distributed in the hope that it will be useful, but WITHOUT ANY
 # WARRANTY; without even the implied warranty of MERCHANTABILITY or
 # FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
 # for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+########################################################################
 
 MAN7=\
   groff_ms.n \
@@ -78,6 +83,8 @@ tmac_wrap=
 sys_tmac_prefix=
 pnmtops_nosetpage="pnmtops"
 
+RM=rm -f
+
 all: stamp-strip stamp-wrap stamp-sed
 
 install_data: $(NORMALFILES) $(SPECIALFILES) man.local \
@@ -94,35 +101,35 @@ install_data: $(NORMALFILES) $(SPECIALFILES) man.local \
 	  done; \
 	fi
 	for f in $(NORMALFILES); do \
-	  rm -f $(DESTDIR)$(tmacdir)/$$f; \
+	  $(RM) $(DESTDIR)$(tmacdir)/$$f; \
 	  $(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(tmacdir)/$$f; \
 	done
-	-rm -f $(DESTDIR)$(tmacdir)/$(tmac_s_prefix)s.tmac
+	$(RM) $(DESTDIR)$(tmacdir)/$(tmac_s_prefix)s.tmac
 	$(INSTALL_DATA) $(srcdir)/s.tmac \
 	  $(DESTDIR)$(tmacdir)/$(tmac_s_prefix)s.tmac
-	-rm -f $(DESTDIR)$(tmacdir)/$(tmac_an_prefix)an.tmac
+	$(RM) $(DESTDIR)$(tmacdir)/$(tmac_an_prefix)an.tmac
 	$(INSTALL_DATA) $(srcdir)/an.tmac \
 	  $(DESTDIR)$(tmacdir)/$(tmac_an_prefix)an.tmac
-	-rm -f $(DESTDIR)$(tmacdir)/www.tmac
+	$(RM) $(DESTDIR)$(tmacdir)/www.tmac
 	$(INSTALL_DATA) www.tmac-sed $(DESTDIR)$(tmacdir)/www.tmac
 	for f in $(STRIPFILES); do \
-	  rm -f $(DESTDIR)$(tmacdir)/$$f; \
+	  $(RM) $(DESTDIR)$(tmacdir)/$$f; \
 	  $(INSTALL_DATA) $$f-s $(DESTDIR)$(tmacdir)/$$f; \
 	done
 	-test -d $(DESTDIR)$(mdocdir) || $(mkinstalldirs) $(DESTDIR)$(mdocdir)
 	for f in $(MDOCFILES); do \
-	  rm -f $(DESTDIR)$(mdocdir)/$$f; \
+	  $(RM) $(DESTDIR)$(mdocdir)/$$f; \
 	  $(INSTALL_DATA) $$f-s $(DESTDIR)$(mdocdir)/$$f; \
 	done
-	-test -f $(DESTDIR)$(localtmacdir)/man.local || \
-	  $(INSTALL_DATA) $(srcdir)/man.local \
-	    $(DESTDIR)$(localtmacdir)/man.local
-	-test -f $(DESTDIR)$(localtmacdir)/mdoc.local || \
-	  $(INSTALL_DATA) mdoc.local-s $(DESTDIR)$(localtmacdir)/mdoc.local
+	-test -f $(DESTDIR)$(localtmacdir)/man.local \
+	  || $(INSTALL_DATA) $(srcdir)/man.local \
+	       $(DESTDIR)$(localtmacdir)/man.local
+	-test -f $(DESTDIR)$(localtmacdir)/mdoc.local \
+	  || $(INSTALL_DATA) mdoc.local-s $(DESTDIR)$(localtmacdir)/mdoc.local
 
 stamp-strip: $(STRIPFILES) $(MDOCFILES) mdoc.local
 	for f in $(STRIPFILES) $(MDOCFILES) mdoc.local; do \
-	  rm -f $$f-s; \
+	  $(RM) $$f-s; \
 	  sed -f $(srcdir)/strip.sed $(srcdir)/$$f >$$f-s; \
 	done
 	touch $@
@@ -130,7 +137,7 @@ stamp-strip: $(STRIPFILES) $(MDOCFILES) mdoc.local
 stamp-wrap:
 	if test -n "$(tmac_wrap)"; then \
 	  for m in ""$(tmac_wrap); do \
-	    rm -f $$m-wrap; \
+	    $(RM) $$m-wrap; \
 	    if test "$$m" = an; then \
 	      echo .do mso andoc.tmac >>$$m-wrap; \
 	    fi; \
@@ -141,30 +148,37 @@ stamp-wrap:
 	touch $@
 
 stamp-sed: www.tmac
-	rm -f www.tmac-sed; \
 	sed -e "s;@PNMTOPS_NOSETPAGE@;$(pnmtops_nosetpage);g" \
-	  $(srcdir)/www.tmac > www.tmac-sed;
+	  $(srcdir)/www.tmac > www.tmac-sed
 	touch $@
 
 uninstall_sub:
 	-if test -n "$(tmac_wrap)"; then \
 	  for m in ""$(tmac_wrap); do \
-	    rm -f $(DESTDIR)$(systemtmacdir)/$$m.tmac; \
+	    $(RM) $(DESTDIR)$(systemtmacdir)/$$m.tmac; \
 	  done; \
 	fi
 	-for f in $(NORMALFILES) $(STRIPFILES); do \
-	  rm -f $(DESTDIR)$(tmacdir)/$$f; \
+	  $(RM) $(DESTDIR)$(tmacdir)/$$f; \
 	done
-	-rm -f $(DESTDIR)$(tmacdir)/$(tmac_s_prefix)s.tmac
-	-rm -f $(DESTDIR)$(tmacdir)/$(tmac_an_prefix)an.tmac
-	-rm -f $(DESTDIR)$(tmacdir)/www.tmac
+	$(RM) $(DESTDIR)$(tmacdir)/$(tmac_s_prefix)s.tmac
+	$(RM) $(DESTDIR)$(tmacdir)/$(tmac_an_prefix)an.tmac
+	$(RM) $(DESTDIR)$(tmacdir)/www.tmac
 	-if cmp -s $(DESTDIR)$(localtmacdir)/man.local \
 	           $(srcdir)/man.local; then \
-	  rm -f $(DESTDIR)$(localtmacdir)/man.local; \
+	  $(RM) $(DESTDIR)$(localtmacdir)/man.local; \
 	fi
 	-if cmp -s $(DESTDIR)$(localtmacdir)/mdoc.local \
 	           $(srcdir)/mdoc.local; then \
-	  rm -f $(DESTDIR)$(localtmacdir)/mdoc.local; \
+	  $(RM) $(DESTDIR)$(localtmacdir)/mdoc.local; \
 	fi
-	-for f in $(MDOCFILES); do rm -f $(DESTDIR)$(mdocdir)/$$f; done
-	-rmdir $(DESTDIR)$(mdocdir)
+	-for f in $(MDOCFILES); do $(RM) $(DESTDIR)$(mdocdir)/$$f; done
+	-test -d $(DESTDIR)$(mdocdir) && rmdir $(DESTDIR)$(mdocdir)
+
+########################################################################
+# Emacs settings
+########################################################################
+#
+# Local Variables:
+# mode: makefile
+# End:

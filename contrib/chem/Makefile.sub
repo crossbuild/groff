@@ -1,26 +1,23 @@
-# Makefile.sub for `chem' (integration into the `groff' source tree)
+# Makefile.sub for `chem'
 
 # File position: <groff-source>/contrib/chem/Makefile.sub
 
-# Copyright (C) 2006, 2009, 2010, 2013 Free Software Foundation, Inc.
+# Copyright (C) 2006-2014  Free Software Foundation, Inc.
 # Written by Bernd Warken <groff-bernd.warken-72@web.de>.
-
-# Last update: 29 Jan 2013
 
 # This file is part of `chem' which is part of `groff'.
 
 # `groff' is free software; you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# under the terms of the GNU General Public License (GPL) version 2 as
+# published by the Free Software Foundation.
 
 # `groff' is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # General Public License for more details.
 
-# You should have received a copy of the GNU General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
+# The GPL2 license text is available in the internet at
+# <http://www.gnu.org/licenses/gpl-2.0.html>.
 
 ########################################################################
 
@@ -32,76 +29,91 @@ MOSTLYCLEANADD=\
   examples/README \
   examples/122/README
 
-# not all make programs have $(RM) predefined.
 RM=rm -f
 
-all: README examples/README examples/122/README \
-     chem \
-     $(MAN1)
+all: README chem $(MAN1) $(make_examples)
 
 README: $(srcdir)/README.txt
 	sed -e "s|@g@|$(g)|g" $? >$@
 
+.PHONY: examples
+examples: examples/README examples/122/README
+
 examples/README: $(srcdir)/examples/README.txt
-	-test -d examples || $(mkinstalldirs) examples
+	test -d examples || $(mkinstalldirs) examples;
 	sed -e "s|@g@|$(g)|g" $? >$@
 
 examples/122/README: $(srcdir)/examples/122/README.txt
-	-test -d examples || $(mkinstalldirs) examples
-	-test -d examples/122 || $(mkinstalldirs) examples/122
-	sed -e "s|@g@|$(g)|g" $? >$@
+	test -d examples || $(mkinstalldirs) examples;
+	test -d examples/122 || $(mkinstalldirs) examples/122;
+	sed -e "s|@g@|$(g)|g" $? >$@;
 
 chem: $(srcdir)/chem.pl $(SH_DEPS_SED_SCRIPT)
+	$(RM) $@;
 	sed -f "$(SH_DEPS_SED_SCRIPT)" \
-	  -e "s|@g@|$(g)|g" \
-	  -e "s|@BINDIR@|$(DESTDIR)$(bindir)|g" \
-	  -e "s|@MACRODIR@|$(DESTDIR)$(tmacdir)|g" \
-	  -e "s|@PICDIR@|$(DESTDIR)$(datasubdir)/pic|g" \
-	  -e "s|@VERSION@|$(version)$(revision)|g" \
-	  -e "$(SH_SCRIPT_SED_CMD)" \
-	  $(srcdir)/chem.pl >$@
-	chmod +x $@
+	    -e "s|@g@|$(g)|g" \
+	    -e "s|@BINDIR@|$(DESTDIR)$(bindir)|g" \
+	    -e "s|@MACRODIR@|$(DESTDIR)$(tmacdir)|g" \
+	    -e "s|@PICDIR@|$(DESTDIR)$(datasubdir)/pic|g" \
+	    -e "s|@VERSION@|$(version)$(revision)|g" \
+	    -e "$(SH_SCRIPT_SED_CMD)" \
+	    $(srcdir)/chem.pl >$@;
+	chmod +x $@;
 
-install_data: chem \
-              README examples/README examples/122/README \
-              $(srcdir)/chem.pic \
-              $(srcdir)/examples/*.chem $(srcdir)/examples/122/*.chem
-	-test -d $(DESTDIR)$(bindir) || $(mkinstalldirs) $(DESTDIR)$(bindir)
-	$(RM) $(DESTDIR)$(bindir)/$(g)chem
-	$(INSTALL_SCRIPT) chem $(DESTDIR)$(bindir)/$(g)chem
-	-test -d $(DESTDIR)$(datasubdir)/pic \
-          || $(mkinstalldirs) $(DESTDIR)$(datasubdir)/pic
-	$(RM) $(DESTDIR)$(datasubdir)/pic/chem.pic
+.PHONY: install_always
+install_always: chem README $(srcdir)/chem.pic
+	test -d $(DESTDIR)$(bindir) || $(mkinstalldirs) $(DESTDIR)$(bindir);
+	$(RM) $(DESTDIR)$(bindir)/$(g)chem;
+	$(INSTALL_SCRIPT) chem $(DESTDIR)$(bindir)/$(g)chem;
+	test -d $(DESTDIR)$(datasubdir)/pic \
+	  || $(mkinstalldirs) $(DESTDIR)$(datasubdir)/pic;
+	$(RM) $(DESTDIR)$(datasubdir)/pic/chem.pic;
 	$(INSTALL_DATA) $(srcdir)/chem.pic \
-          $(DESTDIR)$(datasubdir)/pic/chem.pic
-	-test -d $(DESTDIR)$(exampledir)/chem \
-          || $(mkinstalldirs) $(DESTDIR)$(exampledir)/chem
-	-test -d $(DESTDIR)$(exampledir)/chem/122 \
-          || $(mkinstalldirs) $(DESTDIR)$(exampledir)/chem/122
-	-$(RM) $(DESTDIR)$(exampledir)/chem/*
-	$(INSTALL_DATA) examples/README \
-          $(DESTDIR)$(exampledir)/chem/README
-	for i in $(srcdir)/examples/*.chem; do \
-          n=`echo $$i | sed 's|$(srcdir)/examples/||g'`; \
-          $(INSTALL_DATA) $$i $(DESTDIR)$(exampledir)/chem/$$n; \
-        done
-	-$(RM) $(DESTDIR)$(exampledir)/chem/122/*
-	$(INSTALL_DATA) examples/122/README \
-          $(DESTDIR)$(exampledir)/chem/122/README
-	for i in $(srcdir)/examples/122/*.chem; do \
-          n=`echo $$i | sed 's|$(srcdir)/examples/122/||g'`; \
-          $(INSTALL_DATA) $$i $(DESTDIR)$(exampledir)/chem/122/$$n; \
-        done
+	  $(DESTDIR)$(datasubdir)/pic/chem.pic;
 
-uninstall_sub:
-	$(RM) $(DESTDIR)$(bindir)/chem
-	$(RM) $(DESTDIR)$(datasubdir)/pic/chem.pic
-	-rmdir $(DESTDIR)$(datasubdir)/pic
-	$(RM) $(DESTDIR)$(exampledir)/chem/122/*
-	-rmdir $(DESTDIR)$(exampledir)/chem/122
-	$(RM) $(DESTDIR)$(exampledir)/chem/*
-	-rmdir $(DESTDIR)$(exampledir)/chem
-	-rmdir $(DESTDIR)$(exampledir)
+.PHONY: install_examples
+install_examples:
+	test -d $(DESTDIR)$(exampledir)/chem \
+	  || $(mkinstalldirs) $(DESTDIR)$(exampledir)/chem;
+	test -d $(DESTDIR)$(exampledir)/chem/122 \
+	  || $(mkinstalldirs) $(DESTDIR)$(exampledir)/chem/122;
+	find $(DESTDIR)$(exampledir)/chem -type f -exec rm -f '{}' ';'
+	$(INSTALL_DATA) examples/README $(DESTDIR)$(exampledir)/chem/README;
+	for i in $(srcdir)/examples/*.chem; do \
+	  n=`echo $$i | sed 's|$(srcdir)/examples/||g'`; \
+	  $(INSTALL_DATA) $$i $(DESTDIR)$(exampledir)/chem/$$n; \
+	done;
+	$(INSTALL_DATA) examples/122/README \
+	  $(DESTDIR)$(exampledir)/chem/122/README;
+	for i in $(srcdir)/examples/122/*.chem; do \
+	  n=`echo $$i | sed 's|$(srcdir)/examples/122/||g'`; \
+	  $(INSTALL_DATA) $$i $(DESTDIR)$(exampledir)/chem/122/$$n; \
+	done
+
+.PHONY: install_data
+
+install_data: install_always $(make_install_examples)
+
+# uninstall_sub: uninstall_always $(make_uninstall_examples)
+
+.PHONY: uninstall_always
+uninstall_always:
+	$(RM) $(DESTDIR)$(bindir)/chem;
+	$(RM) $(DESTDIR)$(datasubdir)/pic/chem.pic;
+	-test -d $(DESTDIR)$(datasubdir)/pic && \
+	  rmdir $(DESTDIR)$(datasubdir)/pic;
+
+.PHONY: uninstall_examples
+uninstall_examples:
+	$(RM) $(DESTDIR)$(exampledir)/chem/122/*;
+	-test -d $(DESTDIR)$(exampledir)/chem/122 && \
+	  rmdir $(DESTDIR)$(exampledir)/chem/122;
+	$(RM) $(DESTDIR)$(exampledir)/chem/*;
+	-test -d $(DESTDIR)$(exampledir)/chem && \
+	  rmdir $(DESTDIR)$(exampledir)/chem;
+
+.PHONY: uninstall_sub
+uninstall_sub: uninstall_always uninstall_examples
 
 ########################################################################
 # Emacs settings

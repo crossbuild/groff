@@ -1,6 +1,6 @@
-# generated automatically by aclocal 1.12.5 -*- Autoconf -*-
+# generated automatically by aclocal 1.14 -*- Autoconf -*-
 
-# Copyright (C) 1996-2012 Free Software Foundation, Inc.
+# Copyright (C) 1996-2013 Free Software Foundation, Inc.
 
 # This file is free software; the Free Software Foundation
 # gives unlimited permission to copy and/or distribute it,
@@ -11,6 +11,9 @@
 # even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
 
+m4_ifndef([AC_CONFIG_MACRO_DIRS], [m4_defun([_AM_CONFIG_MACRO_DIRS], [])m4_defun([AC_CONFIG_MACRO_DIRS], [_AM_CONFIG_MACRO_DIRS($@)])])
+m4_include([m4/ax_compare_version.m4])
+m4_include([m4/ax_prog_perl_version.m4])
 m4_include([m4/codeset.m4])
 m4_include([m4/fcntl-o.m4])
 m4_include([m4/glibc21.m4])

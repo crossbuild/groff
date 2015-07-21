@@ -1,19 +1,19 @@
-/* A Bison parser, made by GNU Bison 2.5.  */
+/* A Bison parser, made by GNU Bison 3.0.2.  */
 
 /* Bison implementation for Yacc-like parsers in C
-   
-      Copyright (C) 1984, 1989-1990, 2000-2011 Free Software Foundation, Inc.
-   
+
+   Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
+
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
-   
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
@@ -26,7 +26,7 @@
    special exception, which will cause the skeleton and the resulting
    Bison output files to be licensed under the GNU General Public
    License without this special exception.
-   
+
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
@@ -44,7 +44,7 @@
 #define YYBISON 1
 
 /* Bison version.  */
-#define YYBISON_VERSION "2.5"
+#define YYBISON_VERSION "3.0.2"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -58,15 +58,11 @@
 /* Pull parsers.  */
 #define YYPULL 1
 
-/* Using locations.  */
-#define YYLSP_NEEDED 0
 
 
 
 /* Copy the first part of user declarations.  */
-
-/* Line 268 of yacc.c  */
-#line 21 "pic.y"
+#line 19 "pic.y" /* yacc.c:339  */
 
 #include "pic.h"
 #include "ptable.h"
@@ -110,14 +106,15 @@ char *format_number(const char *form, double n);
 char *do_sprintf(const char *form, const double *v, int nv);
 
 
+#line 110 "pic.cpp" /* yacc.c:339  */
 
-/* Line 268 of yacc.c  */
-#line 116 "pic.cpp"
-
-/* Enabling traces.  */
-#ifndef YYDEBUG
-# define YYDEBUG 0
-#endif
+# ifndef YY_NULLPTR
+#  if defined __cplusplus && 201103L <= __cplusplus
+#   define YY_NULLPTR nullptr
+#  else
+#   define YY_NULLPTR 0
+#  endif
+# endif
 
 /* Enabling verbose error messages.  */
 #ifdef YYERROR_VERBOSE
@@ -127,141 +124,146 @@ char *do_sprintf(const char *form, const double *v, int nv);
 # define YYERROR_VERBOSE 0
 #endif
 
-/* Enabling the token table.  */
-#ifndef YYTOKEN_TABLE
-# define YYTOKEN_TABLE 0
+/* In a future release of Bison, this section will be replaced
+   by #include "y.tab.h".  */
+#ifndef YY_YY_Y_TAB_H_INCLUDED
+# define YY_YY_Y_TAB_H_INCLUDED
+/* Debug traces.  */
+#ifndef YYDEBUG
+# define YYDEBUG 0
+#endif
+#if YYDEBUG
+extern int yydebug;
 #endif
 
-
-/* Tokens.  */
+/* Token type.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
-   /* Put the tokens into the symbol table, so that GDB and other debuggers
-      know about them.  */
-   enum yytokentype {
-     LABEL = 258,
-     VARIABLE = 259,
-     NUMBER = 260,
-     TEXT = 261,
-     COMMAND_LINE = 262,
-     DELIMITED = 263,
-     ORDINAL = 264,
-     TH = 265,
-     LEFT_ARROW_HEAD = 266,
-     RIGHT_ARROW_HEAD = 267,
-     DOUBLE_ARROW_HEAD = 268,
-     LAST = 269,
-     BOX = 270,
-     CIRCLE = 271,
-     ELLIPSE = 272,
-     ARC = 273,
-     LINE = 274,
-     ARROW = 275,
-     MOVE = 276,
-     SPLINE = 277,
-     HEIGHT = 278,
-     RADIUS = 279,
-     FIGNAME = 280,
-     WIDTH = 281,
-     DIAMETER = 282,
-     UP = 283,
-     DOWN = 284,
-     RIGHT = 285,
-     LEFT = 286,
-     FROM = 287,
-     TO = 288,
-     AT = 289,
-     WITH = 290,
-     BY = 291,
-     THEN = 292,
-     SOLID = 293,
-     DOTTED = 294,
-     DASHED = 295,
-     CHOP = 296,
-     SAME = 297,
-     INVISIBLE = 298,
-     LJUST = 299,
-     RJUST = 300,
-     ABOVE = 301,
-     BELOW = 302,
-     OF = 303,
-     THE = 304,
-     WAY = 305,
-     BETWEEN = 306,
-     AND = 307,
-     HERE = 308,
-     DOT_N = 309,
-     DOT_E = 310,
-     DOT_W = 311,
-     DOT_S = 312,
-     DOT_NE = 313,
-     DOT_SE = 314,
-     DOT_NW = 315,
-     DOT_SW = 316,
-     DOT_C = 317,
-     DOT_START = 318,
-     DOT_END = 319,
-     DOT_X = 320,
-     DOT_Y = 321,
-     DOT_HT = 322,
-     DOT_WID = 323,
-     DOT_RAD = 324,
-     SIN = 325,
-     COS = 326,
-     ATAN2 = 327,
-     LOG = 328,
-     EXP = 329,
-     SQRT = 330,
-     K_MAX = 331,
-     K_MIN = 332,
-     INT = 333,
-     RAND = 334,
-     SRAND = 335,
-     COPY = 336,
-     THRU = 337,
-     TOP = 338,
-     BOTTOM = 339,
-     UPPER = 340,
-     LOWER = 341,
-     SH = 342,
-     PRINT = 343,
-     CW = 344,
-     CCW = 345,
-     FOR = 346,
-     DO = 347,
-     IF = 348,
-     ELSE = 349,
-     ANDAND = 350,
-     OROR = 351,
-     NOTEQUAL = 352,
-     EQUALEQUAL = 353,
-     LESSEQUAL = 354,
-     GREATEREQUAL = 355,
-     LEFT_CORNER = 356,
-     RIGHT_CORNER = 357,
-     NORTH = 358,
-     SOUTH = 359,
-     EAST = 360,
-     WEST = 361,
-     CENTER = 362,
-     END = 363,
-     START = 364,
-     RESET = 365,
-     UNTIL = 366,
-     PLOT = 367,
-     THICKNESS = 368,
-     FILL = 369,
-     COLORED = 370,
-     OUTLINED = 371,
-     SHADED = 372,
-     XSLANTED = 373,
-     YSLANTED = 374,
-     ALIGNED = 375,
-     SPRINTF = 376,
-     COMMAND = 377,
-     DEFINE = 378,
-     UNDEF = 379
-   };
+  enum yytokentype
+  {
+    LABEL = 258,
+    VARIABLE = 259,
+    NUMBER = 260,
+    TEXT = 261,
+    COMMAND_LINE = 262,
+    DELIMITED = 263,
+    ORDINAL = 264,
+    TH = 265,
+    LEFT_ARROW_HEAD = 266,
+    RIGHT_ARROW_HEAD = 267,
+    DOUBLE_ARROW_HEAD = 268,
+    LAST = 269,
+    BOX = 270,
+    CIRCLE = 271,
+    ELLIPSE = 272,
+    ARC = 273,
+    LINE = 274,
+    ARROW = 275,
+    MOVE = 276,
+    SPLINE = 277,
+    HEIGHT = 278,
+    RADIUS = 279,
+    FIGNAME = 280,
+    WIDTH = 281,
+    DIAMETER = 282,
+    UP = 283,
+    DOWN = 284,
+    RIGHT = 285,
+    LEFT = 286,
+    FROM = 287,
+    TO = 288,
+    AT = 289,
+    WITH = 290,
+    BY = 291,
+    THEN = 292,
+    SOLID = 293,
+    DOTTED = 294,
+    DASHED = 295,
+    CHOP = 296,
+    SAME = 297,
+    INVISIBLE = 298,
+    LJUST = 299,
+    RJUST = 300,
+    ABOVE = 301,
+    BELOW = 302,
+    OF = 303,
+    THE = 304,
+    WAY = 305,
+    BETWEEN = 306,
+    AND = 307,
+    HERE = 308,
+    DOT_N = 309,
+    DOT_E = 310,
+    DOT_W = 311,
+    DOT_S = 312,
+    DOT_NE = 313,
+    DOT_SE = 314,
+    DOT_NW = 315,
+    DOT_SW = 316,
+    DOT_C = 317,
+    DOT_START = 318,
+    DOT_END = 319,
+    DOT_X = 320,
+    DOT_Y = 321,
+    DOT_HT = 322,
+    DOT_WID = 323,
+    DOT_RAD = 324,
+    SIN = 325,
+    COS = 326,
+    ATAN2 = 327,
+    LOG = 328,
+    EXP = 329,
+    SQRT = 330,
+    K_MAX = 331,
+    K_MIN = 332,
+    INT = 333,
+    RAND = 334,
+    SRAND = 335,
+    COPY = 336,
+    THRU = 337,
+    TOP = 338,
+    BOTTOM = 339,
+    UPPER = 340,
+    LOWER = 341,
+    SH = 342,
+    PRINT = 343,
+    CW = 344,
+    CCW = 345,
+    FOR = 346,
+    DO = 347,
+    IF = 348,
+    ELSE = 349,
+    ANDAND = 350,
+    OROR = 351,
+    NOTEQUAL = 352,
+    EQUALEQUAL = 353,
+    LESSEQUAL = 354,
+    GREATEREQUAL = 355,
+    LEFT_CORNER = 356,
+    RIGHT_CORNER = 357,
+    NORTH = 358,
+    SOUTH = 359,
+    EAST = 360,
+    WEST = 361,
+    CENTER = 362,
+    END = 363,
+    START = 364,
+    RESET = 365,
+    UNTIL = 366,
+    PLOT = 367,
+    THICKNESS = 368,
+    FILL = 369,
+    COLORED = 370,
+    OUTLINED = 371,
+    SHADED = 372,
+    XSLANTED = 373,
+    YSLANTED = 374,
+    ALIGNED = 375,
+    SPRINTF = 376,
+    COMMAND = 377,
+    DEFINE = 378,
+    UNDEF = 379
+  };
 #endif
 /* Tokens.  */
 #define LABEL 258
@@ -387,15 +389,12 @@ char *do_sprintf(const char *form, const double *v, int nv);
 #define DEFINE 378
 #define UNDEF 379
 
-
-
-
+/* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE
+typedef union YYSTYPE YYSTYPE;
+union YYSTYPE
 {
-
-/* Line 293 of yacc.c  */
-#line 67 "pic.y"
+#line 65 "pic.y" /* yacc.c:355  */
 
 	char *str;
 	int n;
@@ -414,22 +413,22 @@ typedef union YYSTYPE
 	graphics_state state;
 	object_type obtype;
 
-
-
-/* Line 293 of yacc.c  */
-#line 421 "pic.cpp"
-} YYSTYPE;
+#line 417 "pic.cpp" /* yacc.c:355  */
+};
 # define YYSTYPE_IS_TRIVIAL 1
-# define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
 #endif
 
 
+extern YYSTYPE yylval;
+
+int yyparse (void);
+
+#endif /* !YY_YY_Y_TAB_H_INCLUDED  */
+
 /* Copy the second part of user declarations.  */
 
-
-/* Line 343 of yacc.c  */
-#line 433 "pic.cpp"
+#line 432 "pic.cpp" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -443,11 +442,8 @@ typedef unsigned char yytype_uint8;
 
 #ifdef YYTYPE_INT8
 typedef YYTYPE_INT8 yytype_int8;
-#elif (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
-typedef signed char yytype_int8;
 #else
-typedef short int yytype_int8;
+typedef signed char yytype_int8;
 #endif
 
 #ifdef YYTYPE_UINT16
@@ -467,8 +463,7 @@ typedef short int yytype_int16;
 #  define YYSIZE_T __SIZE_TYPE__
 # elif defined size_t
 #  define YYSIZE_T size_t
-# elif ! defined YYSIZE_T && (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+# elif ! defined YYSIZE_T
 #  include <stddef.h> /* INFRINGES ON USER NAME SPACE */
 #  define YYSIZE_T size_t
 # else
@@ -482,38 +477,67 @@ typedef short int yytype_int16;
 # if defined YYENABLE_NLS && YYENABLE_NLS
 #  if ENABLE_NLS
 #   include <libintl.h> /* INFRINGES ON USER NAME SPACE */
-#   define YY_(msgid) dgettext ("bison-runtime", msgid)
+#   define YY_(Msgid) dgettext ("bison-runtime", Msgid)
 #  endif
 # endif
 # ifndef YY_
-#  define YY_(msgid) msgid
+#  define YY_(Msgid) Msgid
+# endif
+#endif
+
+#ifndef YY_ATTRIBUTE
+# if (defined __GNUC__                                               \
+      && (2 < __GNUC__ || (__GNUC__ == 2 && 96 <= __GNUC_MINOR__)))  \
+     || defined __SUNPRO_C && 0x5110 <= __SUNPRO_C
+#  define YY_ATTRIBUTE(Spec) __attribute__(Spec)
+# else
+#  define YY_ATTRIBUTE(Spec) /* empty */
+# endif
+#endif
+
+#ifndef YY_ATTRIBUTE_PURE
+# define YY_ATTRIBUTE_PURE   YY_ATTRIBUTE ((__pure__))
+#endif
+
+#ifndef YY_ATTRIBUTE_UNUSED
+# define YY_ATTRIBUTE_UNUSED YY_ATTRIBUTE ((__unused__))
+#endif
+
+#if !defined _Noreturn \
+     && (!defined __STDC_VERSION__ || __STDC_VERSION__ < 201112)
+# if defined _MSC_VER && 1200 <= _MSC_VER
+#  define _Noreturn __declspec (noreturn)
+# else
+#  define _Noreturn YY_ATTRIBUTE ((__noreturn__))
 # endif
 #endif
 
 /* Suppress unused-variable warnings by "using" E.  */
 #if ! defined lint || defined __GNUC__
-# define YYUSE(e) ((void) (e))
+# define YYUSE(E) ((void) (E))
 #else
-# define YYUSE(e) /* empty */
+# define YYUSE(E) /* empty */
 #endif
 
-/* Identity function, used to suppress warnings about constant conditions.  */
-#ifndef lint
-# define YYID(n) (n)
+#if defined __GNUC__ && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
+/* Suppress an incorrect diagnostic about yylval being uninitialized.  */
+# define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN \
+    _Pragma ("GCC diagnostic push") \
+    _Pragma ("GCC diagnostic ignored \"-Wuninitialized\"")\
+    _Pragma ("GCC diagnostic ignored \"-Wmaybe-uninitialized\"")
+# define YY_IGNORE_MAYBE_UNINITIALIZED_END \
+    _Pragma ("GCC diagnostic pop")
 #else
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
-static int
-YYID (int yyi)
-#else
-static int
-YYID (yyi)
-    int yyi;
+# define YY_INITIAL_VALUE(Value) Value
 #endif
-{
-  return yyi;
-}
+#ifndef YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
+# define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
+# define YY_IGNORE_MAYBE_UNINITIALIZED_END
 #endif
+#ifndef YY_INITIAL_VALUE
+# define YY_INITIAL_VALUE(Value) /* Nothing. */
+#endif
+
 
 #if ! defined yyoverflow || YYERROR_VERBOSE
 
@@ -532,9 +556,9 @@ YYID (yyi)
 #    define alloca _alloca
 #   else
 #    define YYSTACK_ALLOC alloca
-#    if ! defined _ALLOCA_H && ! defined EXIT_SUCCESS && (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+#    if ! defined _ALLOCA_H && ! defined EXIT_SUCCESS
 #     include <stdlib.h> /* INFRINGES ON USER NAME SPACE */
+      /* Use EXIT_SUCCESS as a witness for stdlib.h.  */
 #     ifndef EXIT_SUCCESS
 #      define EXIT_SUCCESS 0
 #     endif
@@ -544,8 +568,8 @@ YYID (yyi)
 # endif
 
 # ifdef YYSTACK_ALLOC
-   /* Pacify GCC's `empty if-body' warning.  */
-#  define YYSTACK_FREE(Ptr) do { /* empty */; } while (YYID (0))
+   /* Pacify GCC's 'empty if-body' warning.  */
+#  define YYSTACK_FREE(Ptr) do { /* empty */; } while (0)
 #  ifndef YYSTACK_ALLOC_MAXIMUM
     /* The OS might guarantee only one guard page at the bottom of the stack,
        and a page size can be as small as 4096 bytes.  So we cannot safely
@@ -561,7 +585,7 @@ YYID (yyi)
 #  endif
 #  if (defined __cplusplus && ! defined EXIT_SUCCESS \
        && ! ((defined YYMALLOC || defined malloc) \
-	     && (defined YYFREE || defined free)))
+             && (defined YYFREE || defined free)))
 #   include <stdlib.h> /* INFRINGES ON USER NAME SPACE */
 #   ifndef EXIT_SUCCESS
 #    define EXIT_SUCCESS 0
@@ -569,15 +593,13 @@ YYID (yyi)
 #  endif
 #  ifndef YYMALLOC
 #   define YYMALLOC malloc
-#   if ! defined malloc && ! defined EXIT_SUCCESS && (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+#   if ! defined malloc && ! defined EXIT_SUCCESS
 void *malloc (YYSIZE_T); /* INFRINGES ON USER NAME SPACE */
 #   endif
 #  endif
 #  ifndef YYFREE
 #   define YYFREE free
-#   if ! defined free && ! defined EXIT_SUCCESS && (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+#   if ! defined free && ! defined EXIT_SUCCESS
 void free (void *); /* INFRINGES ON USER NAME SPACE */
 #   endif
 #  endif
@@ -587,7 +609,7 @@ void free (void *); /* INFRINGES ON USER NAME SPACE */
 
 #if (! defined yyoverflow \
      && (! defined __cplusplus \
-	 || (defined YYSTYPE_IS_TRIVIAL && YYSTYPE_IS_TRIVIAL)))
+         || (defined YYSTYPE_IS_TRIVIAL && YYSTYPE_IS_TRIVIAL)))
 
 /* A type that is properly aligned for any stack member.  */
 union yyalloc
@@ -612,35 +634,35 @@ union yyalloc
    elements in the stack, and YYPTR gives the new location of the
    stack.  Advance YYPTR to a properly aligned location for the next
    stack.  */
-# define YYSTACK_RELOCATE(Stack_alloc, Stack)				\
-    do									\
-      {									\
-	YYSIZE_T yynewbytes;						\
-	YYCOPY (&yyptr->Stack_alloc, Stack, yysize);			\
-	Stack = &yyptr->Stack_alloc;					\
-	yynewbytes = yystacksize * sizeof (*Stack) + YYSTACK_GAP_MAXIMUM; \
-	yyptr += yynewbytes / sizeof (*yyptr);				\
-      }									\
-    while (YYID (0))
+# define YYSTACK_RELOCATE(Stack_alloc, Stack)                           \
+    do                                                                  \
+      {                                                                 \
+        YYSIZE_T yynewbytes;                                            \
+        YYCOPY (&yyptr->Stack_alloc, Stack, yysize);                    \
+        Stack = &yyptr->Stack_alloc;                                    \
+        yynewbytes = yystacksize * sizeof (*Stack) + YYSTACK_GAP_MAXIMUM; \
+        yyptr += yynewbytes / sizeof (*yyptr);                          \
+      }                                                                 \
+    while (0)
 
 #endif
 
 #if defined YYCOPY_NEEDED && YYCOPY_NEEDED
-/* Copy COUNT objects from FROM to TO.  The source and destination do
+/* Copy COUNT objects from SRC to DST.  The source and destination do
    not overlap.  */
 # ifndef YYCOPY
 #  if defined __GNUC__ && 1 < __GNUC__
-#   define YYCOPY(To, From, Count) \
-      __builtin_memcpy (To, From, (Count) * sizeof (*(From)))
+#   define YYCOPY(Dst, Src, Count) \
+      __builtin_memcpy (Dst, Src, (Count) * sizeof (*(Src)))
 #  else
-#   define YYCOPY(To, From, Count)		\
-      do					\
-	{					\
-	  YYSIZE_T yyi;				\
-	  for (yyi = 0; yyi < (Count); yyi++)	\
-	    (To)[yyi] = (From)[yyi];		\
-	}					\
-      while (YYID (0))
+#   define YYCOPY(Dst, Src, Count)              \
+      do                                        \
+        {                                       \
+          YYSIZE_T yyi;                         \
+          for (yyi = 0; yyi < (Count); yyi++)   \
+            (Dst)[yyi] = (Src)[yyi];            \
+        }                                       \
+      while (0)
 #  endif
 # endif
 #endif /* !YYCOPY_NEEDED */
@@ -656,17 +678,19 @@ union yyalloc
 #define YYNNTS  49
 /* YYNRULES -- Number of rules.  */
 #define YYNRULES  260
-/* YYNRULES -- Number of states.  */
+/* YYNSTATES -- Number of states.  */
 #define YYNSTATES  454
 
-/* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
+/* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
+   by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   379
 
-#define YYTRANSLATE(YYX)						\
+#define YYTRANSLATE(YYX)                                                \
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
 
-/* YYTRANSLATE[YYLEX] -- Bison symbol number corresponding to YYLEX.  */
+/* YYTRANSLATE[TOKEN-NUM] -- Symbol number corresponding to TOKEN-NUM
+   as returned by yylex, without out-of-bounds checking.  */
 static const yytype_uint8 yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -710,162 +734,40 @@ static const yytype_uint8 yytranslate[] =
 };
 
 #if YYDEBUG
-/* YYPRHS[YYN] -- Index of the first RHS symbol of rule number YYN in
-   YYRHS.  */
-static const yytype_uint16 yyprhs[] =
-{
-       0,     0,     3,     5,     7,    11,    13,    17,    18,    20,
-      22,    25,    29,    33,    38,    40,    42,    44,    46,    48,
-      51,    54,    55,    59,    62,    63,    64,    72,    73,    74,
-      81,    82,    93,    95,    96,   101,   103,   105,   107,   109,
-     112,   115,   119,   121,   124,   126,   128,   130,   131,   137,
-     138,   141,   143,   145,   149,   153,   157,   161,   165,   169,
-     173,   177,   180,   181,   184,   188,   190,   195,   200,   205,
-     206,   207,   214,   216,   217,   219,   221,   223,   225,   227,
-     229,   231,   233,   235,   237,   240,   244,   245,   250,   254,
-     258,   262,   266,   269,   272,   276,   279,   283,   286,   290,
-     293,   297,   301,   305,   309,   313,   317,   321,   324,   327,
-     330,   334,   337,   341,   344,   348,   352,   356,   360,   364,
-     368,   371,   375,   378,   381,   384,   387,   390,   393,   396,
-     399,   402,   405,   408,   411,   415,   418,   420,   426,   427,
-     431,   433,   435,   439,   441,   445,   451,   455,   461,   467,
-     473,   481,   488,   497,   499,   504,   508,   512,   514,   517,
-     520,   524,   526,   528,   530,   534,   536,   540,   542,   545,
-     548,   551,   553,   555,   557,   559,   561,   563,   565,   568,
-     570,   573,   577,   579,   581,   584,   586,   592,   597,   601,
-     605,   608,   610,   612,   614,   616,   618,   620,   622,   624,
-     626,   628,   630,   632,   634,   636,   638,   641,   644,   647,
-     650,   652,   654,   657,   660,   663,   666,   668,   670,   672,
-     674,   676,   678,   680,   682,   684,   688,   690,   692,   695,
-     698,   701,   704,   707,   711,   715,   719,   723,   727,   731,
-     734,   738,   743,   748,   755,   760,   765,   770,   777,   784,
-     789,   794,   798,   803,   807,   811,   815,   819,   823,   827,
-     831
-};
-
-/* YYRHS -- A `-1'-separated list of the rules' RHS.  */
-static const yytype_int16 yyrhs[] =
-{
-     147,     0,    -1,   150,    -1,   148,    -1,   150,   149,   150,
-      -1,   170,    -1,   149,   151,   170,    -1,    -1,   151,    -1,
-     139,    -1,   151,   139,    -1,    25,   140,   160,    -1,     4,
-     140,   167,    -1,     4,   141,   140,   167,    -1,    28,    -1,
-      29,    -1,    31,    -1,    30,    -1,     7,    -1,   122,   162,
-      -1,    88,   162,    -1,    -1,    87,   153,     8,    -1,    81,
-       6,    -1,    -1,    -1,    81,     6,    82,   154,     8,   155,
-     166,    -1,    -1,    -1,    81,    82,   156,     8,   157,   166,
-      -1,    -1,    91,     4,   140,   192,    33,   192,   169,    92,
-     158,     8,    -1,   164,    -1,    -1,   164,    94,   159,     8,
-      -1,   161,    -1,   110,    -1,     4,    -1,     3,    -1,   110,
-       4,    -1,   161,     4,    -1,   161,   129,     4,    -1,   163,
-      -1,   162,   163,    -1,   192,    -1,   176,    -1,   178,    -1,
-      -1,    93,   167,    37,   165,     8,    -1,    -1,   111,     6,
-      -1,   192,    -1,   168,    -1,   176,    98,   176,    -1,   176,
-      97,   176,    -1,   168,    95,   168,    -1,   168,    95,   192,
-      -1,   192,    95,   168,    -1,   168,    96,   168,    -1,   168,
-      96,   192,    -1,   192,    96,   168,    -1,   137,   168,    -1,
-      -1,    36,   192,    -1,    36,   134,   192,    -1,   174,    -1,
-       3,   141,   150,   170,    -1,     3,   141,   150,   179,    -1,
-       3,   141,   150,   182,    -1,    -1,    -1,   142,   171,   148,
-     143,   172,   173,    -1,   152,    -1,    -1,   170,    -1,    15,
-      -1,    16,    -1,    17,    -1,    18,    -1,    19,    -1,    20,
-      -1,    21,    -1,    22,    -1,   176,    -1,   112,   192,    -1,
-     112,   192,   176,    -1,    -1,   128,   175,   148,   144,    -1,
-     174,    23,   192,    -1,   174,    24,   192,    -1,   174,    26,
-     192,    -1,   174,    27,   192,    -1,   174,   192,    -1,   174,
-      28,    -1,   174,    28,   192,    -1,   174,    29,    -1,   174,
-      29,   192,    -1,   174,    30,    -1,   174,    30,   192,    -1,
-     174,    31,    -1,   174,    31,   192,    -1,   174,    32,   178,
-      -1,   174,    33,   178,    -1,   174,    34,   178,    -1,   174,
-      35,   190,    -1,   174,    35,   178,    -1,   174,    36,   181,
-      -1,   174,    37,    -1,   174,    38,    -1,   174,    39,    -1,
-     174,    39,   192,    -1,   174,    40,    -1,   174,    40,   192,
-      -1,   174,   114,    -1,   174,   114,   192,    -1,   174,   118,
-     192,    -1,   174,   119,   192,    -1,   174,   117,   176,    -1,
-     174,   115,   176,    -1,   174,   116,   176,    -1,   174,    41,
-      -1,   174,    41,   192,    -1,   174,    42,    -1,   174,    43,
-      -1,   174,    11,    -1,   174,    12,    -1,   174,    13,    -1,
-     174,    89,    -1,   174,    90,    -1,   174,   176,    -1,   174,
-      44,    -1,   174,    45,    -1,   174,    46,    -1,   174,    47,
-      -1,   174,   113,   192,    -1,   174,   120,    -1,     6,    -1,
-     121,   126,     6,   177,   145,    -1,    -1,   177,   129,   192,
-      -1,   179,    -1,   182,    -1,   126,   182,   145,    -1,   181,
-      -1,   178,   132,   181,    -1,   126,   178,   132,   181,   145,
-      -1,   178,   133,   181,    -1,   126,   178,   133,   181,   145,
-      -1,   126,   178,   129,   178,   145,    -1,   192,   180,   178,
-      52,   178,    -1,   126,   192,   180,   178,    52,   178,   145,
-      -1,   194,   130,   178,   129,   178,   131,    -1,   126,   194,
-     130,   178,   129,   178,   131,   145,    -1,    51,    -1,    48,
-      49,    50,    51,    -1,   192,   129,   192,    -1,   126,   181,
-     145,    -1,   183,    -1,   183,   191,    -1,   191,   183,    -1,
-     191,    48,   183,    -1,    53,    -1,     3,    -1,   186,    -1,
-     183,   125,     3,    -1,     9,    -1,   127,   167,    10,    -1,
-      14,    -1,   184,    14,    -1,   184,   187,    -1,   185,   187,
-      -1,    15,    -1,    16,    -1,    17,    -1,    18,    -1,    19,
-      -1,    20,    -1,    22,    -1,   128,   144,    -1,     6,    -1,
-     125,     3,    -1,   188,   125,     3,    -1,   191,    -1,   188,
-      -1,   188,   191,    -1,   189,    -1,   126,   189,   129,   189,
-     145,    -1,     9,    14,   187,   189,    -1,    14,   187,   189,
-      -1,     9,   187,   189,    -1,     3,   189,    -1,    54,    -1,
-      55,    -1,    56,    -1,    57,    -1,    58,    -1,    59,    -1,
-      60,    -1,    61,    -1,    62,    -1,    63,    -1,    64,    -1,
-      83,    -1,    84,    -1,    31,    -1,    30,    -1,    85,    31,
-      -1,    86,    31,    -1,    85,    30,    -1,    86,    30,    -1,
-     101,    -1,   102,    -1,    85,   101,    -1,    86,   101,    -1,
-      85,   102,    -1,    86,   102,    -1,   103,    -1,   104,    -1,
-     105,    -1,   106,    -1,   107,    -1,   109,    -1,   108,    -1,
-     193,    -1,   194,    -1,   192,   130,   192,    -1,     4,    -1,
-       5,    -1,   182,    65,    -1,   182,    66,    -1,   182,    67,
-      -1,   182,    68,    -1,   182,    69,    -1,   192,   132,   192,
-      -1,   192,   133,   192,    -1,   192,   134,   192,    -1,   192,
-     135,   192,    -1,   192,   136,   192,    -1,   192,   138,   192,
-      -1,   133,   192,    -1,   126,   167,   145,    -1,    70,   126,
-     167,   145,    -1,    71,   126,   167,   145,    -1,    72,   126,
-     167,   129,   167,   145,    -1,    73,   126,   167,   145,    -1,
-      74,   126,   167,   145,    -1,    75,   126,   167,   145,    -1,
-      76,   126,   167,   129,   167,   145,    -1,    77,   126,   167,
-     129,   167,   145,    -1,    78,   126,   167,   145,    -1,    79,
-     126,   167,   145,    -1,    79,   126,   145,    -1,    80,   126,
-     167,   145,    -1,   192,    99,   192,    -1,   192,   131,   192,
-      -1,   192,   100,   192,    -1,   192,    98,   192,    -1,   192,
-      97,   192,    -1,   192,    95,   192,    -1,   192,    96,   192,
-      -1,   137,   192,    -1
-};
-
-/* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
+  /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,   277,   277,   278,   287,   292,   294,   298,   300,   304,
-     305,   309,   317,   322,   334,   336,   338,   340,   342,   347,
-     352,   359,   358,   369,   377,   379,   376,   390,   392,   389,
-     402,   401,   410,   419,   418,   432,   433,   438,   439,   443,
-     448,   453,   461,   463,   482,   489,   491,   502,   501,   513,
-     514,   519,   521,   526,   532,   538,   540,   542,   544,   546,
-     548,   550,   557,   561,   566,   574,   588,   594,   602,   609,
-     615,   608,   624,   634,   635,   640,   642,   644,   646,   651,
-     658,   665,   672,   679,   684,   689,   697,   696,   723,   729,
-     735,   741,   747,   766,   773,   780,   787,   794,   801,   808,
-     815,   822,   829,   844,   856,   862,   871,   878,   903,   907,
-     913,   919,   925,   931,   936,   942,   948,   954,   961,   970,
-     977,   993,  1010,  1015,  1020,  1025,  1030,  1035,  1040,  1045,
-    1053,  1063,  1073,  1083,  1093,  1099,  1107,  1109,  1121,  1126,
-    1156,  1158,  1164,  1173,  1175,  1180,  1185,  1190,  1195,  1200,
-    1205,  1211,  1216,  1224,  1225,  1229,  1234,  1240,  1242,  1248,
-    1254,  1260,  1269,  1279,  1281,  1290,  1292,  1300,  1302,  1307,
-    1322,  1340,  1342,  1344,  1346,  1348,  1350,  1352,  1354,  1356,
-    1361,  1363,  1371,  1375,  1377,  1385,  1387,  1393,  1399,  1405,
-    1411,  1420,  1422,  1424,  1426,  1428,  1430,  1432,  1434,  1436,
-    1438,  1440,  1442,  1444,  1446,  1448,  1450,  1452,  1454,  1456,
-    1458,  1460,  1462,  1464,  1466,  1468,  1470,  1472,  1474,  1476,
-    1478,  1480,  1482,  1487,  1489,  1494,  1499,  1507,  1509,  1516,
-    1523,  1530,  1537,  1544,  1546,  1548,  1550,  1558,  1566,  1579,
-    1581,  1583,  1592,  1601,  1614,  1623,  1632,  1641,  1643,  1645,
-    1647,  1649,  1655,  1660,  1662,  1664,  1666,  1668,  1670,  1672,
-    1674
+       0,   275,   275,   276,   285,   290,   292,   296,   298,   302,
+     303,   307,   315,   320,   332,   334,   336,   338,   340,   345,
+     350,   357,   356,   367,   375,   377,   374,   388,   390,   387,
+     400,   399,   408,   417,   416,   430,   431,   436,   437,   441,
+     446,   451,   459,   461,   480,   487,   489,   500,   499,   511,
+     512,   517,   519,   524,   530,   536,   538,   540,   542,   544,
+     546,   548,   555,   559,   564,   572,   586,   592,   600,   607,
+     613,   606,   622,   632,   633,   638,   640,   642,   644,   649,
+     656,   663,   670,   677,   682,   687,   695,   694,   721,   727,
+     733,   739,   745,   764,   771,   778,   785,   792,   799,   806,
+     813,   820,   827,   842,   854,   860,   869,   876,   901,   905,
+     911,   917,   923,   929,   934,   940,   946,   952,   959,   968,
+     975,   991,  1008,  1013,  1018,  1023,  1028,  1033,  1038,  1043,
+    1051,  1061,  1071,  1081,  1091,  1097,  1105,  1107,  1119,  1124,
+    1154,  1156,  1162,  1171,  1173,  1178,  1183,  1188,  1193,  1198,
+    1203,  1209,  1214,  1222,  1223,  1227,  1232,  1238,  1240,  1246,
+    1252,  1258,  1267,  1277,  1279,  1288,  1290,  1298,  1300,  1305,
+    1320,  1338,  1340,  1342,  1344,  1346,  1348,  1350,  1352,  1354,
+    1359,  1361,  1369,  1373,  1375,  1383,  1385,  1391,  1397,  1403,
+    1409,  1418,  1420,  1422,  1424,  1426,  1428,  1430,  1432,  1434,
+    1436,  1438,  1440,  1442,  1444,  1446,  1448,  1450,  1452,  1454,
+    1456,  1458,  1460,  1462,  1464,  1466,  1468,  1470,  1472,  1474,
+    1476,  1478,  1480,  1485,  1487,  1492,  1497,  1505,  1507,  1514,
+    1521,  1528,  1535,  1542,  1544,  1546,  1548,  1556,  1564,  1577,
+    1579,  1581,  1590,  1599,  1612,  1621,  1630,  1639,  1641,  1643,
+    1645,  1647,  1653,  1658,  1660,  1662,  1664,  1666,  1668,  1670,
+    1672
 };
 #endif
 
-#if YYDEBUG || YYERROR_VERBOSE || YYTOKEN_TABLE
+#if YYDEBUG || YYERROR_VERBOSE || 0
 /* YYTNAME[SYMBOL-NUM] -- String name of the symbol SYMBOL-NUM.
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
@@ -898,13 +800,13 @@ static const char *const yytname[] =
   "position_not_place", "between", "expr_pair", "place", "label",
   "ordinal", "optional_ordinal_last", "nth_primitive", "object_type",
   "label_path", "relative_path", "path", "corner", "expr",
-  "expr_lower_than", "expr_not_lower_than", 0
+  "expr_lower_than", "expr_not_lower_than", YY_NULLPTR
 };
 #endif
 
 # ifdef YYPRINT
-/* YYTOKNUM[YYLEX-NUM] -- Internal token number corresponding to
-   token YYLEX-NUM.  */
+/* YYTOKNUM[NUM] -- (External) token number corresponding to the
+   (internal) symbol number NUM (which must be that of a token).  */
 static const yytype_uint16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
@@ -925,136 +827,18 @@ static const yytype_uint16 yytoknum[] =
 };
 # endif
 
-/* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
-static const yytype_uint8 yyr1[] =
-{
-       0,   146,   147,   147,   148,   149,   149,   150,   150,   151,
-     151,   152,   152,   152,   152,   152,   152,   152,   152,   152,
-     152,   153,   152,   152,   154,   155,   152,   156,   157,   152,
-     158,   152,   152,   159,   152,   152,   152,   160,   160,   161,
-     161,   161,   162,   162,   163,   163,   163,   165,   164,   166,
-     166,   167,   167,   168,   168,   168,   168,   168,   168,   168,
-     168,   168,   169,   169,   169,   170,   170,   170,   170,   171,
-     172,   170,   170,   173,   173,   174,   174,   174,   174,   174,
-     174,   174,   174,   174,   174,   174,   175,   174,   174,   174,
-     174,   174,   174,   174,   174,   174,   174,   174,   174,   174,
-     174,   174,   174,   174,   174,   174,   174,   174,   174,   174,
-     174,   174,   174,   174,   174,   174,   174,   174,   174,   174,
-     174,   174,   174,   174,   174,   174,   174,   174,   174,   174,
-     174,   174,   174,   174,   174,   174,   176,   176,   177,   177,
-     178,   178,   178,   179,   179,   179,   179,   179,   179,   179,
-     179,   179,   179,   180,   180,   181,   181,   182,   182,   182,
-     182,   182,   183,   183,   183,   184,   184,   185,   185,   186,
-     186,   187,   187,   187,   187,   187,   187,   187,   187,   187,
-     188,   188,   189,   189,   189,   190,   190,   190,   190,   190,
-     190,   191,   191,   191,   191,   191,   191,   191,   191,   191,
-     191,   191,   191,   191,   191,   191,   191,   191,   191,   191,
-     191,   191,   191,   191,   191,   191,   191,   191,   191,   191,
-     191,   191,   191,   192,   192,   193,   194,   194,   194,   194,
-     194,   194,   194,   194,   194,   194,   194,   194,   194,   194,
-     194,   194,   194,   194,   194,   194,   194,   194,   194,   194,
-     194,   194,   194,   194,   194,   194,   194,   194,   194,   194,
-     194
-};
-
-/* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
-static const yytype_uint8 yyr2[] =
-{
-       0,     2,     1,     1,     3,     1,     3,     0,     1,     1,
-       2,     3,     3,     4,     1,     1,     1,     1,     1,     2,
-       2,     0,     3,     2,     0,     0,     7,     0,     0,     6,
-       0,    10,     1,     0,     4,     1,     1,     1,     1,     2,
-       2,     3,     1,     2,     1,     1,     1,     0,     5,     0,
-       2,     1,     1,     3,     3,     3,     3,     3,     3,     3,
-       3,     2,     0,     2,     3,     1,     4,     4,     4,     0,
-       0,     6,     1,     0,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     2,     3,     0,     4,     3,     3,
-       3,     3,     2,     2,     3,     2,     3,     2,     3,     2,
-       3,     3,     3,     3,     3,     3,     3,     2,     2,     2,
-       3,     2,     3,     2,     3,     3,     3,     3,     3,     3,
-       2,     3,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     3,     2,     1,     5,     0,     3,
-       1,     1,     3,     1,     3,     5,     3,     5,     5,     5,
-       7,     6,     8,     1,     4,     3,     3,     1,     2,     2,
-       3,     1,     1,     1,     3,     1,     3,     1,     2,     2,
-       2,     1,     1,     1,     1,     1,     1,     1,     2,     1,
-       2,     3,     1,     1,     2,     1,     5,     4,     3,     3,
-       2,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     1,     1,     1,     2,     2,     2,     2,
-       1,     1,     2,     2,     2,     2,     1,     1,     1,     1,
-       1,     1,     1,     1,     1,     3,     1,     1,     2,     2,
-       2,     2,     2,     3,     3,     3,     3,     3,     3,     2,
-       3,     4,     4,     6,     4,     4,     4,     6,     6,     4,
-       4,     3,     4,     3,     3,     3,     3,     3,     3,     3,
-       2
-};
-
-/* YYDEFACT[STATE-NAME] -- Default reduction number in state STATE-NUM.
-   Performed when YYTABLE doesn't specify something else to do.  Zero
-   means the default is an error.  */
-static const yytype_uint16 yydefact[] =
-{
-       7,     9,     0,     3,     2,     8,     1,     0,     0,   136,
-      18,    75,    76,    77,    78,    79,    80,    81,    82,     0,
-      14,    15,    17,    16,     0,    21,     0,     0,     0,    36,
-       0,     0,     0,    86,    69,     7,    72,    35,    32,     5,
-      65,    83,    10,     7,     0,     0,     0,    23,    27,     0,
-     162,   226,   227,   165,   167,   205,   204,   161,   191,   192,
-     193,   194,   195,   196,   197,   198,   199,   200,   201,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-     202,   203,     0,     0,   210,   211,   216,   217,   218,   219,
-     220,   222,   221,     0,     0,     0,     0,    20,    42,    45,
-      46,   140,   143,   141,   157,     0,     0,   163,     0,    44,
-     223,   224,     0,     0,     0,     0,    52,     0,     0,    51,
-     224,    39,    84,     0,    19,     7,     7,     4,     8,    40,
-       0,    33,   124,   125,   126,     0,     0,     0,     0,    93,
-      95,    97,    99,     0,     0,     0,     0,     0,   107,   108,
-     109,   111,   120,   122,   123,   130,   131,   132,   133,   127,
-     128,     0,   113,     0,     0,     0,     0,     0,   135,   129,
-      92,     0,    12,     0,    38,    37,    11,    24,     0,    22,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,   208,   206,   212,   214,   209,   207,   213,   215,     0,
-       0,   143,   141,    51,   224,     0,   239,   260,    43,     0,
-       0,   228,   229,   230,   231,   232,     0,   158,   179,   168,
-     171,   172,   173,   174,   175,   176,   177,     0,   169,   170,
-       0,   159,     0,   153,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,    61,   260,    47,     0,     0,     0,     0,     0,
-       0,    85,   138,     0,     0,     0,     6,    41,     0,    88,
-      89,    90,    91,    94,    96,    98,   100,   101,     0,   102,
-     103,   162,   165,   167,     0,     0,   105,   183,   185,   104,
-     182,     0,   106,     0,   110,   112,   121,   134,   114,   118,
-     119,   117,   115,   116,   162,   226,   205,   204,    66,     0,
-      67,    68,    13,     0,    28,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,   251,     0,     0,   240,     0,     0,
-       0,   156,   142,     0,     0,   166,   144,   146,   164,   178,
-     160,     0,   258,   259,   257,   256,   253,   255,   155,   225,
-     254,   233,   234,   235,   236,   237,   238,     0,     0,     0,
-       0,    55,    56,    58,    59,    54,    53,    57,   258,    60,
-     259,     0,    87,    70,    34,   190,   182,     0,     0,   180,
-       0,     0,   184,     0,    51,    25,    49,   241,   242,     0,
-     244,   245,   246,     0,     0,   249,   250,   252,     0,   144,
-     146,     0,     0,     0,     0,     0,     0,    48,     0,   137,
-      73,   189,   188,     0,   181,    49,     0,    29,     0,     0,
-       0,   148,   145,   147,     0,     0,   154,   149,     0,    62,
-     139,    74,    71,     0,    26,    50,   243,   247,   248,   149,
-       0,   151,     0,     0,   186,   150,   151,     0,    63,    30,
-     152,    64,     0,    31
-};
-
-/* YYDEFGOTO[NTERM-NUM].  */
-static const yytype_int16 yydefgoto[] =
-{
-      -1,     2,     3,    35,   264,     5,    36,    49,   313,   415,
-     178,   386,   452,   268,   176,    37,    97,    98,    38,   360,
-     417,   199,   116,   443,    39,   126,   410,   432,    40,   125,
-     117,   371,   100,   101,   249,   102,   118,   104,   105,   106,
-     107,   228,   287,   288,   289,   108,   119,   110,   120
-};
-
-/* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
-   STATE-NUM.  */
 #define YYPACT_NINF -240
+
+#define yypact_value_is_default(Yystate) \
+  (!!((Yystate) == (-240)))
+
+#define YYTABLE_NINF -206
+
+#define yytable_value_is_error(Yytable_value) \
+  0
+
+  /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
+     STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
     -114,  -240,    20,  -240,   757,  -107,  -240,   -98,  -123,  -240,
@@ -1105,7 +889,60 @@ static const yytype_int16 yypact[] =
     -240,  2282,   354,  -240
 };
 
-/* YYPGOTO[NTERM-NUM].  */
+  /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
+     Performed when YYTABLE does not specify something else to do.  Zero
+     means the default is an error.  */
+static const yytype_uint16 yydefact[] =
+{
+       7,     9,     0,     3,     2,     8,     1,     0,     0,   136,
+      18,    75,    76,    77,    78,    79,    80,    81,    82,     0,
+      14,    15,    17,    16,     0,    21,     0,     0,     0,    36,
+       0,     0,     0,    86,    69,     7,    72,    35,    32,     5,
+      65,    83,    10,     7,     0,     0,     0,    23,    27,     0,
+     162,   226,   227,   165,   167,   205,   204,   161,   191,   192,
+     193,   194,   195,   196,   197,   198,   199,   200,   201,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+     202,   203,     0,     0,   210,   211,   216,   217,   218,   219,
+     220,   222,   221,     0,     0,     0,     0,    20,    42,    45,
+      46,   140,   143,   141,   157,     0,     0,   163,     0,    44,
+     223,   224,     0,     0,     0,     0,    52,     0,     0,    51,
+     224,    39,    84,     0,    19,     7,     7,     4,     8,    40,
+       0,    33,   124,   125,   126,     0,     0,     0,     0,    93,
+      95,    97,    99,     0,     0,     0,     0,     0,   107,   108,
+     109,   111,   120,   122,   123,   130,   131,   132,   133,   127,
+     128,     0,   113,     0,     0,     0,     0,     0,   135,   129,
+      92,     0,    12,     0,    38,    37,    11,    24,     0,    22,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,   208,   206,   212,   214,   209,   207,   213,   215,     0,
+       0,   143,   141,    51,   224,     0,   239,   260,    43,     0,
+       0,   228,   229,   230,   231,   232,     0,   158,   179,   168,
+     171,   172,   173,   174,   175,   176,   177,     0,   169,   170,
+       0,   159,     0,   153,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,    61,   260,    47,     0,     0,     0,     0,     0,
+       0,    85,   138,     0,     0,     0,     6,    41,     0,    88,
+      89,    90,    91,    94,    96,    98,   100,   101,     0,   102,
+     103,   162,   165,   167,     0,     0,   105,   183,   185,   104,
+     182,     0,   106,     0,   110,   112,   121,   134,   114,   118,
+     119,   117,   115,   116,   162,   226,   205,   204,    66,     0,
+      67,    68,    13,     0,    28,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,   251,     0,     0,   240,     0,     0,
+       0,   156,   142,     0,     0,   166,   144,   146,   164,   178,
+     160,     0,   258,   259,   257,   256,   253,   255,   155,   225,
+     254,   233,   234,   235,   236,   237,   238,     0,     0,     0,
+       0,    55,    56,    58,    59,    54,    53,    57,   258,    60,
+     259,     0,    87,    70,    34,   190,   182,     0,     0,   180,
+       0,     0,   184,     0,    51,    25,    49,   241,   242,     0,
+     244,   245,   246,     0,     0,   249,   250,   252,     0,   144,
+     146,     0,     0,     0,     0,     0,     0,    48,     0,   137,
+      73,   189,   188,     0,   181,    49,     0,    29,     0,     0,
+       0,   148,   145,   147,     0,     0,   154,   149,     0,    62,
+     139,    74,    71,     0,    26,    50,   243,   247,   248,   149,
+       0,   151,     0,     0,   186,   150,   151,     0,    63,    30,
+     152,    64,     0,    31
+};
+
+  /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
     -240,  -240,    17,  -240,    12,   329,  -240,  -240,  -240,  -240,
@@ -1115,10 +952,19 @@ static const yytype_int16 yypgoto[] =
     -240,  -104,  -240,  -239,  -240,   -50,   -26,  -240,    61
 };
 
-/* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
-   positive, shift that token.  If negative, reduce the rule which
-   number is the opposite.  If YYTABLE_NINF, syntax error.  */
-#define YYTABLE_NINF -206
+  /* YYDEFGOTO[NTERM-NUM].  */
+static const yytype_int16 yydefgoto[] =
+{
+      -1,     2,     3,    35,   264,     5,    36,    49,   313,   415,
+     178,   386,   452,   268,   176,    37,    97,    98,    38,   360,
+     417,   199,   116,   443,    39,   126,   410,   432,    40,   125,
+     117,   371,   100,   101,   249,   102,   118,   104,   105,   106,
+     107,   228,   287,   288,   289,   108,   119,   110,   120
+};
+
+  /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
+     positive, shift that token.  If negative, reduce the rule whose
+     number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int16 yytable[] =
 {
      109,   266,   229,   404,   122,   424,   109,   129,   231,    41,
@@ -1366,12 +1212,6 @@ static const yytype_int16 yytable[] =
      248,   241,   242,   243,   244,   245,   246,   247,     0,   248,
      241,   242,   243,   244,   245,   246,   247,     0,   248
 };
-
-#define yypact_value_is_default(yystate) \
-  ((yystate) == (-240))
-
-#define yytable_value_is_error(yytable_value) \
-  YYID (0)
 
 static const yytype_int16 yycheck[] =
 {
@@ -1621,8 +1461,8 @@ static const yytype_int16 yycheck[] =
      130,   131,   132,   133,   134,   135,   136,    -1,   138
 };
 
-/* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
-   symbol of state STATE-NUM.  */
+  /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
+     symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
        0,   139,   147,   148,   150,   151,     0,     3,     4,     6,
@@ -1673,94 +1513,105 @@ static const yytype_uint8 yystos[] =
      145,   192,   158,     8
 };
 
-#define yyerrok		(yyerrstatus = 0)
-#define yyclearin	(yychar = YYEMPTY)
-#define YYEMPTY		(-2)
-#define YYEOF		0
+  /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
+static const yytype_uint8 yyr1[] =
+{
+       0,   146,   147,   147,   148,   149,   149,   150,   150,   151,
+     151,   152,   152,   152,   152,   152,   152,   152,   152,   152,
+     152,   153,   152,   152,   154,   155,   152,   156,   157,   152,
+     158,   152,   152,   159,   152,   152,   152,   160,   160,   161,
+     161,   161,   162,   162,   163,   163,   163,   165,   164,   166,
+     166,   167,   167,   168,   168,   168,   168,   168,   168,   168,
+     168,   168,   169,   169,   169,   170,   170,   170,   170,   171,
+     172,   170,   170,   173,   173,   174,   174,   174,   174,   174,
+     174,   174,   174,   174,   174,   174,   175,   174,   174,   174,
+     174,   174,   174,   174,   174,   174,   174,   174,   174,   174,
+     174,   174,   174,   174,   174,   174,   174,   174,   174,   174,
+     174,   174,   174,   174,   174,   174,   174,   174,   174,   174,
+     174,   174,   174,   174,   174,   174,   174,   174,   174,   174,
+     174,   174,   174,   174,   174,   174,   176,   176,   177,   177,
+     178,   178,   178,   179,   179,   179,   179,   179,   179,   179,
+     179,   179,   179,   180,   180,   181,   181,   182,   182,   182,
+     182,   182,   183,   183,   183,   184,   184,   185,   185,   186,
+     186,   187,   187,   187,   187,   187,   187,   187,   187,   187,
+     188,   188,   189,   189,   189,   190,   190,   190,   190,   190,
+     190,   191,   191,   191,   191,   191,   191,   191,   191,   191,
+     191,   191,   191,   191,   191,   191,   191,   191,   191,   191,
+     191,   191,   191,   191,   191,   191,   191,   191,   191,   191,
+     191,   191,   191,   192,   192,   193,   194,   194,   194,   194,
+     194,   194,   194,   194,   194,   194,   194,   194,   194,   194,
+     194,   194,   194,   194,   194,   194,   194,   194,   194,   194,
+     194,   194,   194,   194,   194,   194,   194,   194,   194,   194,
+     194
+};
 
-#define YYACCEPT	goto yyacceptlab
-#define YYABORT		goto yyabortlab
-#define YYERROR		goto yyerrorlab
+  /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
+static const yytype_uint8 yyr2[] =
+{
+       0,     2,     1,     1,     3,     1,     3,     0,     1,     1,
+       2,     3,     3,     4,     1,     1,     1,     1,     1,     2,
+       2,     0,     3,     2,     0,     0,     7,     0,     0,     6,
+       0,    10,     1,     0,     4,     1,     1,     1,     1,     2,
+       2,     3,     1,     2,     1,     1,     1,     0,     5,     0,
+       2,     1,     1,     3,     3,     3,     3,     3,     3,     3,
+       3,     2,     0,     2,     3,     1,     4,     4,     4,     0,
+       0,     6,     1,     0,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     2,     3,     0,     4,     3,     3,
+       3,     3,     2,     2,     3,     2,     3,     2,     3,     2,
+       3,     3,     3,     3,     3,     3,     3,     2,     2,     2,
+       3,     2,     3,     2,     3,     3,     3,     3,     3,     3,
+       2,     3,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     3,     2,     1,     5,     0,     3,
+       1,     1,     3,     1,     3,     5,     3,     5,     5,     5,
+       7,     6,     8,     1,     4,     3,     3,     1,     2,     2,
+       3,     1,     1,     1,     3,     1,     3,     1,     2,     2,
+       2,     1,     1,     1,     1,     1,     1,     1,     2,     1,
+       2,     3,     1,     1,     2,     1,     5,     4,     3,     3,
+       2,     1,     1,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     2,     2,     2,     2,
+       1,     1,     2,     2,     2,     2,     1,     1,     1,     1,
+       1,     1,     1,     1,     1,     3,     1,     1,     2,     2,
+       2,     2,     2,     3,     3,     3,     3,     3,     3,     2,
+       3,     4,     4,     6,     4,     4,     4,     6,     6,     4,
+       4,     3,     4,     3,     3,     3,     3,     3,     3,     3,
+       2
+};
 
 
-/* Like YYERROR except do call yyerror.  This remains here temporarily
-   to ease the transition to the new meaning of YYERROR, for GCC.
-   Once GCC version 2 has supplanted version 1, this can go.  However,
-   YYFAIL appears to be in use.  Nevertheless, it is formally deprecated
-   in Bison 2.4.2's NEWS entry, where a plan to phase it out is
-   discussed.  */
+#define yyerrok         (yyerrstatus = 0)
+#define yyclearin       (yychar = YYEMPTY)
+#define YYEMPTY         (-2)
+#define YYEOF           0
 
-#define YYFAIL		goto yyerrlab
-#if defined YYFAIL
-  /* This is here to suppress warnings from the GCC cpp's
-     -Wunused-macros.  Normally we don't worry about that warning, but
-     some users do, and we want to make it easy for users to remove
-     YYFAIL uses, which will produce warnings from Bison 2.5.  */
-#endif
+#define YYACCEPT        goto yyacceptlab
+#define YYABORT         goto yyabortlab
+#define YYERROR         goto yyerrorlab
+
 
 #define YYRECOVERING()  (!!yyerrstatus)
 
-#define YYBACKUP(Token, Value)					\
-do								\
-  if (yychar == YYEMPTY && yylen == 1)				\
-    {								\
-      yychar = (Token);						\
-      yylval = (Value);						\
-      YYPOPSTACK (1);						\
-      goto yybackup;						\
-    }								\
-  else								\
-    {								\
+#define YYBACKUP(Token, Value)                                  \
+do                                                              \
+  if (yychar == YYEMPTY)                                        \
+    {                                                           \
+      yychar = (Token);                                         \
+      yylval = (Value);                                         \
+      YYPOPSTACK (yylen);                                       \
+      yystate = *yyssp;                                         \
+      goto yybackup;                                            \
+    }                                                           \
+  else                                                          \
+    {                                                           \
       yyerror (YY_("syntax error: cannot back up")); \
-      YYERROR;							\
-    }								\
-while (YYID (0))
+      YYERROR;                                                  \
+    }                                                           \
+while (0)
+
+/* Error token number */
+#define YYTERROR        1
+#define YYERRCODE       256
 
 
-#define YYTERROR	1
-#define YYERRCODE	256
-
-
-/* YYLLOC_DEFAULT -- Set CURRENT to span from RHS[1] to RHS[N].
-   If N is 0, then set CURRENT to the empty location which ends
-   the previous symbol: RHS[0] (always defined).  */
-
-#define YYRHSLOC(Rhs, K) ((Rhs)[K])
-#ifndef YYLLOC_DEFAULT
-# define YYLLOC_DEFAULT(Current, Rhs, N)				\
-    do									\
-      if (YYID (N))                                                    \
-	{								\
-	  (Current).first_line   = YYRHSLOC (Rhs, 1).first_line;	\
-	  (Current).first_column = YYRHSLOC (Rhs, 1).first_column;	\
-	  (Current).last_line    = YYRHSLOC (Rhs, N).last_line;		\
-	  (Current).last_column  = YYRHSLOC (Rhs, N).last_column;	\
-	}								\
-      else								\
-	{								\
-	  (Current).first_line   = (Current).last_line   =		\
-	    YYRHSLOC (Rhs, 0).last_line;				\
-	  (Current).first_column = (Current).last_column =		\
-	    YYRHSLOC (Rhs, 0).last_column;				\
-	}								\
-    while (YYID (0))
-#endif
-
-
-/* This macro is provided for backward compatibility. */
-
-#ifndef YY_LOCATION_PRINT
-# define YY_LOCATION_PRINT(File, Loc) ((void) 0)
-#endif
-
-
-/* YYLEX -- calling `yylex' with the right arguments.  */
-
-#ifdef YYLEX_PARAM
-# define YYLEX yylex (YYLEX_PARAM)
-#else
-# define YYLEX yylex ()
-#endif
 
 /* Enable debugging if requested.  */
 #if YYDEBUG
@@ -1770,54 +1621,46 @@ while (YYID (0))
 #  define YYFPRINTF fprintf
 # endif
 
-# define YYDPRINTF(Args)			\
-do {						\
-  if (yydebug)					\
-    YYFPRINTF Args;				\
-} while (YYID (0))
+# define YYDPRINTF(Args)                        \
+do {                                            \
+  if (yydebug)                                  \
+    YYFPRINTF Args;                             \
+} while (0)
 
-# define YY_SYMBOL_PRINT(Title, Type, Value, Location)			  \
-do {									  \
-  if (yydebug)								  \
-    {									  \
-      YYFPRINTF (stderr, "%s ", Title);					  \
-      yy_symbol_print (stderr,						  \
-		  Type, Value); \
-      YYFPRINTF (stderr, "\n");						  \
-    }									  \
-} while (YYID (0))
+/* This macro is provided for backward compatibility. */
+#ifndef YY_LOCATION_PRINT
+# define YY_LOCATION_PRINT(File, Loc) ((void) 0)
+#endif
 
 
-/*--------------------------------.
-| Print this symbol on YYOUTPUT.  |
-`--------------------------------*/
+# define YY_SYMBOL_PRINT(Title, Type, Value, Location)                    \
+do {                                                                      \
+  if (yydebug)                                                            \
+    {                                                                     \
+      YYFPRINTF (stderr, "%s ", Title);                                   \
+      yy_symbol_print (stderr,                                            \
+                  Type, Value); \
+      YYFPRINTF (stderr, "\n");                                           \
+    }                                                                     \
+} while (0)
 
-/*ARGSUSED*/
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
+
+/*----------------------------------------.
+| Print this symbol's value on YYOUTPUT.  |
+`----------------------------------------*/
+
 static void
 yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)
-#else
-static void
-yy_symbol_value_print (yyoutput, yytype, yyvaluep)
-    FILE *yyoutput;
-    int yytype;
-    YYSTYPE const * const yyvaluep;
-#endif
 {
+  FILE *yyo = yyoutput;
+  YYUSE (yyo);
   if (!yyvaluep)
     return;
 # ifdef YYPRINT
   if (yytype < YYNTOKENS)
     YYPRINT (yyoutput, yytoknum[yytype], *yyvaluep);
-# else
-  YYUSE (yyoutput);
 # endif
-  switch (yytype)
-    {
-      default:
-	break;
-    }
+  YYUSE (yytype);
 }
 
 
@@ -1825,22 +1668,11 @@ yy_symbol_value_print (yyoutput, yytype, yyvaluep)
 | Print this symbol on YYOUTPUT.  |
 `--------------------------------*/
 
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static void
 yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)
-#else
-static void
-yy_symbol_print (yyoutput, yytype, yyvaluep)
-    FILE *yyoutput;
-    int yytype;
-    YYSTYPE const * const yyvaluep;
-#endif
 {
-  if (yytype < YYNTOKENS)
-    YYFPRINTF (yyoutput, "token %s (", yytname[yytype]);
-  else
-    YYFPRINTF (yyoutput, "nterm %s (", yytname[yytype]);
+  YYFPRINTF (yyoutput, "%s %s (",
+             yytype < YYNTOKENS ? "token" : "nterm", yytname[yytype]);
 
   yy_symbol_value_print (yyoutput, yytype, yyvaluep);
   YYFPRINTF (yyoutput, ")");
@@ -1851,16 +1683,8 @@ yy_symbol_print (yyoutput, yytype, yyvaluep)
 | TOP (included).                                                   |
 `------------------------------------------------------------------*/
 
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static void
 yy_stack_print (yytype_int16 *yybottom, yytype_int16 *yytop)
-#else
-static void
-yy_stack_print (yybottom, yytop)
-    yytype_int16 *yybottom;
-    yytype_int16 *yytop;
-#endif
 {
   YYFPRINTF (stderr, "Stack now");
   for (; yybottom <= yytop; yybottom++)
@@ -1871,49 +1695,42 @@ yy_stack_print (yybottom, yytop)
   YYFPRINTF (stderr, "\n");
 }
 
-# define YY_STACK_PRINT(Bottom, Top)				\
-do {								\
-  if (yydebug)							\
-    yy_stack_print ((Bottom), (Top));				\
-} while (YYID (0))
+# define YY_STACK_PRINT(Bottom, Top)                            \
+do {                                                            \
+  if (yydebug)                                                  \
+    yy_stack_print ((Bottom), (Top));                           \
+} while (0)
 
 
 /*------------------------------------------------.
 | Report that the YYRULE is going to be reduced.  |
 `------------------------------------------------*/
 
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static void
-yy_reduce_print (YYSTYPE *yyvsp, int yyrule)
-#else
-static void
-yy_reduce_print (yyvsp, yyrule)
-    YYSTYPE *yyvsp;
-    int yyrule;
-#endif
+yy_reduce_print (yytype_int16 *yyssp, YYSTYPE *yyvsp, int yyrule)
 {
+  unsigned long int yylno = yyrline[yyrule];
   int yynrhs = yyr2[yyrule];
   int yyi;
-  unsigned long int yylno = yyrline[yyrule];
   YYFPRINTF (stderr, "Reducing stack by rule %d (line %lu):\n",
-	     yyrule - 1, yylno);
+             yyrule - 1, yylno);
   /* The symbols being reduced.  */
   for (yyi = 0; yyi < yynrhs; yyi++)
     {
       YYFPRINTF (stderr, "   $%d = ", yyi + 1);
-      yy_symbol_print (stderr, yyrhs[yyprhs[yyrule] + yyi],
-		       &(yyvsp[(yyi + 1) - (yynrhs)])
-		       		       );
+      yy_symbol_print (stderr,
+                       yystos[yyssp[yyi + 1 - yynrhs]],
+                       &(yyvsp[(yyi + 1) - (yynrhs)])
+                                              );
       YYFPRINTF (stderr, "\n");
     }
 }
 
-# define YY_REDUCE_PRINT(Rule)		\
-do {					\
-  if (yydebug)				\
-    yy_reduce_print (yyvsp, Rule); \
-} while (YYID (0))
+# define YY_REDUCE_PRINT(Rule)          \
+do {                                    \
+  if (yydebug)                          \
+    yy_reduce_print (yyssp, yyvsp, Rule); \
+} while (0)
 
 /* Nonzero means print parse trace.  It is left uninitialized so that
    multiple parsers can coexist.  */
@@ -1927,7 +1744,7 @@ int yydebug;
 
 
 /* YYINITDEPTH -- initial size of the parser's stacks.  */
-#ifndef	YYINITDEPTH
+#ifndef YYINITDEPTH
 # define YYINITDEPTH 200
 #endif
 
@@ -1950,15 +1767,8 @@ int yydebug;
 #   define yystrlen strlen
 #  else
 /* Return the length of YYSTR.  */
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static YYSIZE_T
 yystrlen (const char *yystr)
-#else
-static YYSIZE_T
-yystrlen (yystr)
-    const char *yystr;
-#endif
 {
   YYSIZE_T yylen;
   for (yylen = 0; yystr[yylen]; yylen++)
@@ -1974,16 +1784,8 @@ yystrlen (yystr)
 #  else
 /* Copy YYSRC to YYDEST, returning the address of the terminating '\0' in
    YYDEST.  */
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static char *
 yystpcpy (char *yydest, const char *yysrc)
-#else
-static char *
-yystpcpy (yydest, yysrc)
-    char *yydest;
-    const char *yysrc;
-#endif
 {
   char *yyd = yydest;
   const char *yys = yysrc;
@@ -2013,27 +1815,27 @@ yytnamerr (char *yyres, const char *yystr)
       char const *yyp = yystr;
 
       for (;;)
-	switch (*++yyp)
-	  {
-	  case '\'':
-	  case ',':
-	    goto do_not_strip_quotes;
+        switch (*++yyp)
+          {
+          case '\'':
+          case ',':
+            goto do_not_strip_quotes;
 
-	  case '\\':
-	    if (*++yyp != '\\')
-	      goto do_not_strip_quotes;
-	    /* Fall through.  */
-	  default:
-	    if (yyres)
-	      yyres[yyn] = *yyp;
-	    yyn++;
-	    break;
+          case '\\':
+            if (*++yyp != '\\')
+              goto do_not_strip_quotes;
+            /* Fall through.  */
+          default:
+            if (yyres)
+              yyres[yyn] = *yyp;
+            yyn++;
+            break;
 
-	  case '"':
-	    if (yyres)
-	      yyres[yyn] = '\0';
-	    return yyn;
-	  }
+          case '"':
+            if (yyres)
+              yyres[yyn] = '\0';
+            return yyn;
+          }
     do_not_strip_quotes: ;
     }
 
@@ -2056,12 +1858,11 @@ static int
 yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
                 yytype_int16 *yyssp, int yytoken)
 {
-  YYSIZE_T yysize0 = yytnamerr (0, yytname[yytoken]);
+  YYSIZE_T yysize0 = yytnamerr (YY_NULLPTR, yytname[yytoken]);
   YYSIZE_T yysize = yysize0;
-  YYSIZE_T yysize1;
   enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };
   /* Internationalized format string. */
-  const char *yyformat = 0;
+  const char *yyformat = YY_NULLPTR;
   /* Arguments of yyformat. */
   char const *yyarg[YYERROR_VERBOSE_ARGS_MAXIMUM];
   /* Number of reported tokens (one for the "unexpected", one per
@@ -2069,10 +1870,6 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
   int yycount = 0;
 
   /* There are many possibilities here to consider:
-     - Assume YYFAIL is not used.  It's too flawed to consider.  See
-       <http://lists.gnu.org/archive/html/bison-patches/2009-12/msg00024.html>
-       for details.  YYERROR is fine as it does not invoke this
-       function.
      - If this state is a consistent state with a default action, then
        the only way this function was invoked is if the default action
        is an error action.  In that case, don't check for expected
@@ -2121,11 +1918,13 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
                     break;
                   }
                 yyarg[yycount++] = yytname[yyx];
-                yysize1 = yysize + yytnamerr (0, yytname[yyx]);
-                if (! (yysize <= yysize1
-                       && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
-                  return 2;
-                yysize = yysize1;
+                {
+                  YYSIZE_T yysize1 = yysize + yytnamerr (YY_NULLPTR, yytname[yyx]);
+                  if (! (yysize <= yysize1
+                         && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
+                    return 2;
+                  yysize = yysize1;
+                }
               }
         }
     }
@@ -2145,10 +1944,12 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
 # undef YYCASE_
     }
 
-  yysize1 = yysize + yystrlen (yyformat);
-  if (! (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
-    return 2;
-  yysize = yysize1;
+  {
+    YYSIZE_T yysize1 = yysize + yystrlen (yyformat);
+    if (! (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
+      return 2;
+    yysize = yysize1;
+  }
 
   if (*yymsg_alloc < yysize)
     {
@@ -2185,48 +1986,20 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
 | Release the memory associated to this symbol.  |
 `-----------------------------------------------*/
 
-/*ARGSUSED*/
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 static void
 yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep)
-#else
-static void
-yydestruct (yymsg, yytype, yyvaluep)
-    const char *yymsg;
-    int yytype;
-    YYSTYPE *yyvaluep;
-#endif
 {
   YYUSE (yyvaluep);
-
   if (!yymsg)
     yymsg = "Deleting";
   YY_SYMBOL_PRINT (yymsg, yytype, yyvaluep, yylocationp);
 
-  switch (yytype)
-    {
-
-      default:
-	break;
-    }
+  YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
+  YYUSE (yytype);
+  YY_IGNORE_MAYBE_UNINITIALIZED_END
 }
 
 
-/* Prevent warnings from -Wmissing-prototypes.  */
-#ifdef YYPARSE_PARAM
-#if defined __STDC__ || defined __cplusplus
-int yyparse (void *YYPARSE_PARAM);
-#else
-int yyparse ();
-#endif
-#else /* ! YYPARSE_PARAM */
-#if defined __STDC__ || defined __cplusplus
-int yyparse (void);
-#else
-int yyparse ();
-#endif
-#endif /* ! YYPARSE_PARAM */
 
 
 /* The lookahead symbol.  */
@@ -2234,7 +2007,6 @@ int yychar;
 
 /* The semantic value of the lookahead symbol.  */
 YYSTYPE yylval;
-
 /* Number of syntax errors so far.  */
 int yynerrs;
 
@@ -2243,37 +2015,18 @@ int yynerrs;
 | yyparse.  |
 `----------*/
 
-#ifdef YYPARSE_PARAM
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
-int
-yyparse (void *YYPARSE_PARAM)
-#else
-int
-yyparse (YYPARSE_PARAM)
-    void *YYPARSE_PARAM;
-#endif
-#else /* ! YYPARSE_PARAM */
-#if (defined __STDC__ || defined __C99__FUNC__ \
-     || defined __cplusplus || defined _MSC_VER)
 int
 yyparse (void)
-#else
-int
-yyparse ()
-
-#endif
-#endif
 {
     int yystate;
     /* Number of tokens to shift before error messages enabled.  */
     int yyerrstatus;
 
     /* The stacks and their tools:
-       `yyss': related to states.
-       `yyvs': related to semantic values.
+       'yyss': related to states.
+       'yyvs': related to semantic values.
 
-       Refer to the stacks thru separate pointers, to allow yyoverflow
+       Refer to the stacks through separate pointers, to allow yyoverflow
        to reallocate them elsewhere.  */
 
     /* The state stack.  */
@@ -2291,7 +2044,7 @@ yyparse ()
   int yyn;
   int yyresult;
   /* Lookahead token as an internal (translated) token number.  */
-  int yytoken;
+  int yytoken = 0;
   /* The variables used to return semantic value and location from the
      action routines.  */
   YYSTYPE yyval;
@@ -2309,9 +2062,8 @@ yyparse ()
      Keep to zero when no symbol should be popped.  */
   int yylen = 0;
 
-  yytoken = 0;
-  yyss = yyssa;
-  yyvs = yyvsa;
+  yyssp = yyss = yyssa;
+  yyvsp = yyvs = yyvsa;
   yystacksize = YYINITDEPTH;
 
   YYDPRINTF ((stderr, "Starting parse\n"));
@@ -2320,14 +2072,6 @@ yyparse ()
   yyerrstatus = 0;
   yynerrs = 0;
   yychar = YYEMPTY; /* Cause a token to be read.  */
-
-  /* Initialize stack pointers.
-     Waste one element of value and location stack
-     so that they stay on the same level as the state stack.
-     The wasted elements are never initialized.  */
-  yyssp = yyss;
-  yyvsp = yyvs;
-
   goto yysetstate;
 
 /*------------------------------------------------------------.
@@ -2348,23 +2092,23 @@ yyparse ()
 
 #ifdef yyoverflow
       {
-	/* Give user a chance to reallocate the stack.  Use copies of
-	   these so that the &'s don't force the real ones into
-	   memory.  */
-	YYSTYPE *yyvs1 = yyvs;
-	yytype_int16 *yyss1 = yyss;
+        /* Give user a chance to reallocate the stack.  Use copies of
+           these so that the &'s don't force the real ones into
+           memory.  */
+        YYSTYPE *yyvs1 = yyvs;
+        yytype_int16 *yyss1 = yyss;
 
-	/* Each stack pointer address is followed by the size of the
-	   data in use in that stack, in bytes.  This used to be a
-	   conditional around just the two extra args, but that might
-	   be undefined if yyoverflow is a macro.  */
-	yyoverflow (YY_("memory exhausted"),
-		    &yyss1, yysize * sizeof (*yyssp),
-		    &yyvs1, yysize * sizeof (*yyvsp),
-		    &yystacksize);
+        /* Each stack pointer address is followed by the size of the
+           data in use in that stack, in bytes.  This used to be a
+           conditional around just the two extra args, but that might
+           be undefined if yyoverflow is a macro.  */
+        yyoverflow (YY_("memory exhausted"),
+                    &yyss1, yysize * sizeof (*yyssp),
+                    &yyvs1, yysize * sizeof (*yyvsp),
+                    &yystacksize);
 
-	yyss = yyss1;
-	yyvs = yyvs1;
+        yyss = yyss1;
+        yyvs = yyvs1;
       }
 #else /* no yyoverflow */
 # ifndef YYSTACK_RELOCATE
@@ -2372,22 +2116,22 @@ yyparse ()
 # else
       /* Extend the stack our own way.  */
       if (YYMAXDEPTH <= yystacksize)
-	goto yyexhaustedlab;
+        goto yyexhaustedlab;
       yystacksize *= 2;
       if (YYMAXDEPTH < yystacksize)
-	yystacksize = YYMAXDEPTH;
+        yystacksize = YYMAXDEPTH;
 
       {
-	yytype_int16 *yyss1 = yyss;
-	union yyalloc *yyptr =
-	  (union yyalloc *) YYSTACK_ALLOC (YYSTACK_BYTES (yystacksize));
-	if (! yyptr)
-	  goto yyexhaustedlab;
-	YYSTACK_RELOCATE (yyss_alloc, yyss);
-	YYSTACK_RELOCATE (yyvs_alloc, yyvs);
+        yytype_int16 *yyss1 = yyss;
+        union yyalloc *yyptr =
+          (union yyalloc *) YYSTACK_ALLOC (YYSTACK_BYTES (yystacksize));
+        if (! yyptr)
+          goto yyexhaustedlab;
+        YYSTACK_RELOCATE (yyss_alloc, yyss);
+        YYSTACK_RELOCATE (yyvs_alloc, yyvs);
 #  undef YYSTACK_RELOCATE
-	if (yyss1 != yyssa)
-	  YYSTACK_FREE (yyss1);
+        if (yyss1 != yyssa)
+          YYSTACK_FREE (yyss1);
       }
 # endif
 #endif /* no yyoverflow */
@@ -2396,10 +2140,10 @@ yyparse ()
       yyvsp = yyvs + yysize - 1;
 
       YYDPRINTF ((stderr, "Stack size increased to %lu\n",
-		  (unsigned long int) yystacksize));
+                  (unsigned long int) yystacksize));
 
       if (yyss + yystacksize - 1 <= yyssp)
-	YYABORT;
+        YYABORT;
     }
 
   YYDPRINTF ((stderr, "Entering state %d\n", yystate));
@@ -2428,7 +2172,7 @@ yybackup:
   if (yychar == YYEMPTY)
     {
       YYDPRINTF ((stderr, "Reading a token: "));
-      yychar = YYLEX;
+      yychar = yylex ();
     }
 
   if (yychar <= YYEOF)
@@ -2468,7 +2212,9 @@ yybackup:
   yychar = YYEMPTY;
 
   yystate = yyn;
+  YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
   *++yyvsp = yylval;
+  YY_IGNORE_MAYBE_UNINITIALIZED_END
 
   goto yynewstate;
 
@@ -2491,7 +2237,7 @@ yyreduce:
   yylen = yyr2[yyn];
 
   /* If YYLEN is nonzero, implement the default value of the action:
-     `$$ = $1'.
+     '$$ = $1'.
 
      Otherwise, the following line sets YYVAL to garbage.
      This behavior is undocumented and Bison
@@ -2505,531 +2251,474 @@ yyreduce:
   switch (yyn)
     {
         case 3:
-
-/* Line 1806 of yacc.c  */
-#line 279 "pic.y"
+#line 277 "pic.y" /* yacc.c:1646  */
     {
 		  if (olist.head)
 		    print_picture(olist.head);
 		}
+#line 2260 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 4:
-
-/* Line 1806 of yacc.c  */
-#line 288 "pic.y"
-    { (yyval.pl) = (yyvsp[(2) - (3)].pl); }
+#line 286 "pic.y" /* yacc.c:1646  */
+    { (yyval.pl) = (yyvsp[-1].pl); }
+#line 2266 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 5:
-
-/* Line 1806 of yacc.c  */
-#line 293 "pic.y"
-    { (yyval.pl) = (yyvsp[(1) - (1)].pl); }
+#line 291 "pic.y" /* yacc.c:1646  */
+    { (yyval.pl) = (yyvsp[0].pl); }
+#line 2272 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 6:
-
-/* Line 1806 of yacc.c  */
-#line 295 "pic.y"
-    { (yyval.pl) = (yyvsp[(1) - (3)].pl); }
+#line 293 "pic.y" /* yacc.c:1646  */
+    { (yyval.pl) = (yyvsp[-2].pl); }
+#line 2278 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 11:
-
-/* Line 1806 of yacc.c  */
-#line 310 "pic.y"
+#line 308 "pic.y" /* yacc.c:1646  */
     {
 		  a_delete graphname;
-		  graphname = new char[strlen((yyvsp[(3) - (3)].str)) + 1];
-		  strcpy(graphname, (yyvsp[(3) - (3)].str));
-		  a_delete (yyvsp[(3) - (3)].str);
+		  graphname = new char[strlen((yyvsp[0].str)) + 1];
+		  strcpy(graphname, (yyvsp[0].str));
+		  a_delete (yyvsp[0].str);
 		}
+#line 2289 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 12:
-
-/* Line 1806 of yacc.c  */
-#line 318 "pic.y"
+#line 316 "pic.y" /* yacc.c:1646  */
     {
-		  define_variable((yyvsp[(1) - (3)].str), (yyvsp[(3) - (3)].x));
-		  a_delete (yyvsp[(1) - (3)].str);
+		  define_variable((yyvsp[-2].str), (yyvsp[0].x));
+		  a_delete (yyvsp[-2].str);
 		}
+#line 2298 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 13:
-
-/* Line 1806 of yacc.c  */
-#line 323 "pic.y"
+#line 321 "pic.y" /* yacc.c:1646  */
     {
-		  place *p = lookup_label((yyvsp[(1) - (4)].str));
+		  place *p = lookup_label((yyvsp[-3].str));
 		  if (!p) {
-		    lex_error("variable `%1' not defined", (yyvsp[(1) - (4)].str));
+		    lex_error("variable `%1' not defined", (yyvsp[-3].str));
 		    YYABORT;
 		  }
 		  p->obj = 0;
-		  p->x = (yyvsp[(4) - (4)].x);
+		  p->x = (yyvsp[0].x);
 		  p->y = 0.0;
-		  a_delete (yyvsp[(1) - (4)].str);
+		  a_delete (yyvsp[-3].str);
 		}
+#line 2314 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 14:
-
-/* Line 1806 of yacc.c  */
-#line 335 "pic.y"
+#line 333 "pic.y" /* yacc.c:1646  */
     { current_direction = UP_DIRECTION; }
+#line 2320 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 15:
-
-/* Line 1806 of yacc.c  */
-#line 337 "pic.y"
+#line 335 "pic.y" /* yacc.c:1646  */
     { current_direction = DOWN_DIRECTION; }
+#line 2326 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 16:
-
-/* Line 1806 of yacc.c  */
-#line 339 "pic.y"
+#line 337 "pic.y" /* yacc.c:1646  */
     { current_direction = LEFT_DIRECTION; }
+#line 2332 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 17:
-
-/* Line 1806 of yacc.c  */
-#line 341 "pic.y"
+#line 339 "pic.y" /* yacc.c:1646  */
     { current_direction = RIGHT_DIRECTION; }
+#line 2338 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 18:
-
-/* Line 1806 of yacc.c  */
-#line 343 "pic.y"
+#line 341 "pic.y" /* yacc.c:1646  */
     {
-		  olist.append(make_command_object((yyvsp[(1) - (1)].lstr).str, (yyvsp[(1) - (1)].lstr).filename,
-						   (yyvsp[(1) - (1)].lstr).lineno));
+		  olist.append(make_command_object((yyvsp[0].lstr).str, (yyvsp[0].lstr).filename,
+						   (yyvsp[0].lstr).lineno));
 		}
+#line 2347 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 19:
-
-/* Line 1806 of yacc.c  */
-#line 348 "pic.y"
+#line 346 "pic.y" /* yacc.c:1646  */
     {
-		  olist.append(make_command_object((yyvsp[(2) - (2)].lstr).str, (yyvsp[(2) - (2)].lstr).filename,
-						   (yyvsp[(2) - (2)].lstr).lineno));
+		  olist.append(make_command_object((yyvsp[0].lstr).str, (yyvsp[0].lstr).filename,
+						   (yyvsp[0].lstr).lineno));
 		}
+#line 2356 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 20:
-
-/* Line 1806 of yacc.c  */
-#line 353 "pic.y"
+#line 351 "pic.y" /* yacc.c:1646  */
     {
-		  fprintf(stderr, "%s\n", (yyvsp[(2) - (2)].lstr).str);
-		  a_delete (yyvsp[(2) - (2)].lstr).str;
+		  fprintf(stderr, "%s\n", (yyvsp[0].lstr).str);
+		  a_delete (yyvsp[0].lstr).str;
 		  fflush(stderr);
 		}
+#line 2366 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 21:
-
-/* Line 1806 of yacc.c  */
-#line 359 "pic.y"
+#line 357 "pic.y" /* yacc.c:1646  */
     { delim_flag = 1; }
+#line 2372 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 22:
-
-/* Line 1806 of yacc.c  */
-#line 361 "pic.y"
+#line 359 "pic.y" /* yacc.c:1646  */
     {
 		  delim_flag = 0;
 		  if (safer_flag)
-		    lex_error("unsafe to run command `%1'", (yyvsp[(3) - (3)].str));
+		    lex_error("unsafe to run command `%1'", (yyvsp[0].str));
 		  else
-		    system((yyvsp[(3) - (3)].str));
-		  a_delete (yyvsp[(3) - (3)].str);
+		    system((yyvsp[0].str));
+		  a_delete (yyvsp[0].str);
 		}
+#line 2385 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 23:
-
-/* Line 1806 of yacc.c  */
-#line 370 "pic.y"
+#line 368 "pic.y" /* yacc.c:1646  */
     {
 		  if (yychar < 0)
 		    do_lookahead();
-		  do_copy((yyvsp[(2) - (2)].lstr).str);
+		  do_copy((yyvsp[0].lstr).str);
 		  // do not delete the filename
 		}
+#line 2396 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 24:
-
-/* Line 1806 of yacc.c  */
-#line 377 "pic.y"
+#line 375 "pic.y" /* yacc.c:1646  */
     { delim_flag = 2; }
+#line 2402 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 25:
-
-/* Line 1806 of yacc.c  */
-#line 379 "pic.y"
+#line 377 "pic.y" /* yacc.c:1646  */
     { delim_flag = 0; }
+#line 2408 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 26:
-
-/* Line 1806 of yacc.c  */
-#line 381 "pic.y"
+#line 379 "pic.y" /* yacc.c:1646  */
     {
 		  if (yychar < 0)
 		    do_lookahead();
-		  copy_file_thru((yyvsp[(2) - (7)].lstr).str, (yyvsp[(5) - (7)].str), (yyvsp[(7) - (7)].str));
+		  copy_file_thru((yyvsp[-5].lstr).str, (yyvsp[-2].str), (yyvsp[0].str));
 		  // do not delete the filename
-		  a_delete (yyvsp[(5) - (7)].str);
-		  a_delete (yyvsp[(7) - (7)].str);
+		  a_delete (yyvsp[-2].str);
+		  a_delete (yyvsp[0].str);
 		}
+#line 2421 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 27:
-
-/* Line 1806 of yacc.c  */
-#line 390 "pic.y"
+#line 388 "pic.y" /* yacc.c:1646  */
     { delim_flag = 2; }
+#line 2427 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 28:
-
-/* Line 1806 of yacc.c  */
-#line 392 "pic.y"
+#line 390 "pic.y" /* yacc.c:1646  */
     { delim_flag = 0; }
+#line 2433 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 29:
-
-/* Line 1806 of yacc.c  */
-#line 394 "pic.y"
+#line 392 "pic.y" /* yacc.c:1646  */
     {
 		  if (yychar < 0)
 		    do_lookahead();
-		  copy_rest_thru((yyvsp[(4) - (6)].str), (yyvsp[(6) - (6)].str));
-		  a_delete (yyvsp[(4) - (6)].str);
-		  a_delete (yyvsp[(6) - (6)].str);
+		  copy_rest_thru((yyvsp[-2].str), (yyvsp[0].str));
+		  a_delete (yyvsp[-2].str);
+		  a_delete (yyvsp[0].str);
 		}
+#line 2445 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 30:
-
-/* Line 1806 of yacc.c  */
-#line 402 "pic.y"
+#line 400 "pic.y" /* yacc.c:1646  */
     { delim_flag = 1; }
+#line 2451 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 31:
-
-/* Line 1806 of yacc.c  */
-#line 404 "pic.y"
+#line 402 "pic.y" /* yacc.c:1646  */
     {
 		  delim_flag = 0;
 		  if (yychar < 0)
 		    do_lookahead();
-		  do_for((yyvsp[(2) - (10)].str), (yyvsp[(4) - (10)].x), (yyvsp[(6) - (10)].x), (yyvsp[(7) - (10)].by).is_multiplicative, (yyvsp[(7) - (10)].by).val, (yyvsp[(10) - (10)].str)); 
+		  do_for((yyvsp[-8].str), (yyvsp[-6].x), (yyvsp[-4].x), (yyvsp[-3].by).is_multiplicative, (yyvsp[-3].by).val, (yyvsp[0].str)); 
 		}
+#line 2462 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 32:
-
-/* Line 1806 of yacc.c  */
-#line 411 "pic.y"
+#line 409 "pic.y" /* yacc.c:1646  */
     {
 		  if (yychar < 0)
 		    do_lookahead();
-		  if ((yyvsp[(1) - (1)].if_data).x != 0.0)
-		    push_body((yyvsp[(1) - (1)].if_data).body);
-		  a_delete (yyvsp[(1) - (1)].if_data).body;
+		  if ((yyvsp[0].if_data).x != 0.0)
+		    push_body((yyvsp[0].if_data).body);
+		  a_delete (yyvsp[0].if_data).body;
 		}
+#line 2474 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 33:
-
-/* Line 1806 of yacc.c  */
-#line 419 "pic.y"
+#line 417 "pic.y" /* yacc.c:1646  */
     { delim_flag = 1; }
+#line 2480 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 34:
-
-/* Line 1806 of yacc.c  */
-#line 421 "pic.y"
+#line 419 "pic.y" /* yacc.c:1646  */
     {
 		  delim_flag = 0;
 		  if (yychar < 0)
 		    do_lookahead();
-		  if ((yyvsp[(1) - (4)].if_data).x != 0.0)
-		    push_body((yyvsp[(1) - (4)].if_data).body);
+		  if ((yyvsp[-3].if_data).x != 0.0)
+		    push_body((yyvsp[-3].if_data).body);
 		  else
-		    push_body((yyvsp[(4) - (4)].str));
-		  a_delete (yyvsp[(1) - (4)].if_data).body;
-		  a_delete (yyvsp[(4) - (4)].str);
+		    push_body((yyvsp[0].str));
+		  a_delete (yyvsp[-3].if_data).body;
+		  a_delete (yyvsp[0].str);
 		}
+#line 2496 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 36:
-
-/* Line 1806 of yacc.c  */
-#line 434 "pic.y"
+#line 432 "pic.y" /* yacc.c:1646  */
     { define_variable("scale", 1.0); }
+#line 2502 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 39:
-
-/* Line 1806 of yacc.c  */
-#line 444 "pic.y"
+#line 442 "pic.y" /* yacc.c:1646  */
     {
-		  reset((yyvsp[(2) - (2)].str));
-		  a_delete (yyvsp[(2) - (2)].str);
+		  reset((yyvsp[0].str));
+		  a_delete (yyvsp[0].str);
 		}
+#line 2511 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 40:
-
-/* Line 1806 of yacc.c  */
-#line 449 "pic.y"
+#line 447 "pic.y" /* yacc.c:1646  */
     {
-		  reset((yyvsp[(2) - (2)].str));
-		  a_delete (yyvsp[(2) - (2)].str);
+		  reset((yyvsp[0].str));
+		  a_delete (yyvsp[0].str);
 		}
+#line 2520 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 41:
-
-/* Line 1806 of yacc.c  */
-#line 454 "pic.y"
+#line 452 "pic.y" /* yacc.c:1646  */
     {
-		  reset((yyvsp[(3) - (3)].str));
-		  a_delete (yyvsp[(3) - (3)].str);
+		  reset((yyvsp[0].str));
+		  a_delete (yyvsp[0].str);
 		}
+#line 2529 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 42:
-
-/* Line 1806 of yacc.c  */
-#line 462 "pic.y"
-    { (yyval.lstr) = (yyvsp[(1) - (1)].lstr); }
+#line 460 "pic.y" /* yacc.c:1646  */
+    { (yyval.lstr) = (yyvsp[0].lstr); }
+#line 2535 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 43:
-
-/* Line 1806 of yacc.c  */
-#line 464 "pic.y"
+#line 462 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.lstr).str = new char[strlen((yyvsp[(1) - (2)].lstr).str) + strlen((yyvsp[(2) - (2)].lstr).str) + 1];
-		  strcpy((yyval.lstr).str, (yyvsp[(1) - (2)].lstr).str);
-		  strcat((yyval.lstr).str, (yyvsp[(2) - (2)].lstr).str);
-		  a_delete (yyvsp[(1) - (2)].lstr).str;
-		  a_delete (yyvsp[(2) - (2)].lstr).str;
-		  if ((yyvsp[(1) - (2)].lstr).filename) {
-		    (yyval.lstr).filename = (yyvsp[(1) - (2)].lstr).filename;
-		    (yyval.lstr).lineno = (yyvsp[(1) - (2)].lstr).lineno;
+		  (yyval.lstr).str = new char[strlen((yyvsp[-1].lstr).str) + strlen((yyvsp[0].lstr).str) + 1];
+		  strcpy((yyval.lstr).str, (yyvsp[-1].lstr).str);
+		  strcat((yyval.lstr).str, (yyvsp[0].lstr).str);
+		  a_delete (yyvsp[-1].lstr).str;
+		  a_delete (yyvsp[0].lstr).str;
+		  if ((yyvsp[-1].lstr).filename) {
+		    (yyval.lstr).filename = (yyvsp[-1].lstr).filename;
+		    (yyval.lstr).lineno = (yyvsp[-1].lstr).lineno;
 		  }
-		  else if ((yyvsp[(2) - (2)].lstr).filename) {
-		    (yyval.lstr).filename = (yyvsp[(2) - (2)].lstr).filename;
-		    (yyval.lstr).lineno = (yyvsp[(2) - (2)].lstr).lineno;
+		  else if ((yyvsp[0].lstr).filename) {
+		    (yyval.lstr).filename = (yyvsp[0].lstr).filename;
+		    (yyval.lstr).lineno = (yyvsp[0].lstr).lineno;
 		  }
 		}
+#line 2555 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 44:
-
-/* Line 1806 of yacc.c  */
-#line 483 "pic.y"
+#line 481 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.lstr).str = new char[GDIGITS + 1];
-		  sprintf((yyval.lstr).str, "%g", (yyvsp[(1) - (1)].x));
+		  sprintf((yyval.lstr).str, "%g", (yyvsp[0].x));
 		  (yyval.lstr).filename = 0;
 		  (yyval.lstr).lineno = 0;
 		}
+#line 2566 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 45:
-
-/* Line 1806 of yacc.c  */
-#line 490 "pic.y"
-    { (yyval.lstr) = (yyvsp[(1) - (1)].lstr); }
+#line 488 "pic.y" /* yacc.c:1646  */
+    { (yyval.lstr) = (yyvsp[0].lstr); }
+#line 2572 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 46:
-
-/* Line 1806 of yacc.c  */
-#line 492 "pic.y"
+#line 490 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.lstr).str = new char[GDIGITS + 2 + GDIGITS + 1];
-		  sprintf((yyval.lstr).str, "%g, %g", (yyvsp[(1) - (1)].pair).x, (yyvsp[(1) - (1)].pair).y);
+		  sprintf((yyval.lstr).str, "%g, %g", (yyvsp[0].pair).x, (yyvsp[0].pair).y);
 		  (yyval.lstr).filename = 0;
 		  (yyval.lstr).lineno = 0;
 		}
+#line 2583 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 47:
-
-/* Line 1806 of yacc.c  */
-#line 502 "pic.y"
+#line 500 "pic.y" /* yacc.c:1646  */
     { delim_flag = 1; }
+#line 2589 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 48:
-
-/* Line 1806 of yacc.c  */
-#line 504 "pic.y"
+#line 502 "pic.y" /* yacc.c:1646  */
     {
 		  delim_flag = 0;
-		  (yyval.if_data).x = (yyvsp[(2) - (5)].x);
-		  (yyval.if_data).body = (yyvsp[(5) - (5)].str);
+		  (yyval.if_data).x = (yyvsp[-3].x);
+		  (yyval.if_data).body = (yyvsp[0].str);
 		}
+#line 2599 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 49:
-
-/* Line 1806 of yacc.c  */
-#line 513 "pic.y"
+#line 511 "pic.y" /* yacc.c:1646  */
     { (yyval.str) = 0; }
+#line 2605 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 50:
-
-/* Line 1806 of yacc.c  */
-#line 515 "pic.y"
-    { (yyval.str) = (yyvsp[(2) - (2)].lstr).str; }
+#line 513 "pic.y" /* yacc.c:1646  */
+    { (yyval.str) = (yyvsp[0].lstr).str; }
+#line 2611 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 51:
-
-/* Line 1806 of yacc.c  */
-#line 520 "pic.y"
-    { (yyval.x) = (yyvsp[(1) - (1)].x); }
+#line 518 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = (yyvsp[0].x); }
+#line 2617 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 52:
-
-/* Line 1806 of yacc.c  */
-#line 522 "pic.y"
-    { (yyval.x) = (yyvsp[(1) - (1)].x); }
+#line 520 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = (yyvsp[0].x); }
+#line 2623 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 53:
-
-/* Line 1806 of yacc.c  */
-#line 527 "pic.y"
+#line 525 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.x) = strcmp((yyvsp[(1) - (3)].lstr).str, (yyvsp[(3) - (3)].lstr).str) == 0;
-		  a_delete (yyvsp[(1) - (3)].lstr).str;
-		  a_delete (yyvsp[(3) - (3)].lstr).str;
+		  (yyval.x) = strcmp((yyvsp[-2].lstr).str, (yyvsp[0].lstr).str) == 0;
+		  a_delete (yyvsp[-2].lstr).str;
+		  a_delete (yyvsp[0].lstr).str;
 		}
+#line 2633 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 54:
-
-/* Line 1806 of yacc.c  */
-#line 533 "pic.y"
+#line 531 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.x) = strcmp((yyvsp[(1) - (3)].lstr).str, (yyvsp[(3) - (3)].lstr).str) != 0;
-		  a_delete (yyvsp[(1) - (3)].lstr).str;
-		  a_delete (yyvsp[(3) - (3)].lstr).str;
+		  (yyval.x) = strcmp((yyvsp[-2].lstr).str, (yyvsp[0].lstr).str) != 0;
+		  a_delete (yyvsp[-2].lstr).str;
+		  a_delete (yyvsp[0].lstr).str;
 		}
+#line 2643 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 55:
-
-/* Line 1806 of yacc.c  */
-#line 539 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) != 0.0 && (yyvsp[(3) - (3)].x) != 0.0); }
+#line 537 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) != 0.0 && (yyvsp[0].x) != 0.0); }
+#line 2649 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 56:
-
-/* Line 1806 of yacc.c  */
-#line 541 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) != 0.0 && (yyvsp[(3) - (3)].x) != 0.0); }
+#line 539 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) != 0.0 && (yyvsp[0].x) != 0.0); }
+#line 2655 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 57:
-
-/* Line 1806 of yacc.c  */
-#line 543 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) != 0.0 && (yyvsp[(3) - (3)].x) != 0.0); }
+#line 541 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) != 0.0 && (yyvsp[0].x) != 0.0); }
+#line 2661 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 58:
-
-/* Line 1806 of yacc.c  */
-#line 545 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) != 0.0 || (yyvsp[(3) - (3)].x) != 0.0); }
+#line 543 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) != 0.0 || (yyvsp[0].x) != 0.0); }
+#line 2667 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 59:
-
-/* Line 1806 of yacc.c  */
-#line 547 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) != 0.0 || (yyvsp[(3) - (3)].x) != 0.0); }
+#line 545 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) != 0.0 || (yyvsp[0].x) != 0.0); }
+#line 2673 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 60:
-
-/* Line 1806 of yacc.c  */
-#line 549 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) != 0.0 || (yyvsp[(3) - (3)].x) != 0.0); }
+#line 547 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) != 0.0 || (yyvsp[0].x) != 0.0); }
+#line 2679 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 61:
-
-/* Line 1806 of yacc.c  */
-#line 551 "pic.y"
-    { (yyval.x) = ((yyvsp[(2) - (2)].x) == 0.0); }
+#line 549 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[0].x) == 0.0); }
+#line 2685 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 62:
-
-/* Line 1806 of yacc.c  */
-#line 557 "pic.y"
+#line 555 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.by).val = 1.0;
 		  (yyval.by).is_multiplicative = 0;
 		}
+#line 2694 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 63:
-
-/* Line 1806 of yacc.c  */
-#line 562 "pic.y"
+#line 560 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.by).val = (yyvsp[(2) - (2)].x);
+		  (yyval.by).val = (yyvsp[0].x);
 		  (yyval.by).is_multiplicative = 0;
 		}
+#line 2703 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 64:
-
-/* Line 1806 of yacc.c  */
-#line 567 "pic.y"
+#line 565 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.by).val = (yyvsp[(3) - (3)].x);
+		  (yyval.by).val = (yyvsp[0].x);
 		  (yyval.by).is_multiplicative = 1;
 		}
+#line 2712 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 65:
-
-/* Line 1806 of yacc.c  */
-#line 575 "pic.y"
+#line 573 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pl).obj = (yyvsp[(1) - (1)].spec)->make_object(&current_position,
+		  (yyval.pl).obj = (yyvsp[0].spec)->make_object(&current_position,
 					   &current_direction);
 		  if ((yyval.pl).obj == 0)
 		    YYABORT;
-		  delete (yyvsp[(1) - (1)].spec);
+		  delete (yyvsp[0].spec);
 		  if ((yyval.pl).obj)
 		    olist.append((yyval.pl).obj);
 		  else {
@@ -3037,214 +2726,193 @@ yyreduce:
 		    (yyval.pl).y = current_position.y;
 		  }
 		}
+#line 2730 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 66:
-
-/* Line 1806 of yacc.c  */
-#line 589 "pic.y"
+#line 587 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pl) = (yyvsp[(4) - (4)].pl);
-		  define_label((yyvsp[(1) - (4)].str), & (yyval.pl));
-		  a_delete (yyvsp[(1) - (4)].str);
+		  (yyval.pl) = (yyvsp[0].pl);
+		  define_label((yyvsp[-3].str), & (yyval.pl));
+		  a_delete (yyvsp[-3].str);
 		}
+#line 2740 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 67:
-
-/* Line 1806 of yacc.c  */
-#line 595 "pic.y"
+#line 593 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.pl).obj = 0;
-		  (yyval.pl).x = (yyvsp[(4) - (4)].pair).x;
-		  (yyval.pl).y = (yyvsp[(4) - (4)].pair).y;
-		  define_label((yyvsp[(1) - (4)].str), & (yyval.pl));
-		  a_delete (yyvsp[(1) - (4)].str);
+		  (yyval.pl).x = (yyvsp[0].pair).x;
+		  (yyval.pl).y = (yyvsp[0].pair).y;
+		  define_label((yyvsp[-3].str), & (yyval.pl));
+		  a_delete (yyvsp[-3].str);
 		}
+#line 2752 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 68:
-
-/* Line 1806 of yacc.c  */
-#line 603 "pic.y"
+#line 601 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pl) = (yyvsp[(4) - (4)].pl);
-		  define_label((yyvsp[(1) - (4)].str), & (yyval.pl));
-		  a_delete (yyvsp[(1) - (4)].str);
+		  (yyval.pl) = (yyvsp[0].pl);
+		  define_label((yyvsp[-3].str), & (yyval.pl));
+		  a_delete (yyvsp[-3].str);
 		}
+#line 2762 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 69:
-
-/* Line 1806 of yacc.c  */
-#line 609 "pic.y"
+#line 607 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.state).x = current_position.x;
 		  (yyval.state).y = current_position.y;
 		  (yyval.state).dir = current_direction;
 		}
+#line 2772 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 70:
-
-/* Line 1806 of yacc.c  */
-#line 615 "pic.y"
+#line 613 "pic.y" /* yacc.c:1646  */
     {
-		  current_position.x = (yyvsp[(2) - (4)].state).x;
-		  current_position.y = (yyvsp[(2) - (4)].state).y;
-		  current_direction = (yyvsp[(2) - (4)].state).dir;
+		  current_position.x = (yyvsp[-2].state).x;
+		  current_position.y = (yyvsp[-2].state).y;
+		  current_direction = (yyvsp[-2].state).dir;
 		}
+#line 2782 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 71:
-
-/* Line 1806 of yacc.c  */
-#line 621 "pic.y"
+#line 619 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pl) = (yyvsp[(3) - (6)].pl);
+		  (yyval.pl) = (yyvsp[-3].pl);
 		}
+#line 2790 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 72:
-
-/* Line 1806 of yacc.c  */
-#line 625 "pic.y"
+#line 623 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.pl).obj = 0;
 		  (yyval.pl).x = current_position.x;
 		  (yyval.pl).y = current_position.y;
 		}
+#line 2800 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 73:
-
-/* Line 1806 of yacc.c  */
-#line 634 "pic.y"
+#line 632 "pic.y" /* yacc.c:1646  */
     {}
+#line 2806 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 74:
-
-/* Line 1806 of yacc.c  */
-#line 636 "pic.y"
+#line 634 "pic.y" /* yacc.c:1646  */
     {}
+#line 2812 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 75:
-
-/* Line 1806 of yacc.c  */
-#line 641 "pic.y"
+#line 639 "pic.y" /* yacc.c:1646  */
     { (yyval.spec) = new object_spec(BOX_OBJECT); }
+#line 2818 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 76:
-
-/* Line 1806 of yacc.c  */
-#line 643 "pic.y"
+#line 641 "pic.y" /* yacc.c:1646  */
     { (yyval.spec) = new object_spec(CIRCLE_OBJECT); }
+#line 2824 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 77:
-
-/* Line 1806 of yacc.c  */
-#line 645 "pic.y"
+#line 643 "pic.y" /* yacc.c:1646  */
     { (yyval.spec) = new object_spec(ELLIPSE_OBJECT); }
+#line 2830 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 78:
-
-/* Line 1806 of yacc.c  */
-#line 647 "pic.y"
+#line 645 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.spec) = new object_spec(ARC_OBJECT);
 		  (yyval.spec)->dir = current_direction;
 		}
+#line 2839 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 79:
-
-/* Line 1806 of yacc.c  */
-#line 652 "pic.y"
+#line 650 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.spec) = new object_spec(LINE_OBJECT);
 		  lookup_variable("lineht", & (yyval.spec)->segment_height);
 		  lookup_variable("linewid", & (yyval.spec)->segment_width);
 		  (yyval.spec)->dir = current_direction;
 		}
+#line 2850 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 80:
-
-/* Line 1806 of yacc.c  */
-#line 659 "pic.y"
+#line 657 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.spec) = new object_spec(ARROW_OBJECT);
 		  lookup_variable("lineht", & (yyval.spec)->segment_height);
 		  lookup_variable("linewid", & (yyval.spec)->segment_width);
 		  (yyval.spec)->dir = current_direction;
 		}
+#line 2861 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 81:
-
-/* Line 1806 of yacc.c  */
-#line 666 "pic.y"
+#line 664 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.spec) = new object_spec(MOVE_OBJECT);
 		  lookup_variable("moveht", & (yyval.spec)->segment_height);
 		  lookup_variable("movewid", & (yyval.spec)->segment_width);
 		  (yyval.spec)->dir = current_direction;
 		}
+#line 2872 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 82:
-
-/* Line 1806 of yacc.c  */
-#line 673 "pic.y"
+#line 671 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.spec) = new object_spec(SPLINE_OBJECT);
 		  lookup_variable("lineht", & (yyval.spec)->segment_height);
 		  lookup_variable("linewid", & (yyval.spec)->segment_width);
 		  (yyval.spec)->dir = current_direction;
 		}
+#line 2883 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 83:
-
-/* Line 1806 of yacc.c  */
-#line 680 "pic.y"
+#line 678 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.spec) = new object_spec(TEXT_OBJECT);
-		  (yyval.spec)->text = new text_item((yyvsp[(1) - (1)].lstr).str, (yyvsp[(1) - (1)].lstr).filename, (yyvsp[(1) - (1)].lstr).lineno);
+		  (yyval.spec)->text = new text_item((yyvsp[0].lstr).str, (yyvsp[0].lstr).filename, (yyvsp[0].lstr).lineno);
 		}
+#line 2892 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 84:
-
-/* Line 1806 of yacc.c  */
-#line 685 "pic.y"
+#line 683 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.spec) = new object_spec(TEXT_OBJECT);
-		  (yyval.spec)->text = new text_item(format_number(0, (yyvsp[(2) - (2)].x)), 0, -1);
+		  (yyval.spec)->text = new text_item(format_number(0, (yyvsp[0].x)), 0, -1);
 		}
+#line 2901 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 85:
-
-/* Line 1806 of yacc.c  */
-#line 690 "pic.y"
+#line 688 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.spec) = new object_spec(TEXT_OBJECT);
-		  (yyval.spec)->text = new text_item(format_number((yyvsp[(3) - (3)].lstr).str, (yyvsp[(2) - (3)].x)),
-					   (yyvsp[(3) - (3)].lstr).filename, (yyvsp[(3) - (3)].lstr).lineno);
-		  a_delete (yyvsp[(3) - (3)].lstr).str;
+		  (yyval.spec)->text = new text_item(format_number((yyvsp[0].lstr).str, (yyvsp[-1].x)),
+					   (yyvsp[0].lstr).filename, (yyvsp[0].lstr).lineno);
+		  a_delete (yyvsp[0].lstr).str;
 		}
+#line 2912 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 86:
-
-/* Line 1806 of yacc.c  */
-#line 697 "pic.y"
+#line 695 "pic.y" /* yacc.c:1646  */
     {
 		  saved_state *p = new saved_state;
 		  (yyval.pstate) = p;
@@ -3259,281 +2927,260 @@ yyreduce:
 		  current_saved_state = p;
 		  olist.append(make_mark_object());
 		}
+#line 2931 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 87:
-
-/* Line 1806 of yacc.c  */
-#line 712 "pic.y"
+#line 710 "pic.y" /* yacc.c:1646  */
     {
-		  current_position.x = (yyvsp[(2) - (4)].pstate)->x;
-		  current_position.y = (yyvsp[(2) - (4)].pstate)->y;
-		  current_direction = (yyvsp[(2) - (4)].pstate)->dir;
+		  current_position.x = (yyvsp[-2].pstate)->x;
+		  current_position.y = (yyvsp[-2].pstate)->y;
+		  current_direction = (yyvsp[-2].pstate)->dir;
 		  (yyval.spec) = new object_spec(BLOCK_OBJECT);
 		  olist.wrap_up_block(& (yyval.spec)->oblist);
 		  (yyval.spec)->tbl = current_table;
-		  current_table = (yyvsp[(2) - (4)].pstate)->tbl;
-		  current_saved_state = (yyvsp[(2) - (4)].pstate)->prev;
-		  delete (yyvsp[(2) - (4)].pstate);
+		  current_table = (yyvsp[-2].pstate)->tbl;
+		  current_saved_state = (yyvsp[-2].pstate)->prev;
+		  delete (yyvsp[-2].pstate);
 		}
+#line 2947 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 88:
-
-/* Line 1806 of yacc.c  */
-#line 724 "pic.y"
+#line 722 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
-		  (yyval.spec)->height = (yyvsp[(3) - (3)].x);
+		  (yyval.spec) = (yyvsp[-2].spec);
+		  (yyval.spec)->height = (yyvsp[0].x);
 		  (yyval.spec)->flags |= HAS_HEIGHT;
 		}
+#line 2957 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 89:
-
-/* Line 1806 of yacc.c  */
-#line 730 "pic.y"
+#line 728 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
-		  (yyval.spec)->radius = (yyvsp[(3) - (3)].x);
+		  (yyval.spec) = (yyvsp[-2].spec);
+		  (yyval.spec)->radius = (yyvsp[0].x);
 		  (yyval.spec)->flags |= HAS_RADIUS;
 		}
+#line 2967 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 90:
-
-/* Line 1806 of yacc.c  */
-#line 736 "pic.y"
+#line 734 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
-		  (yyval.spec)->width = (yyvsp[(3) - (3)].x);
+		  (yyval.spec) = (yyvsp[-2].spec);
+		  (yyval.spec)->width = (yyvsp[0].x);
 		  (yyval.spec)->flags |= HAS_WIDTH;
 		}
+#line 2977 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 91:
-
-/* Line 1806 of yacc.c  */
-#line 742 "pic.y"
+#line 740 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
-		  (yyval.spec)->radius = (yyvsp[(3) - (3)].x)/2.0;
+		  (yyval.spec) = (yyvsp[-2].spec);
+		  (yyval.spec)->radius = (yyvsp[0].x)/2.0;
 		  (yyval.spec)->flags |= HAS_RADIUS;
 		}
+#line 2987 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 92:
-
-/* Line 1806 of yacc.c  */
-#line 748 "pic.y"
+#line 746 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->flags |= HAS_SEGMENT;
 		  switch ((yyval.spec)->dir) {
 		  case UP_DIRECTION:
-		    (yyval.spec)->segment_pos.y += (yyvsp[(2) - (2)].x);
+		    (yyval.spec)->segment_pos.y += (yyvsp[0].x);
 		    break;
 		  case DOWN_DIRECTION:
-		    (yyval.spec)->segment_pos.y -= (yyvsp[(2) - (2)].x);
+		    (yyval.spec)->segment_pos.y -= (yyvsp[0].x);
 		    break;
 		  case RIGHT_DIRECTION:
-		    (yyval.spec)->segment_pos.x += (yyvsp[(2) - (2)].x);
+		    (yyval.spec)->segment_pos.x += (yyvsp[0].x);
 		    break;
 		  case LEFT_DIRECTION:
-		    (yyval.spec)->segment_pos.x -= (yyvsp[(2) - (2)].x);
+		    (yyval.spec)->segment_pos.x -= (yyvsp[0].x);
 		    break;
 		  }
 		}
+#line 3010 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 93:
-
-/* Line 1806 of yacc.c  */
-#line 767 "pic.y"
+#line 765 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->dir = UP_DIRECTION;
 		  (yyval.spec)->flags |= HAS_SEGMENT;
 		  (yyval.spec)->segment_pos.y += (yyval.spec)->segment_height;
 		}
+#line 3021 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 94:
-
-/* Line 1806 of yacc.c  */
-#line 774 "pic.y"
+#line 772 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->dir = UP_DIRECTION;
 		  (yyval.spec)->flags |= HAS_SEGMENT;
-		  (yyval.spec)->segment_pos.y += (yyvsp[(3) - (3)].x);
+		  (yyval.spec)->segment_pos.y += (yyvsp[0].x);
 		}
+#line 3032 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 95:
-
-/* Line 1806 of yacc.c  */
-#line 781 "pic.y"
+#line 779 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->dir = DOWN_DIRECTION;
 		  (yyval.spec)->flags |= HAS_SEGMENT;
 		  (yyval.spec)->segment_pos.y -= (yyval.spec)->segment_height;
 		}
+#line 3043 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 96:
-
-/* Line 1806 of yacc.c  */
-#line 788 "pic.y"
+#line 786 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->dir = DOWN_DIRECTION;
 		  (yyval.spec)->flags |= HAS_SEGMENT;
-		  (yyval.spec)->segment_pos.y -= (yyvsp[(3) - (3)].x);
+		  (yyval.spec)->segment_pos.y -= (yyvsp[0].x);
 		}
+#line 3054 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 97:
-
-/* Line 1806 of yacc.c  */
-#line 795 "pic.y"
+#line 793 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->dir = RIGHT_DIRECTION;
 		  (yyval.spec)->flags |= HAS_SEGMENT;
 		  (yyval.spec)->segment_pos.x += (yyval.spec)->segment_width;
 		}
+#line 3065 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 98:
-
-/* Line 1806 of yacc.c  */
-#line 802 "pic.y"
+#line 800 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->dir = RIGHT_DIRECTION;
 		  (yyval.spec)->flags |= HAS_SEGMENT;
-		  (yyval.spec)->segment_pos.x += (yyvsp[(3) - (3)].x);
+		  (yyval.spec)->segment_pos.x += (yyvsp[0].x);
 		}
+#line 3076 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 99:
-
-/* Line 1806 of yacc.c  */
-#line 809 "pic.y"
+#line 807 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->dir = LEFT_DIRECTION;
 		  (yyval.spec)->flags |= HAS_SEGMENT;
 		  (yyval.spec)->segment_pos.x -= (yyval.spec)->segment_width;
 		}
+#line 3087 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 100:
-
-/* Line 1806 of yacc.c  */
-#line 816 "pic.y"
+#line 814 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->dir = LEFT_DIRECTION;
 		  (yyval.spec)->flags |= HAS_SEGMENT;
-		  (yyval.spec)->segment_pos.x -= (yyvsp[(3) - (3)].x);
+		  (yyval.spec)->segment_pos.x -= (yyvsp[0].x);
 		}
+#line 3098 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 101:
-
-/* Line 1806 of yacc.c  */
-#line 823 "pic.y"
+#line 821 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= HAS_FROM;
-		  (yyval.spec)->from.x = (yyvsp[(3) - (3)].pair).x;
-		  (yyval.spec)->from.y = (yyvsp[(3) - (3)].pair).y;
+		  (yyval.spec)->from.x = (yyvsp[0].pair).x;
+		  (yyval.spec)->from.y = (yyvsp[0].pair).y;
 		}
+#line 3109 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 102:
-
-/* Line 1806 of yacc.c  */
-#line 830 "pic.y"
+#line 828 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  if ((yyval.spec)->flags & HAS_SEGMENT)
 		    (yyval.spec)->segment_list = new segment((yyval.spec)->segment_pos,
 						   (yyval.spec)->segment_is_absolute,
 						   (yyval.spec)->segment_list);
 		  (yyval.spec)->flags |= HAS_SEGMENT;
-		  (yyval.spec)->segment_pos.x = (yyvsp[(3) - (3)].pair).x;
-		  (yyval.spec)->segment_pos.y = (yyvsp[(3) - (3)].pair).y;
+		  (yyval.spec)->segment_pos.x = (yyvsp[0].pair).x;
+		  (yyval.spec)->segment_pos.y = (yyvsp[0].pair).y;
 		  (yyval.spec)->segment_is_absolute = 1;
 		  (yyval.spec)->flags |= HAS_TO;
-		  (yyval.spec)->to.x = (yyvsp[(3) - (3)].pair).x;
-		  (yyval.spec)->to.y = (yyvsp[(3) - (3)].pair).y;
+		  (yyval.spec)->to.x = (yyvsp[0].pair).x;
+		  (yyval.spec)->to.y = (yyvsp[0].pair).y;
 		}
+#line 3128 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 103:
-
-/* Line 1806 of yacc.c  */
-#line 845 "pic.y"
+#line 843 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= HAS_AT;
-		  (yyval.spec)->at.x = (yyvsp[(3) - (3)].pair).x;
-		  (yyval.spec)->at.y = (yyvsp[(3) - (3)].pair).y;
+		  (yyval.spec)->at.x = (yyvsp[0].pair).x;
+		  (yyval.spec)->at.y = (yyvsp[0].pair).y;
 		  if ((yyval.spec)->type != ARC_OBJECT) {
 		    (yyval.spec)->flags |= HAS_FROM;
-		    (yyval.spec)->from.x = (yyvsp[(3) - (3)].pair).x;
-		    (yyval.spec)->from.y = (yyvsp[(3) - (3)].pair).y;
+		    (yyval.spec)->from.x = (yyvsp[0].pair).x;
+		    (yyval.spec)->from.y = (yyvsp[0].pair).y;
 		  }
 		}
+#line 3144 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 104:
-
-/* Line 1806 of yacc.c  */
-#line 857 "pic.y"
+#line 855 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= HAS_WITH;
-		  (yyval.spec)->with = (yyvsp[(3) - (3)].pth);
+		  (yyval.spec)->with = (yyvsp[0].pth);
 		}
+#line 3154 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 105:
-
-/* Line 1806 of yacc.c  */
-#line 863 "pic.y"
+#line 861 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= HAS_WITH;
 		  position pos;
-		  pos.x = (yyvsp[(3) - (3)].pair).x;
-		  pos.y = (yyvsp[(3) - (3)].pair).y;
+		  pos.x = (yyvsp[0].pair).x;
+		  pos.y = (yyvsp[0].pair).y;
 		  (yyval.spec)->with = new path(pos);
 		}
+#line 3167 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 106:
-
-/* Line 1806 of yacc.c  */
-#line 872 "pic.y"
+#line 870 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= HAS_SEGMENT;
-		  (yyval.spec)->segment_pos.x += (yyvsp[(3) - (3)].pair).x;
-		  (yyval.spec)->segment_pos.y += (yyvsp[(3) - (3)].pair).y;
+		  (yyval.spec)->segment_pos.x += (yyvsp[0].pair).x;
+		  (yyval.spec)->segment_pos.y += (yyvsp[0].pair).y;
 		}
+#line 3178 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 107:
-
-/* Line 1806 of yacc.c  */
-#line 879 "pic.y"
+#line 877 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  if (!((yyval.spec)->flags & HAS_SEGMENT))
 		    switch ((yyval.spec)->dir) {
 		    case UP_DIRECTION:
@@ -3556,148 +3203,135 @@ yyreduce:
 		  (yyval.spec)->segment_pos.x = (yyval.spec)->segment_pos.y = 0.0;
 		  (yyval.spec)->segment_is_absolute = 0;
 		}
+#line 3207 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 108:
-
-/* Line 1806 of yacc.c  */
-#line 904 "pic.y"
+#line 902 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);	// nothing
+		  (yyval.spec) = (yyvsp[-1].spec);	// nothing
 		}
+#line 3215 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 109:
-
-/* Line 1806 of yacc.c  */
-#line 908 "pic.y"
+#line 906 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->flags |= IS_DOTTED;
 		  lookup_variable("dashwid", & (yyval.spec)->dash_width);
 		}
+#line 3225 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 110:
-
-/* Line 1806 of yacc.c  */
-#line 914 "pic.y"
+#line 912 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= IS_DOTTED;
-		  (yyval.spec)->dash_width = (yyvsp[(3) - (3)].x);
+		  (yyval.spec)->dash_width = (yyvsp[0].x);
 		}
+#line 3235 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 111:
-
-/* Line 1806 of yacc.c  */
-#line 920 "pic.y"
+#line 918 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->flags |= IS_DASHED;
 		  lookup_variable("dashwid", & (yyval.spec)->dash_width);
 		}
+#line 3245 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 112:
-
-/* Line 1806 of yacc.c  */
-#line 926 "pic.y"
+#line 924 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= IS_DASHED;
-		  (yyval.spec)->dash_width = (yyvsp[(3) - (3)].x);
+		  (yyval.spec)->dash_width = (yyvsp[0].x);
 		}
+#line 3255 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 113:
-
-/* Line 1806 of yacc.c  */
-#line 932 "pic.y"
+#line 930 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->flags |= IS_DEFAULT_FILLED;
 		}
+#line 3264 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 114:
-
-/* Line 1806 of yacc.c  */
-#line 937 "pic.y"
+#line 935 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= IS_FILLED;
-		  (yyval.spec)->fill = (yyvsp[(3) - (3)].x);
+		  (yyval.spec)->fill = (yyvsp[0].x);
 		}
+#line 3274 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 115:
-
-/* Line 1806 of yacc.c  */
-#line 943 "pic.y"
+#line 941 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= IS_XSLANTED;
-		  (yyval.spec)->xslanted = (yyvsp[(3) - (3)].x);
+		  (yyval.spec)->xslanted = (yyvsp[0].x);
 		}
+#line 3284 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 116:
-
-/* Line 1806 of yacc.c  */
-#line 949 "pic.y"
+#line 947 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= IS_YSLANTED;
-		  (yyval.spec)->yslanted = (yyvsp[(3) - (3)].x);
+		  (yyval.spec)->yslanted = (yyvsp[0].x);
 		}
+#line 3294 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 117:
-
-/* Line 1806 of yacc.c  */
-#line 955 "pic.y"
+#line 953 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= (IS_SHADED | IS_FILLED);
-		  (yyval.spec)->shaded = new char[strlen((yyvsp[(3) - (3)].lstr).str)+1];
-		  strcpy((yyval.spec)->shaded, (yyvsp[(3) - (3)].lstr).str);
+		  (yyval.spec)->shaded = new char[strlen((yyvsp[0].lstr).str)+1];
+		  strcpy((yyval.spec)->shaded, (yyvsp[0].lstr).str);
 		}
+#line 3305 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 118:
-
-/* Line 1806 of yacc.c  */
-#line 962 "pic.y"
+#line 960 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= (IS_SHADED | IS_OUTLINED | IS_FILLED);
-		  (yyval.spec)->shaded = new char[strlen((yyvsp[(3) - (3)].lstr).str)+1];
-		  strcpy((yyval.spec)->shaded, (yyvsp[(3) - (3)].lstr).str);
-		  (yyval.spec)->outlined = new char[strlen((yyvsp[(3) - (3)].lstr).str)+1];
-		  strcpy((yyval.spec)->outlined, (yyvsp[(3) - (3)].lstr).str);
+		  (yyval.spec)->shaded = new char[strlen((yyvsp[0].lstr).str)+1];
+		  strcpy((yyval.spec)->shaded, (yyvsp[0].lstr).str);
+		  (yyval.spec)->outlined = new char[strlen((yyvsp[0].lstr).str)+1];
+		  strcpy((yyval.spec)->outlined, (yyvsp[0].lstr).str);
 		}
+#line 3318 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 119:
-
-/* Line 1806 of yacc.c  */
-#line 971 "pic.y"
+#line 969 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= IS_OUTLINED;
-		  (yyval.spec)->outlined = new char[strlen((yyvsp[(3) - (3)].lstr).str)+1];
-		  strcpy((yyval.spec)->outlined, (yyvsp[(3) - (3)].lstr).str);
+		  (yyval.spec)->outlined = new char[strlen((yyvsp[0].lstr).str)+1];
+		  strcpy((yyval.spec)->outlined, (yyvsp[0].lstr).str);
 		}
+#line 3329 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 120:
-
-/* Line 1806 of yacc.c  */
-#line 978 "pic.y"
+#line 976 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  // line chop chop means line chop 0 chop 0
 		  if ((yyval.spec)->flags & IS_DEFAULT_CHOPPED) {
 		    (yyval.spec)->flags |= IS_CHOPPED;
@@ -3711,119 +3345,109 @@ yyreduce:
 		    (yyval.spec)->flags |= IS_DEFAULT_CHOPPED;
 		  }
 		}
+#line 3349 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 121:
-
-/* Line 1806 of yacc.c  */
-#line 994 "pic.y"
+#line 992 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  if ((yyval.spec)->flags & IS_DEFAULT_CHOPPED) {
 		    (yyval.spec)->flags |= IS_CHOPPED;
 		    (yyval.spec)->flags &= ~IS_DEFAULT_CHOPPED;
 		    (yyval.spec)->start_chop = 0.0;
-		    (yyval.spec)->end_chop = (yyvsp[(3) - (3)].x);
+		    (yyval.spec)->end_chop = (yyvsp[0].x);
 		  }
 		  else if ((yyval.spec)->flags & IS_CHOPPED) {
-		    (yyval.spec)->end_chop = (yyvsp[(3) - (3)].x);
+		    (yyval.spec)->end_chop = (yyvsp[0].x);
 		  }
 		  else {
-		    (yyval.spec)->start_chop = (yyval.spec)->end_chop = (yyvsp[(3) - (3)].x);
+		    (yyval.spec)->start_chop = (yyval.spec)->end_chop = (yyvsp[0].x);
 		    (yyval.spec)->flags |= IS_CHOPPED;
 		  }
 		}
+#line 3370 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 122:
-
-/* Line 1806 of yacc.c  */
-#line 1011 "pic.y"
+#line 1009 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->flags |= IS_SAME;
 		}
+#line 3379 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 123:
-
-/* Line 1806 of yacc.c  */
-#line 1016 "pic.y"
+#line 1014 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->flags |= IS_INVISIBLE;
 		}
+#line 3388 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 124:
-
-/* Line 1806 of yacc.c  */
-#line 1021 "pic.y"
+#line 1019 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->flags |= HAS_LEFT_ARROW_HEAD;
 		}
+#line 3397 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 125:
-
-/* Line 1806 of yacc.c  */
-#line 1026 "pic.y"
+#line 1024 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->flags |= HAS_RIGHT_ARROW_HEAD;
 		}
+#line 3406 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 126:
-
-/* Line 1806 of yacc.c  */
-#line 1031 "pic.y"
+#line 1029 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->flags |= (HAS_LEFT_ARROW_HEAD|HAS_RIGHT_ARROW_HEAD);
 		}
+#line 3415 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 127:
-
-/* Line 1806 of yacc.c  */
-#line 1036 "pic.y"
+#line 1034 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->flags |= IS_CLOCKWISE;
 		}
+#line 3424 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 128:
-
-/* Line 1806 of yacc.c  */
-#line 1041 "pic.y"
+#line 1039 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->flags &= ~IS_CLOCKWISE;
 		}
+#line 3433 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 129:
-
-/* Line 1806 of yacc.c  */
-#line 1046 "pic.y"
+#line 1044 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  text_item **p;
 		  for (p = & (yyval.spec)->text; *p; p = &(*p)->next)
 		    ;
-		  *p = new text_item((yyvsp[(2) - (2)].lstr).str, (yyvsp[(2) - (2)].lstr).filename, (yyvsp[(2) - (2)].lstr).lineno);
+		  *p = new text_item((yyvsp[0].lstr).str, (yyvsp[0].lstr).filename, (yyvsp[0].lstr).lineno);
 		}
+#line 3445 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 130:
-
-/* Line 1806 of yacc.c  */
-#line 1054 "pic.y"
+#line 1052 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  if ((yyval.spec)->text) {
 		    text_item *p;
 		    for (p = (yyval.spec)->text; p->next; p = p->next)
@@ -3831,14 +3455,13 @@ yyreduce:
 		    p->adj.h = LEFT_ADJUST;
 		  }
 		}
+#line 3459 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 131:
-
-/* Line 1806 of yacc.c  */
-#line 1064 "pic.y"
+#line 1062 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  if ((yyval.spec)->text) {
 		    text_item *p;
 		    for (p = (yyval.spec)->text; p->next; p = p->next)
@@ -3846,14 +3469,13 @@ yyreduce:
 		    p->adj.h = RIGHT_ADJUST;
 		  }
 		}
+#line 3473 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 132:
-
-/* Line 1806 of yacc.c  */
-#line 1074 "pic.y"
+#line 1072 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  if ((yyval.spec)->text) {
 		    text_item *p;
 		    for (p = (yyval.spec)->text; p->next; p = p->next)
@@ -3861,14 +3483,13 @@ yyreduce:
 		    p->adj.v = ABOVE_ADJUST;
 		  }
 		}
+#line 3487 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 133:
-
-/* Line 1806 of yacc.c  */
-#line 1084 "pic.y"
+#line 1082 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  if ((yyval.spec)->text) {
 		    text_item *p;
 		    for (p = (yyval.spec)->text; p->next; p = p->next)
@@ -3876,66 +3497,60 @@ yyreduce:
 		    p->adj.v = BELOW_ADJUST;
 		  }
 		}
+#line 3501 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 134:
-
-/* Line 1806 of yacc.c  */
-#line 1094 "pic.y"
+#line 1092 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (3)].spec);
+		  (yyval.spec) = (yyvsp[-2].spec);
 		  (yyval.spec)->flags |= HAS_THICKNESS;
-		  (yyval.spec)->thickness = (yyvsp[(3) - (3)].x);
+		  (yyval.spec)->thickness = (yyvsp[0].x);
 		}
+#line 3511 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 135:
-
-/* Line 1806 of yacc.c  */
-#line 1100 "pic.y"
+#line 1098 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.spec) = (yyvsp[(1) - (2)].spec);
+		  (yyval.spec) = (yyvsp[-1].spec);
 		  (yyval.spec)->flags |= IS_ALIGNED;
 		}
+#line 3520 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 136:
-
-/* Line 1806 of yacc.c  */
-#line 1108 "pic.y"
-    { (yyval.lstr) = (yyvsp[(1) - (1)].lstr); }
+#line 1106 "pic.y" /* yacc.c:1646  */
+    { (yyval.lstr) = (yyvsp[0].lstr); }
+#line 3526 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 137:
-
-/* Line 1806 of yacc.c  */
-#line 1110 "pic.y"
+#line 1108 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.lstr).filename = (yyvsp[(3) - (5)].lstr).filename;
-		  (yyval.lstr).lineno = (yyvsp[(3) - (5)].lstr).lineno;
-		  (yyval.lstr).str = do_sprintf((yyvsp[(3) - (5)].lstr).str, (yyvsp[(4) - (5)].dv).v, (yyvsp[(4) - (5)].dv).nv);
-		  a_delete (yyvsp[(4) - (5)].dv).v;
-		  a_delete (yyvsp[(3) - (5)].lstr).str;
+		  (yyval.lstr).filename = (yyvsp[-2].lstr).filename;
+		  (yyval.lstr).lineno = (yyvsp[-2].lstr).lineno;
+		  (yyval.lstr).str = do_sprintf((yyvsp[-2].lstr).str, (yyvsp[-1].dv).v, (yyvsp[-1].dv).nv);
+		  a_delete (yyvsp[-1].dv).v;
+		  a_delete (yyvsp[-2].lstr).str;
 		}
+#line 3538 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 138:
-
-/* Line 1806 of yacc.c  */
-#line 1121 "pic.y"
+#line 1119 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.dv).v = 0;
 		  (yyval.dv).nv = 0;
 		  (yyval.dv).maxv = 0;
 		}
+#line 3548 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 139:
-
-/* Line 1806 of yacc.c  */
-#line 1127 "pic.y"
+#line 1125 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.dv) = (yyvsp[(1) - (3)].dv);
+		  (yyval.dv) = (yyvsp[-2].dv);
 		  if ((yyval.dv).nv >= (yyval.dv).maxv) {
 		    if ((yyval.dv).nv == 0) {
 		      (yyval.dv).v = new double[4];
@@ -3957,853 +3572,756 @@ yyreduce:
 		      a_delete oldv;
 		    }
 		  }
-		  (yyval.dv).v[(yyval.dv).nv] = (yyvsp[(3) - (3)].x);
+		  (yyval.dv).v[(yyval.dv).nv] = (yyvsp[0].x);
 		  (yyval.dv).nv += 1;
 		}
+#line 3579 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 140:
-
-/* Line 1806 of yacc.c  */
-#line 1157 "pic.y"
-    { (yyval.pair) = (yyvsp[(1) - (1)].pair); }
+#line 1155 "pic.y" /* yacc.c:1646  */
+    { (yyval.pair) = (yyvsp[0].pair); }
+#line 3585 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 141:
-
-/* Line 1806 of yacc.c  */
-#line 1159 "pic.y"
+#line 1157 "pic.y" /* yacc.c:1646  */
     {
-		  position pos = (yyvsp[(1) - (1)].pl);
+		  position pos = (yyvsp[0].pl);
 		  (yyval.pair).x = pos.x;
 		  (yyval.pair).y = pos.y;
 		}
+#line 3595 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 142:
-
-/* Line 1806 of yacc.c  */
-#line 1165 "pic.y"
+#line 1163 "pic.y" /* yacc.c:1646  */
     {
-		  position pos = (yyvsp[(2) - (3)].pl);
+		  position pos = (yyvsp[-1].pl);
 		  (yyval.pair).x = pos.x;
 		  (yyval.pair).y = pos.y;
 		}
+#line 3605 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 143:
-
-/* Line 1806 of yacc.c  */
-#line 1174 "pic.y"
-    { (yyval.pair) = (yyvsp[(1) - (1)].pair); }
+#line 1172 "pic.y" /* yacc.c:1646  */
+    { (yyval.pair) = (yyvsp[0].pair); }
+#line 3611 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 144:
-
-/* Line 1806 of yacc.c  */
-#line 1176 "pic.y"
+#line 1174 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pair).x = (yyvsp[(1) - (3)].pair).x + (yyvsp[(3) - (3)].pair).x;
-		  (yyval.pair).y = (yyvsp[(1) - (3)].pair).y + (yyvsp[(3) - (3)].pair).y;
+		  (yyval.pair).x = (yyvsp[-2].pair).x + (yyvsp[0].pair).x;
+		  (yyval.pair).y = (yyvsp[-2].pair).y + (yyvsp[0].pair).y;
 		}
+#line 3620 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 145:
-
-/* Line 1806 of yacc.c  */
-#line 1181 "pic.y"
+#line 1179 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pair).x = (yyvsp[(2) - (5)].pair).x + (yyvsp[(4) - (5)].pair).x;
-		  (yyval.pair).y = (yyvsp[(2) - (5)].pair).y + (yyvsp[(4) - (5)].pair).y;
+		  (yyval.pair).x = (yyvsp[-3].pair).x + (yyvsp[-1].pair).x;
+		  (yyval.pair).y = (yyvsp[-3].pair).y + (yyvsp[-1].pair).y;
 		}
+#line 3629 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 146:
-
-/* Line 1806 of yacc.c  */
-#line 1186 "pic.y"
+#line 1184 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pair).x = (yyvsp[(1) - (3)].pair).x - (yyvsp[(3) - (3)].pair).x;
-		  (yyval.pair).y = (yyvsp[(1) - (3)].pair).y - (yyvsp[(3) - (3)].pair).y;
+		  (yyval.pair).x = (yyvsp[-2].pair).x - (yyvsp[0].pair).x;
+		  (yyval.pair).y = (yyvsp[-2].pair).y - (yyvsp[0].pair).y;
 		}
+#line 3638 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 147:
-
-/* Line 1806 of yacc.c  */
-#line 1191 "pic.y"
+#line 1189 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pair).x = (yyvsp[(2) - (5)].pair).x - (yyvsp[(4) - (5)].pair).x;
-		  (yyval.pair).y = (yyvsp[(2) - (5)].pair).y - (yyvsp[(4) - (5)].pair).y;
+		  (yyval.pair).x = (yyvsp[-3].pair).x - (yyvsp[-1].pair).x;
+		  (yyval.pair).y = (yyvsp[-3].pair).y - (yyvsp[-1].pair).y;
 		}
+#line 3647 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 148:
-
-/* Line 1806 of yacc.c  */
-#line 1196 "pic.y"
+#line 1194 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pair).x = (yyvsp[(2) - (5)].pair).x;
-		  (yyval.pair).y = (yyvsp[(4) - (5)].pair).y;
+		  (yyval.pair).x = (yyvsp[-3].pair).x;
+		  (yyval.pair).y = (yyvsp[-1].pair).y;
 		}
+#line 3656 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 149:
-
-/* Line 1806 of yacc.c  */
-#line 1201 "pic.y"
+#line 1199 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pair).x = (1.0 - (yyvsp[(1) - (5)].x))*(yyvsp[(3) - (5)].pair).x + (yyvsp[(1) - (5)].x)*(yyvsp[(5) - (5)].pair).x;
-		  (yyval.pair).y = (1.0 - (yyvsp[(1) - (5)].x))*(yyvsp[(3) - (5)].pair).y + (yyvsp[(1) - (5)].x)*(yyvsp[(5) - (5)].pair).y;
+		  (yyval.pair).x = (1.0 - (yyvsp[-4].x))*(yyvsp[-2].pair).x + (yyvsp[-4].x)*(yyvsp[0].pair).x;
+		  (yyval.pair).y = (1.0 - (yyvsp[-4].x))*(yyvsp[-2].pair).y + (yyvsp[-4].x)*(yyvsp[0].pair).y;
 		}
+#line 3665 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 150:
-
-/* Line 1806 of yacc.c  */
-#line 1206 "pic.y"
+#line 1204 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pair).x = (1.0 - (yyvsp[(2) - (7)].x))*(yyvsp[(4) - (7)].pair).x + (yyvsp[(2) - (7)].x)*(yyvsp[(6) - (7)].pair).x;
-		  (yyval.pair).y = (1.0 - (yyvsp[(2) - (7)].x))*(yyvsp[(4) - (7)].pair).y + (yyvsp[(2) - (7)].x)*(yyvsp[(6) - (7)].pair).y;
+		  (yyval.pair).x = (1.0 - (yyvsp[-5].x))*(yyvsp[-3].pair).x + (yyvsp[-5].x)*(yyvsp[-1].pair).x;
+		  (yyval.pair).y = (1.0 - (yyvsp[-5].x))*(yyvsp[-3].pair).y + (yyvsp[-5].x)*(yyvsp[-1].pair).y;
 		}
+#line 3674 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 151:
-
-/* Line 1806 of yacc.c  */
-#line 1212 "pic.y"
+#line 1210 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pair).x = (1.0 - (yyvsp[(1) - (6)].x))*(yyvsp[(3) - (6)].pair).x + (yyvsp[(1) - (6)].x)*(yyvsp[(5) - (6)].pair).x;
-		  (yyval.pair).y = (1.0 - (yyvsp[(1) - (6)].x))*(yyvsp[(3) - (6)].pair).y + (yyvsp[(1) - (6)].x)*(yyvsp[(5) - (6)].pair).y;
+		  (yyval.pair).x = (1.0 - (yyvsp[-5].x))*(yyvsp[-3].pair).x + (yyvsp[-5].x)*(yyvsp[-1].pair).x;
+		  (yyval.pair).y = (1.0 - (yyvsp[-5].x))*(yyvsp[-3].pair).y + (yyvsp[-5].x)*(yyvsp[-1].pair).y;
 		}
+#line 3683 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 152:
-
-/* Line 1806 of yacc.c  */
-#line 1217 "pic.y"
+#line 1215 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pair).x = (1.0 - (yyvsp[(2) - (8)].x))*(yyvsp[(4) - (8)].pair).x + (yyvsp[(2) - (8)].x)*(yyvsp[(6) - (8)].pair).x;
-		  (yyval.pair).y = (1.0 - (yyvsp[(2) - (8)].x))*(yyvsp[(4) - (8)].pair).y + (yyvsp[(2) - (8)].x)*(yyvsp[(6) - (8)].pair).y;
+		  (yyval.pair).x = (1.0 - (yyvsp[-6].x))*(yyvsp[-4].pair).x + (yyvsp[-6].x)*(yyvsp[-2].pair).x;
+		  (yyval.pair).y = (1.0 - (yyvsp[-6].x))*(yyvsp[-4].pair).y + (yyvsp[-6].x)*(yyvsp[-2].pair).y;
 		}
+#line 3692 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 155:
-
-/* Line 1806 of yacc.c  */
-#line 1230 "pic.y"
+#line 1228 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pair).x = (yyvsp[(1) - (3)].x);
-		  (yyval.pair).y = (yyvsp[(3) - (3)].x);
+		  (yyval.pair).x = (yyvsp[-2].x);
+		  (yyval.pair).y = (yyvsp[0].x);
 		}
+#line 3701 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 156:
-
-/* Line 1806 of yacc.c  */
-#line 1235 "pic.y"
-    { (yyval.pair) = (yyvsp[(2) - (3)].pair); }
+#line 1233 "pic.y" /* yacc.c:1646  */
+    { (yyval.pair) = (yyvsp[-1].pair); }
+#line 3707 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 157:
-
-/* Line 1806 of yacc.c  */
-#line 1241 "pic.y"
-    { (yyval.pl) = (yyvsp[(1) - (1)].pl); }
+#line 1239 "pic.y" /* yacc.c:1646  */
+    { (yyval.pl) = (yyvsp[0].pl); }
+#line 3713 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 158:
-
-/* Line 1806 of yacc.c  */
-#line 1243 "pic.y"
+#line 1241 "pic.y" /* yacc.c:1646  */
     {
-		  path pth((yyvsp[(2) - (2)].crn));
-		  if (!pth.follow((yyvsp[(1) - (2)].pl), & (yyval.pl)))
+		  path pth((yyvsp[0].crn));
+		  if (!pth.follow((yyvsp[-1].pl), & (yyval.pl)))
 		    YYABORT;
 		}
+#line 3723 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 159:
-
-/* Line 1806 of yacc.c  */
-#line 1249 "pic.y"
+#line 1247 "pic.y" /* yacc.c:1646  */
     {
-		  path pth((yyvsp[(1) - (2)].crn));
-		  if (!pth.follow((yyvsp[(2) - (2)].pl), & (yyval.pl)))
+		  path pth((yyvsp[-1].crn));
+		  if (!pth.follow((yyvsp[0].pl), & (yyval.pl)))
 		    YYABORT;
 		}
+#line 3733 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 160:
-
-/* Line 1806 of yacc.c  */
-#line 1255 "pic.y"
+#line 1253 "pic.y" /* yacc.c:1646  */
     {
-		  path pth((yyvsp[(1) - (3)].crn));
-		  if (!pth.follow((yyvsp[(3) - (3)].pl), & (yyval.pl)))
+		  path pth((yyvsp[-2].crn));
+		  if (!pth.follow((yyvsp[0].pl), & (yyval.pl)))
 		    YYABORT;
 		}
+#line 3743 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 161:
-
-/* Line 1806 of yacc.c  */
-#line 1261 "pic.y"
+#line 1259 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.pl).x = current_position.x;
 		  (yyval.pl).y = current_position.y;
 		  (yyval.pl).obj = 0;
 		}
+#line 3753 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 162:
-
-/* Line 1806 of yacc.c  */
-#line 1270 "pic.y"
+#line 1268 "pic.y" /* yacc.c:1646  */
     {
-		  place *p = lookup_label((yyvsp[(1) - (1)].str));
+		  place *p = lookup_label((yyvsp[0].str));
 		  if (!p) {
-		    lex_error("there is no place `%1'", (yyvsp[(1) - (1)].str));
+		    lex_error("there is no place `%1'", (yyvsp[0].str));
 		    YYABORT;
 		  }
 		  (yyval.pl) = *p;
-		  a_delete (yyvsp[(1) - (1)].str);
+		  a_delete (yyvsp[0].str);
 		}
+#line 3767 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 163:
-
-/* Line 1806 of yacc.c  */
-#line 1280 "pic.y"
-    { (yyval.pl).obj = (yyvsp[(1) - (1)].obj); }
+#line 1278 "pic.y" /* yacc.c:1646  */
+    { (yyval.pl).obj = (yyvsp[0].obj); }
+#line 3773 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 164:
-
-/* Line 1806 of yacc.c  */
-#line 1282 "pic.y"
+#line 1280 "pic.y" /* yacc.c:1646  */
     {
-		  path pth((yyvsp[(3) - (3)].str));
-		  if (!pth.follow((yyvsp[(1) - (3)].pl), & (yyval.pl)))
+		  path pth((yyvsp[0].str));
+		  if (!pth.follow((yyvsp[-2].pl), & (yyval.pl)))
 		    YYABORT;
 		}
+#line 3783 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 165:
-
-/* Line 1806 of yacc.c  */
-#line 1291 "pic.y"
-    { (yyval.n) = (yyvsp[(1) - (1)].n); }
+#line 1289 "pic.y" /* yacc.c:1646  */
+    { (yyval.n) = (yyvsp[0].n); }
+#line 3789 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 166:
-
-/* Line 1806 of yacc.c  */
-#line 1293 "pic.y"
+#line 1291 "pic.y" /* yacc.c:1646  */
     {
 		  // XXX Check for overflow (and non-integers?).
-		  (yyval.n) = (int)(yyvsp[(2) - (3)].x);
+		  (yyval.n) = (int)(yyvsp[-1].x);
 		}
+#line 3798 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 167:
-
-/* Line 1806 of yacc.c  */
-#line 1301 "pic.y"
+#line 1299 "pic.y" /* yacc.c:1646  */
     { (yyval.n) = 1; }
+#line 3804 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 168:
-
-/* Line 1806 of yacc.c  */
-#line 1303 "pic.y"
-    { (yyval.n) = (yyvsp[(1) - (2)].n); }
+#line 1301 "pic.y" /* yacc.c:1646  */
+    { (yyval.n) = (yyvsp[-1].n); }
+#line 3810 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 169:
-
-/* Line 1806 of yacc.c  */
-#line 1308 "pic.y"
+#line 1306 "pic.y" /* yacc.c:1646  */
     {
 		  int count = 0;
 		  object *p;
 		  for (p = olist.head; p != 0; p = p->next)
-		    if (p->type() == (yyvsp[(2) - (2)].obtype) && ++count == (yyvsp[(1) - (2)].n)) {
+		    if (p->type() == (yyvsp[0].obtype) && ++count == (yyvsp[-1].n)) {
 		      (yyval.obj) = p;
 		      break;
 		    }
 		  if (p == 0) {
-		    lex_error("there is no %1%2 %3", (yyvsp[(1) - (2)].n), ordinal_postfix((yyvsp[(1) - (2)].n)),
-			      object_type_name((yyvsp[(2) - (2)].obtype)));
+		    lex_error("there is no %1%2 %3", (yyvsp[-1].n), ordinal_postfix((yyvsp[-1].n)),
+			      object_type_name((yyvsp[0].obtype)));
 		    YYABORT;
 		  }
 		}
+#line 3829 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 170:
-
-/* Line 1806 of yacc.c  */
-#line 1323 "pic.y"
+#line 1321 "pic.y" /* yacc.c:1646  */
     {
 		  int count = 0;
 		  object *p;
 		  for (p = olist.tail; p != 0; p = p->prev)
-		    if (p->type() == (yyvsp[(2) - (2)].obtype) && ++count == (yyvsp[(1) - (2)].n)) {
+		    if (p->type() == (yyvsp[0].obtype) && ++count == (yyvsp[-1].n)) {
 		      (yyval.obj) = p;
 		      break;
 		    }
 		  if (p == 0) {
-		    lex_error("there is no %1%2 last %3", (yyvsp[(1) - (2)].n),
-			      ordinal_postfix((yyvsp[(1) - (2)].n)), object_type_name((yyvsp[(2) - (2)].obtype)));
+		    lex_error("there is no %1%2 last %3", (yyvsp[-1].n),
+			      ordinal_postfix((yyvsp[-1].n)), object_type_name((yyvsp[0].obtype)));
 		    YYABORT;
 		  }
 		}
+#line 3848 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 171:
-
-/* Line 1806 of yacc.c  */
-#line 1341 "pic.y"
+#line 1339 "pic.y" /* yacc.c:1646  */
     { (yyval.obtype) = BOX_OBJECT; }
+#line 3854 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 172:
-
-/* Line 1806 of yacc.c  */
-#line 1343 "pic.y"
+#line 1341 "pic.y" /* yacc.c:1646  */
     { (yyval.obtype) = CIRCLE_OBJECT; }
+#line 3860 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 173:
-
-/* Line 1806 of yacc.c  */
-#line 1345 "pic.y"
+#line 1343 "pic.y" /* yacc.c:1646  */
     { (yyval.obtype) = ELLIPSE_OBJECT; }
+#line 3866 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 174:
-
-/* Line 1806 of yacc.c  */
-#line 1347 "pic.y"
+#line 1345 "pic.y" /* yacc.c:1646  */
     { (yyval.obtype) = ARC_OBJECT; }
+#line 3872 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 175:
-
-/* Line 1806 of yacc.c  */
-#line 1349 "pic.y"
+#line 1347 "pic.y" /* yacc.c:1646  */
     { (yyval.obtype) = LINE_OBJECT; }
+#line 3878 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 176:
-
-/* Line 1806 of yacc.c  */
-#line 1351 "pic.y"
+#line 1349 "pic.y" /* yacc.c:1646  */
     { (yyval.obtype) = ARROW_OBJECT; }
+#line 3884 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 177:
-
-/* Line 1806 of yacc.c  */
-#line 1353 "pic.y"
+#line 1351 "pic.y" /* yacc.c:1646  */
     { (yyval.obtype) = SPLINE_OBJECT; }
+#line 3890 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 178:
-
-/* Line 1806 of yacc.c  */
-#line 1355 "pic.y"
+#line 1353 "pic.y" /* yacc.c:1646  */
     { (yyval.obtype) = BLOCK_OBJECT; }
+#line 3896 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 179:
-
-/* Line 1806 of yacc.c  */
-#line 1357 "pic.y"
+#line 1355 "pic.y" /* yacc.c:1646  */
     { (yyval.obtype) = TEXT_OBJECT; }
+#line 3902 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 180:
-
-/* Line 1806 of yacc.c  */
-#line 1362 "pic.y"
-    { (yyval.pth) = new path((yyvsp[(2) - (2)].str)); }
+#line 1360 "pic.y" /* yacc.c:1646  */
+    { (yyval.pth) = new path((yyvsp[0].str)); }
+#line 3908 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 181:
-
-/* Line 1806 of yacc.c  */
-#line 1364 "pic.y"
+#line 1362 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pth) = (yyvsp[(1) - (3)].pth);
-		  (yyval.pth)->append((yyvsp[(3) - (3)].str));
+		  (yyval.pth) = (yyvsp[-2].pth);
+		  (yyval.pth)->append((yyvsp[0].str));
 		}
+#line 3917 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 182:
-
-/* Line 1806 of yacc.c  */
-#line 1372 "pic.y"
-    { (yyval.pth) = new path((yyvsp[(1) - (1)].crn)); }
+#line 1370 "pic.y" /* yacc.c:1646  */
+    { (yyval.pth) = new path((yyvsp[0].crn)); }
+#line 3923 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 183:
-
-/* Line 1806 of yacc.c  */
-#line 1376 "pic.y"
-    { (yyval.pth) = (yyvsp[(1) - (1)].pth); }
+#line 1374 "pic.y" /* yacc.c:1646  */
+    { (yyval.pth) = (yyvsp[0].pth); }
+#line 3929 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 184:
-
-/* Line 1806 of yacc.c  */
-#line 1378 "pic.y"
+#line 1376 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pth) = (yyvsp[(1) - (2)].pth);
-		  (yyval.pth)->append((yyvsp[(2) - (2)].crn));
+		  (yyval.pth) = (yyvsp[-1].pth);
+		  (yyval.pth)->append((yyvsp[0].crn));
 		}
+#line 3938 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 185:
-
-/* Line 1806 of yacc.c  */
-#line 1386 "pic.y"
-    { (yyval.pth) = (yyvsp[(1) - (1)].pth); }
+#line 1384 "pic.y" /* yacc.c:1646  */
+    { (yyval.pth) = (yyvsp[0].pth); }
+#line 3944 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 186:
-
-/* Line 1806 of yacc.c  */
-#line 1388 "pic.y"
+#line 1386 "pic.y" /* yacc.c:1646  */
     {
-		  (yyval.pth) = (yyvsp[(2) - (5)].pth);
-		  (yyval.pth)->set_ypath((yyvsp[(4) - (5)].pth));
+		  (yyval.pth) = (yyvsp[-3].pth);
+		  (yyval.pth)->set_ypath((yyvsp[-1].pth));
 		}
+#line 3953 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 187:
-
-/* Line 1806 of yacc.c  */
-#line 1394 "pic.y"
+#line 1392 "pic.y" /* yacc.c:1646  */
     {
 		  lex_warning("`%1%2 last %3' in `with' argument ignored",
-			      (yyvsp[(1) - (4)].n), ordinal_postfix((yyvsp[(1) - (4)].n)), object_type_name((yyvsp[(3) - (4)].obtype)));
-		  (yyval.pth) = (yyvsp[(4) - (4)].pth);
+			      (yyvsp[-3].n), ordinal_postfix((yyvsp[-3].n)), object_type_name((yyvsp[-1].obtype)));
+		  (yyval.pth) = (yyvsp[0].pth);
 		}
+#line 3963 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 188:
-
-/* Line 1806 of yacc.c  */
-#line 1400 "pic.y"
+#line 1398 "pic.y" /* yacc.c:1646  */
     {
 		  lex_warning("`last %1' in `with' argument ignored",
-			      object_type_name((yyvsp[(2) - (3)].obtype)));
-		  (yyval.pth) = (yyvsp[(3) - (3)].pth);
+			      object_type_name((yyvsp[-1].obtype)));
+		  (yyval.pth) = (yyvsp[0].pth);
 		}
+#line 3973 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 189:
-
-/* Line 1806 of yacc.c  */
-#line 1406 "pic.y"
+#line 1404 "pic.y" /* yacc.c:1646  */
     {
 		  lex_warning("`%1%2 %3' in `with' argument ignored",
-			      (yyvsp[(1) - (3)].n), ordinal_postfix((yyvsp[(1) - (3)].n)), object_type_name((yyvsp[(2) - (3)].obtype)));
-		  (yyval.pth) = (yyvsp[(3) - (3)].pth);
+			      (yyvsp[-2].n), ordinal_postfix((yyvsp[-2].n)), object_type_name((yyvsp[-1].obtype)));
+		  (yyval.pth) = (yyvsp[0].pth);
 		}
+#line 3983 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 190:
-
-/* Line 1806 of yacc.c  */
-#line 1412 "pic.y"
+#line 1410 "pic.y" /* yacc.c:1646  */
     {
-		  lex_warning("initial `%1' in `with' argument ignored", (yyvsp[(1) - (2)].str));
-		  a_delete (yyvsp[(1) - (2)].str);
-		  (yyval.pth) = (yyvsp[(2) - (2)].pth);
+		  lex_warning("initial `%1' in `with' argument ignored", (yyvsp[-1].str));
+		  a_delete (yyvsp[-1].str);
+		  (yyval.pth) = (yyvsp[0].pth);
 		}
+#line 3993 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 191:
-
-/* Line 1806 of yacc.c  */
-#line 1421 "pic.y"
+#line 1419 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::north; }
+#line 3999 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 192:
-
-/* Line 1806 of yacc.c  */
-#line 1423 "pic.y"
+#line 1421 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::east; }
+#line 4005 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 193:
-
-/* Line 1806 of yacc.c  */
-#line 1425 "pic.y"
+#line 1423 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::west; }
+#line 4011 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 194:
-
-/* Line 1806 of yacc.c  */
-#line 1427 "pic.y"
+#line 1425 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::south; }
+#line 4017 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 195:
-
-/* Line 1806 of yacc.c  */
-#line 1429 "pic.y"
+#line 1427 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::north_east; }
+#line 4023 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 196:
-
-/* Line 1806 of yacc.c  */
-#line 1431 "pic.y"
+#line 1429 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object:: south_east; }
+#line 4029 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 197:
-
-/* Line 1806 of yacc.c  */
-#line 1433 "pic.y"
+#line 1431 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::north_west; }
+#line 4035 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 198:
-
-/* Line 1806 of yacc.c  */
-#line 1435 "pic.y"
+#line 1433 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::south_west; }
+#line 4041 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 199:
-
-/* Line 1806 of yacc.c  */
-#line 1437 "pic.y"
+#line 1435 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::center; }
+#line 4047 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 200:
-
-/* Line 1806 of yacc.c  */
-#line 1439 "pic.y"
+#line 1437 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::start; }
+#line 4053 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 201:
-
-/* Line 1806 of yacc.c  */
-#line 1441 "pic.y"
+#line 1439 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::end; }
+#line 4059 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 202:
-
-/* Line 1806 of yacc.c  */
-#line 1443 "pic.y"
+#line 1441 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::north; }
+#line 4065 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 203:
-
-/* Line 1806 of yacc.c  */
-#line 1445 "pic.y"
+#line 1443 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::south; }
+#line 4071 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 204:
-
-/* Line 1806 of yacc.c  */
-#line 1447 "pic.y"
+#line 1445 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::west; }
+#line 4077 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 205:
-
-/* Line 1806 of yacc.c  */
-#line 1449 "pic.y"
+#line 1447 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::east; }
+#line 4083 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 206:
-
-/* Line 1806 of yacc.c  */
-#line 1451 "pic.y"
+#line 1449 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::north_west; }
+#line 4089 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 207:
-
-/* Line 1806 of yacc.c  */
-#line 1453 "pic.y"
+#line 1451 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::south_west; }
+#line 4095 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 208:
-
-/* Line 1806 of yacc.c  */
-#line 1455 "pic.y"
+#line 1453 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::north_east; }
+#line 4101 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 209:
-
-/* Line 1806 of yacc.c  */
-#line 1457 "pic.y"
+#line 1455 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::south_east; }
+#line 4107 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 210:
-
-/* Line 1806 of yacc.c  */
-#line 1459 "pic.y"
+#line 1457 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::west; }
+#line 4113 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 211:
-
-/* Line 1806 of yacc.c  */
-#line 1461 "pic.y"
+#line 1459 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::east; }
+#line 4119 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 212:
-
-/* Line 1806 of yacc.c  */
-#line 1463 "pic.y"
+#line 1461 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::north_west; }
+#line 4125 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 213:
-
-/* Line 1806 of yacc.c  */
-#line 1465 "pic.y"
+#line 1463 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::south_west; }
+#line 4131 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 214:
-
-/* Line 1806 of yacc.c  */
-#line 1467 "pic.y"
+#line 1465 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::north_east; }
+#line 4137 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 215:
-
-/* Line 1806 of yacc.c  */
-#line 1469 "pic.y"
+#line 1467 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::south_east; }
+#line 4143 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 216:
-
-/* Line 1806 of yacc.c  */
-#line 1471 "pic.y"
+#line 1469 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::north; }
+#line 4149 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 217:
-
-/* Line 1806 of yacc.c  */
-#line 1473 "pic.y"
+#line 1471 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::south; }
+#line 4155 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 218:
-
-/* Line 1806 of yacc.c  */
-#line 1475 "pic.y"
+#line 1473 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::east; }
+#line 4161 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 219:
-
-/* Line 1806 of yacc.c  */
-#line 1477 "pic.y"
+#line 1475 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::west; }
+#line 4167 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 220:
-
-/* Line 1806 of yacc.c  */
-#line 1479 "pic.y"
+#line 1477 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::center; }
+#line 4173 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 221:
-
-/* Line 1806 of yacc.c  */
-#line 1481 "pic.y"
+#line 1479 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::start; }
+#line 4179 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 222:
-
-/* Line 1806 of yacc.c  */
-#line 1483 "pic.y"
+#line 1481 "pic.y" /* yacc.c:1646  */
     { (yyval.crn) = &object::end; }
+#line 4185 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 223:
-
-/* Line 1806 of yacc.c  */
-#line 1488 "pic.y"
-    { (yyval.x) = (yyvsp[(1) - (1)].x); }
+#line 1486 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = (yyvsp[0].x); }
+#line 4191 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 224:
-
-/* Line 1806 of yacc.c  */
-#line 1490 "pic.y"
-    { (yyval.x) = (yyvsp[(1) - (1)].x); }
+#line 1488 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = (yyvsp[0].x); }
+#line 4197 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 225:
-
-/* Line 1806 of yacc.c  */
-#line 1495 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) < (yyvsp[(3) - (3)].x)); }
+#line 1493 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) < (yyvsp[0].x)); }
+#line 4203 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 226:
-
-/* Line 1806 of yacc.c  */
-#line 1500 "pic.y"
+#line 1498 "pic.y" /* yacc.c:1646  */
     {
-		  if (!lookup_variable((yyvsp[(1) - (1)].str), & (yyval.x))) {
-		    lex_error("there is no variable `%1'", (yyvsp[(1) - (1)].str));
+		  if (!lookup_variable((yyvsp[0].str), & (yyval.x))) {
+		    lex_error("there is no variable `%1'", (yyvsp[0].str));
 		    YYABORT;
 		  }
-		  a_delete (yyvsp[(1) - (1)].str);
+		  a_delete (yyvsp[0].str);
 		}
+#line 4215 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 227:
-
-/* Line 1806 of yacc.c  */
-#line 1508 "pic.y"
-    { (yyval.x) = (yyvsp[(1) - (1)].x); }
+#line 1506 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = (yyvsp[0].x); }
+#line 4221 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 228:
-
-/* Line 1806 of yacc.c  */
-#line 1510 "pic.y"
+#line 1508 "pic.y" /* yacc.c:1646  */
     {
-		  if ((yyvsp[(1) - (2)].pl).obj != 0)
-		    (yyval.x) = (yyvsp[(1) - (2)].pl).obj->origin().x;
+		  if ((yyvsp[-1].pl).obj != 0)
+		    (yyval.x) = (yyvsp[-1].pl).obj->origin().x;
 		  else
-		    (yyval.x) = (yyvsp[(1) - (2)].pl).x;
+		    (yyval.x) = (yyvsp[-1].pl).x;
 		}
+#line 4232 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 229:
-
-/* Line 1806 of yacc.c  */
-#line 1517 "pic.y"
+#line 1515 "pic.y" /* yacc.c:1646  */
     {
-		  if ((yyvsp[(1) - (2)].pl).obj != 0)
-		    (yyval.x) = (yyvsp[(1) - (2)].pl).obj->origin().y;
+		  if ((yyvsp[-1].pl).obj != 0)
+		    (yyval.x) = (yyvsp[-1].pl).obj->origin().y;
 		  else
-		    (yyval.x) = (yyvsp[(1) - (2)].pl).y;
+		    (yyval.x) = (yyvsp[-1].pl).y;
 		}
+#line 4243 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 230:
-
-/* Line 1806 of yacc.c  */
-#line 1524 "pic.y"
+#line 1522 "pic.y" /* yacc.c:1646  */
     {
-		  if ((yyvsp[(1) - (2)].pl).obj != 0)
-		    (yyval.x) = (yyvsp[(1) - (2)].pl).obj->height();
+		  if ((yyvsp[-1].pl).obj != 0)
+		    (yyval.x) = (yyvsp[-1].pl).obj->height();
 		  else
 		    (yyval.x) = 0.0;
 		}
+#line 4254 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 231:
-
-/* Line 1806 of yacc.c  */
-#line 1531 "pic.y"
+#line 1529 "pic.y" /* yacc.c:1646  */
     {
-		  if ((yyvsp[(1) - (2)].pl).obj != 0)
-		    (yyval.x) = (yyvsp[(1) - (2)].pl).obj->width();
+		  if ((yyvsp[-1].pl).obj != 0)
+		    (yyval.x) = (yyvsp[-1].pl).obj->width();
 		  else
 		    (yyval.x) = 0.0;
 		}
+#line 4265 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 232:
-
-/* Line 1806 of yacc.c  */
-#line 1538 "pic.y"
+#line 1536 "pic.y" /* yacc.c:1646  */
     {
-		  if ((yyvsp[(1) - (2)].pl).obj != 0)
-		    (yyval.x) = (yyvsp[(1) - (2)].pl).obj->radius();
+		  if ((yyvsp[-1].pl).obj != 0)
+		    (yyval.x) = (yyvsp[-1].pl).obj->radius();
 		  else
 		    (yyval.x) = 0.0;
 		}
+#line 4276 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 233:
-
-/* Line 1806 of yacc.c  */
-#line 1545 "pic.y"
-    { (yyval.x) = (yyvsp[(1) - (3)].x) + (yyvsp[(3) - (3)].x); }
+#line 1543 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = (yyvsp[-2].x) + (yyvsp[0].x); }
+#line 4282 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 234:
-
-/* Line 1806 of yacc.c  */
-#line 1547 "pic.y"
-    { (yyval.x) = (yyvsp[(1) - (3)].x) - (yyvsp[(3) - (3)].x); }
+#line 1545 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = (yyvsp[-2].x) - (yyvsp[0].x); }
+#line 4288 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 235:
-
-/* Line 1806 of yacc.c  */
-#line 1549 "pic.y"
-    { (yyval.x) = (yyvsp[(1) - (3)].x) * (yyvsp[(3) - (3)].x); }
+#line 1547 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = (yyvsp[-2].x) * (yyvsp[0].x); }
+#line 4294 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 236:
-
-/* Line 1806 of yacc.c  */
-#line 1551 "pic.y"
+#line 1549 "pic.y" /* yacc.c:1646  */
     {
-		  if ((yyvsp[(3) - (3)].x) == 0.0) {
+		  if ((yyvsp[0].x) == 0.0) {
 		    lex_error("division by zero");
 		    YYABORT;
 		  }
-		  (yyval.x) = (yyvsp[(1) - (3)].x)/(yyvsp[(3) - (3)].x);
+		  (yyval.x) = (yyvsp[-2].x)/(yyvsp[0].x);
 		}
+#line 4306 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 237:
-
-/* Line 1806 of yacc.c  */
-#line 1559 "pic.y"
+#line 1557 "pic.y" /* yacc.c:1646  */
     {
-		  if ((yyvsp[(3) - (3)].x) == 0.0) {
+		  if ((yyvsp[0].x) == 0.0) {
 		    lex_error("modulus by zero");
 		    YYABORT;
 		  }
-		  (yyval.x) = fmod((yyvsp[(1) - (3)].x), (yyvsp[(3) - (3)].x));
+		  (yyval.x) = fmod((yyvsp[-2].x), (yyvsp[0].x));
 		}
+#line 4318 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 238:
-
-/* Line 1806 of yacc.c  */
-#line 1567 "pic.y"
+#line 1565 "pic.y" /* yacc.c:1646  */
     {
 		  errno = 0;
-		  (yyval.x) = pow((yyvsp[(1) - (3)].x), (yyvsp[(3) - (3)].x));
+		  (yyval.x) = pow((yyvsp[-2].x), (yyvsp[0].x));
 		  if (errno == EDOM) {
 		    lex_error("arguments to `^' operator out of domain");
 		    YYABORT;
@@ -4813,57 +4331,52 @@ yyreduce:
 		    YYABORT;
 		  }
 		}
+#line 4335 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 239:
-
-/* Line 1806 of yacc.c  */
-#line 1580 "pic.y"
-    { (yyval.x) = -(yyvsp[(2) - (2)].x); }
+#line 1578 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = -(yyvsp[0].x); }
+#line 4341 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 240:
-
-/* Line 1806 of yacc.c  */
-#line 1582 "pic.y"
-    { (yyval.x) = (yyvsp[(2) - (3)].x); }
+#line 1580 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = (yyvsp[-1].x); }
+#line 4347 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 241:
-
-/* Line 1806 of yacc.c  */
-#line 1584 "pic.y"
+#line 1582 "pic.y" /* yacc.c:1646  */
     {
 		  errno = 0;
-		  (yyval.x) = sin((yyvsp[(3) - (4)].x));
+		  (yyval.x) = sin((yyvsp[-1].x));
 		  if (errno == ERANGE) {
 		    lex_error("sin result out of range");
 		    YYABORT;
 		  }
 		}
+#line 4360 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 242:
-
-/* Line 1806 of yacc.c  */
-#line 1593 "pic.y"
+#line 1591 "pic.y" /* yacc.c:1646  */
     {
 		  errno = 0;
-		  (yyval.x) = cos((yyvsp[(3) - (4)].x));
+		  (yyval.x) = cos((yyvsp[-1].x));
 		  if (errno == ERANGE) {
 		    lex_error("cos result out of range");
 		    YYABORT;
 		  }
 		}
+#line 4373 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 243:
-
-/* Line 1806 of yacc.c  */
-#line 1602 "pic.y"
+#line 1600 "pic.y" /* yacc.c:1646  */
     {
 		  errno = 0;
-		  (yyval.x) = atan2((yyvsp[(3) - (6)].x), (yyvsp[(5) - (6)].x));
+		  (yyval.x) = atan2((yyvsp[-3].x), (yyvsp[-1].x));
 		  if (errno == EDOM) {
 		    lex_error("atan2 argument out of domain");
 		    YYABORT;
@@ -4873,159 +4386,141 @@ yyreduce:
 		    YYABORT;
 		  }
 		}
+#line 4390 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 244:
-
-/* Line 1806 of yacc.c  */
-#line 1615 "pic.y"
+#line 1613 "pic.y" /* yacc.c:1646  */
     {
 		  errno = 0;
-		  (yyval.x) = log10((yyvsp[(3) - (4)].x));
+		  (yyval.x) = log10((yyvsp[-1].x));
 		  if (errno == ERANGE) {
 		    lex_error("log result out of range");
 		    YYABORT;
 		  }
 		}
+#line 4403 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 245:
-
-/* Line 1806 of yacc.c  */
-#line 1624 "pic.y"
+#line 1622 "pic.y" /* yacc.c:1646  */
     {
 		  errno = 0;
-		  (yyval.x) = pow(10.0, (yyvsp[(3) - (4)].x));
+		  (yyval.x) = pow(10.0, (yyvsp[-1].x));
 		  if (errno == ERANGE) {
 		    lex_error("exp result out of range");
 		    YYABORT;
 		  }
 		}
+#line 4416 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 246:
-
-/* Line 1806 of yacc.c  */
-#line 1633 "pic.y"
+#line 1631 "pic.y" /* yacc.c:1646  */
     {
 		  errno = 0;
-		  (yyval.x) = sqrt((yyvsp[(3) - (4)].x));
+		  (yyval.x) = sqrt((yyvsp[-1].x));
 		  if (errno == EDOM) {
 		    lex_error("sqrt argument out of domain");
 		    YYABORT;
 		  }
 		}
+#line 4429 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 247:
-
-/* Line 1806 of yacc.c  */
-#line 1642 "pic.y"
-    { (yyval.x) = (yyvsp[(3) - (6)].x) > (yyvsp[(5) - (6)].x) ? (yyvsp[(3) - (6)].x) : (yyvsp[(5) - (6)].x); }
+#line 1640 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = (yyvsp[-3].x) > (yyvsp[-1].x) ? (yyvsp[-3].x) : (yyvsp[-1].x); }
+#line 4435 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 248:
-
-/* Line 1806 of yacc.c  */
-#line 1644 "pic.y"
-    { (yyval.x) = (yyvsp[(3) - (6)].x) < (yyvsp[(5) - (6)].x) ? (yyvsp[(3) - (6)].x) : (yyvsp[(5) - (6)].x); }
+#line 1642 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = (yyvsp[-3].x) < (yyvsp[-1].x) ? (yyvsp[-3].x) : (yyvsp[-1].x); }
+#line 4441 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 249:
-
-/* Line 1806 of yacc.c  */
-#line 1646 "pic.y"
-    { (yyval.x) = (yyvsp[(3) - (4)].x) < 0 ? -floor(-(yyvsp[(3) - (4)].x)) : floor((yyvsp[(3) - (4)].x)); }
+#line 1644 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = (yyvsp[-1].x) < 0 ? -floor(-(yyvsp[-1].x)) : floor((yyvsp[-1].x)); }
+#line 4447 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 250:
-
-/* Line 1806 of yacc.c  */
-#line 1648 "pic.y"
-    { (yyval.x) = 1.0 + floor(((rand()&0x7fff)/double(0x7fff))*(yyvsp[(3) - (4)].x)); }
+#line 1646 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = 1.0 + floor(((rand()&0x7fff)/double(0x7fff))*(yyvsp[-1].x)); }
+#line 4453 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 251:
-
-/* Line 1806 of yacc.c  */
-#line 1650 "pic.y"
+#line 1648 "pic.y" /* yacc.c:1646  */
     {
 		  /* return a random number in the range [0,1) */
 		  /* portable, but not very random */
 		  (yyval.x) = (rand() & 0x7fff) / double(0x8000);
 		}
+#line 4463 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 252:
-
-/* Line 1806 of yacc.c  */
-#line 1656 "pic.y"
+#line 1654 "pic.y" /* yacc.c:1646  */
     {
 		  (yyval.x) = 0;
-		  srand((unsigned int)(yyvsp[(3) - (4)].x));
+		  srand((unsigned int)(yyvsp[-1].x));
 		}
+#line 4472 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 253:
-
-/* Line 1806 of yacc.c  */
-#line 1661 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) <= (yyvsp[(3) - (3)].x)); }
+#line 1659 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) <= (yyvsp[0].x)); }
+#line 4478 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 254:
-
-/* Line 1806 of yacc.c  */
-#line 1663 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) > (yyvsp[(3) - (3)].x)); }
+#line 1661 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) > (yyvsp[0].x)); }
+#line 4484 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 255:
-
-/* Line 1806 of yacc.c  */
-#line 1665 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) >= (yyvsp[(3) - (3)].x)); }
+#line 1663 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) >= (yyvsp[0].x)); }
+#line 4490 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 256:
-
-/* Line 1806 of yacc.c  */
-#line 1667 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) == (yyvsp[(3) - (3)].x)); }
+#line 1665 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) == (yyvsp[0].x)); }
+#line 4496 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 257:
-
-/* Line 1806 of yacc.c  */
-#line 1669 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) != (yyvsp[(3) - (3)].x)); }
+#line 1667 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) != (yyvsp[0].x)); }
+#line 4502 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 258:
-
-/* Line 1806 of yacc.c  */
-#line 1671 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) != 0.0 && (yyvsp[(3) - (3)].x) != 0.0); }
+#line 1669 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) != 0.0 && (yyvsp[0].x) != 0.0); }
+#line 4508 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 259:
-
-/* Line 1806 of yacc.c  */
-#line 1673 "pic.y"
-    { (yyval.x) = ((yyvsp[(1) - (3)].x) != 0.0 || (yyvsp[(3) - (3)].x) != 0.0); }
+#line 1671 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[-2].x) != 0.0 || (yyvsp[0].x) != 0.0); }
+#line 4514 "pic.cpp" /* yacc.c:1646  */
     break;
 
   case 260:
-
-/* Line 1806 of yacc.c  */
-#line 1675 "pic.y"
-    { (yyval.x) = ((yyvsp[(2) - (2)].x) == 0.0); }
+#line 1673 "pic.y" /* yacc.c:1646  */
+    { (yyval.x) = ((yyvsp[0].x) == 0.0); }
+#line 4520 "pic.cpp" /* yacc.c:1646  */
     break;
 
 
-
-/* Line 1806 of yacc.c  */
-#line 5029 "pic.cpp"
+#line 4524 "pic.cpp" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -5047,7 +4542,7 @@ yyreduce:
 
   *++yyvsp = yyval;
 
-  /* Now `shift' the result of the reduction.  Determine what state
+  /* Now 'shift' the result of the reduction.  Determine what state
      that goes to, based on the state we popped back to and the rule
      number reduced by.  */
 
@@ -5062,9 +4557,9 @@ yyreduce:
   goto yynewstate;
 
 
-/*------------------------------------.
-| yyerrlab -- here on detecting error |
-`------------------------------------*/
+/*--------------------------------------.
+| yyerrlab -- here on detecting error.  |
+`--------------------------------------*/
 yyerrlab:
   /* Make sure we have latest lookahead translation.  See comments at
      user semantic actions for why this is necessary.  */
@@ -5115,20 +4610,20 @@ yyerrlab:
   if (yyerrstatus == 3)
     {
       /* If just tried and failed to reuse lookahead token after an
-	 error, discard it.  */
+         error, discard it.  */
 
       if (yychar <= YYEOF)
-	{
-	  /* Return failure if at end of input.  */
-	  if (yychar == YYEOF)
-	    YYABORT;
-	}
+        {
+          /* Return failure if at end of input.  */
+          if (yychar == YYEOF)
+            YYABORT;
+        }
       else
-	{
-	  yydestruct ("Error: discarding",
-		      yytoken, &yylval);
-	  yychar = YYEMPTY;
-	}
+        {
+          yydestruct ("Error: discarding",
+                      yytoken, &yylval);
+          yychar = YYEMPTY;
+        }
     }
 
   /* Else will try to reuse lookahead token after shifting the error
@@ -5147,7 +4642,7 @@ yyerrorlab:
   if (/*CONSTCOND*/ 0)
      goto yyerrorlab;
 
-  /* Do not reclaim the symbols of the rule which action triggered
+  /* Do not reclaim the symbols of the rule whose action triggered
      this YYERROR.  */
   YYPOPSTACK (yylen);
   yylen = 0;
@@ -5160,35 +4655,37 @@ yyerrorlab:
 | yyerrlab1 -- common code for both syntax error and YYERROR.  |
 `-------------------------------------------------------------*/
 yyerrlab1:
-  yyerrstatus = 3;	/* Each real token shifted decrements this.  */
+  yyerrstatus = 3;      /* Each real token shifted decrements this.  */
 
   for (;;)
     {
       yyn = yypact[yystate];
       if (!yypact_value_is_default (yyn))
-	{
-	  yyn += YYTERROR;
-	  if (0 <= yyn && yyn <= YYLAST && yycheck[yyn] == YYTERROR)
-	    {
-	      yyn = yytable[yyn];
-	      if (0 < yyn)
-		break;
-	    }
-	}
+        {
+          yyn += YYTERROR;
+          if (0 <= yyn && yyn <= YYLAST && yycheck[yyn] == YYTERROR)
+            {
+              yyn = yytable[yyn];
+              if (0 < yyn)
+                break;
+            }
+        }
 
       /* Pop the current state because it cannot handle the error token.  */
       if (yyssp == yyss)
-	YYABORT;
+        YYABORT;
 
 
       yydestruct ("Error: popping",
-		  yystos[yystate], yyvsp);
+                  yystos[yystate], yyvsp);
       YYPOPSTACK (1);
       yystate = *yyssp;
       YY_STACK_PRINT (yyss, yyssp);
     }
 
+  YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
   *++yyvsp = yylval;
+  YY_IGNORE_MAYBE_UNINITIALIZED_END
 
 
   /* Shift the error token.  */
@@ -5212,7 +4709,7 @@ yyabortlab:
   yyresult = 1;
   goto yyreturn;
 
-#if !defined(yyoverflow) || YYERROR_VERBOSE
+#if !defined yyoverflow || YYERROR_VERBOSE
 /*-------------------------------------------------.
 | yyexhaustedlab -- memory exhaustion comes here.  |
 `-------------------------------------------------*/
@@ -5231,14 +4728,14 @@ yyreturn:
       yydestruct ("Cleanup: discarding lookahead",
                   yytoken, &yylval);
     }
-  /* Do not reclaim the symbols of the rule which action triggered
+  /* Do not reclaim the symbols of the rule whose action triggered
      this YYABORT or YYACCEPT.  */
   YYPOPSTACK (yylen);
   YY_STACK_PRINT (yyss, yyssp);
   while (yyssp != yyss)
     {
       yydestruct ("Cleanup: popping",
-		  yystos[*yyssp], yyvsp);
+                  yystos[*yyssp], yyvsp);
       YYPOPSTACK (1);
     }
 #ifndef yyoverflow
@@ -5249,14 +4746,9 @@ yyreturn:
   if (yymsg != yymsgbuf)
     YYSTACK_FREE (yymsg);
 #endif
-  /* Make sure YYID is used.  */
-  return YYID (yyresult);
+  return yyresult;
 }
-
-
-
-/* Line 2067 of yacc.c  */
-#line 1679 "pic.y"
+#line 1677 "pic.y" /* yacc.c:1906  */
 
 
 /* bison defines const to be empty unless __STDC__ is defined, which it
@@ -5514,4 +5006,3 @@ char *do_sprintf(const char *form, const double *v, int nv)
   result += '\0';
   return strsave(result.contents());
 }
-

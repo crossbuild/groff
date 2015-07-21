@@ -1,3 +1,7 @@
+# Makefile for `font devdvi/generate'
+#
+# File position: <groff-source>/font/devdvi/generate/Makefile
+#
 # Copyright (C) 1989-2002, 2009 Free Software Foundation, Inc.
 #      Written by James Clark (jjc@jclark.com)
 #
@@ -34,8 +38,9 @@ FONTS=TR TI TB TBI CW CWI HR HI HB HBI \
       MI S SC EX SA SB
 SPECIALFLAG=-s
 
-all: $(FONTS)
+RM=rm -f
 
+all: $(FONTS)
 
 #### CM fonts ####
 
@@ -109,7 +114,6 @@ SB: $(srcdir)/msbm.map
 	$(TFMTODIT) $(SPECIALFLAG) \
 	  $(tfmdir)/msbm10.tfm $(srcdir)/msbm.map $@
 
-
 #### EC fonts ####
 
 TREC: $(srcdir)/ec.map
@@ -149,7 +153,6 @@ HIEC: $(srcdir)/ec.map
 HBIEC: $(srcdir)/ec.map
 	$(TFMTODIT) -g $(gfdir)/ecso1000.300gf \
 	  $(tfmdir)/ecso1000.tfm $(srcdir)/ec.map $@
-
 
 #### TC fonts ####
 
@@ -193,13 +196,20 @@ HBITC: $(srcdir)/tc.map
 	$(TFMTODIT) $(SPECIALFLAG) -g $(gfdir)/tcso1000.300gf \
 	  $(tfmdir)/tcso1000.tfm $(srcdir)/tc.map $@
 
-
 clean:
 
 realclean:
-	-rm -f $(FONTS)
+	$(RM) $(FONTS)
 
 extraclean: realclean
-	-rm -f core *~ "#*"
+	$(RM) core *~ "#*"
 
 .PHONY: clean realclean extraclean all
+
+########################################################################
+# Emacs settings
+########################################################################
+#
+# Local Variables:
+# mode: makefile
+# End:

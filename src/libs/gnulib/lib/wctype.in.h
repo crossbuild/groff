@@ -1,10 +1,10 @@
 /* A substitute for ISO C99 <wctype.h>, for platforms that lack it.
 
-   Copyright (C) 2006-2013 Free Software Foundation, Inc.
+   Copyright (C) 2006-2014 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 3, or (at your option)
+   the Free Software Foundation; either version 2, or (at your option)
    any later version.
 
    This program is distributed in the hope that it will be useful,
@@ -32,6 +32,15 @@
 #endif
 @PRAGMA_COLUMNS@
 
+
+/*
+ * XXX: As soon as groff uses gnulib in a saner way (i.e., only a single
+ *      `config.h' file for the whole package) this file should be replaced
+ *      with an unpatched version, not containing the next #include line.
+ */
+#include "../config.h"
+
+
 #if @HAVE_WINT_T@
 /* Solaris 2.5 has a bug: <wchar.h> must be included before <wctype.h>.
    Tru64 with Desktop Toolkit C has a bug: <stdio.h> must be included before
@@ -44,6 +53,13 @@
 # include <wchar.h>
 #endif
 
+/* mingw has declarations of towupper and towlower in <ctype.h> as
+   well <wctype.h>.  Include <ctype.h> in advance to avoid rpl_ prefix
+   being added to the declarations.  */
+#ifdef __MINGW32__
+# include <ctype.h>
+#endif
+
 /* Include the original <wctype.h> if it exists.
    BeOS 5 has the functions but no <wctype.h>.  */
 /* The include_next requires a split double-inclusion guard.  */
@@ -54,6 +70,9 @@
 #ifndef _@GUARD_PREFIX@_WCTYPE_H
 #define _@GUARD_PREFIX@_WCTYPE_H
 
+#ifndef _GL_INLINE_HEADER_BEGIN
+ #error "Please include config.h first."
+#endif
 _GL_INLINE_HEADER_BEGIN
 #ifndef _GL_WCTYPE_INLINE
 # define _GL_WCTYPE_INLINE _GL_INLINE

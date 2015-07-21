@@ -5,30 +5,28 @@
 # Source file position: <groff-source>/contrib/chem/chem.pl
 # Installed position: <prefix>/bin/chem
 
-# Copyright (C) 2006, 2009 Free Software Foundation, Inc.
+my $Copyright = 'Copyright (C) 2006-2014 Free Software Foundation, Inc.';
 # Written by Bernd Warken <groff-bernd.warken-72@web.de>.
 
 # This file is part of `chem', which is part of `groff'.
 
 # `groff' is free software; you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# under the terms of the GNU General Public License (GPL) version 2 as
+# published by the Free Software Foundation.
 
 # `groff' is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # General Public License for more details.
 
-# You should have received a copy of the GNU General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
+# The GPL2 license text is available in the internet at
+# <http://www.gnu.org/licenses/gpl-2.0.html>.
 
 ########################################################################
 # settings
 ########################################################################
 
-my $Program_Version = '0.3.1';
-my $Last_Update = '03 Jan 2009';
+my $Program_Version = '1.0.5';
 
 # this setting of the groff version is only used before make is run,
 # otherwise @VERSION@ will set it.
@@ -1255,12 +1253,10 @@ EOF
 #
 sub version {
   $Groff_Version = $Groff_Version_Preset unless $Groff_Version;
-  my $year = $Last_Update;
-  $year =~ s/^.* //;
   print <<EOF;
-$Chem_Name $Program_Version of $Last_Update (Perl version)
+$Chem_Name $Program_Version (Perl version)
 is part of groff version $Groff_Version.
-Copyright (C) $year Free Software Foundation, Inc.
+$Copyright
 GNU groff and chem come with ABSOLUTELY NO WARRANTY.
 You may redistribute copies of groff and its subprograms
 under the terms of the GNU General Public License.

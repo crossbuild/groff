@@ -1,6 +1,12 @@
-.ig
-Copyright (C) 1994-2000, 2001, 2002, 2004, 2006, 2009
-  Free Software Foundation, Inc.
+.\" -*- nroff -*-
+.TH GROLJ4 @MAN1EXT@ "@MDATE@" "Groff Version @VERSION@"
+.SH NAME
+grolj4 \- groff driver for HP Laserjet 4 family
+.
+.
+.\" license
+.de co
+Copyright \[co] 1994-2014 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -17,6 +23,7 @@ versions, except that this permission notice may be included in
 translations approved by the Free Software Foundation instead of in
 the original English.
 ..
+.
 .\" Like TP, but if specified indent is more than half
 .\" the current line-length - indent, use the default indent.
 .de Tp
@@ -24,14 +31,10 @@ the original English.
 . el .TP "\\$1"
 ..
 .
-.
-.TH GROLJ4 @MAN1EXT@ "@MDATE@" "Groff Version @VERSION@"
-.
-.SH NAME
-grolj4 \- groff driver for HP Laserjet 4 family
-.
-.
+.\" --------------------------------------------------------------------
 .SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
 .nr a \n(.j
 .ad l
 .nr i \n(.i
@@ -55,33 +58,41 @@ grolj4 \- groff driver for HP Laserjet 4 family
 .ad \na
 .
 .
-.
+.\" --------------------------------------------------------------------
 .SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
 .B grolj4
 is a driver for
 .B groff
-that produces output in PCL5 format suitable for an HP Laserjet 4 printer.
+that produces output in PCL5 format suitable for an HP Laserjet 4
+printer.
+.
 .
 .LP
 There is an additional drawing command available:
 .
 .TP
 .BI \eD'R\  dh\ dv '
-Draw a rule (solid black rectangle), with one corner
-at the current position, and the diagonally opposite corner
-at the current position
+Draw a rule (solid black rectangle), with one corner at the current
+position, and the diagonally opposite corner at the current position
 .RI +( dh , dv ).
-Afterwards the current position will be at the opposite corner.  This
-generates a PCL fill rectangle command, and so will work on
+.
+Afterwards the current position will be at the opposite corner.
+.
+This generates a PCL fill rectangle command, and so will work on
 printers that do not support HPGL/2 unlike the other
 .B \eD
 commands.
 .
 .
+.\" --------------------------------------------------------------------
 .SH OPTIONS
-.PP
+.\" --------------------------------------------------------------------
+.
 It is possible to have whitespace between a command line option and its
 parameter.
+.
 .TP
 .BI \-c n
 Print
@@ -115,7 +126,9 @@ Print the version number.
 Set the default line thickness to
 .I n
 thousandths of an em.
-If this option isn't specified, the line thickness defaults to 0.04\~em.
+.
+If this option isn\[aq]t specified, the line thickness defaults to
+0.04\~em.
 .
 .TP
 .BI \-F dir
@@ -126,6 +139,7 @@ to the search path for font and device description files;
 is the name of the device, usually
 .BR lj4 .
 .
+.
 .LP
 The following four commands are available additionally in the
 font description files:
@@ -134,7 +148,7 @@ font description files:
 .BI pclweight \ N
 The integer value
 .I N
-must be in the range -7 to +7; default is\~0.
+must be in the range \-7 to +7; default is\~0.
 .
 .TP
 .BI pclstyle \ N
@@ -153,7 +167,10 @@ The integer value
 must be in the range 0 to 65535; default is\~0.
 .
 .
+.\" --------------------------------------------------------------------
 .SH ENVIRONMENT
+.\" --------------------------------------------------------------------
+.
 .TP
 .SM
 .B GROFF_FONT_PATH
@@ -168,7 +185,10 @@ and
 for more details.
 .
 .
+.\" --------------------------------------------------------------------
 .SH FILES
+.\" --------------------------------------------------------------------
+.
 .TP
 .B @FONTDIR@/devlj4/DESC
 Device description file.
@@ -188,7 +208,10 @@ Macros for use with
 Small dots.
 .
 .
+.\" --------------------------------------------------------------------
 .SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
 .BR lj4_font (@MAN5EXT@),
 .BR groff (@MAN1EXT@),
 .BR @g@troff (@MAN1EXT@),
@@ -196,6 +219,8 @@ Small dots.
 .BR groff_font (@MAN5EXT@),
 .BR groff_char (@MAN7EXT@)
 .
-.\" Local Variables:
-.\" mode: nroff
-.\" End:
+.
+.\" --------------------------------------------------------------------
+.SH COPYING
+.\" --------------------------------------------------------------------
+.co

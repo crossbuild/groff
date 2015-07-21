@@ -1,140 +1,163 @@
 .TH GROG @MAN1EXT@ "@MDATE@" "Groff Version @VERSION@"
+.SH NAME
+grog \(em guess options for a following groff command
+.\" The .SH was moved to this place in order to appease `apropos'.
+.
+.\" grog.man -> grog.1 - man page for grog (section 1)
+.\" Source file position:  <groff_source_top>/src/roff/grog/grog.man
+.\" Installed position:    <prefix>/share/man/man1/grog.1
 .
 .\" --------------------------------------------------------------------
 .\" Legalese
 .\" --------------------------------------------------------------------
 .
-.ig
-grog.1 - man page for grog (section 1)
-
-Source file position:  <groff_source_top>/src/roff/grog/grog.man
-Installed position:    $prefix/share/man/man1/grog.1
-
-Last Update: 22 Jan 2011
-..
 .de co
-Copyright (C) 1989-2003, 2006, 2007, 2009-2012
-Free Software Foundation, Inc.
+Copyright \[co] 1989-2014 Free Software Foundation, Inc.
+
+This file is part of grog, which is part of groff, a free software
+project.  You can redistribute it and/or modify it under the terms of
+the GNU General Public License version 2 (GPL2) as published by the
+Free Software Foundation.
+
+groff is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.
+
+The text for GPL2 is available in the internet at
+.UR http://\:www.gnu.org/\:licenses/\:gpl-2.0.txt
+GNU copyleft site
+.UE .
+..
 .
+.de au
 Written by James Clark.
+
 Maintained by
-.MT wl@gnu.org 
+.MT wl@gnu.org
 Werner Lemberg
 .ME .
-Rewritten and put under GPL by Bernd Warken <groff-bernd.warken-72@web.de>.
-.
-.P
-This file is part of
-.IR grog ,
-which is part of
-.IR groff ,
-a free software project.
-.
-You can redistribute it and/or modify it under the terms of the
-.nh
-.B "GNU General Public License"
-.hy
-(\f[CR]GPL\f[]) as published by the
-.nh
-.BR "Free Software Foundation" ,
-.hy
-either version\~2, or (at your option) any later version.
-.
-.P
-You should have received a copy of the \f[CR]GNU General Public
-License\f[] along with
-.IR groff ,
-see the files \%\f[CB]COPYING\f[] and \%\f[CB]LICENSE\f[] in the top
-directory of the
-.I groff
-source package.
-.
-Or read the
-.I man\~page
-.BR gpl (1).
-You can also write to the
-.nh
-.B "Free Software Foundation, 51 Franklin St - Fifth Floor, Boston,"
-.BR "MA 02110-1301, USA" .
-.hy
+
+Rewritten and put under GPL by
+.MT groff-bernd.warken-72@web.de
+Bernd Warken
+.ME .
 ..
 .
-.
 .\" --------------------------------------------------------------------
-.\" Local macros
-.de FN
-.I \\$1
-..
-.
-.
+.\" Characters
 .\" --------------------------------------------------------------------
-.SH NAME
 .
-grog \- guess options for groff command
+.\" Ellipsis ...
+.ie t .ds EL \fS\N'188'\fP
+.el .ds EL \&.\|.\|.\&\
+.\" called with \*(EL
+.
+.\" Bullet
+.ie t .ds BU \[bu]
+.el .ds BU *
+.\" used in `.IP \*(BU 2m' (former .Topic)
 .
 .
 .\" --------------------------------------------------------------------
 .SH SYNOPSIS
+.\" --------------------------------------------------------------------
 .
 .SY grog
 .OP \-C
-.RI [ \%groff\-option\~ .\|.\|.\&]
+.OP \-\-run
+.OP \-\-warnings
+.OP \-\-ligatures
+.OP \& "\%groff\-option \*(EL"
 .OP \-\-
-.RI [ \%filespec\~ .\|.\|.]
-.
-.SY grog
-.B \-h
-|
-.B \-\-help
-.
-.SY grog
-.B \-v
-|
-.B \-\-version
+.OP \& "\%filespec \*(EL"
 .YS
+.
+.BR "grog \-h " | " \-\-help"
+.br
+.BR "grog \-v " | " \-\-version"
 .
 .
 .\" --------------------------------------------------------------------
 .SH DESCRIPTION
+.\" --------------------------------------------------------------------
 .
 .B grog
 reads the input (file names or standard input) and guesses which of
 the
-.BR groff  (@MAN1EXT@)
+.BR groff (@MAN1EXT@)
 options are needed to perform the input with the
 .B groff
 program.
 .
+.
+.RS
+.P
 The corresponding
 .B groff
-command is output.
+command is usually displayed in standard output.
+.
+With the option
+.BR \-\-run ,
+the generated line is output into standard error and the generated
+.B groff
+command is run on the
+.IR "standard output" .
+.RE
 .
 .
 .\" --------------------------------------------------------------------
 .SH OPTIONS
+.\" --------------------------------------------------------------------
 .
-The only
-.B grog
-options recognized are
-.B \-C
-(which is also passed on) to enable compatibility mode;
+The option
 .B \-v
-and
+or
 .B \-\-version
-print information on the version number; and
-.B \-h
-and
-.B \-\-help
-print usage information.
+prints information on the version number.
 .
-.BR \-v ,
-.BR \-\-version ,
-.BR \-h ,
-and
+Also
+.B \-h
+or
 .B \-\-help
-stop the program directly without printing a
+prints usage information.
+.
+Both of these options automatically end the
+.B grog
+program.
+.
+Other options are thenignored, and no
 .B groff
-command to standard output.
+command line is generated.
+.
+.
+The following 3 options are the only
+.B grog
+options,
+.
+.TP
+.B \-C
+this option means enabling the
+.I groff
+compatibility mode, which is also transfered to the generated
+.B groff
+command line.
+.
+.TP
+.B \-\-ligatures
+this option forces to include the arguments
+.B -P-y -PU
+within the generated
+.B groff
+command line.
+.
+.TP
+.B \-\-run
+with this option, the command line is output at standard error and
+then run on the computer.
+.
+.TP
+.B \-\-warnings
+with this option, some more warnings are output to standard error.
 .
 .
 .P
@@ -149,7 +172,7 @@ No space is allowed between options and their argument.
 .
 Except from the
 .BI \-m arg
-options, all options will be passed on, i.e. they are included
+options, all options will be passed on, i.e.\& they are included
 unchanged in the command for the output without effecting the work of
 .BR grog .
 .
@@ -168,6 +191,7 @@ is specified standard input is read automatically.
 .
 .\" --------------------------------------------------------------------
 .SH DETAILS
+.\" --------------------------------------------------------------------
 .
 .B grog
 reads all
@@ -179,20 +203,25 @@ It tries to guess which of the following
 options are required for running the input under
 .BR groff :
 .BR \-e ,
+.BR \-g ,
+.BR \-G ,
+.BR \-j ,
+.BR \-J ,
+.BR \-p ,
+.BR \-R ,
+.BR \-s ,
+.BR \-t .
 .BR \-man ,
+.BR \-mdoc,
+.BR \-mdoc-old,
 .BR \-me ,
 .BR \-mm ,
 .BR \-mom ,
-.BR \-ms ,
-.BR \-mdoc,
-.BR \-mdoc-old,
-.BR \-p ,
-.BR \-R ,
-.BR \-g ,
-.BR \-G ,
-.BR \-s ,
 and
-.BR \-t .
+.BR \-ms .
+.
+.
+.P
 The guessed
 .B groff
 command including those options and the found
@@ -310,23 +339,21 @@ is used instead.
 .
 .\" --------------------------------------------------------------------
 .SH EXAMPLES
+.\" --------------------------------------------------------------------
 .
-.IP \(bu
+.IP \*(BU 2m
 Calling
-.
 .RS
 .IP
 .EX
 grog meintro.me
 .EE
 .RE
-.
 .IP
 results in
-.
 .RS
-.IP
 .EX
+.IP
 groff \-me meintro.me
 .EE
 .RE
@@ -335,16 +362,15 @@ groff \-me meintro.me
 So
 .B grog
 recognized that the file
-.FN meintro.me
+.B meintro.me
 is written with the
 .B \-me
 macro package.
 .RE
 .
 .
-.IP \(bu
+.IP \*(BU 2m
 On the other hand,
-.
 .RS
 .IP
 .EX
@@ -358,7 +384,7 @@ outputs
 .RS
 .IP
 .EX
-groff \-pte \-ms pic.ms
+groff \-p \-t \-e \-ms pic.ms
 .EE
 .RE
 .
@@ -367,7 +393,7 @@ Besides determining the macro package
 .BR \-ms ,
 .B grog
 recognized that the file
-.FN pic.ms
+.B pic.ms
 additionally needs
 .BR \-pte ,
 the combination of
@@ -384,8 +410,8 @@ for
 .RE
 .
 .
-.IP \(bu
-If both files are combined by the command
+.IP \*(BU 2m
+If both of the former example files are combined by the command
 .
 .RS
 .IP
@@ -402,7 +428,7 @@ cannot work with two different macro packages:
 .RS
 .IP
 .ft CR
-grog: error: there are several macro packages: -me -ms
+grog: error: there are several macro packages: \-me \-ms
 .ft
 .RE
 .
@@ -413,7 +439,7 @@ to standard output:
 .RS
 .IP
 .EX
-groff -pte -me -ms meintro.me pic.ms
+groff \-pte \-me \-ms meintro.me pic.ms
 .EE
 .RE
 .
@@ -421,7 +447,7 @@ groff -pte -me -ms meintro.me pic.ms
 But the program is terminated with an error code.
 .
 .
-.IP \(bu
+.IP \*(BU 2m
 The call of
 .
 .RS
@@ -452,7 +478,7 @@ The output is
 .RS
 .IP
 .EX
-groff \-ksS \-Tdvi grnexmpl.g
+groff \-k \-s \-S \-Tdvi grnexmpl.g
 .EE
 .RE
 .
@@ -468,8 +494,12 @@ this file does not use a macro package.
 .
 .\" --------------------------------------------------------------------
 .SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
+.ad l
 .
 .BR groff (@MAN1EXT@),
+.BR groffer (@MAN1EXT@)
 .BR @g@troff (@MAN1EXT@),
 .BR @g@tbl (@MAN1EXT@),
 .BR @g@pic (@MAN1EXT@),
@@ -478,19 +508,53 @@ this file does not use a macro package.
 .BR @g@refer (@MAN1EXT@),
 .BR @g@grn (@MAN1EXT@),
 .BR grap (1),
-.BR @g@soelim (@MAN1EXT@),
+.BR @g@soelim (@MAN1EXT@)
+.
+.RS
+Man-pages of section 1 can be viewed with either
+.RS
+\[Do]
+.BI man " name"
+.RE
+for text mode or
+.RS
+\[Do]
+.BI groffer " name"
+.RE
+for graphical mode (default is PDF mode).
+.RE
+.
+.
+.P
 .BR groff_me (@MAN7EXT@),
 .BR groff_ms (@MAN7EXT@),
 .BR groff_mm (@MAN7EXT@),
 .BR groff_mom (@MAN7EXT@),
-.BR groff_man (@MAN7EXT@),
-.BR groffer (@MAN1EXT@)
+.BR groff_man (@MAN7EXT@)
+.
+.RS
+Man-pages of section 7 can be viewed with either with
+.RS
+\[Do]
+.BI "man 7 " name
+.RE
+for text mode or
+.RS
+\[Do]
+.BI "groffer 7 " name
+.RE
+for graphical mode (default is PDF mode).
+.RE
 .
 .
 .\" --------------------------------------------------------------------
 .SH "COPYING"
-.
+.\" --------------------------------------------------------------------
 .co
+.\" --------------------------------------------------------------------
+.SH "AUTHORS"
+.\" --------------------------------------------------------------------
+.au
 .
 .
 .\" --------------------------------------------------------------------

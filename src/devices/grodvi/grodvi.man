@@ -1,6 +1,11 @@
-.ig
-Copyright (C) 1989-2000, 2001, 2002, 2003, 2004, 2006, 2009
-  Free Software Foundation, Inc.
+.\" -*- nroff -*-
+.TH GRODVI @MAN1EXT@ "@MDATE@" "Groff Version @VERSION@"
+.SH NAME
+grodvi \- convert groff output to TeX dvi format
+.
+.\" copying (license)
+.de co
+Copyright \[co] 1989-2014 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -41,13 +46,13 @@ the original English.
 .  if '\\*(.T'dvi' .ft \\$1
 ..
 .
-.
-.TH GRODVI @MAN1EXT@ "@MDATE@" "Groff Version @VERSION@"
-.SH NAME
-grodvi \- convert groff output to TeX dvi format
+.ad l
 .
 .
+.\" --------------------------------------------------------------------
 .SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
 .B grodvi
 [
 .B \-dlv
@@ -65,7 +70,10 @@ It is possible to have whitespace between a command line option and its
 parameter.
 .
 .
+.\" --------------------------------------------------------------------
 .SH DESCRIPTION
+.\" --------------------------------------------------------------------
+.
 .B grodvi
 is a driver for
 .B groff
@@ -182,12 +190,12 @@ in the corresponding tfm file;
 all characters in the tfm file can be accessed this way.
 .
 .LP
-By design, the DVI format doesn't care about physical dimensions of the
+By design, the DVI format doesn\[aq]t care about physical dimensions of the
 output medium.
 .
 Instead,
 .B grodvi
-emits the equivalent to \*(tx's
+emits the equivalent to \*[tx]\[aq]s
 .BI \[rs]special{papersize= width , length }
 on the first page;
 .B dvips
@@ -197,7 +205,10 @@ If either the page width or length is not positive, no papersize special
 is output.
 .
 .
+.\" --------------------------------------------------------------------
 .SH OPTIONS
+.\" --------------------------------------------------------------------
+.
 .TP
 .B \-d
 Do not use tpic specials to implement drawing commands.
@@ -245,10 +256,15 @@ Print the version number.
 Set the default line thickness to
 .I n
 thousandths of an em.
-If this option isn't specified, the line thickness defaults to 0.04\~em.
+.
+If this option isn\[aq]t specified, the line thickness defaults to
+0.04\~em.
 .
 .
+.\" --------------------------------------------------------------------
 .SH USAGE
+.\" --------------------------------------------------------------------
+.
 There are styles called
 .BR R ,
 .BR I ,
@@ -374,8 +390,8 @@ additionally, they give a much better coverage of groff symbols.
 .
 Note that
 .B ec.tmac
-must be called before any language-specific files; it doesn't take care of
-hcode values.
+must be called before any language-specific files; it doesn\[aq]t take
+care of hcode values.
 .
 .
 .SH ENVIRONMENT
@@ -393,7 +409,10 @@ and
 for more details.
 .
 .
+.\" --------------------------------------------------------------------
 .SH FILES
+.\" --------------------------------------------------------------------
+.
 .TP
 .B @FONTDIR@/devdvi/DESC
 Device description file.
@@ -413,7 +432,10 @@ Macros for use with
 Macros to switch to EC fonts.
 .
 .
+.\" --------------------------------------------------------------------
 .SH BUGS
+.\" --------------------------------------------------------------------
+.
 Dvi files produced by
 .B grodvi
 use a different resolution (57816 units per inch) to those produced by
@@ -434,7 +456,10 @@ This is a consequence of the way \*(tx requires that the heights
 and widths of rules be rounded.
 .
 .
+.\" --------------------------------------------------------------------
 .SH "SEE ALSO"
+.\" --------------------------------------------------------------------
+.
 .BR tfmtodit (@MAN1EXT@),
 .BR groff (@MAN1EXT@),
 .BR @g@troff (@MAN1EXT@),
@@ -443,8 +468,11 @@ and widths of rules be rounded.
 .BR groff_char (@MAN7EXT@),
 .BR groff_tmac (@MAN5EXT@)
 .
-.cp \n[grodvi_C]
 .
-.\" Local Variables:
-.\" mode: nroff
-.\" End:
+.\" --------------------------------------------------------------------
+.SH "COPYING"
+.\" --------------------------------------------------------------------
+.co
+.
+.
+.cp \n[grodvi_C]

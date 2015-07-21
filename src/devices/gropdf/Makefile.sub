@@ -1,4 +1,8 @@
-# Copyright (C) 2011-2013 Free Software Foundation, Inc.
+# Makefile.sub for `gropdf'
+#
+# File position: <groff-source>/src/devices/gropbf/Makefile.sub
+#
+# Copyright (C) 2011-2014  Free Software Foundation, Inc.
 #      Written by Deri James <deri@chuzzlewit.demon.co.uk>
 #
 # This file is part of groff.
@@ -15,6 +19,8 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+########################################################################
 
 MAN1=\
   gropdf.n \
@@ -29,9 +35,7 @@ MOSTLYCLEANADD=\
   pdfmom \
   $(MAN1)
 
-# Some `makes' don't predefine RM...
 RM=rm -f
-
 
 all: gropdf pdfmom
 
@@ -40,7 +44,7 @@ gropdf: gropdf.pl $(SH_DEPS_SED_SCRIPT)
 	$(RM) $@
 	sed -f $(SH_DEPS_SED_SCRIPT) \
 	    -e "s|@VERSION@|$(version)$(revision)|" \
-	    -e "s|@PERLPATH@|$(PERLPATH)|" \
+	    -e "s|@PERL@|$(PERL)|" \
 	    -e "s|@GROFF_FONT_DIR@|$(fontpath)|" \
 	    -e "s|@RT_SEP@|$(RT_SEP)|" $(srcdir)/gropdf.pl >$@
 	chmod +x $@
@@ -49,7 +53,7 @@ pdfmom: pdfmom.pl $(SH_DEPS_SED_SCRIPT)
 	$(RM) $@
 	sed -f $(SH_DEPS_SED_SCRIPT) \
 	    -e "s|@VERSION@|$(version)$(revision)|" \
-	    -e "s|@PERLPATH@|$(PERLPATH)|" $(srcdir)/pdfmom.pl >$@
+	    -e "s|@PERL@|$(PERL)|" $(srcdir)/pdfmom.pl >$@
 	chmod +x $@
 
 install_data:
@@ -60,6 +64,12 @@ install_data:
 	done
 
 uninstall_sub:
-	for f in $(CMDFILES); do \
-	  $(RM) $(DESTDIR)$(bindir)/$$f; \
-	done
+	-for f in $(CMDFILES); do $(RM) $(DESTDIR)$(bindir)/$$f; done
+
+########################################################################
+# Emacs settings
+########################################################################
+#
+# Local Variables:
+# mode: makefile
+# End:

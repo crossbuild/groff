@@ -2,8 +2,7 @@
 <!--
 This file is part of groff, the GNU roff type-setting system.
 
-Copyright (C) 2004, 2005, 2006, 2009, 2010,
-2011, 2012, 2013 Free Software Foundation, Inc.
+Copyright (C) 2004-2014 Free Software Foundation, Inc.
 Written by Peter Schaffter (peter@schaffter.ca).
 
 Permission is granted to copy, distribute and/or modify this document
@@ -35,7 +34,7 @@ FDL in the main directory of the groff source package.
 <table style="width: 100%;">
 <tr>
   <td><a href="toc.html">Back to Table of Contents</a></td>
-  <td style="text-align: right;"><a href="images.html#top">Next: Inserting images</a></td>
+  <td style="text-align: right;"><a href="images.html#top">Next: Graphics, floats, preprocessor support</a></td>
 </tr>
 </table>
 
@@ -579,15 +578,10 @@ her to do so, use the control macro
 <div class="box-tip">
 <p class="tip">
 <span class="tip">Tip:</span>
-If you'd like to add a small amount of space between paragraphs,
-less than the full linespace provided by PARA_SPACE, 
-you can create a macro that adds it automatically, like this:
-<br/>
-<span class="pre-in-pp">
-  .MAC PP2 END
-  .    ALD .25v
-  .    PP
-  .END
+If you want to add less than a full linespace between
+paragraphs, you may give the amount of space you&#8217;d like as an
+argument to
+<kbd>.PARA_SPACE</kbd>. 
 </span>
 Introducing a paragraph with <kbd>.PP2</kbd> will add a space equal
 to one-quarter of the prevailing linespace before the start of the
@@ -796,8 +790,8 @@ For example, assuming you have defined the colour, blue,
   .PP
   .COLOR blue
   &lt;first paragraph&gt;
-  .HEAD "Monty Python"
-  .SUBHEAD "The Origins of Spam"
+  .HEADING 1 "Monty Python"
+  .HEADING 2 "The Origins of Spam"
   .PP
   &lt;second paragraph&gt;
 </span>
@@ -981,6 +975,23 @@ paragraphs will once again not be separated by a blank line.
 </p>
 
 <p>
+If you would like to space paragraphs by less than a full linespace,
+invoke PARA_SPACE with the amount of space you want as a numeric
+argument.  A
+<a href="definitions.html#unitofmeasure">unit of measure</a>
+is required.  For example, to space paragraphs by one-quarter
+linespace
+<span class="pre-in-pp">
+  .PARA_SPACE .25v
+</span>
+is how you&#8217;d do it, or, if you want six points between
+paragraphs
+<span class="pre-in-pp">
+  .PARA_SPACE 6p
+</span>
+</p>
+
+<p>
 PARA_SPACE is not recommended for use with PRINTSTYLE TYPEWRITE
 unless you give PRINTSTYLE the <kbd>SINGLESPACE</kbd> option.
 </p>
@@ -1010,43 +1021,6 @@ is to invoke <kbd>.PP</kbd> twice (in succession) at the point you
 expect the blank line to appear.
 </p>
 </div>
-
-<p>
-If you would like to space paragraphs by less than a full linespace,
-the way to do it is by creating a wrapper macro around PP that adds
-space before each paragraph, like this,
-<br/>
-<span class="pre-in-pp">
-  .MAC PP2 END
-  .  ALD 6p
-  .  PP
-  .END
-</span>
-which inserts 6
-<a href="definitions.html#picaspoints">points</a>
-of space before each paragraph.  Initial paragraphs, as described
-above, should still be introduced with <kbd>PP</kbd>; only subsequent
-ones require <kbd>.PP2</kbd>.
-</p>
-
-<p>
-If you would like the extra space to be a fraction of the current
-<a href="definitions.html#leading">leading</a>,
-use the groff number register, <kbd>\n[.v]</kbd> and divide it by
-the fraction you want.  For example, <kbd>.ALD \n[.v]/4</kbd> inserts
-1/4 linespacing between paragraphs.
-</p>
-
-<p>
-You may write the macro, above, in low-level groff if you wish:
-<br/>
-<span class="pre-in-pp">
-  .de PP2
-  . sp 6p
-  . PP
-  ..
-</span>
-</p>
 
 <div class="rule-short"><hr/></div>
 
@@ -1288,18 +1262,25 @@ HEADING_STYLE takes any or all of the following arguments,
 which may be given in any order:
 <br/>
 <span class="pre defaults">
-  FAMILY &lt;family&gt;
-  FONT   &lt;font&gt;
-  SIZE   &lt;+|-size&gt;
-  QUAD   &lt;direction&gt;
-  COLOR  &lt;colour&gt;
-  UNDERSCORE  &lt;weight&gt; &lt;gap&gt; | NO_UNDERSCORE
-  UNDERSCORE2 &lt;weight&gt; &lt;gap1&gt; &lt;gap2&gt; | NO_UNDERSCORE2
-  CAPS | NO_CAPS
-  BASELINE_ADJUST &lt;amount to raise heading from the baseline&gt;
-  SPACE_AFTER | NO_SPACE_AFTER
+  FAMILY &lt;family&gt; \
+  FONT   &lt;font&gt; \
+  SIZE   &lt;+|-size&gt; \
+  QUAD   &lt;direction&gt; \
+  COLOR  &lt;colour&gt; \
+  UNDERSCORE  &lt;weight&gt; &lt;gap&gt; | NO_UNDERSCORE \
+  UNDERSCORE2 &lt;weight&gt; &lt;gap1&gt; &lt;gap2&gt; | NO_UNDERSCORE2 \
+  CAPS | NO_CAPS \
+  BASELINE_ADJUST &lt;amount to raise heading from the baseline&gt; \
+  SPACE_AFTER | NO_SPACE_AFTER \
   NUMBER | NO_NUMBER
 </span>
+</p>
+
+<p>
+You may enter your entire argument list on a single line, or, if it
+is very long, break it into shorter lines with the
+&#8220;line-continued&#8221; backslash {<kbd>\</kbd>), as shown
+above.
 </p>
 
 <p class="defaults" style="margin-bottom: 1em">
@@ -1361,7 +1342,7 @@ entries is controlled separately with
 <a href="tables-of-contents.html#toc-entry-numbers">TOC_ENTRY_NUMBERS</a>.
 Mom also has a special macro to toggle whether to prefix a chapter
 number to numbered headings and Table of Contents entries,
-<a href="prefix-chapter-number">PREFIX_CHAPTER_NUMBER</a>.
+<a href="#prefix-chapter-number">PREFIX_CHAPTER_NUMBER</a>.
 </p>
 
 <p class="defaults" style="padding-bottom: .5em">
@@ -2000,6 +1981,33 @@ quotes on the same page are all spaced identically.
 </p>
 </div>
 
+<h3 id="float-quote" class="docs">Keeping QUOTEs and BLOCKQUOTEs together as a block</h3>
+
+<p>
+The text of quotes and blockquotes is output immediately, and may therefore
+start on one page and finish on the next.  If you wish to keep the
+text together as a block, deferred to the following page if the
+block doesn&#8217;t all fit on one page, wrap
+(BLOCK)QUOTE&nbsp;/&nbsp;(BLOCK)QUOTE&nbsp;OFF
+inside a
+<a href="images.html#floats-intro">float</a>.  If you further wish to
+force a page break before the floated quote or blockquote (leaving
+whitespace at the bottom of the page, pass
+<a href="images.html#float">FLOAT</a>
+the <kbd>FORCE</kbd> argument.
+<span class="pre-in-pp">
+  .FLOAT FORCE
+  .QUOTE
+  Fly me to the moon
+  And let me play among the stars
+  Let me see what life is like
+  On Jupiter and Mars
+  .QUOTE END
+  .FLOAT OFF
+</span>
+
+</p>
+
 <!-- -QUOTE- -->
 
 <div class="macro-id-overline">
@@ -2317,7 +2325,7 @@ This macro also sets mom&#8217;s spacing policy for
 
 <!-- ==================================================================== -->
 
-<h2 id="code-intro" class="macro-group">Inserting code snippets</h2>
+<h2 id="code-intro" class="macro-group">Inserting code into a document</h2>
 
 <ul style="margin-left: -.5em;">
   <li><a href="#code">Tag: CODE</a></li>
@@ -2325,7 +2333,7 @@ This macro also sets mom&#8217;s spacing policy for
 </ul>
 
 <p>
-CODE is a convenience macro that facilitates entering code snippets
+CODE is a convenience macro that facilitates entering code blocks
 into documents.  Its use is not restricted to documents created
 using mom&#8217;s document processing macros; it can be used for
 &#8220;manually&#8221; typeset documents as well.
@@ -2344,35 +2352,16 @@ Inline escape: <b><kbd>\*[CODE]</kbd></b>
 </p>
 
 <p>
-When you invoke <kbd>.CODE</kbd> without an argument, or use the
-<a href="definitions.html#inlines">inline escape</a>,
-<kbd>\*[CODE]</kbd>,
-mom changes the font to a
+When you invoke the macro, <kbd>.CODE</kbd>, or insert <kbd>\*[CODE]</kbd> into
+running text, mom switches to a
 <a href="definitions.html#fixedwidthfont">fixed-width font</a>
 (Courier, by default) and turns
 <a href="goodies.html#smartquotes">SMARTQUOTES</a>
-off.  Additionally, if you invoke <kbd>.CODE</kbd> inside
-<a href="#quote">QUOTE</a>
-while in
-<a href="docprocessing.html#printstyle">PRINTSTYLE <kbd>TYPEWRITE</kbd></a>
-with the default underlining of quotes turned on, it disables the
-underlining for the duration of CODE.
+off.
 </p>
 
 <p>
-Passing any argument other than <kbd>BR</kbd>, <kbd>BREAK</kbd>
-or <kbd>SPREAD</kbd> to CODE (eg <kbd>OFF, QUIT, END, X,</kbd>
-etc.) turns CODE off and returns the family, font, smartquotes
-and (if applicable) underlining of quotes to their former state.
-If you&#8217;ve used the inline escape, <kbd>\*[CODE]</kbd>, to
-initiate a section of code, <kbd>\*[CODE OFF]</kbd> equally returns
-things to their former state.
-</p>
-
-<div class="box-tip">
-<p class="tip">
-<span class="note">Note:</span>
-If your code snippet includes the backslash character, which is
+If your code includes the backslash character, which is
 groff&#8217;s escape character, you will have to change the
 escape character temporarily to something else with the macro,
 <a href="goodies.html#esc-char">ESC_CHAR</a>.
@@ -2380,11 +2369,27 @@ Mom has no way of knowing what special characters you&#8217;re going
 to use in code snippets, therefore she cannot automatically replace
 the escape character with something else.
 </p>
-</div>
 
-<div class="box-important">
+<p>
+The correct order for changing the escape character inside
+<kbd>CODE</kbd> is
+<span class="pre-in-pp">
+  .CODE
+  .ESC_CHAR character
+  &lt;code&gt;
+  .ESC_CHAR .
+  .CODE OFF
+</span>
+</p>
+
+<p>
+Alternatively, you can enter the backslash character as
+<kbd>\e</kbd>, which tells groff to print a literal backslash.
+</p>
+
+<div class="box-tip">
 <p class="tip-top">
-<span class="important">Important:</span>
+<span class="tip">Note:</span>
 <kbd>.CODE</kbd> does not cause a line break when
 you&#8217;re in a
 <a href="definitions.html#filled">fill mode</a>
@@ -2407,7 +2412,7 @@ a break (eg
 <a href="#pp">PP</a>).
 </p>
 
-<p>
+<p class="tip-bottom">
 In all likelihood, if you want the situation described above (ie a
 break before and after CODE), what you probably want is to use
 <a href="quote">QUOTE</a>
@@ -2425,15 +2430,66 @@ indenting the code and offsetting it from
 <a href="definitions.html#running">running text</a>
 with vertical whitespace.
 </p>
-
-<p class="tip-bottom">
-<span class="note">Note:</span>
-<kbd>BR</kbd>, <kbd>BREAK</kbd> and <kbd>SPREAD</kbd> have no
-effect when used with the inline escape, <kbd>\*[CODE]</kbd>.  The
-assumption behind <kbd>\*[CODE]</kbd> is that you&#8217;re inserting
-a bit of code into a line, not creating a distinct code block.
-</p>
 </div>
+
+<p>
+Passing any argument other than <kbd>BR</kbd>, <kbd>BREAK</kbd> or
+<kbd>SPREAD</kbd> to CODE (eg <kbd>OFF, QUIT, END, X,</kbd> etc.)
+turns CODE off and returns the family, font, and smartquotes back to
+their former state.
+</p>
+
+<h4 class="docs" style="font-size: 102%">Using <kbd>\*[CODE]</kbd> inline</h4>
+
+<p>
+<kbd>\*[CODE]</kbd> invokes <kbd>.CODE</kbd>, allowing you to
+bracket code snippets inline.  It does not accept the <kbd>BR</kbd>,
+<kbd>BREAK</kbd>, or <kbd>SPREAD</kbd> arguments.  It is most useful
+for short snippets, as in the following example.
+<br/>
+<span class="pre-in-pp">
+  \*[CODE]apropos\*[CODE OFF] and \*[CODE]man&nbsp;-k\*[CODE] are identical.
+</span>
+</p>
+
+<p>
+<kbd>\*[CODE]</kbd> does not permit changing the escape character,
+so <kbd>\e</kbd> must be used.  Furthermore, if your code starts
+with a period, you must enter it as &#8220;<kbd>\&.</kbd>&#8221;.
+<br/>
+<span class="pre-in-pp">
+  Registers are created with the \*[CODE]\&.nr\*[CODE OFF] request.
+</span>
+</p>
+
+<h4 class="docs" style="font-size: 102%; margin-top: -1em">CODE and punctuation</h4>
+
+<p>
+<kbd>.CODE&nbsp;OFF</kbd> automatically inserts a word space into
+running text.  If your CODE block is to be followed by punctuation
+with the parameters of
+<a href="definitions.html#running">running text</a>,
+you must terminate the block with &#8220;<kbd>\c</kbd>&#8221; and
+enter the punctuation at the beginning of the next input line.  If
+the punctuation mark is a period, you must precede it with
+&#8220;<kbd>\&amp;</kbd>&#8221;.
+<br/>
+<span class="pre-in-pp">
+  ...for example,
+  .CODE
+   echo "Hello, world" | sed -e 's/Hello,/Goodbye, cruel/'\c
+  .CODE OFF
+  \&.  As this demonstrates...
+</span>
+Use of <kbd>\*[CODE]</kbd> inline does not require the
+<kbd>\c</kbd>, however periods after <kbd>\*[CODE&nbsp;OFF]</kbd>
+still need to be introduced with <kbd>\&</kbd>, as in this example:
+<br/>
+<span class="pre-in-pp">
+  ...append the unit of measure \*[CODE]p\*[CODE&nbsp;OFF]\&. New sentence...
+</span>
+</p>
+
 
 <div class="defaults-container" style="background-color: #ded4bd; border: none;">
 <h3 id="code-control" class="docs defaults">CODE control macros and defaults</h3>
@@ -2642,8 +2698,7 @@ enumerator to look like.
 </p>
 
 <p>
-For example, if you want a list enumerated
-with <kbd>=&gt;</kbd>,
+For example, if you want a list enumerated with <kbd>=&gt;</kbd>,
 <br/>
 <span class="pre-in-pp">
   .LIST USER =&gt;
@@ -2655,6 +2710,25 @@ will produce
 <br/>
 <span class="pre-in-pp">
   =&gt; A list item
+</span>
+Some useful special groff characters you might want to pass to
+<kbd>USER</kbd> are:
+<span class="pre-in-pp">
+  \[sq] - square box
+  \[rh] - pointing hand
+  \[-&gt;] - right arrow
+  \[rA] - right double arrow
+  \[OK] - checkmark
+</span>
+The size and vertical positioning of special characters may be
+adjusted with
+<a href="definitions.html#inlines">inline escapes</a>
+in the argument passed to USER.  For example, to raise the position
+of <kbd>\[sq]</kbd> slightly, you might do
+<span class="pre-in-pp">
+  .LIST USER "\*[UP .25p]\[sq]\*[DOWN .25p]"
+    or
+  .LIST USER \v'-.25p]\[sq]\[\v'.25p']
 </span>
 </p>
 
@@ -3045,7 +3119,7 @@ invoke <kbd>.PAD_LIST_DIGITS&nbsp;LEFT</kbd> after
   </ul></li>
   <li><a href="#number-lines-control">Control macros and defaults</a>
   <ul style="margin-left: -.5em;">
-    <li><a href="#number-lines-control-quote">Line numbering control macros for quotes and blockquotes</a></li>
+    <li><a href="#number-quote-lines">Line numbering control macros for quotes and blockquotes</a></li>
   </ul></li>
 </ul>
 
@@ -3055,14 +3129,15 @@ When you turn line-numbering on, mom, by default
 <ul style="margin-top: -.5em;">
   <li>numbers every line of paragraph text; line-numbering is
       suspended for all other document processing tags (like
-      docheaders, epigraphs, heads, subheads, etc.) and special
+      docheaders, epigraphs, headings, quotes, etc.) and special
       pages (covers, endotes, bibliographies, etc.); be aware,
       though, that if you turn
       <a href="definitions.html#docheader">docheaders</a>
       off (with
       <a href="docprocessing.html#docheader">DOCHEADER</a> OFF)
       and create your own docheader, mom
-      <i>will</i> line-number your custom docheader
+      <i>will</i> line-number your custom docheader, so turn
+      line numbering on afterwards
   </li>
   <li>doesn&#8217;t touch your line length; line numbers are hung
       outside your current left margin (as set with
@@ -3078,12 +3153,14 @@ When you turn line-numbering on, mom, by default
 </ul>
 
 <p>
-Line numbering may be enabled and disabled for
-<kbd><a href="#quote">QUOTE</a></kbd>
-and/or
-<kbd><a href="#blockquote">BLOCKQUOTE</a></kbd>
-in one of three styles.  See
-<a href="#number-lines-control-quote">Line numbering control macros for quotes and blockquotes</a>.
+Mom expects that
+<kbd><a href="#quote">QUOTE</a></kbd>s
+and
+<kbd><a href="#blockquote">BLOCKQUOTE</a></kbd>s
+will not be line-numbered, however control macros
+are provided to enable line numbering for either.
+See
+<a href="#number-quote-lines">Line numbering control macros for quotes and blockquotes</a>.
 </p>
 
 <!-- -NUMBER_LINES- -->
@@ -3106,11 +3183,28 @@ NUMBER_LINES does what it says: prints line numbers, to the left of
 of paragraph text.  One of the chief reasons for wanting numbered
 lines is in order to identify footnotes or endnotes by line number
 instead of by a marker in the text.  (See
-<a href="#footnote-linenumbers">FOOTNOTE_MARKER_STYLE LINE</a>
+<a href="#footnotes-by-linenumber">Footnotes by linenumber</a>
 for instructions on line-numbered footnotes, and
-<a href="#endnote-marker-style">ENDNOTE_MARKER_STYLE</a>
+<a href="#endnote-marker-style">ENDNOTE_MARKER_STYLE LINE</a>
 for instructions on line-numbered endnotes.)
 </p>
+
+<div class="box-tip">
+<p class="tip">
+<span class="note">Note:</span>
+Do not use <kbd>NUMBER_LINES</kbd> inside 
+<a href="#quote">QUOTE</a>
+or
+<a href="#blockquote">BLOCKQUOTE</a>.
+By default, mom expects that quotes and blockquotes will not be
+line numbered.  If you wish to enable line numbering for them, you
+must invoke
+<a href="#number-quote-lines">NUMBER_QUOTE_LINES</a>
+or
+<a href="#number-quote-lines">NUMBER_BLOCKQUOTE_LINES</a>.
+</p>
+</div>
+
 
 <p>
 The first time you invoke
@@ -3118,7 +3212,7 @@ The first time you invoke
 you must, at a minimum, tell it what line number you want the
 <i>next</i>
 <a href="definitions.html#outputline">output line</a>
-to have.  The optional arguments which <kbd>lines to number</kbd>
+to have.  The optional arguments <kbd>which lines to number</kbd>
 and <kbd>gutter</kbd> allow you to state which lines should
 be numbered (eg every five or every ten lines), and the gutter to
 place between line numbers and
@@ -3283,11 +3377,12 @@ desired result.
 
 <ol style="margin-top: .5em; padding-bottom: .5em;">
   <li><a href="#number-lines-general">Family/font/size/colour</a></li>
-  <li><a href="#number-lines-control-quote">Line numbering control for quotes and blockquotes</a>
-  <ul style="margin-left: -.75em; list-style-type: disc;">
-    <li><a href="#number-quote-lines">Number QUOTE lines</a></li>
-    <li><a href="#number-blockquote-lines">Number BLOCKQUOTE lines</a></li>
-    <li><a href="#number-lines-control-case">Numbering QUOTE and BLOCKQUOTE lines on a case by case basis</a></li>
+  <li><a href="#number-quote-lines">Line numbering control for quotes and blockquotes</a>
+  <ul>
+    <li><a href="#number-quote-lines-global">Including QUOTEs and BLOCKQUOTEs in the line numbering scheme</a></li>
+    <li><a href="#number-quote-lines-selective">Selectively enabling line numbering for QUOTEs and BLOCKQUOTEs</a></li>
+    <li><a href="#number-quote-lines-gutter">Changing the line number gutter for QUOTEs and BLOCKQUOTEs</a></li>
+    <li><a href="#number-quote-lines-silent">Silently increment line numbers during  QUOTE and BLOCKQUOTE</a></li>
   </ul></li>
 </ol>
 </div>
@@ -3307,184 +3402,127 @@ See
 </span>
 </div>
 
-<h4 id="number-lines-control-quote" class="docs" style="margin-top: -1.75em;">2. Line numbering control macros for QUOTE and BLOCKQUOTE</h4>
+<h4 id="number-quote-lines" class="docs" style="margin-top: -1.75em;">2. Line numbering control macros for QUOTE and BLOCKQUOTE</h4>
 
-<h5 id="number-quote-lines" class="docs" style="margin-top: 1em;">Number QUOTE lines</h5>
+<h5 id="number-quote-lines-global" class="docs" style="font-size: 87%">&bull;&nbsp;Including QUOTEs and BLOCKQUOTEs in the line numbering scheme</h5>
 
 <p>
-If you&#8217;d like mom to number lines of output text
-in a
+If you&#8217;d like mom to number lines in a
 <a href="#quote">QUOTE</a> 
-as part of the same order and sequence as paragraph text, simply
+or
+<a href="#blockquote">BLOCKQUOTE</a> 
+as part of the same order and sequence as paragraph text,
 invoke
 <span class="pre-in-pp">
   .NUMBER_QUOTE_LINES
 </span>
-by itself.
+or
+<span class="pre-in-pp">
+  .NUMBER_BLOCKQUOTE_LINES
+</span>
+either before or after <kbd>NUMBER_LINES</kbd>.  Both behave
+identically with respect to the affected macro (ie <kbd>QUOTE</kbd>
+or <kbd>BLOCKQUOTE</kbd>).
+</p>
+
+<h5 id="number-quote-lines-selective" class="docs" style="font-size: 87%">&bull;&nbsp;Selectively enabling line numbering for QUOTEs and BLOCKQUOTEs</h5>
+
+<p>
+If you&#8217;d like to enable line numbering
+selectively for quotes and blockquotes <i>only</i>, enable
+<kbd>NUMBER_QUOTE_LINES</kbd> or <kbd>NUMBER_BLOCKQUOTE_LINES</kbd>
+first, followed by <kbd>NUMBER_LINES&nbsp;&lt;n&gt;</kbd>, where
+<kbd>&lt;n&gt;</kbd> is the first line number of the quote
+or blockquote.  Afterwards, enter your <kbd>QUOTE</kbd> or
+<kbd>BLOCKQUOTE</kbd>.  When the quote or blockquote is finished (ie
+after <kbd>QUOTE&nbsp;OFF</kbd> or <kbd>BLOCKQUOTE&nbsp;OFF</kbd>),
+turn line numbering off.  Each subsequent quote or blockquote you
+want line numbered requires only <kbd>NUMBER_LINES &lt;n&gt;</kbd>
+(with a corresponding <kbd>NUMBER_LINES OFF</kbd>) until you turn
+<kbd>NUMBER_QUOTE_LINES</kbd> or <kbd>NUMBER_BLOCKQUOTE_LINES</kbd>
+off.
 </p>
 
 <p>
-There is a catch with numbering quotes, though.  Owing to groff&#8217;s
-restriction on accepting only the figure space as the line number
-gutter&#8217;s unit of measure, it is not possible for line numbers
-in quotes to hang outside a document&#8217;s overall left margin and
-be reliably flush with the line numbers of paragraph text.
-Conseqently, line numbers in quotes hang to the left of the quote,
-separated from the quote by the <kbd>&lt;gutter&gt;</kbd> argument.
+Here&#8217;s a recipe where the first line number of quotes starts
+repeatedly at &#8220;1&#8221;.
+<span class="pre-in-pp">
+  &lt;running text&gt;
+  .NUMBER_QUOTE_LINES
+  .NUMBER_LINES 1
+  .QUOTE
+  &lt;text of quote&gt;
+  .QUOTE OFF
+  .NUMBER_LINES OFF
+  &lt;further running text&gt;
+  .NUMBER_LINES 1
+  .QUOTE
+  &lt;text of quote&gt;
+  .QUOTE OFF
+  .NUMBER_LINES OFF
+  &lt;further running text&gt;
+</span>
+</p>
+
+<h5 id="number-quote-lines-gutter" class="docs" style="font-size: 87%">&bull;&nbsp;Changing the line number gutter for QUOTEs and BLOCKQUOTEs</h5>
+
+<p>
+Owing to groff&#8217;s restriction on accepting only the figure
+space as the line number
+<a href="definitions.html#gutter">gutter</a>&#8217;s
+unit of measure, it is not possible for line numbers in quotes
+or blockquotes to hang outside a document&#8217;s overall left
+margin and be reliably flush with the line numbers of paragraph
+text.  Conseqently, line numbers in quotes or blockquotes hang
+to the left of the quote, separated by the currently active
+gutter for <kbd>NUMBER_LINES</kbd>.
 </p>
 
 <p>
-If you&#8217;d like to change the gutter for quotes line-numbered in
-this way, invoke <kbd>.NUMBER_QUOTE_LINES</kbd> with a digit
-representing the number of
+If you&#8217;d like to change the line number gutter for
+quotes or blockquotes, invoke <kbd>NUMBER_QUOTE_LINES</kbd> or
+<kbd>NUMBER_BLOCKQUOTE_LINES</kbd> with a digit representing the
+number of
 <a href="definitions.html#figurespace">figure spaces</a>
 you&#8217;d like between the line numbers and the quoted text, like this:
 <br/>
 <span class="pre-in-pp">
-  .NUMBER_QUOTE_LINES 1
+  .NUMBER_QUOTE_LINES 3
 </span>
 With the above, line numbers in quotes (and only quotes) will have
-a gutter of 1 figure space.
+a gutter of 3 figure spaces.
 </p>
 
+<h5 id="number-quote-lines-silent" class="docs" style="font-size: 87%">&bull;&nbsp;Silently increment line numbers during QUOTE and BLOCKQUOTE</h5>
+
 <p>
-If you&#8217;re using "line numbering style" for footnotes
-(<a href="#footnote-marker-style">FOOTNOTE_MARKER_STYLE <kbd>LINE</kbd>)</a>,
-you may not wish to have quotes <i>visibly</i> line-numbered, but
-still want to embed footnotes inside quotes.  In order to do that,
-mom allows you to say
+If you&#8217;ve asked mom not to line number quotes or blockquotes,
+but would like line numbering to continue while they&#8217;re
+being output (as opposed to mom&#8217;s default behaviour of
+<i>suspending</i> incrementing of line numbers during the output of
+quotes and blockquotes), invoke
 <span class="pre-in-pp">
   .NUMBER_QUOTE_LINES&nbsp;SILENT
 </span>
-When you invoke <kbd>.NUMBER_QUOTE_LINES&nbsp;SILENT</kbd>,
-mom continues to increment line numbers while quotes are being
-output, but they won&#8217;t appear in the output copy.  (Compare
-this with mom&#8217;s default behaviour of <i>suspending</i>
-incrementing of line numbers during the output of quotes.)  This
-allows you to embed line-numbered footnotes inside quotes and have
-the line number label in the footnote come out sensibly.
-</p>
-
-<p>
-Once having turned NUMBER_QUOTE_LINES on, you may disable it with
-<span class="pre-in-pp">
-  .NUMBER_QUOTE_LINES OFF
-</span>
-(or <kbd>QUIT, END, X,</kbd> etc).
-</p>
-
-<h5 id="number-blockquote-lines" class="docs">Number BLOCKQUOTE lines</h5>
-
-<p>
-If you&#8217;d like mom to number lines of output text
-in a
-<a href="#quote">BLOCKQUOTE</a>
-as part of the same order and sequence as paragraph text, simply
-invoke
-<span class="pre-in-pp">
-  .NUMBER_BLOCKQUOTE_LINES
-</span>
-by itself.
-</p>
-
-<p>
-There is a catch with numbering blockquotes, though.  Owing to
-groff&#8217;s restriction of accepting only the figure space as the
-line number gutter&#8217;s unit of measure, it is not possible for line
-numbers in blockquotes to hang outside a document&#8217;s overall left
-margin and be reliably flush with the line numbers of paragraph
-text.  Conseqently, line numbers in blockquotes hang to the
-left of the blockquote, separated from the blockquote by the
-<kbd>&lt;gutter&gt;</kbd> argument.
-</p>
-
-<p>
-If you&#8217;d like to change the gutter for blockquotes line-numbered in
-this way, invoke
-<span class="pre-in-pp">
-  .NUMBER_BLOCKQUOTE_LINES
-</span>
-with a digit representing the number of
-<a href="definitions.html#figurespace">figure spaces</a>
-you&#8217;d like between the line numbers and the blockquoted text, like
-this:
-<br/>
-<span class="pre-in-pp">
-  .NUMBER_BLOCKQUOTE_LINES 1
-</span>
-
-With the above, line numbers in blockquotes (and only blockquotes)
-will have a gutter of 1 figure space.
-</p>
-
-<p>
-If you are using "line numbering style" for footnotes
-(<a href="#footnote-marker-style">FOOTNOTE_MARKER_STYLE <kbd>LINE</kbd>)</a>,
-you may not wish to have blockquotes <i>visibly</i> line-numbered,
-but still want to embed footnotes inside blockquotes.  In order to
-do that, mom allows you to say
+or
 <span class="pre-in-pp">
   .NUMBER_BLOCKQUOTE_LINES&nbsp;SILENT
 </span>
-When you invoke <kbd>.NUMBER_BLOCKQUOTE_LINES&nbsp;SILENT</kbd>,
-mom continues to increment line numbers while blockquotes are being
-output, but they won&#8217;t appear in the output copy.  (Compare
-this with mom&#8217;s default behaviour of <i>suspending</i>
-incrementing of line numbers during the output of blockquotes.)
-This allows you to embed line-numbered footnotes inside blockquotes
-and have the line number label in the footnote come out sensibly.
+With these, mom continues to increment line numbers while quotes
+or blockquotes are being output, but the line numbers won&#8217;t
+appear in the output copy.
 </p>
 
 <p>
-Once having turned NUMBER_BLOCKQUOTE_LINES on, you may disable it
-with
+Once having turned <kbd>NUMBER_QUOTE_LINES</kbd> or
+<kbd>NUMBER_BLOCKQUOTE_LINES</kbd> on, you may disable them with
+<span class="pre-in-pp">
+  .NUMBER_QUOTE_LINES OFF
+</span>
+or
 <span class="pre-in-pp">
   .NUMBER_BLOCKQUOTE_LINES OFF
 </span>
-(or <kbd>QUIT, END, X,</kbd> etc).
-</p>
-
-<h4 id="number-lines-control-case" class="docs" style="margin-top: -.25em;">3. Numbering QUOTE and BLOCKQUOTE lines on a case by case basis</h4>
-
-<p>
-Sometimes, you may want quotes or blockquotes to have a different
-line numbering scheme from the one used in the rest of the document.
-Or, you may want line numbering enabled only inside a particular
-quote or blockquote.  A common reason for this would be if you were
-using the
-<a href="#quote">QUOTE</a>
-macro to insert lines of programming code into a document.
-</p>
-
-<p>
-To enable line numbering within quotes or blockquotes on a case by
-case basis, simply invoke
-<a href="#number-lines">NUMBER_LINES</a>
-with the arguments you need immediately after entering
-<kbd><a href="#quote">.QUOTE</a></kbd>
-or
-<kbd><a href="#blockquote">.BLOCKQUOTE</a></kbd>.
-(<a href="number-quote-lines">NUMBER_QUOTE_LINES</a>
-and/or
-<a href="number-blockquote-lines">NUMBER_BLOCKQUOTE_LINES</a>
-should be turned off if you&#8217;re doing this.)  The quote
-or blockquote will then be line-numbered according to your
-specifications: the starting line number of the quote or blockquote
-will be the one you give as a first argument to NUMBER_LINES; which
-lines to number will be the value you pass to <kbd>which lines
-to number</kbd> (defaults to <kbd>1</kbd>); line numbers will
-hang to the left of the quote or blockquote, separated from the
-quote or blockquote by <kbd>gutter</kbd> (defaults to <kbd>2</kbd>).
-</p>
-
-<p>
-As soon as QUOTE or BLOCKQUOTE is turned off, line numbering ceases,
-not only with respect to subsequent paragraph text (if they are
-not being line-numbered), but also for any subsequent invocation
-of <kbd>.QUOTE</kbd> or <kbd>.BLOCKQUOTE</kbd>.  In other words,
-you must re-enable quote or blockquote line-numbering inside every
-instance of QUOTE or BLOCKQUOTE when line-numbering either of them
-on a case by case basis.
 </p>
 
 <div class="rule-short"><hr/></div>
@@ -3838,7 +3876,7 @@ Tag: FOOTNOTE <kbd class="macro-args">&lt;toggle&gt; [ BREAK | BR ] | INDENT LEF
 </div>
 
 <p class="requires">
-&bull;&nbsp;<kbd>&lt;indent value&gt;</kbd> requires a <a href="definitions.html#unitofmeasure">unit of measure</a>
+&bull;&nbsp;<kbd><span style="font-style: normal">&lt;indent value&gt;</span></kbd> requires a <a href="definitions.html#unitofmeasure">unit of measure</a>
 <br/>
 See <span style="font-style: normal"><a href="#footnote-note">HYPER-IMPORTANT NOTE</a></span>.
 </p>
@@ -4461,19 +4499,24 @@ is removed.
 <p>
 By default, mom starts the endnotes page with a bold,
 centred, double-underscored head, &#8220;ENDNOTES&#8221;.
-Underneath&mdash;flush left, bold, and underscored&mdash;she prints
-the document title (or, in the case of chapters, the chapter number
-or title).  She then prints the endnotes.  Endnotes are identified
+Subsequently, for each section in a
+<a href="rectoverso.html#collate-intro">collated</a>
+document (eg chapters in a book), she identifies the section in bold
+type, flush left and underscored, followed by one-half linespace.
+Endnotes pertaining to the section are output underneath, identified
 by superscript numbers.  The text of the endnotes themselves is
 indented to the right of the numbers.
 </p>
 
-<p>
-If the endnotes are grouped together at the end of a collated
-document, each section of the document that contains endnotes is
-identified by its own unique title (or chapter number or title),
-bold, flush left, and underscored.
+<div class="box-tip">
+<p class="tip">
+<span class="note">Note:</span>
+The one-half linespace between section identifiers and the endnotes
+themselves, plus the need to group identifiers and endnotes sensibly,
+means that mom cannot guarantee perfectly aligned bottom margins.
+This is an unavoidable consequence of the structure of endnotes.
 </p>
+</div>
 
 <p>
 Of course, all the defaults, as well as the overall style of the
@@ -4484,7 +4527,6 @@ macros.  This is because endnotes are like a mini-document unto
 themselves, and therefore need not be bound by the style parameters
 of the body of the document.
 </p>
-
 
 <h3 id="endnote-columns" class="docs">Endnotes and columnar documents</h3>
 
@@ -6277,7 +6319,7 @@ new colour; the em-dashes will be in the default document colour
 <tr>
   <td style="width: 33%;"><a href="toc.html">Back to Table of Contents</a></td>
   <td style="width: 33%; text-align: center;"><a href="#top">Top</a></td>
-  <td style="width: 33%; text-align: right;"><a href="images.html#top">Next: Inserting images</a></td>
+  <td style="width: 33%; text-align: right;"><a href="images.html#top">Next: Graphics, floats, and preprocessor support</a></td>
 </tr>
 </table>
 

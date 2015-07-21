@@ -1,5 +1,5 @@
-    Copyright 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013
-      Free Software Foundation, Inc.
+    -*- text -*-
+    Copyright 2004-2014  Free Software Foundation, Inc.
 
     Copying and distribution of this file, with or without modification,
     are permitted in any medium without royalty provided the copyright
@@ -21,6 +21,83 @@ Also, please--no html email.  That, too, gets nuked.
 --Peter Schaffter
 
 ====================================================================
+
+Version 2.0-c
+=============
+
+Endnotes page offset wrong if (BLOCK)QUOTE last macro before
+ENDNOTES.
+---Fixed---
+
+Character translation of diacritics from lowercase to caps broken.
+---Fixed---
+
+Spacing not being restored (.ns/.rs) after a HEADING that falls at
+the top of the page.
+---Fixed---
+
+Version 2.0-b
+=============
+
+When line numbering is enabled, line numbers after QUOTE being reset
+to '0'.
+---Fixed---
+
+When line numbering is enabled for QUOTE and BLOCKQUOTE, style
+params for line numbers not being applied.
+---Fixed---
+
+TOC overprinting footer when it comes immediately after
+BIBLIOGRAPHY.
+---Fixed---
+
+TOC page numbers not printing when positioned at top of page.
+---Fixed---
+
+TOC page numbers not always incrementing properly.
+---Fixed---
+
+Version 2.0-a_1
+===============
+
+QUOTE_INDENT not being respected in FLOAT.
+---Fixed---
+
+SMARTQUOTES OFF broken.
+---Fixed---
+
+DOCHEADER_LEAD being reset to default after first chapter.
+---Fixed---
+
+Forced floats that fit on the page causing floats on the next page
+to be treated as forced.
+---Fixed---
+
+Forced floats not advancing on the page after output if the float is
+forced to the next page, causing running text to overprint.
+---Fixed---
+
+Text after defered floats not being shimmed properly.
+---Fixed---
+
+Tables that span pages overprinting first two lines of table on new
+pages.
+---Fixed---
+
+PDF_IMAGE not respecting .IL, .IR, or .IB.
+---Fixed---
+
+AUTOLEAD not sticking after .START.
+---Fixed---
+
+Version 2.0-a
+=============
+
+Footer not printing on first page when HEADERS_AND_FOOTERS enabled.
+---Fixed---
+
+$AUTHOR string missing.
+---Fixed---
 
 Version 2.0
 ===========

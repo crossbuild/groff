@@ -1,13 +1,13 @@
+.\" -*- nroff -*-
+.\"
 .\" an-ext.tmac
+.\"
+.\" Copyright (C) 2007-2014  Free Software Foundation, Inc.
 .\"
 .\" Written by Eric S. Raymond <esr@thyrsus.com>
 .\"            Werner Lemberg <wl@gnu.org>
 .\"
-.\" Version 2012-Mar-05
-.\"
-.\" Copyright (C) 2007, 2009, 2012 Free Software Foundation, Inc.
 .\" You may freely use, modify and/or distribute this file.
-.\"
 .\"
 .\" The code below provides extension macros for the `man' macro package.
 .\" Care has been taken to make the code portable; groff extensions are
@@ -183,15 +183,18 @@
 .
 .\" Start example.
 .de EX
+.  do ds mF \\n[.fam]
 .  nr mE \\n(.f
 .  nf
 .  nh
+.  do fam C
 .  ft CW
 ..
 .
 .
 .\" End example.
 .de EE
+.  do fam \\*(mF
 .  ft \\n(mE
 .  fi
 .  hy \\n(HY

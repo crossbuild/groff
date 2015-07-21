@@ -1,19 +1,19 @@
-# Copyright (C) 2002-2006, 2009, 2012-2013
-#   Free Software Foundation, Inc.
+# -*- makefile -*-
+# Copyright (C) 2002-2014  Free Software Foundation, Inc.
 #      Written by Werner Lemberg (wl@gnu.org)
-# 
+#
 # This file is part of groff.
-# 
+#
 # groff is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free
 # Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # groff is distributed in the hope that it will be useful, but WITHOUT ANY
 # WARRANTY; without even the implied warranty of MERCHANTABILITY or
 # FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
 # for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
@@ -30,6 +30,7 @@ groff_bin_dirs=\
 
 FFLAG=-F$(top_builddir)/font -F$(top_srcdir)/font
 TFLAG=-M$(top_builddir)/tmac -M$(top_srcdir)/tmac -M$(srcdir)
+KFLAG=-k
 
 GROFF=\
   GROFF_COMMAND_PREFIX= \
@@ -40,7 +41,7 @@ PDFMOM=\
   GROFF_COMMAND_PREFIX= \
   GROFF_BIN_PATH="$(GROFF_BIN_PATH)" \
   PDFMOM_BIN_PATH="$(top_builddir)/src/devices/gropdf" \
-  $(PDFMOMBIN) $(FFLAG) $(TFLAG)
+  $(PDFMOMBIN) $(FFLAG) $(TFLAG) $(KFLAG)
 
 MAN7=\
   groff_mom.n
@@ -108,17 +109,21 @@ MOSTLYCLEANADD=\
   examples/stamp \
   om.tmac-s
 
+RM=rm -f
+
 #.SUFFIXES: .mom .ps
 #.mom.ps:
 #	$(GROFF) -Tps -mom $< >$@
 
 .SUFFIXES: .mom .pdf
 .mom.pdf:
-	$(PDFMOM) $< >$@
+	LC_ALL=C $(PDFMOM) $< >$@
 
-all: stamp-strip $(PROCESSEDEXAMPLEFILES)
+all: stamp-strip $(make_pdfexamples)
 
 $(PROCESSEDEXAMPLEFILES): penguin.ps penguin.pdf examples/stamp
+
+pdfexamples: $(PROCESSEDEXAMPLEFILES)
 
 penguin.ps:
 	cp $(srcdir)/examples/penguin.ps .
@@ -126,64 +131,100 @@ penguin.pdf:
 	cp $(srcdir)/examples/penguin.pdf .
 
 examples/stamp:
-	test -d examples || $(mkinstalldirs) examples
+	-test -d examples || $(mkinstalldirs) examples
 	touch $@
 
-install_data: stamp-strip $(NORMALFILES) $(HTMLDOCFILES) \
-              $(EXAMPLEFILES) $(PROCESSEDEXAMPLEFILES)
+install_data: install_always \
+	      $(make_install_pdfdoc) $(make_install_shipped_htmldoc) \
+	      $(make_install_examples)
+
+install_always: stamp-strip $(NORMALFILES)
 	-test -d $(DESTDIR)$(tmacdir) || $(mkinstalldirs) $(DESTDIR)$(tmacdir)
 	for f in $(NORMALFILES); do \
-	  rm -f $(DESTDIR)$(tmacdir)/$$f; \
+	  $(RM) $(DESTDIR)$(tmacdir)/$$f; \
 	  $(INSTALL_DATA) $(srcdir)/$$f $(DESTDIR)$(tmacdir)/$$f; \
 	done
 	for f in $(STRIPFILES); do \
-	  rm -f $(DESTDIR)$(tmacdir)/$$f; \
+	  $(RM) $(DESTDIR)$(tmacdir)/$$f; \
 	  $(INSTALL_DATA) $$f-s $(DESTDIR)$(tmacdir)/$$f; \
 	done
+
+install_pdfdoc:
+# Since this uses examples/, it's in install_pdfexamples
+
+install_shipped_htmldoc: install_always $(HTMLDOCFILES)
 	-test -d $(DESTDIR)$(htmldocdir)/mom \
 	  || $(mkinstalldirs) $(DESTDIR)$(htmldocdir)/mom
 	for f in $(HTMLDOCFILES_); do \
-	  rm -f $(DESTDIR)$(htmldocdir)/mom/$$f; \
+	  $(RM) $(DESTDIR)$(htmldocdir)/mom/$$f; \
 	  $(INSTALL_DATA) $(srcdir)/momdoc/$$f \
 	    $(DESTDIR)$(htmldocdir)/mom/$$f; \
 	done
+
+
+install_examples: install_examples_always $(make_install_pdfexamples)
+
+install_examples_always: $(EXAMPLEFILES)
 	-test -d $(DESTDIR)$(exampledir)/mom \
 	  || $(mkinstalldirs) $(DESTDIR)$(exampledir)/mom
 	for f in $(EXAMPLEFILES_); do \
-	  rm -f $(DESTDIR)$(exampledir)/mom/$$f; \
+	  $(RM) $(DESTDIR)$(exampledir)/mom/$$f; \
 	  $(INSTALL_DATA) $(srcdir)/examples/$$f \
 	    $(DESTDIR)$(exampledir)/mom/$$f; \
 	done
+
+install_pdfexamples: install_examples_always $(PROCESSEDEXAMPLEFILES)
 	for f in $(PROCESSEDEXAMPLEFILES_); do \
-	  rm -f $(DESTDIR)$(exampledir)/mom/$$f; \
+	  $(RM) $(DESTDIR)$(exampledir)/mom/$$f; \
 	  $(INSTALL_DATA) examples/$$f $(DESTDIR)$(exampledir)/mom/$$f; \
 	done
 	-test -d $(DESTDIR)$(pdfdocdir) \
 	  || $(mkinstalldirs) $(DESTDIR)$(pdfdocdir)
 	for f in $(PDFDOCFILE); do \
-	  rm -f $(DESTDIR)$(pdfdocdir)/$$f; \
+	  $(RM) $(DESTDIR)$(pdfdocdir)/$$f; \
 	  ln -s $(exampledir)/mom/$$f $(DESTDIR)$(pdfdocdir)/$$f; \
 	done
 
 stamp-strip: $(STRIPFILES)
 	for f in $(STRIPFILES); do \
-	  rm -f $$f-s; \
-	  sed -f $(top_srcdir)/tmac/strip.sed $(srcdir)/$$f >$$f-s; \
+	  $(RM) $$f-s; \
+	  LANG=C LC_ALL=C \
+	    sed -f $(top_srcdir)/tmac/strip.sed $(srcdir)/$$f >$$f-s; \
 	done
 	touch $@
 
-uninstall_sub:
+uninstall_sub: uninstall_always \
+		$(make_uninstall_pdfdoc) $(make_uninstall_shipped_htmldoc) \
+		$(make_uninstall_examples)
+
+uninstall_always:
 	-for f in $(NORMALFILES) $(STRIPFILES); do \
-	  rm -f $(DESTDIR)$(tmacdir)/$$f; \
+	  $(RM) $(DESTDIR)$(tmacdir)/$$f; \
 	done
+
+uninstall_pdfdoc: uninstall_always
+# Since that used examples/, it's in uninstall_pdfexamples
+
+uninstall_shipped_htmldoc: uninstall_always
 	-for f in $(HTMLDOCFILES_); do \
-	  rm -f $(DESTDIR)$(htmldocdir)/mom/$$f; \
+	  $(RM) $(DESTDIR)$(htmldocdir)/mom/$$f; \
 	done
-	-rmdir $(DESTDIR)$(htmldocdir)/mom
-	-for f in $(EXAMPLEFILES_) $(PROCESSEDEXAMPLEFILES_); do \
-	  rm -f $(DESTDIR)$(exampledir)/mom/$$f; \
+	-test -d $(DESTDIR)$(htmldocdir)/mom && \
+	  rmdir $(DESTDIR)$(htmldocdir)/mom
+
+uninstall_examples: uninstall_examples_always $(make_uninstall_pdfexamples)
+	-test -d $(DESTDIR)$(exampledir)/mom && \
+	  rmdir $(DESTDIR)$(exampledir)/mom
+
+uninstall_examples_always:
+	-for f in $(EXAMPLEFILES_); do \
+	  $(RM) $(DESTDIR)$(exampledir)/mom/$$f; \
 	done
+
+uninstall_pdfexamples: uninstall_examples_always
 	-for f in $(PDFDOCFILE); do \
-	  rm -f $(DESTDIR)$(pdfdocdir)/$$f; \
+	  $(RM) $(DESTDIR)$(pdfdocdir)/$$f; \
 	done
-	-rmdir $(DESTDIR)$(exampledir)/mom
+	-for f in $(PROCESSEDEXAMPLEFILES_); do \
+	  $(RM) $(DESTDIR)$(exampledir)/mom/$$f; \
+	done

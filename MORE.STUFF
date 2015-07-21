@@ -1,5 +1,4 @@
-    Copyright 2000, 2001, 2002, 2007, 2009
-      Free Software Foundation, Inc.
+    Copyright 2000-2014 Free Software Foundation, Inc.
 
     Copying and distribution of this file, with or without modification,
     are permitted in any medium without royalty provided the copyright
@@ -122,7 +121,7 @@ than traditional implementations, because it knows about certain -man and
 or omit headers for sentence analysis tools.  It can further generate
 cpp-style #line lines.
 
-  http://www.moria.de/deroff/
+  http://www.moria.de/~michael/deroff/
 
 Version 1.6 compiled with DJGPP (for MS-DOS and all Windows 32 systems,
 i.e. Windows 95, Windows 98, Windows NT) is available from
@@ -255,3 +254,9 @@ and others can be accessed from the following web pages:
 
   http://www.cs.bell-labs.com/cm/cs/cstr.html
   http://www.cs.bell-labs.com/cm/cs/papers.html
+  http://troff.org
+
+##### Emacs settings
+Local Variables:
+mode: text
+End:

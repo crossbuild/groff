@@ -2,19 +2,8 @@ README
 
 The `groffer' program is the easiest way to read documents written in
 some `roff' language, such as the `man pages', the manual pages in
-many operating systems.  All `roff' preprocessors, such as `chem', are
-detected and executed automatically.
-
-
-Source files in this directory
-
-ChangeLog	information on all changements for groffer versions 1.*
-Makefile.sub	make file used by groff
-README		this file, general description of the program
-version.sh	information on version number and last update
-perl_test.pl	test whether perl has a suitable version
-perl/		subdirectory for the Perl version, see perl/README_PERL
-shell/		subdirectory for the shell version, see shell/README_SH
+many operating systems.  All `roff' preprocessors, such as `chem' or
+`glilypond', are detected and executed automatically.
 
 
 Input
@@ -60,21 +49,20 @@ The following displaying modes for the output are available:
   as by option `-V' and the `man' like `whatis' and `apropos'
   outputs.
 
-By default, the program tries to display a graphical device in X; on
-non-X text terminals, the `tty' text mode with a pager is tried by
-default.
+By default, the program creates a PDF file; on non-X text terminals,
+the `tty' text mode with a pager is tried by default.
 
 
 File access
 
-The shell and the Perl version of groffer now use umask of 077.  This
-is a very strict security issue.  It allows only access of the
-temporary files by the file owner.
+The Perl version of groffer now use umask of 077.  This is a very
+strict security issue.  It allows only access of the temporary files
+by the file owner.
 
 
 Compatibility
 
-`groffer' is compatible with the `man' program.  It supports .so
+`groffer' is compatible to the `man' program.  It supports `.so'
 requests based on the man path and compressed files.  That's more than
 `groff' does.
 
@@ -94,17 +82,14 @@ package for more details on these mailing lists.
 
 ####### License
 
-Last update: 5 Jan 2009
-
-Copyright (C) 2003, 2004, 2005, 2006, 2009
-  Free Software Foundation, Inc.
+Copyright (C) 2003-2014  Free Software Foundation, Inc.
 Written by Bernd Warken <groff-bernd.warken-72@web.de>.
 
 This file is part of `groffer', which is part of `groff'.
 
 `groff' is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
+the Free Software Foundation, either version 2 of the License, or
 (at your option) any later version.
 
 `groff' is distributed in the hope that it will be useful, but WITHOUT
@@ -113,7 +98,8 @@ FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
 for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program. If not, see <http://www.gnu.org/licenses/>.
+along with this program. If not, see
+<http://www.gnu.org/licenses/gpl-2.0.html>.
 
 
 ####### Emacs settings

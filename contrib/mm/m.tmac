@@ -1,14 +1,8 @@
-.\"  
-.de @revision
-.ds RE \\$2
-..
-.\"
-.\" $Id: m.tmac,v 2.53 2012/11/17 17:36:56 ant_222 Exp $
-.@revision $Revision: 2.53 $
+.\" -*- nroff -*-
+.
 .ig
 
-Copyright (C) 1991-2006, 2009-2011
-  Free Software Foundation, Inc.
+Copyright (C) 1991-2014  Free Software Foundation, Inc.
 mgm is written by Jörgen Hägg <jh@axis.com>
 
 mgm is free software; you can redistribute it and/or modify it under
@@ -742,8 +736,9 @@ in=\\n[.i] fi=\\n[.u] .d=\\n[.d] nl=\\n[nl] pg=\\n[%]
 .\" Wrapper to cancel the side effect of .tag + .br generating
 .\" unwanted vertical space.
 .de misc@tag
-.\" retain temporary indentation
+.\" retain temporary indentation and horizontal position
 .if !(\\n[.in]-\\n[.i]=0) .nr misc*ti \\n[.in]
+.nr misc*.k \\n[.k]
 .vpt 0
 .DEVTAG-\\$1 \\$2
 .br
@@ -753,6 +748,8 @@ in=\\n[.i] fi=\\n[.u] .d=\\n[.d] nl=\\n[nl] pg=\\n[%]
 .	sp -1
 .\}
 .sp -1
+\h'\\n[misc*.k]u'\c
+.rr misc*.k
 .vpt 1
 ..
 .\" ######## module pict #################
@@ -2015,7 +2012,7 @@ in=\\n[.i] fi=\\n[.u] .d=\\n[.d] nl=\\n[nl] pg=\\n[%]
 .if \\n[D]>2 .tm set format=\\n[ds*format]
 .\" fill or not to fill, that is the...
 .nr ds*fill 0
-.ie \\n[.$]>1 \{\
+.if \\n[.$]>1 \{\
 .	ie r ds*fill!\\$2 .nr ds*fill \\n[ds*fill!\\$2]
 .	el .@error "\\*[ds*type]:wrong fill:\\$2"
 .\}
@@ -2197,7 +2194,7 @@ in=\\n[.i] fi=\\n[.u] .d=\\n[.d] nl=\\n[nl] pg=\\n[%]
 .if \\n[li*type]=5 .ds li*c-mark <\\n[li*cnt!\\n[li*lvl]]>
 .if \\n[li*type]=6 .ds li*c-mark {\\n[li*cnt!\\n[li*lvl]]}
 .if \\n[.$]=1 .ds li*c-mark \\$1
-.ie \\n[.$]=2 \{\
+.if \\n[.$]=2 \{\
 .	ie (\\$2=2):(\\n[Limsp]=0) .ds li*c-mark \\$1\\*[li*c-mark]
 .	el .ds li*c-mark \\$1\ \\*[li*c-mark]
 .\}

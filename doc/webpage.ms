@@ -1,9 +1,9 @@
-.\" This file gives a small example how a web page could look like if created
-.\" with groff.
+.\" This file gives a small example how a web page could look like if
+.\" created with groff.
 .\"
 .\"
-.\" To make it work with other output devices also, we include www.tmac
-.\" directly.
+.\" To make it work with other output devices also, we include
+.\" www.tmac directly.
 .\"
 .nr PS 10
 .nr VS 12
@@ -56,48 +56,64 @@ Home of Groff (GNU Troff).
 .DC T HIS mydarkred
 is the home page for groff (\c
 .URL http://\:www.gnu.org/ GNU
-Troff).
+Troff), which is a software typesetting package
+that reads plain text mixed with formatting commands
+and produces formatted output.
 .
-Groff is a software typesetting package which reads plain text mixed with
-formatting commands and produces formatted output.
+Output may be PostScript or PDF, html,
+or ASCII/UTF8 for display at the terminal.
 .
-The source code of the currently released versions of groff is
-available at the 
-.URL "http://\:groff.ffii.org/\:groff/" "FFII host (Germany)" ,
-.URL "ftp://\:ftp.gnu.org/\:gnu/\:groff/" "GNU host (USA)" ,
-and its mirrors.
+Formatting commands may be either low-level typesetting requests
+(\[lq]primitives\[rq]) or macros from a supplied set.
 .
-The USA site also contains older, obsolete versions.
+Users may also write their own macros.
+.
+All three may be combined.
 
-The development version is available from a CVS repository, see below.
+Present on most Unix systems owing to its long association
+with Unix manuals (manpages),
+groff is capable of producing typographically sophisticated documents
+while consuming only minimal system resources.
+
+The source code of the currently released versions of groff is
+available at the
+.URL "http://\:ftp.gnu.org/\:gnu/\:groff/" "GNU host"
+and its mirrors;
+the current development version is available from a
+.URL "https://\:savannah.gnu.org/\:git/\:?group=groff" "git repository" .
 .
-Development snapshots (produced twice a day from the CVS repository)
-can be downloaded from
-.URL "http://\:groff.ffii.org/\:groff/\:devel" here .
+The current version is 1.22.3 (04-Nov-2014).
+
+To view the git repository in your browser, use
+.URL "http://\:git.savannah.gnu.org/\:cgit/\:groff.git" \
+     "Savannah's cgit interface" .
+.
+There you can also download snapshots;
+simply click on a commit entry line to get the URL.
+
+Additional contributions can be found
+.URL "http://\:groff.ffii.org/\:groff/\:contrib/" here .
 
 For a special version of groff on the Microsoft operating systems, see
-.URL "http://\:gnuwin32.sf.net/\:packages/\:groffl.htm" "Groff for Windows" .
+.URL "https://\:sf.net/\:projects/\:ezwinports/\:files/" \
+     "Groff for Windows"
+(version 1.21).
 
-Groff was originally written and maintained by James Clark, however it
+Groff was originally written and maintained by James Clark; it
 is now maintained by
 .MTO Ted.Harding@\:nessie.mcc.ac.uk "Ted Harding"
 and
-.MTO wl@\:gnu.org "Werner Lemberg" .
-
-User issues lead:
-.MTO Ted.Harding@\:nessie.mcc.ac.uk "Ted Harding" .
-.br
-Technical issues lead:
 .MTO wl@\:gnu.org "Werner Lemberg" .
 .
 .HR
 .
 \s[-4]\f[I]This document was produced using
-.URL http://groff.ffii.org/ groff-\n[.x].\n[.y].\n[.Y] .
+.URL http://\:www.gnu.org/\:software/\:groff groff-\n[.x].\n[.y].\n[.Y] .
 .br
 The image at the top has been contributed by Imogen Mulley,
 based on a similar picture found on the
-.URL http://www.gnu.org "GNU server" .
+.URL http://\:www.gnu.org "GNU server" .
+.
 .
 .SH
 License
@@ -106,8 +122,7 @@ GNU troff is released under the
 .URL http://\:www.gnu.org/\:copyleft/\:gpl.html "GNU Copyright License" .
 The documentation is released under the
 .URL http://\:www.gnu.org/\:copyleft/\:fdl.html "Free Documentation License" .
-Groff is an official GNU project as defined on
-.URL http://\:savannah.gnu.org savannah .
+.
 .
 .SH
 README
@@ -115,104 +130,58 @@ README
 This is the GNU groff document formatting system.
 The version number is given in the file VERSION.
 
-Included in this release are implementations of troff, pic, eqn, tbl, grn,
-refer, \-man, \-mdoc, \-mom, and \-ms macros, and drivers for PostScript,
-PDF, TeX DVI format, HP LaserJet\~4 printers, Canon CAPSL printers, HTML and
-XHTML formats (beta status), and typewriter-like devices.
-Also included is a modified version of the Berkeley \-me macros, the enhanced
-version gxditview of the X11 xditview previewer, and an implementation of the
-\-mm macros contributed by
-.MTO jh@\:axis.se "J\[:o]rgen H\[:a]gg" .
+Included in this release are implementations of `troff', `pic', `eqn',
+`tbl', `grn', `refer', `\-man', `\-mdoc', `\-mom', and `\-ms' macros, and
+drivers for `PostScript', `PDF', `TeX DVI' format, `HP LaserJet\~4'
+printers, `Canon CAPSL' printers, `HTML' and `XHTML' formats (beta status),
+and typewriter-like devices.  Also included is a modified version of the
+Berkeley `\-me' macros, the enhanced version `gxditview' of the X11
+`xditview' previewer, and an implementation of the `\-mm' macros contributed
+by J\[:o]rgen H\[:a]gg.
 
-See the file INSTALL for installation instructions.
+See the file `INSTALL' for installation instructions on how to install from
+a release.
 You require a C++ compiler.
 
-The file NEWS describes recent user-visible changes to groff.
+The file `INSTALL.REPO' contains supplementary instructions for building
+directly from a clone of the repository or a snapshot tarball.
 
-Groff is free software.
-See the file COPYING for copying permission.
+The file `NEWS' describes recent user-visible changes to `groff'.
 
-The file PROBLEMS describes various problems that have been encountered in
-compiling, installing, and running groff.
+`groff' is free software.
+See the file `COPYING' for copying permission.
 
-The file MORE.STUFF contains information about add-on packages useful for
-groff.
+The file `PROBLEMS' describes various problems that have been encountered in
+compiling, installing, and running `groff'.
+
+The file `MORE.STUFF' contains information about add-on packages useful for
+`groff'.
+.
 .
 .SH
-CVS and FTP access
+Repository and FTP access
 .LP
-The most recent released version of groff is always available by
+The most recent released version of `groff' is always available by
 .URL "ftp://\:ftp.gnu.org/\:gnu/\:groff" "anonymous ftp" .
 
-The current development version of groff is available from a
-.URL "http://\:savannah.gnu.org/\:cvs/\:?group=groff" "CVS repository" .
-You can access it by first selecting a parent directory in
-which to create a working copy (call it, say, ~/cvswork), and then
-executing the commands
+The current development version of `groff' is available from a
+.URL http://\:savannah.gnu.org/\:git/\:?group=groff "git repository" .
 
-.in 2m
-.nf
-.ft C
-cd ~/cvswork
-cvs -d:pserver:anonymous@cvs.savannah.gnu.org/sources/groff -z5 co groff
-.ft P
-.fi
-.in
-
-This creates a subdirectory, ~/cvswork/groff, with a `checked out'
-copy of the CVS repository.
-An update of this working copy may be
-achieved, at any later time by invoking the commands
-
-.in 2m
-.nf
-.ft C
-cd ~/cvswork/groff
-cvs -z5 update -dP
-.ft P
-.fi
-.in
-
-Please read the CVS info pages for further details.
-
-Finally, it is possible to access the CVS with a
-.URL http://\:savannah.gnu.org/\:cvs/\:?group=groff "web browser" .
-
-Alternatively, you can download snapshots (which are updated twice a day).
-The complete groff source as a single file is available
-.URL http://\:groff.ffii.org/\:groff/\:devel/\:groff-current.tar.gz here .
-
-A diff file relative to groff-\[la]version\[ra], the latest official groff
-release, is available at
-
-.in 2m
-.ft C
-http://groff.ffii.org/groff/devel/groff-\[la]version\[ra]-current.diff.gz
-.ft P
-.in
-
-Assuming that groff-\[la]version\[ra].tar.gz and
-groff-\[la]version\[ra]-current.diff.gz are in the same directory, do the
-following to apply the diff file:
-
-.in 2m
-.nf
-.ft C
-tar xzvf groff-\[la]version\[ra].tar.gz
-cd groff-\[la]version\[ra]
-gunzip -c ../groff-\[la]version\[ra]-current.diff.gz | patch -p1
-.ft P
-.fi
-.in
+To view the git repository in your browser, go to its
+.URL http://\:git.savannah.gnu.org/\:cgit/\:groff.git "browser interface" .
+There you can also download snapshots; simply click on a commit entry
+line to get the URL.
+.
 .
 .SH
 Groff dependencies
 .LP
 Depending on your requirements, you may need at least some of the
-following tools to build groff directly from its source:
+following tools to build `groff' directly from its source:
 
 .in 2m
 .nf
+perl >= v5.6.1 (see macro GROFF_PERL in file `m4/groff.m4')
 ghostscript
 the psutils package
 the netpbm package
@@ -221,44 +190,51 @@ bison \[>=] 1.875b or byacc
 .fi
 .in
 
-Note that texinfo and bison or byacc are required only for building from
-CVS sources (either a checked out working copy, or a daily snapshot).
+Note that `texinfo' and `bison' or `byacc' are required only for building
+from repository sources (either a checked out working copy, or a commit
+snapshot).
 They are not required for building from a stable release tarball.
 Also note that the version numbers stated are the minimum supported.
-No version of texinfo < 4.8 works, and the original release of bison
-1.875 is known not to work; you \fImay\fP find that bison releases < 1.875
+No version of `texinfo' < 4.8 works, and the original release of `bison'
+1.875 is known not to work; you \fImay\fP find that `bison' releases < 1.875
 work, but in case of difficulty, please update to a later version
 \fIbefore\fP posting a bug report.
-
-For \fIall\fP sources, you need ghostscript for creation of either PDF or
-HTML output; the netpbm and psutils packages are required only for HTML
-output.
+For \fIall\fP sources, you need `ghostscript' for creation of either `PDF'
+or `HTML' output; the `netpbm' and `psutils' packages are required only for
+`HTML' output.
 If you don't intend to produce output in either of these formats, then
 these packages are unnecessary.
 
-Additionally, producing `PDF' output directly with the `gropdf' device
-needs a working installation of Perl.
+Additionally, producing `PDF' output directly with the `gropdf' device needs
+a working installation of `perl'.
+The same is true for some other preprocessors like `chem'.
 
-In Linux Debian, the installation of texinfo is dangerous, for it creates a
-file install-info that blocks the system installation.
-So the created /usr/local/bin/install-info must be renamed.
+In Linux Debian, the installation of `texinfo' is dangerous, for it creates
+a file `install-info' that blocks the system installation.
+So the created `/usr/local/bin/install-info' must be renamed.
 
-The groff configure script searches for the X11 headers and libraries Xaw
-and Xmu.
+The `groff' configure script searches for the X11 headers and libraries
+`Xaw' and `Xmu'.
 So the corresponding developer packages of your system must be installed,
-otherwise groff does not install gxditview and the -TX* devices.
-In Debian, the developer packages are libxaw7-dev and libxmu-dev.
+otherwise `groff' does not install `gxditview' and the `-TX*' devices.
+In Debian, the developer packages are `libxaw7-dev' and `libxmu-dev'.
+.
 .
 .SH
 Bug reports
 .LP
-Please report bugs using the form in the file BUG-REPORT; the idea of this
-is to make sure that FSF has all the information it needs to fix the bug.
-At the very least, read the BUG-REPORT form and make sure that you supply
+Please report bugs using the project's
+.URL https://\:savannah.gnu.org/\:projects/\:groff "bug tracker" .
+
+Alternatively, but less preferable, you may use the form in the file
+`BUG-REPORT'; the idea of this is to make sure that FSF has all the
+information it needs to fix the bug.
+At the very least, read the `BUG-REPORT' form and make sure that you supply
 all the information that it asks for.
 Even if you are not sure that something is a bug, report it using
-BUG-REPORT: this enables us to determine whether it really is a bug or
+`BUG-REPORT': this enables us to determine whether it really is a bug or
 not.
+.
 .
 .SH
 Mailing lists
@@ -268,7 +244,7 @@ Three mailing lists are available:
 .ULS
 .LI
 .MTO bug-groff@gnu.org bug-groff@gnu.org
-for reporting bugs
+for reporting bugs and following bug reports
 
 .LI
 .MTO groff@gnu.org groff@gnu.org
@@ -276,10 +252,10 @@ for general discussion of groff
 
 .LI
 .MTO groff-commit@gnu.org groff-commit@gnu.org
-a read-only list showing commitments to the CVS repository
+a read-only list showing commits to the git repository
 .ULE
 
-To subscribe, send e-mail to \[la]list\[ra]-request@\[la]domain\[ra]
+To subscribe, send a mail to \[la]list\[ra]-request@\[la]domain\[ra]
 (example:
 .MTO groff-request@\:gnu.org groff-request@\:gnu.org
 for the `groff' list) with the word `subscribe' in either the
@@ -296,6 +272,112 @@ Alternatively, you may subscribe by visiting the web pages at
 
 Each of these web pages also provides a link to a browseable archive of
 postings to the corresponding mailing list.
+.
+.
+.SH
+NEWS VERSION 1.22.3
+.LP
+.SH 2
+gxditview
+
+.ULS
+.LI
+X11 resources for gxditview, which were previously installed in
+/usr/X11/lib/X11/app-defaults no matter which `prefix' was set, are
+now installed in appresdir=$prefix/lib/X11/app-defaults.
+If `appresdir' is not a standard X11 resource directory, the environment
+variable XFILESEARCHPATH should be set to this path.
+The standard default directories depends on the system `libXt'.
+Common directories include:
+
+.in 2m
+.nf
+/usr/lib/X11/app-defaults
+/usr/share/X11/app-defaults
+/etc/X11/app-defaults
+.fi
+.in
+
+Note that if the option `\-\-with\-appresdir' is passed to `configure', the
+`prefix' will not be added to `appresdir'.
+.ULE
+.
+.
+.SH 2
+glilypond
+
+.ULS
+.LI
+This new preprocessor (contributed by Bernd Warken) allows embedding of code
+for
+.URL http://\:www.lilypond.org "GNU LilyPond" ,
+a music typesetter.
+The data gets automatically processed and embedded as EPS images.
+.ULE
+.
+.
+.SH 2
+gperl
+
+.ULS
+.LI
+Bernd Warken contributed a new preprocessor to handle Perl code that can be
+evaluated and then processed by groff.
+.ULE
+.
+.
+.SH 2
+gpinyin
+
+.ULS
+.LI
+Another preprocessor from Bernd Warken to pretty-print Pinyin syllables like
+`guo2wang2' as `gu\['o]w\['a]ng'.
+.ULE
+.
+.
+.SH 2
+pdfroff
+
+.ULS
+.LI
+The pdfroff utility script now activates its `\-\-no\-toc\-relocation'
+option by default, unless a request similar to:
+
+.in 2m
+.nf
+\&.if !\en[PHASE] .tm pdfroff-option:set toc_relocation=enabled
+.fi
+.in
+
+is invoked during input file processing; (`.if !\en[PHASE] ...' ensures
+that the effect of the `.tm' request is restricted to the document setup
+phase of processing, as pdfroff sets it to 1 or\~2 in the output phase,
+but leaves it unset in the setup phase).
+
+The bundled `spdf.tmac' macro package, which implicitly activates
+`\-mpdfmark' for `ms' macro users, ensures that TOC relocation is
+appropriately enabled, when the `.TC' macro is invoked.
+.ULE
+.
+.
+.SH 2
+macro packages
+
+.ULS
+.LI
+The \-mom macro package now has full support for eqn, pic, and tbl, as well
+as captioning and labelling of pdf images and preprocessor output.
+Lists of Figures, Equations, and Tables can now be autogenerated.
+PDF_IMAGE has a new FRAME option.
+
+.LI
+A French introduction to the \-me macro package has been added (file
+`meintro_fr.me').
+
+.LI
+In -mdoc, command %C is now available, providing a city or place reference.
+.ULE
 .
 .
 .SH
@@ -540,7 +622,7 @@ This allows to reliably modify requests.
 
 .in 2m
 .nf
-.ft C 
+.ft C
 \&.als bp@orig bp
 \&.de bp
 \&.  tm before bp
@@ -779,7 +861,7 @@ For example, a table with two cells and two rows looks like this:
 
 .in 2m
 .nf
-.ft C 
+.ft C
 \&.TBL cols=2
 \&.  TR .TD 1*1 .TD 1*2
 \&.  TR .TD 2*1 .TD 2*2
@@ -793,7 +875,7 @@ Here the same table using a more expanded syntax:
 
 .in 2m
 .nf
-.ft C 
+.ft C
 \&.TBL cols=2
 \&.  TR
 \&.    TD 1*1
@@ -1371,8 +1453,8 @@ Out of the box, the groff package supports \%latin-9 only for \-Tps,
 .LI
 Composite glyphs are now supported.
 To do this, a subset of the Adobe Glyph List (AGL) Algorithm as described in
-.URL http://partners.adobe.com/public/developer/opentype/index_glyph.html \
-     http://partners.adobe.com/public/developer/opentype/index_glyph.html
+.URL http://\:partners.adobe.com/\:public/\:developer/\:opentype/\:index_glyph.html \
+     http://\:partners.adobe.com/\:public/\:developer/\:opentype/\:index_glyph.html
 is used to construct glyph names based on Unicode character codes.
 The existing groff glyph names are frozen; no glyph names which can't be
 constructed algorithmically will be added in the future.
@@ -1438,7 +1520,7 @@ In groff versions 1.18 and 1.18.1, \eD'f\~...'\& didn't move the current
 point horizontally.
 Despite of being silly, this change has been reverted for backwards
 compatibility.
-Consequently, the intermediate output command `Df' also moves the 
+Consequently, the intermediate output command `Df' also moves the
 position horizontally again.
 
 \eD'f\~...'\& is deprecated since it depends on the horizontal resolution

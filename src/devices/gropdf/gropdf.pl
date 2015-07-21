@@ -1,10 +1,8 @@
-#!@PERLPATH@ -w
+#!@PERL@ -w
 #
 #	gropdf		: PDF post processor for groff
-#	Deri James	: 4th May 2009
 #
-
-# Copyright (C) 2011-2013 Free Software Foundation, Inc.
+# Copyright (C) 2011-2014  Free Software Foundation, Inc.
 #      Written by Deri James <deri@chuzzlewit.demon.co.uk>
 #
 # This file is part of groff.
@@ -711,6 +709,7 @@ sub do_x
 	    {
 		my $pdfmark=$1;
 		$pdfmark=~s((\d{4,6}) u)(sprintf("%.1f",$1/$desc{sizescale}))eg;
+		$pdfmark=~s(\\\[u00(..)\])(chr(hex($1)))eg;
 
 		if ($pdfmark=~m/(.+) \/DOCINFO/)
 		{
@@ -1125,6 +1124,7 @@ sub PutHotSpot
     $l=~s/Color/C/;
     $l=~s/Action/A/;
     $l=~s'/Subtype /URI'/S /URI';
+    $l=~s(\\\[u00(..)\])(chr(hex($1)))eg;
     my @xwds=split(' ',"<< $l >>");
     my $annotno=BuildObj(++$objct,ParsePDFValue(\@xwds));
     my $annot=$obj[$objct];
@@ -1622,7 +1622,7 @@ sub nextwd
 
     return('') if !defined($wd);
 
-    if ($wd=~m/^(.*?)(<<|>>|\[|\])(.*)/)
+    if ($wd=~m/^(.*?)(<<|>>|(?:(?<!\\)\[|\]))(.*)/)
     {
 	if (defined($1) and length($1))
 	{
@@ -2326,6 +2326,7 @@ sub do_p
     $cpage=$obj[$cpageno]->{DATA};
     $pages->{'Count'}++;
     $stream="q 1 0 0 1 0 0 cm\n$linejoin J\n$linecap j\n";
+    $stream.=$strkcol."\n", $curstrk=$strkcol if $strkcol ne '';
     $mode='g';
     $curfill='';
 #    @mediabox=@defaultmb;
@@ -3068,7 +3069,7 @@ sub do_t
     $xpos+=($pendmv-$nomove)/$unitwidth;
 
     $stream.="% == '$par'=$wid 'xpos=$xpos\n" if $debug;
-    $par=~s/\\/\\\\/g;
+    $par=~s/\\(?!\d\d\d)/\\\\/g;
     $par=~s/\)/\\)/g;
     $par=~s/\(/\\(/g;
 
@@ -3198,7 +3199,7 @@ sub FindChar
 	my $ch=$fnt->{GNM}->{$chnm};
 	$ch=RemapChr($ch,$fnt,$chnm) if ($ch > 255);
 
-	return(chr($ch),$fnt->{WID}->[$ch]*$cftsz);
+	return(($ch<32)?sprintf("\\%03o",$ch):chr($ch),$fnt->{WID}->[$ch]*$cftsz);
     }
     else
     {
@@ -3274,3 +3275,11 @@ sub do_n
     @lin=();
     PutHotSpot($xpos) if defined($mark);
 }
+
+
+1;
+########################################################################
+### Emacs settings
+# Local Variables:
+# mode: CPerl
+# End:

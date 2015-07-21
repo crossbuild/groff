@@ -1,3 +1,27 @@
+# Makefile.sub for `libgroff'
+#
+# File position: <groff-source>/src/libs/libgroff/Makefile.sub
+#
+# Copyright (C) 2014  Free Software Foundation, Inc.
+#
+# This file is part of `font utf8' which is part of `groff'.
+#
+# `groff' is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# `groff' is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see
+# <http://www.gnu.org/licenses/gpl-2.0.html>.
+#
+########################################################################
+
 LIB=groff
 EXTRA_CFLAGS=-D__GETOPT_PREFIX=groff_ \
              -DENABLE_RELOCATABLE=1 \
@@ -113,6 +137,7 @@ CSRCS=\
   $(srcdir)/../snprintf/snprintf.c
 GENSRCS=\
   version.cpp
+RM=rm -f
 
 src_version=`cat $(top_srcdir)/VERSION`
 src_revision=`cat $(top_srcdir)/REVISION`
@@ -121,8 +146,8 @@ version.cpp: $(top_srcdir)/VERSION $(top_srcdir)/REVISION
 	@echo Making version.cpp
 	@echo const char \*version_string = \"$(src_version)\"\; >$@
 	@echo const char \*revision_string = \"$(src_revision)\"\; >>$@
-	@echo extern \"C\" const char \*Version_string = \"$(src_version).$(src_revision)\"\; | \
-	  sed -e 's/\.0\"/\"/' >>$@
+	@echo extern \"C\" const char \*Version_string = \"$(src_version).$(src_revision)\"\; \
+	  | sed -e 's/\.0\"/\"/' >>$@
 
 # We have to avoid $(COMPILE.c) since we must not use groff's `assert.h'
 snprintf.$(OBJEXT): $(srcdir)/../snprintf/snprintf.c
@@ -153,38 +178,46 @@ MKINSTALLDIRS = $(SHELL) $(top_srcdir)/mkinstalldirs
 
 install_data: install_charset_data
 install_charset_data:
-	test $(GLIBC21) != no || $(MKINSTALLDIRS) $(DESTDIR)$(libdir)
+	-test $(GLIBC21) != no || $(MKINSTALLDIRS) $(DESTDIR)$(libdir)
 	if test -f $(DESTDIR)$(libdir)/charset.alias; then \
 	  sed -f ref-add.sed $(DESTDIR)$(libdir)/charset.alias \
-	      > $(DESTDIR)$(libdir)/t-charset.alias; \
+	    > $(DESTDIR)$(libdir)/t-charset.alias; \
 	  $(INSTALL_DATA) $(DESTDIR)$(libdir)/t-charset.alias \
-	                  $(DESTDIR)$(libdir)/charset.alias; \
-	  rm -f $(DESTDIR)$(libdir)/t-charset.alias; \
+	    $(DESTDIR)$(libdir)/charset.alias; \
+	  $(RM) $(DESTDIR)$(libdir)/t-charset.alias; \
 	else \
 	  if test $(GLIBC21) = no; then \
 	    sed -f ref-add.sed charset.alias \
-	        > $(DESTDIR)$(libdir)/t-charset.alias; \
+	      > $(DESTDIR)$(libdir)/t-charset.alias; \
 	    $(INSTALL_DATA) $(DESTDIR)$(libdir)/t-charset.alias \
-	                    $(DESTDIR)$(libdir)/charset.alias; \
-	    rm -f $(DESTDIR)$(libdir)/t-charset.alias; \
+	      $(DESTDIR)$(libdir)/charset.alias; \
+	    $(RM) $(DESTDIR)$(libdir)/t-charset.alias; \
 	  fi; \
 	fi
 
 uninstall_sub: uninstall_charset_data
 uninstall_charset_data:
-	if test -f $(DESTDIR)$(libdir)/charset.alias; then \
+	-if test -f $(DESTDIR)$(libdir)/charset.alias; then \
 	  sed -f ref-del.sed $(DESTDIR)$(libdir)/charset.alias \
-	      > $(DESTDIR)$(libdir)/t-charset.alias; \
+	    > $(DESTDIR)$(libdir)/t-charset.alias; \
 	  if grep '^# Packages using this file: $$' \
 	          $(DESTDIR)$(libdir)/t-charset.alias > /dev/null; then \
-	    rm -f $(DESTDIR)$(libdir)/charset.alias; \
+	    $(RM) $(DESTDIR)$(libdir)/charset.alias; \
 	  else \
 	    $(INSTALL_DATA) $(DESTDIR)$(libdir)/t-charset.alias \
-	                    $(DESTDIR)$(libdir)/charset.alias; \
+	      $(DESTDIR)$(libdir)/charset.alias; \
 	  fi; \
-	  rm -f $(DESTDIR)$(libdir)/t-charset.alias; \
+	  $(RM) $(DESTDIR)$(libdir)/t-charset.alias; \
 	fi
 
 clean: clean_charset
 clean_charset:
-	rm -f charset.alias ref-add.sed ref-del.sed
+	$(RM) charset.alias ref-add.sed ref-del.sed
+
+########################################################################
+# Emacs settings
+########################################################################
+#
+# Local Variables:
+# mode: makefile
+# End:

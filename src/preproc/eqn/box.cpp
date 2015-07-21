@@ -1,6 +1,5 @@
 // -*- C++ -*-
-/* Copyright (C) 1989, 1990, 1991, 1992, 2002, 2004, 2007, 2009
-   Free Software Foundation, Inc.
+/* Copyright (C) 1989-2014  Free Software Foundation, Inc.
      Written by James Clark (jjc@jclark.com)
 
 This file is part of groff.
@@ -272,7 +271,7 @@ void set_script_size()
   if (script_size_reduction >= 0)
     printf(".ps \\n[.s]-%d>?%d\n", script_size_reduction, minimum_size);
   else
-    printf(".ps (u;\\n[.ps]*7+5/10>?%d)\n", minimum_size);
+    printf(".ps (u;\\n[.ps]*7+5/10>?%dz)\n", minimum_size);
 }
 
 int box::next_uid = 0;

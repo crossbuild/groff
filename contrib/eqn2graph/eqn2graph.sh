@@ -32,8 +32,6 @@
 #
 # Thus, we pass -U to groff(1), and everything else to convert(1).
 #
-# $Id: eqn2graph.sh,v 1.7 2010/02/25 20:17:13 wl Exp $
-#
 groff_opts=""
 convert_opts=""
 format="png"

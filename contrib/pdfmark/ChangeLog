@@ -1,3 +1,45 @@
+2014-10-14  Keith Marshall  <keith.d.marshall@ntlworld.com>
+
+	Deduce "--no-toc-relocation" from input stream (revisited).
+
+	* pdfroff.sh (WRKFILE): Correct malformed sed expression.
+
+	* spdf.tmac (TC): Prefer value of pdfroff's PHASE register to defined
+	state of pdf:href.map, when choosing to emit control record to...
+	(toc_relocation): ...enable this.
+
+2014-10-13  Keith Marshall  <keith.d.marshall@ntlworld.com>
+
+	Deduce "--no-toc-relocation" from input stream.
+
+	* pdfroff.sh (WRKFILE): Scan it for "pdfroff-option:set" records;
+	apply settings; check for equivalent of "--no-toc-relocation" option.
+
+	* spdf.tmac (TC): Emit "pdfroff-option:set toc-relocation=enabled".
+
+2014-10-12  Keith Marshall  <keith.d.marshall@ntlworld.com>
+
+	Avoid spurious user visible control messages on stderr.
+
+	* pdfroff.sh (REFCOPY): Ensure that at least one pdfhref mark of type
+	'Z' will remain in the reference map, after all references have been
+	resolved; this is required, to suppress writing of reference control
+	records to stderr during the final PDF output processing phase.
+
+2014-09-04  Bernd Warken  <groff-bernd.warken-72@web.de>
+
+	* all pdfmark source files: Copying (remove last updates and
+	replace years with package years) and Emacs setup.
+
+2014-03-30  Steffen Nurpmeso  <sdaoden@yandex.com>
+
+	* Makefile.sub: Put straight error-prevention prefixes for `rm'.
+
+2014-03-29  Steffen Nurpmeso  <sdaoden@yandex.com>
+
+	* Makefile.sub: Handle examples separately, controlled by
+	$(make{_,_install_,_uninstall_}examples).
+
 2013-01-28  Deri James  <deri@chuzzlewit.myzen.co.uk>
 
 	* pdfmark.tmac (pdfmark, pdf:composed): Use `\!' instead of `\X'.
@@ -369,8 +411,9 @@
 
 	First import of pdfmark files.
 
-Copyright 2004-2013
-  Free Software Foundation, Inc.
+________________________________________________________________________
+
+Copyright (C) 2004-2014  Free Software Foundation, Inc.
 
 Copying and distribution of this file, with or without modification,
 are permitted in any medium without royalty provided the copyright

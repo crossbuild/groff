@@ -1,5 +1,4 @@
-# Copyright (C) 2004, 2009
-#   Free Software Foundation, Inc.
+# Copyright (C) 2004-2014  Free Software Foundation, Inc.
 #      Written by James Clark (jjc@jclark.com)
 #
 # This file is part of groff.
@@ -29,6 +28,8 @@ mkinstalldirs=$(SHELL) $(top_srcdir)/mkinstalldirs
 xtotroff=$(builddir)/xtotroff
 DPIS=75 100
 
+RM=rm -f
+
 all:
 	@echo "Say \`make fonts' to generate fonts for gxditview."
 
@@ -36,26 +37,34 @@ fonts: $(xtotroff) $(driverdir)/DESC.in $(driverdir)/FontMap
 	fonts=`sed -e 's/[	 ].*//' $(driverdir)/FontMap`; \
 	for dpi in $(DPIS); do \
 	  echo Making devX$$dpi; \
-	  test -d $(devdir)/devX$$dpi || \
-	    $(mkinstalldirs) $(devdir)/devX$$dpi; \
-	  rm -f $(devdir)/devX$$dpi/DESC; \
+	  test -d $(devdir)/devX$$dpi \
+	    || $(mkinstalldirs) $(devdir)/devX$$dpi; \
+	  $(RM) $(devdir)/devX$$dpi/DESC; \
 	  sed -e "s/res 75/res $$dpi/" $(driverdir)/DESC.in \
 	    >$(devdir)/devX$$dpi/DESC; \
 	  (cd $(devdir)/devX$$dpi; \
-	   rm -f Makefile.sub; \
+	   $(RM) Makefile.sub; \
 	   echo DEV=X$$dpi >Makefile.sub; \
 	   echo DEVFILES=DESC $$fonts >>Makefile.sub; \
 	   $(xtotroff) -r $$dpi -s 10 $(driverdir)/FontMap); \
 	  echo Making devX$$dpi-12; \
-	  test -d $(devdir)/devX$$dpi-12 || \
-	    $(mkinstalldirs) $(devdir)/devX$$dpi-12; \
-	  rm -f $(devdir)/devX$$dpi-12/DESC; \
+	  test -d $(devdir)/devX$$dpi-12 \
+	    || $(mkinstalldirs) $(devdir)/devX$$dpi-12; \
+	  $(RM) $(devdir)/devX$$dpi-12/DESC; \
 	  sed -e "s/res 75/res $$dpi/" \
 	      -e 's/unitwidth 10/unitwidth 12/' $(driverdir)/DESC.in \
 	    >$(devdir)/devX$$dpi-12/DESC; \
 	  (cd $(devdir)/devX$$dpi-12; \
-	   rm -f Makefile.sub; \
+	   $(RM) Makefile.sub; \
 	   echo DEV=X$$dpi-12 >Makefile.sub; \
 	   echo DEVFILES=DESC $$fonts >>Makefile.sub; \
 	   $(xtotroff) -r $$dpi -s 12 $(driverdir)/FontMap); \
 	done
+
+########################################################################
+# Emacs settings
+########################################################################
+#
+# Local Variables:
+# mode: makefile
+# End:

@@ -1,6 +1,6 @@
 #! /bin/sh
 
-# Copyright (C) 2000, 2009 Free Software Foundation, Inc.
+# Copyright (C) 2000-2014 Free Software Foundation, Inc.
 #
 # This configure script is free software; the Free Software Foundation
 # gives unlimited permission to copy, distribute and modify it.
@@ -32,7 +32,7 @@ INSTALL=${INSTALL='/dev/env/DJDIR/bin/ginstall -c'}
 RANLIB=${RANLIB='ranlib'}
 LPR=${LPR='cat >>PRN'}
 DVIPRINT=${DVIPRINT='dvilj4 - >>PRN'}
-PERLPATH=${PERLPATH='/usr/bin/perl'}
+PERL=${PERL='/usr/bin/perl'}
 
 # Force `cp' to be used instead of "ln -s".
 ac_cv_prog_LN_S="cp -p"

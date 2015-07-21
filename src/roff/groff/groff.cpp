@@ -1,6 +1,5 @@
 // -*- C++ -*-
-/* Copyright (C) 1989-2012
-   Free Software Foundation, Inc.
+/* Copyright (C) 1989-2014  Free Software Foundation, Inc.
      Written by James Clark (jjc@jclark.com)
 
 This file is part of groff.
@@ -51,14 +50,15 @@ extern "C" {
 
 // The number of commands must be in sync with MAX_COMMANDS in pipeline.h
 
-// grap and chem must come before pic;
+// grap, chem, and ideal must come before pic;
 // tbl must come before eqn
 const int PRECONV_INDEX = 0;
 const int SOELIM_INDEX = PRECONV_INDEX + 1;
 const int REFER_INDEX = SOELIM_INDEX + 1;
 const int GRAP_INDEX = REFER_INDEX + 1;
 const int CHEM_INDEX = GRAP_INDEX + 1;
-const int PIC_INDEX = CHEM_INDEX + 1;
+const int IDEAL_INDEX = CHEM_INDEX + 1;
+const int PIC_INDEX = IDEAL_INDEX + 1;
 const int TBL_INDEX = PIC_INDEX + 1;
 const int GRN_INDEX = TBL_INDEX + 1;
 const int EQN_INDEX = GRN_INDEX + 1;
@@ -139,7 +139,7 @@ int main(int argc, char **argv)
   };
   while ((opt = getopt_long(
 		  argc, argv,
-		  "abcCd:D:eEf:F:gGhiI:jkK:lL:m:M:n:No:pP:r:RsStT:UvVw:W:XzZ",
+		  "abcCd:D:eEf:F:gGhiI:jJkK:lL:m:M:n:No:pP:r:RsStT:UvVw:W:XzZ",
 		  long_options, NULL))
 	 != EOF) {
     char buf[3];
@@ -173,6 +173,10 @@ int main(int argc, char **argv)
       break;
     case 't':
       commands[TBL_INDEX].set_name(command_prefix, "tbl");
+      break;
+    case 'J':
+      commands[IDEAL_INDEX].set_name(command_prefix, "gideal");
+      // need_pic = 1;
       break;
     case 'j':
       commands[CHEM_INDEX].set_name(command_prefix, "chem");
@@ -215,11 +219,12 @@ int main(int argc, char **argv)
       vflag = 1;
       printf("GNU groff version %s\n", Version_string);
       printf(
-	"Copyright (C) 2013 Free Software Foundation, Inc.\n"
+	"Copyright (C) 2014 Free Software Foundation, Inc.\n"
 	"GNU groff comes with ABSOLUTELY NO WARRANTY.\n"
 	"You may redistribute copies of groff and its subprograms\n"
 	"under the terms of the GNU General Public License.\n"
-	"For more information about these matters, see the file named COPYING.\n");
+	"For more information about these matters, see the file\n"
+	"named COPYING.\n");
       printf("\ncalled subprograms:\n\n");
       fflush(stdout);
       commands[POST_INDEX].append_arg(buf);
@@ -755,9 +760,9 @@ char **possible_command::get_argv()
 void synopsis(FILE *stream)
 {
   fprintf(stream,
-"usage: %s [-abceghijklpstvzCENRSUVXZ] [-Fdir] [-mname] [-Tdev] [-ffam]\n"
-"       [-wname] [-Wname] [-Mdir] [-dcs] [-rcn] [-nnum] [-olist] [-Parg]\n"
-"       [-Darg] [-Karg] [-Larg] [-Idir] [files...]\n",
+"usage: %s [-abceghijklpstvzCEGNRSUVXZ] [-dcs] [-ffam] [-mname] [-nnum]\n"
+"       [-olist] [-rcn] [-wname] [-Darg] [-Fdir] [-Idir] [-Karg] [-Larg]\n"
+"       [-Mdir] [-Parg] [-Tdev] [-Wname] [files...]\n",
 	  program_name);
 }
 
@@ -766,46 +771,47 @@ void help()
   synopsis(stdout);
   fputs("\n"
 "-h\tprint this message\n"
-"-k\tpreprocess with preconv\n"
-"-t\tpreprocess with tbl\n"
-"-p\tpreprocess with pic\n"
+"-v\tprint version number\n"
 "-e\tpreprocess with eqn\n"
 "-g\tpreprocess with grn\n"
-"-G\tpreprocess with grap\n"
 "-j\tpreprocess with chem\n"
+"-k\tpreprocess with preconv\n"
+"-p\tpreprocess with pic\n"
 "-s\tpreprocess with soelim\n"
+"-t\tpreprocess with tbl\n"
+"-G\tpreprocess with grap\n"
+"-J\tpreprocess with gideal\n"
 "-R\tpreprocess with refer\n"
-"-Tdev\tuse device dev\n"
-"-X\tuse X11 previewer rather than usual postprocessor\n"
-"-mname\tread macros tmac.name\n"
+"-a\tproduce ASCII description of output\n"
+"-b\tprint backtraces with errors or warnings\n"
+"-c\tdisable color output\n"
 "-dcs\tdefine a string c as s\n"
-"-rcn\tdefine a number register c as n\n"
+"-ffam\tuse fam as the default font family\n"
+"-i\tread standard input after named input files\n"
+"-l\tspool the output\n"
+"-mname\tread macros tmac.name\n"
 "-nnum\tnumber first page n\n"
 "-olist\toutput only pages in list\n"
-"-ffam\tuse fam as the default font family\n"
-"-Fdir\tsearch dir for device directories\n"
-"-Mdir\tsearch dir for macro files\n"
-"-v\tprint version number\n"
-"-z\tsuppress formatted output\n"
-"-Z\tdon't postprocess\n"
-"-a\tproduce ASCII description of output\n"
-"-i\tread standard input after named input files\n"
+"-rcn\tdefine a number register c as n\n"
 "-wname\tenable warning name\n"
-"-Wname\tinhibit warning name\n"
-"-E\tinhibit all errors\n"
-"-b\tprint backtraces with errors or warnings\n"
-"-l\tspool the output\n"
-"-c\tdisable color output\n"
+"-z\tsuppress formatted output\n"
 "-C\tenable compatibility mode\n"
-"-V\tprint commands on stdout instead of running them\n"
-"-Parg\tpass arg to the postprocessor\n"
-"-Larg\tpass arg to the spooler\n"
-"-N\tdon't allow newlines within eqn delimiters\n"
-"-S\tenable safer mode (the default)\n"
-"-U\tenable unsafe mode\n"
+"-Darg\tuse arg as default input encoding.  Implies -k\n"
+"-E\tinhibit all errors\n"
+"-Fdir\tsearch dir for device directories\n"
 "-Idir\tsearch dir for soelim, troff, and grops.  Implies -s\n"
 "-Karg\tuse arg as input encoding.  Implies -k\n"
-"-Darg\tuse arg as default input encoding.  Implies -k\n"
+"-Larg\tpass arg to the spooler\n"
+"-Mdir\tsearch dir for macro files\n"
+"-N\tdon't allow newlines within eqn delimiters\n"
+"-Parg\tpass arg to the postprocessor\n"
+"-S\tenable safer mode (the default)\n"
+"-Tdev\tuse device dev\n"
+"-U\tenable unsafe mode\n"
+"-V\tprint commands on stdout instead of running them\n"
+"-Wname\tinhibit warning name\n"
+"-X\tuse X11 previewer rather than usual postprocessor\n"
+"-Z\tdon't postprocess\n"
 "\n",
 	stdout);
   exit(0);

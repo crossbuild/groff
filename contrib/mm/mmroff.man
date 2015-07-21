@@ -1,6 +1,14 @@
-.ig
-Copyright (C) 1989, 2001, 2009, 2011
-  Free Software Foundation, Inc.
+.TH MMROFF @MAN1EXT@ "@MDATE@" "Groff Version @VERSION@"
+.SH NAME
+mmroff \- cross reference preprocessor
+.
+.
+.\" --------------------------------------------------------------------
+.\" Legalese
+.\" --------------------------------------------------------------------
+.
+.de co
+Copyright \[co] 1989-2014 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -18,33 +26,65 @@ translations approved by the Free Software Foundation instead of in
 the original English.
 ..
 .
-.TH MMROFF @MAN1EXT@ "@MDATE@" "Groff Version @VERSION@"
-.SH NAME
-mmroff \- cross reference preprocessor
+.de au
+This document was written by
+.MT jh@axis.se
+Jörgen Hägg, Lund, Sweden
+.ME .
+..
+.
+.\" --------------------------------------------------------------------
 .SH SYNOPSIS
+.\" --------------------------------------------------------------------
+.
 .B mmroff
 [
-.I -x
+.I \-x
 ]
 .I groff_arguments
+.
+.
+.\" --------------------------------------------------------------------
 .SH DESCRIPTION
-\fBmmroff\fP is a simple preprocessor for \fBgroff\fP, it is
-used for expanding cross references in \fBm@TMAC_M_PREFIX@m\fP, see
-\fBgroff_mm(@MAN7EXT@)\fP.
-\fBgroff\fP is executed twice, first with \fB-z\fP and \fB-rRef=1\fR
+.\" --------------------------------------------------------------------
+.
+.B mmroff
+is a simple preprocessor for
+.BR groff ,
+it is used for expanding cross references in
+.BR m@TMAC_M_PREFIX@m ,
+see
+.BR groff_mm (@MAN7EXT@).
+.
+.B groff
+is executed twice, first with
+.B \-z
+and
+.B \-rRef=1
 to collect all cross references and then to do the real processing
 when the cross reference file is up to date.
+.
+.
 .TP
-\fB\-x\fR
+.B \-x
 Just create the cross reference file.
-This can be used to refresh the cross reference file,
-it isn't always needed to have accurate
-cross references and by using this option \fBgroff\fP will only
-be run once.
+.
+This can be used to refresh the cross reference file, it isn\[aq]t
+always needed to have accurate cross references and by using this
+option
+.B groff
+will only be run once.
+.
+.
+.\" --------------------------------------------------------------------
 .\".SH BUGS
-.SH AUTHOR
-Jörgen Hägg, Lund, Sweden <jh@axis.se>.
+.\" --------------------------------------------------------------------
+.
+.
+.\" --------------------------------------------------------------------
 .SH FILES
+.\" --------------------------------------------------------------------
+.
 .TP
 .B @MACRODIR@/@TMAC_M_PREFIX@m.tmac
 .TP
@@ -53,14 +93,31 @@ Jörgen Hägg, Lund, Sweden <jh@axis.se>.
 .B @TMAC_MDIR@/*.MT
 .TP
 .B @TMAC_MDIR@/locale
+.
+.
+.na
+.\" --------------------------------------------------------------------
 .SH "SEE ALSO"
-.BR groff_mm(@MAN7EXT@),
-.BR groff_mmse(@MAN7EXT@),
+.\" --------------------------------------------------------------------
+.
+.BR groff_mm (@MAN7EXT@),
+.BR groff_mmse (@MAN7EXT@),
 .BR groff (@MAN1EXT@),
 .BR @g@troff (@MAN1EXT@),
 .BR @g@tbl (@MAN1EXT@),
 .BR @g@pic (@MAN1EXT@),
 .BR @g@eqn (@MAN1EXT@)
+.
+.
+.\" --------------------------------------------------------------------
+.SH COPYING
+.\" --------------------------------------------------------------------
+.co
+.\" --------------------------------------------------------------------
+.SH AUTHORS
+.\" --------------------------------------------------------------------
+.
+.
 .
 .\" Local Variables:
 .\" mode: nroff
